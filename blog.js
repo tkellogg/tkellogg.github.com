@@ -40,7 +40,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 var BlogPostView = Backbone.View.extend({
 
-	template = _.template($('#postTemplate').html()),
+	template: _.template($('#postTemplate').html()),
 	
 	render: function() {
 		$(this.el).html(this.template(this.model.toJSON()));
