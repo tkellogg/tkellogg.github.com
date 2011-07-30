@@ -24,7 +24,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 	tipLength: 5,
 
 	loadTip: function(callback) {
-		$.getJSON(url + '&max-results=' + this.tipLength, null, function(data) {
+		$.getJSON(this.url + '&max-results=' + this.tipLength, null, function(data) {
 			this.add(mapBloggerData(data));
 			if (callback) {
 				callback(data);
@@ -39,8 +39,12 @@ var BlogPostCollection = Backbone.Collection.extend({
 });
 
 var BlogPostView = Backbone.View.extend({
+	
+	initialize: function() {
+		this.template = _.template($('#'+this.template).html());
+	},
 
-	template: _.template($('#postTemplate').html()),
+	template: 'postTemplate',
 	
 	render: function() {
 		$(this.el).html(this.template(this.model.toJSON()));
