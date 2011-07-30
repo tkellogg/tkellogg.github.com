@@ -6,6 +6,9 @@ $(function() {
 
 function bloggerLoad(data) {
 	window.blogData = data;
-	
+	for(var post in data.feed.entry)
+	{
+		$('#blog').append('<p>'+post.title+'</p>');
+	}
 	
 }
