@@ -30,7 +30,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 				callback(data);
 			}
 		});
-	}
+	},
 
 	// TODO: implement local storage via amplify and sync with blogger
 	sync: function() {
