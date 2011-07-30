@@ -1,25 +1,10 @@
 <html>
 <head>
 	<title>Tim Kellogg</title>
-	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-	<script type="text/javascript">
-	google.load("gdata", "1.1");
-	google.setOnLoadCallback(function() {
-		loadPosts();
-	});
-
-	function loadPosts() {
-		service = new google.gdata.blogger.BloggerService();
-		var feed = service.getBlogFeed("http://timkellogg.blogspot.com");
-		alert(feed);
-		while(feed.getNextLink())
-		{
-			$('p').appendTo('<span style="display:block">' + feed.title + '</span>');
-		}
-	}	
-	</script>
+	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 	<p>Welcome to Tim Kellogg's homepage. It is under construction right now.</p>
+	<div id="blog"></div>
 </body>
 </html>
