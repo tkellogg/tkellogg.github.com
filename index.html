@@ -9,7 +9,7 @@
 	});
 
 	function loadPosts() {
-		var service = new google.gdata.blogger.BloggerService();
+		service = new google.gdata.blogger.BloggerService();
 		var feed = service.getBlogFeed("http://timkellogg.blogspot.com");
 		alert(feed);
 		while(feed.getNextLink())
