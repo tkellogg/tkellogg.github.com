@@ -1,14 +1,13 @@
 
 $(function() {
-	var url = 'http://www.blogger.com/feeds/6849760623609771363/posts/default?alt=json&max-results=5';
-	$.getJSON(url, null, bloggerLoad);
+	posts = new BlogPostCollection();
+	posts.loadTip();
+
+	var $blog = $('#blog');
+	posts.forEach(function(post) {
+		var div = $blog.append("<div/>");
+		var view = new BlogPostView({el: div, model: post});
+		view.render();
+	});
 });
 
-function bloggerLoad(data) {
-	window.blogData = data;
-	for(var i in data.feed.entry)
-	{
-		$('#blog').append('<p>'+data.feed.entry[i].title.$t+'</p>');
-	}
-	
-}

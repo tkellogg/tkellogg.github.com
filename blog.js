@@ -23,7 +23,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 	url:'http://www.blogger.com/feeds/6849760623609771363/posts/default?alt=json',
 	tipLength: 5,
 
-	getTip: function(callback) {
+	loadTip: function(callback) {
 		$.getJSON(url + '&max-results=' + this.tipLength, null, function(data) {
 			this.add(mapBloggerData(data));
 			if (callback) {
@@ -37,3 +37,15 @@ var BlogPostCollection = Backbone.Collection.extend({
 		
 	}
 });
+
+var BlogPostView = Backbone.View.extend({
+
+	template = _.template($('#postTemplate').html()),
+	
+	render: function() {
+		$(this.el).html(this.template(this.model.toJSON()));
+		return this;
+	}
+
+});
+
