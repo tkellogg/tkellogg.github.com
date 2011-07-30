@@ -24,8 +24,12 @@ var BlogPostCollection = Backbone.Collection.extend({
 	tipLength: 5,
 
 	loadTip: function(callback) {
+		var self = this;
 		$.getJSON(this.url + '&max-results=' + this.tipLength, null, function(data) {
-			this.models.push(mapBloggerData(data));
+			for(var i in data.feed.entry) {
+				self.models.push(mapBloggerData(data.feed.entry[i]));
+			}
+			
 			if (callback) {
 				callback(data);
 			}
