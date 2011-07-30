@@ -8,7 +8,7 @@ function bloggerLoad(data) {
 	window.blogData = data;
 	for(var i in data.feed.entry)
 	{
-		$('#blog').append('<p>'+data.feed.entry[i].title+'</p>');
+		$('#blog').append('<p>'+data.feed.entry[i].title.$t+'</p>');
 	}
 	
 }
