@@ -38,7 +38,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 	loadTip: function() {
 		var params = _.extend(this.xhrParams, { 'max-results': this.tipLength });
-		$.ajax(this.url, { crossDomain: true, dataType: jsonp, data: params, success: onBloggerPostsReceived, context: this });
+		$.ajax(this.url, { crossDomain: true, dataType: 'jsonp', data: params, success: onBloggerPostsReceived, context: this });
 	},
 
 	// TODO: implement local storage via amplify and sync with blogger
