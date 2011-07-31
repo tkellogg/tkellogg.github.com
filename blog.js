@@ -33,7 +33,7 @@ function onBloggerPostsReceived(data)
 var BlogPostCollection = Backbone.Collection.extend({
 	model: BlogPost,
 	url:'http://www.blogger.com/feeds/6849760623609771363/posts/default',
-	xhrParams: { alt: 'json-in-script' }
+	xhrParams: { alt: 'json-in-script' },
 	tipLength: 5,
 
 	loadTip: function() {
