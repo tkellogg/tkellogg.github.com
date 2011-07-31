@@ -56,7 +56,8 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 var BlogPostView = Backbone.View.extend({
 	
-	initialize: function() {
+	initialize: function(model) {
+		Backbone.View.initialize({ model: model });
 		this.template = _.template($('#'+this.template).html());
 	},
 
@@ -67,5 +68,32 @@ var BlogPostView = Backbone.View.extend({
 		return this;
 	}
 
+});
+
+var BlogView = Backbone.View.extend({
+
+	template: 'blogTemplate',
+	itemTemplate: 'postTemplate',
+	
+	initialize: function(collection) {
+		Backbone.View.initialize({ model: collection });
+		this.template = _.template($('#'+this.template).html());
+		this.itemTemplate = _.template($('#'+this.itemTemplate).html());
+		this.bindModels();
+	},
+	
+	bindModels: function() {
+		this.views = new Array();
+		collection.forEach(function(model) {
+			var view = new BlogPostView(model);
+			this.views.push(view);
+		});
+	},
+	
+	render: function() {
+		$(this.el).html(this.template({ views: this.collection, template: this.itemTemplate });
+		return this;
+	}
+	
 });
 

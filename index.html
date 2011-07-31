@@ -12,9 +12,19 @@
 	<p>Welcome to Tim Kellogg's homepage. It is under construction right now.</p>
 	<div id="blog"></div>
 	<script type="text/template" id="postTemplate">
-		<h2><%= title %></h2>
-		<div>
+		<h3><%= title %></h3>
+		<div class="blog-post-content">
 			<%= content %>
+		</div>
+	</script>
+	<script type="text/template" id="blogTemplate">
+		<h2>The Blog</h2>
+		<div>
+			<% _.each(views, function(view) { %>
+				<div class="blog-post">
+					<%= template(view) %>
+				</div>
+			<% } %>
 		</div>
 	</script>
 </body>
