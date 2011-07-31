@@ -8,7 +8,11 @@ function mapBloggerData(data) {
 		return data
 	}
 	else {
-		return _.map(data, function(attr) { return attr.$t ? attr.$t : attr; });
+		for(var attr in data)
+		{
+			data[attr] = data[attr].$t ? data[attr].$t : data[attr];
+		}
+		return data;
 	}
 }
 
