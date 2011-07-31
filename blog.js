@@ -34,7 +34,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 	loadTip: function(callback) {
 		var params = _.extend(this.xhrParams, { 'max-results': this.tipLength });
-		$.ajax(this.url, { crossDomain: true, dataType: 'jsonp', data: params, context: this, success: function() 
+		$.ajax(this.url, { crossDomain: true, dataType: 'jsonp', data: params, context: this, success: function(data) 
 		{
 			for(var i in data.feed.entry) {
 				var model = new BlogPost(mapBloggerData(data.feed.entry[i]));
