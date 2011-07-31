@@ -22,10 +22,6 @@ var BlogPost = Backbone.Model.extend({
 	}
 });
 
-function onBloggerPostsReceived(data)
-{
-}
-
 var BlogPostCollection = Backbone.Collection.extend({
 	model: BlogPost,
 	url:'http://www.blogger.com/feeds/6849760623609771363/posts/default',
@@ -57,7 +53,7 @@ var BlogPostCollection = Backbone.Collection.extend({
 var BlogPostView = Backbone.View.extend({
 	
 	initialize: function(model) {
-		Backbone.View.initialize({ model: model });
+		this.model = model;
 		this.template = _.template($('#'+this.template).html());
 	},
 
@@ -76,7 +72,7 @@ var BlogView = Backbone.View.extend({
 	itemTemplate: 'postTemplate',
 	
 	initialize: function(collection) {
-		Backbone.View.initialize({ model: collection });
+		this.model = collection;
 		this.template = _.template($('#'+this.template).html());
 		this.itemTemplate = _.template($('#'+this.itemTemplate).html());
 		this.bindModels();
