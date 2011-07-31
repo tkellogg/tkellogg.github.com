@@ -91,7 +91,7 @@ var BlogView = Backbone.View.extend({
 	},
 	
 	render: function() {
-		$(this.el).html(this.template({ views: this.collection, template: this.itemTemplate });
+		$(this.el).html(this.template({ views: this.collection, template: this.itemTemplate }));
 		return this;
 	}
 	
