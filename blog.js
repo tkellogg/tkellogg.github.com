@@ -22,23 +22,23 @@ var BlogPost = Backbone.Model.extend({
 	}
 });
 
+function onBloggerPostsReceived(data)
+{
+	for(var i in data.feed.entry) {
+		var model = new BlogPost(mapBloggerData(data.feed.entry[i]));
+		this.models.push(model);
+	}
+}
+
 var BlogPostCollection = Backbone.Collection.extend({
 	model: BlogPost,
-	url:'http://www.blogger.com/feeds/6849760623609771363/posts/default?alt=json',
+	url:'http://www.blogger.com/feeds/6849760623609771363/posts/default',
+	xhrParams: { alt: 'json-in-script' }
 	tipLength: 5,
 
-	loadTip: function(callback) {
-		var self = this;
-		$.getJSON(this.url + '&max-results=' + this.tipLength, null, function(data) {
-			for(var i in data.feed.entry) {
-				var model = new BlogPost(mapBloggerData(data.feed.entry[i]));
-				self.models.push(model);
-			}
-			
-			if (callback) {
-				callback(data);
-			}
-		});
+	loadTip: function() {
+		var params = _.extend(this.xhrParams, { 'max-results': this.tipLength });
+		$.ajax(this.url, { crossDomain: true, dataType: jsonp, data: params, success: onBloggerPostsReceived, context: this });
 	},
 
 	// TODO: implement local storage via amplify and sync with blogger
