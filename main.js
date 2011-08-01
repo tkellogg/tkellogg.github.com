@@ -1,13 +1,10 @@
 
 $(function() {
 	posts = new BlogPostCollection();
+	blog = new BlogView(posts);
 	posts.loadTip(function() {
-		var $blog = $('#blog');
-		posts.forEach(function(post) {
-			var div = $blog.append("<div/>");
-			var view = new BlogPostView({el: div, model: post});
-			view.render();
-		});
+		blog.bindModels();
+		blog.render();
 	});
 });
 

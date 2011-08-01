@@ -60,7 +60,7 @@ var BlogPostView = Backbone.View.extend({
 	template: 'postTemplate',
 	
 	render: function() {
-		$(this.el).html(this.template(this.model.toJSON()));
+		$(this.el).html(this.template(this.model.model.toJSON()));
 		return this;
 	}
 
@@ -70,6 +70,7 @@ var BlogView = Backbone.View.extend({
 
 	template: 'blogTemplate',
 	itemTemplate: 'postTemplate',
+	id: 'blog',
 	
 	initialize: function(collection) {
 		this.model = collection;
@@ -80,7 +81,7 @@ var BlogView = Backbone.View.extend({
 	
 	bindModels: function() {
 		this.views = new Array();
-		collection.forEach(function(model) {
+		this.model.forEach(function(model) {
 			var view = new BlogPostView(model);
 			this.views.push(view);
 		});
