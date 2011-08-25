@@ -81,9 +81,10 @@ var BlogView = Backbone.View.extend({
 	
 	bindModels: function() {
 		this.views = new Array();
+		var _views = this.views;
 		this.model.forEach(function(model) {
-			var view = new BlogPostView(model);
-			this.views.push(view);
+			var view = new BlogPostView(this.model);
+			_views.push(view);
 		});
 	},
 	
