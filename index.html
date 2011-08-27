@@ -22,7 +22,7 @@
 		<div>
 			<% _.each(views, function(view) { %>
 				<div class="blog-post">
-					<% template(view); %>
+					<%= view.render().el.innerHTML %>
 				</div>
 			<% }); %>
 		</div>

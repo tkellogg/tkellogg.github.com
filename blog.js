@@ -30,8 +30,10 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 	loadTip: function(callback) {
 		var params = _.extend(this.xhrParams, { 'max-results': this.tipLength });
-		$.ajax(this.url, { crossDomain: true, dataType: 'jsonp', data: params, context: this, success: function(data) 
-		{
+		$.ajax(this.url, { crossDomain: true, dataType: 'jsonp', data: params, context: this, 
+				success:
+function(data)
+	{
 			for(var i in data.feed.entry) {
 				var model = new BlogPost(mapBloggerData(data.feed.entry[i]));
 				this.models.push(model);
@@ -41,8 +43,10 @@ var BlogPostCollection = Backbone.Collection.extend({
 			{
 				callback(this.models);
 			}
-		}});
 	},
+		}); 
+	},
+
 
 	// TODO: implement local storage via amplify and sync with blogger
 	sync: function() {
@@ -52,15 +56,15 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 var BlogPostView = Backbone.View.extend({
 	
-	initialize: function(model) {
-		this.model = model;
+	initialize: function() {
 		this.template = _.template($('#'+this.template).html());
 	},
 
 	template: 'postTemplate',
 	
 	render: function() {
-		$(this.el).html(this.template(this.model.model.toJSON()));
+		window.thingy = this.model.toJSON();
+		$(this.el).html(this.template(this.model.toJSON()));
 		return this;
 	}
 
@@ -72,8 +76,8 @@ var BlogView = Backbone.View.extend({
 	itemTemplate: 'postTemplate',
 	id: 'blog',
 	
-	initialize: function(collection) {
-		this.model = collection;
+	initialize: function() {
+		this.model = this.collection;
 		this.template = _.template($('#'+this.template).html());
 		this.itemTemplate = _.template($('#'+this.itemTemplate).html());
 		this.bindModels();
@@ -82,14 +86,14 @@ var BlogView = Backbone.View.extend({
 	bindModels: function() {
 		this.views = new Array();
 		var _views = this.views;
-		this.model.forEach(function(model) {
-			var view = new BlogPostView(this.model);
+		this.model.models.forEach(function(m) {
+			var view = new BlogPostView({model: m});
 			_views.push(view);
 		});
 	},
 	
 	render: function() {
-		$(this.el).html(this.template({ views: this.collection, template: this.itemTemplate }));
+		$(this.el).html(this.template({ views: this.views, template: this.itemTemplate }));
 		return this;
 	}
 	
