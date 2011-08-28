@@ -3,6 +3,7 @@ $(function() {
 		routes: {
 			'': 'home',
 			'home': 'home',
+			'bio': 'bio',
 			'blog': 'blog'
 		},
 
@@ -27,6 +28,11 @@ $(function() {
 				blog.bindModels();
 				$('#blog').html(blog.render().el);
 			});
+		},
+
+		bio: function() {
+			this._hideAll();
+			$('#bio').load('bio.html').show();
 		}
 
 	});
