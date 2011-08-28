@@ -47,7 +47,6 @@ function(data)
 		}); 
 	},
 
-
 	// TODO: implement local storage via amplify and sync with blogger
 	sync: function() {
 		
@@ -86,6 +85,7 @@ var BlogView = Backbone.View.extend({
 	bindModels: function() {
 		this.views = new Array();
 		var _views = this.views;
+		window.m = this;
 		this.model.models.forEach(function(m) {
 			var view = new BlogPostView({model: m});
 			_views.push(view);
