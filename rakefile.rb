@@ -5,6 +5,8 @@ task :default => 'build:all'
 
 namespace :build do
 
+	task :all => :markdown
+
 	task :markdown do
 		Dir.glob('*.markdown').each do |f|
 			File.open f do |txt|
