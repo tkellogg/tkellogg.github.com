@@ -2,8 +2,10 @@
 $(function() {
 	posts = new BlogPostCollection();
 	posts.loadTip(function(m) {
-		blog = new BlogView({collection: posts});
-		$('#blog').append(blog.render().el);
+		alert(m.length + ' but collection was '+ posts.length);
+		blog = new BlogView(posts);
+		blog.bindModels();
+		blog.render();
 	});
 });
 
