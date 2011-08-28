@@ -9,9 +9,12 @@ describe("BlogLoader", function() {
 			sut.bind("load", load);
 		});
 
-		it("invokes the 'load' event when the first posts load", function() {
+		it("invokes the 'load' event when the first posts load", sinon.test(function() {
+			this.mock($).expects("ajax").once();
 			sut.sync();
-		});
+			
+			expect(load.wasCalled).toBeTruthy();
+		}));
 
 	});
 
