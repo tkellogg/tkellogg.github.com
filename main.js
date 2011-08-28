@@ -1,16 +1,23 @@
 $(function() {
 	var Workspace = Backbone.Router.extend({
 		routes: {
-			'': 'about',
-			'about': 'about',
+			'': 'home',
+			'home': 'home',
 			'blog': 'blog'
 		},
 
-		about: function() {
+		_hideAll: function() {
+			for(var route in routes) {
+				$('#'+route).hide();
+			}
+		},
 
+		home: function() {
+			$('#home').load('home.html').show();
 		},
 
 		blog: function() {
+			$('#blog').show();
 			var posts = new BlogPostCollection();
 			posts.loadTip(function(m) {
 				alert(m.length + ' but collection was '+ posts.length);
@@ -21,6 +28,8 @@ $(function() {
 		}
 
 	});
-
+	
+	var ws = new Workspace();
+	Backbone.history.start();
 });
 
