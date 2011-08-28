@@ -6,6 +6,12 @@
 	text-align: left;
 }
 
+.rounded-corners (@radius: 5px) {
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+}
+
 body {
 	background-color: @background;
 	color: @textColor;
@@ -23,9 +29,8 @@ a {
 #mainLinks div {
 	.centered;
 	background-color: #191919;
-	border-style: dashed;
-	border-width: 1px;
-	border-color: gray;
+	border: dashed 1px gray;
+	padding: 4px 4px 4px 4px;
 }
 
 #mainLinks a {
@@ -59,4 +64,10 @@ a {
 	color: gray;
 }
 
+.blog-post { 
+	.rounded-corners(10px);
+	padding: 5px 5px 5px 5px;
+	border: solid 1px gray;
+	margin-bottom: 20px;
+}
 
