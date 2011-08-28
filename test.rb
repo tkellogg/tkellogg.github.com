@@ -4,5 +4,6 @@
 require 'sinatra'
 
 get '/*' do |path|
+	path = 'index.html' if path == '/' or path == ''
 	File.read path
 end
