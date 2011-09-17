@@ -22,10 +22,11 @@
 		},
 
 		onSuccess: function(callback, data) {
-			this.mergeNewPosts(data);
+			var entry = data.feed.entry;
+			this.mergeNewPosts(entry);
 
 			if (callback)
-				callback(data);
+				callback(entry);
 		},
 
 		mergeNewPosts: function(data) {

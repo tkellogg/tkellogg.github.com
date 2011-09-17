@@ -36,8 +36,8 @@ var BlogPostCollection = Backbone.Collection.extend({
 
 	onPostLoad: function(x, data)
 	{
-			for(var i in data.feed.entry) {
-				var model = new BlogPost(mapBloggerData(data.feed.entry[i]));
+			for(var i in data) {
+				var model = new BlogPost(mapBloggerData(data[i]));
 				this.models.push(model);
 			}
 			
