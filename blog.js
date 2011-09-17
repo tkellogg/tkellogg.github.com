@@ -23,34 +23,30 @@ var BlogPost = Backbone.Model.extend({
 });
 
 var BlogPostCollection = Backbone.Collection.extend({
+	initialize: function() {
+		this.loader = new BlogLoader();
+	},
+
 	model: BlogPost,
-	url:'http://www.blogger.com/feeds/6849760623609771363/posts/default',
-	xhrParams: { alt: 'json-in-script' },
-	tipLength: 5,
 
 	loadTip: function(callback) {
-		var params = _.extend(this.xhrParams, { 'max-results': this.tipLength });
-		$.ajax(this.url, { crossDomain: true, dataType: 'jsonp', data: params, context: this, 
-				success:
-function(data)
+		this.callback = callback;
+		this.loader.load(this.onPostLoad.using(this));
+	},
+
+	onPostLoad: function(x, data)
 	{
 			for(var i in data.feed.entry) {
 				var model = new BlogPost(mapBloggerData(data.feed.entry[i]));
 				this.models.push(model);
 			}
 			
-			if (callback)
+			if (this.callback)
 			{
-				callback(this.models);
+				this.callback(this.models);
 			}
-	},
-		}); 
-	},
-
-	// TODO: implement local storage via amplify and sync with blogger
-	sync: function() {
-		
 	}
+
 });
 
 var BlogPostView = Backbone.View.extend({

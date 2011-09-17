@@ -1,3 +1,32 @@
+(function() {
+
+	function addArgs(args, context, moreArgs) {
+			var args = _(args).toArray();
+			if (typeof(moreArgs) !== 'undefined')
+				args = moreArgs.concat(args);
+			if (typeof(context) !== 'undefined')
+				args.unshift(this);
+			return args;
+	}
+
+	Function.prototype.using = function(context) {
+		var fn = this;
+		var extras = _(arguments).toArray().slice(1);
+		return function() {
+			return fn.apply(context, addArgs(arguments, this, extras));
+		};
+	};
+
+	Function.prototype.butUsing = function(context) {
+		var fn = this;
+		var extras = _(arguments).toArray().slice(1);
+		return function() {
+			return fn.apply(context, addArgs(arguments, undefined, extras));
+		};
+	};
+
+})();
+
 $(function() {
 	var Workspace = Backbone.Router.extend({
 		routes: {
