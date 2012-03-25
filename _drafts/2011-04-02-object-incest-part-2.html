@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Object Incest: Part 2"
+date: 2011-04-02
+comments: false
+---
+
+<div class='post'>
+In my <a href="http://timkellogg.blogspot.com/2011/03/object-incest.html">last post</a> I wrote about an anti-pattern called <i>object incest</i>. After talking it through with some coworkers I realized that it wasn't completely clear what this is and why it's a bad thing. The biggest reason I want to readdress this is because it happens a lot on ASP.NET pages, and I have to work with these pages and the weight of the debt caused by these pages is too much to get any real work done.<br /><br />Object incest, to reiterate, happens when object <i>A</i>&nbsp;directly depends on object <i>B</i>&nbsp;and vice versa. These don't have to be objects. An ASP.NET page is an object and so is a control. In fact, an object can really be any entity, like a POCO, page, service, or database object.</div>

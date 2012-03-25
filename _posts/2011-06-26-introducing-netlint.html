@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Introducing NetLint"
+date: 2011-06-26
+comments: false
+categories:
+ - unit testing
+ - git
+ - engineering
+---
+
+<div class='post'>
+Last week our QA guys wrote up a bug that one of our new pages wasn't working. After a little investigation I figured out it was just a JavaScript file that was inadvertently merged out of existence while resolving merge conflicts. We also had something like this happen where the app would run locally on developer boxes but would fail miserably when we deployed to the test environment.<br /><br />I don't really like giving the QA guys an excuse to blemish my reputation with bug reports, so I threw together a little tool to prevent this from ever happening again. Enter <a href="https://github.com/tkellogg/NetLint">NetLint</a>...<br /><br />NetLint processes Visual Studio project files (*.csproj, *.fsproj, etc) and compares files that exist in the project file and the files that actually exist on disk. So if a JavaScript file exists on disk but isn't in the project file, NetLint will throw an exception summarizing this and any other discrepancies.<br /><br />I also setup NetLint with simple file globbing &nbsp;functionality, so all files under bin/ and obj/ are ignored by default (you can also do custom patterns). I run NetLint from a unit test, so whenever anyone resolves merge conflicts they will instantaneously know if they missed a file.<br /><br />The future of NetLint will be a staging ground for <a href="http://devlicio.us/blogs/krzysztof_kozmic/archive/2011/03/09/testing-conventions.aspx">testing conventions</a>.&nbsp;I'm licensing it under the MIT license, so hopefully no one should have any reservations due to licensing. I also created <a href="http://nuget.org/List/Packages/NetLint">a NuGet package</a> to make it even easier to use</div>

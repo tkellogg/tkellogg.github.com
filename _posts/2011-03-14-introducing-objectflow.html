@@ -1,0 +1,22 @@
+---
+layout: post
+title: "Introducing ObjectFlow"
+date: 2011-03-14
+comments: false
+categories:
+ - code
+ - objectflow
+ - c#
+ - workflow
+---
+
+<div class='post'>
+I've been assigned to create a light and flexible workflow for two separate projects. After <a href="http://stackoverflow.com/questions/5198315/what-workflow-framework-to-use-in-c">doing some research</a>, I found that <a href="http://stackoverflow.com/questions/3634901/to-workflow-or-not-to-workflow">there really aren't any light, easy to use and understand, workflows</a>. I noticed that <a href="http://objectflow.codeplex.com/">objectflow</a>&nbsp;lets you define workflows in C# with an easy-to-read fluent interface, but after digging into it I realized it was missing some crucial features. For instance, there was no clear way that you could pause a workflow in the middle so that a real person can interact with it.<br /><br />I contacted the maintainer of the project and have contributed a large portion of functionality that makes it easy to define workflows that include people. Here is a sample workflow:<br /><br /><pre class="brush: csharp">var open = Declare.Step();<br />var wf = new StatefulWorkflow&lt;SiteVisit&gt;("Site Visit Workflow")<br />  .Do(x =&gt; x.GatherInformation())<br />  .Define(defineAs: open)<br />  .Yield(SiteVisit.States.Open)<br />  .Unless(x =&gt; x.Validate(), otherwise: open)<br />  .Do(x =&gt; x.PostVisit());<br /><br />// And send an object through<br />var visit = new SiteVisit();<br />wf.Start(visit);<br /><br />// It stops at the Yield, maybe persist it in a database and display a page to the user<br />wf.Start(visit);<br /><br />// extension methods to check if it's still in the workflow<br />if (visit.IsAliveInWorkflow("Site Visit Workflow"))<br />    wf.Start(visit);<br /></pre><br />This workflow is fairly simple and demonstrates how you can create a module for defining workflow and isolate all business logic in data objects (models and view-models work great here). I was initially concerned with the idea of creating conditional goto constructs, but after more thought I decided that this shouldn't be a significant problem as long as workflows stay simple and there is a clear separation from business logic and workflow logic.<br /><br />There is a lot more to this project - and to the features I contributed. However, I haven't even put forth a good effort in developing the official documentation, so perhaps I'll write about this more after developing the core documentation a little more. I think this is an excellent solution for companies who want to quickly through together workflows without a significant barrier to understanding. I think I will continue developing on ObjectFlow as long as I have something I feel I can add.</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>De Wet</div>
+<div class='content'>
+Hi <br /><br />I am also looking for a light weight workflow where we can create the workflow but the user is allowed to add users to a workflow step. So that the same page will open for every user that was added. Only when all users have approved the step it will continue to the next step. <br /><br />You dont have a sample of using Objectflow and how to display a page to the user?</div>
+</div>
+</div>

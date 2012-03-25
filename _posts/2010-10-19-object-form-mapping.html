@@ -1,0 +1,23 @@
+---
+layout: post
+title: "Object-Form mapping"
+date: 2010-10-19
+comments: false
+categories:
+ - objectdatasource
+ - asp.net
+ - code
+ - c#
+ - web
+---
+
+<div class='post'>
+I'm pretty sure most developers (web developers anyway) have heard of ORM (Object Relational Mapping) tools like NHibernate that map your database tables and to objects. These ORM tools reduce interaction with the database to just a few method calls, many times just Save(), GetById(), and a few custom query methods. There's a lot written about ORM, but no one really writes about the mapping between HTML forms and the objects that ORM maps.<br /><br />ASP.NET has a great solution for OFM (I'm calling it OFM because google won't give me a real name for it). If you use a FormView in combination with an ObjectDataSource you can bind the properties of your object to form elements. This is pretty cool because it reduces your code to writing an ORM mapping, creating factory methods to get and save the object, and some ASP markup that maps the object to HTML elements.<br /><br />I was playing with Ruby on Rails which has a somewhat different approach to OFM. Basically you write regular HTML and give your form elements names like "account[id]", "account[name]", etc. This seems like a little more work than the ASP.NET way except that on the server side it uses this notation to wrap the query string into an object that can be referenced in object notation from ruby code like "account.id", "account.name", etc. I believe PHP does something similar. I like this method because it's very light on HTTP - there's no obstructively bloated view state being passed around like there is in ASP.NET and you can pass several objects through the query string.<br /><br />Basically, OFM manages some of the page flow by marshalling form parameters into objects that can easily be passed to a factory method. This is awesome because it means I can focus more effort on writing unit tests for business logic that has no dependencies on the web API. It allows me to to keep page flow simple and sets up business logic for creating restful web services (seriously, you could just slap  [WebMethod] attributes on the factory methods and <i>voila</i> you have web services). There seems to be a lot of framework that goes into managing OFM, but oddly I don't think many people have addressed it directly as a problem that needs to be overcome (I assume this is because the MVC architecture is supposed to address this; unfortunately vanilla ASP.NET isn't MVC).<br /><br />I recently pulled most of my hair out over the ObjectDataSource and interfacing with factory methods. In the future I want to write a post about how I got around it (and another one lambasting Microsoft for even attempting to release an API as thoughtless as the ODS, but seriously, more on that later).</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+found it by googleing &quot;object form mapping&quot;, things with no or unknown names are hard to find with google :D, why not calling it OFM.<br />Nice subjects on your blog :).</div>
+</div>
+</div>

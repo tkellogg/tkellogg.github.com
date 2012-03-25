@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Automocking containers are not just for mocks"
+date: 2011-04-13
+comments: false
+categories:
+ - moq contrib
+ - inversion of control
+ - unit testing
+ - code
+ - c#
+ - mocking
+---
+
+<div class='post'>
+In <a href="http://timkellogg.blogspot.com/2011/04/introducing-moqcontrib-auto-mocking.html">my last post</a> I introduced MoqContrib's automocking container. In this post I want to describe what sets it apart from MoqContrib's <a href="http://code.google.com/p/moq-contrib/wiki/Automocking">previous</a> automocking container and all other automocking containers that I've heard of thus far.<br /><br />A <a href="http://docs.castleproject.org/Windsor.MainPage.ashx">Castle.Windsor</a> <a href="http://stackoverflow.com/questions/312624/removing-or-overwriting-a-component-from-windsor-container/312918#312918">contributor</a> said that for unit tests, "it's recommended that you don't use the container at all, or if the test setup gets too dense because of dependencies, use an AutoMockingContainer." This is in response to a stack overflow question regarding how to remove components in order to replace them with mocks. There are <a href="http://groups.google.com/group/moqdisc/browse_thread/thread/94b8d1d56e783ef0/bc696d408015eab1?pli=1">others</a> that agree with him.<br /><br />I don't agree with Mauricio or Derek (from the links above). I strongly believe that there are several reasons to let an automocking container have real services registered that aren't mocks. The primary reason is for integration tests. This is where you are testing a system of modules, a subset of the entire system, but you still need to isolate those modules to just the system under test (SUT). So while the dependencies within the SUT are going to be implemented with real implementations, everything else is mocked. This is a partially mocked situation.<br /><br />One of the big reasons to use an automocking container is just to simplify everything. Sure, you're setups are starting to get pretty long for unit tests, but sometimes you run into issues where there is already a component registered so you can't register a mock without first removing the original component. This is very tedious and totally ruins any love you might have had for your IoC container.<br /><br />In MoqContrib 1.0 the container will favor the last component registered over everything else. This is handy because you can do setups by exception. For an integration test fixture you can setup everything as a production implementation and then just mock components as needed. You can also do it the other way and just override with production implementations. I believe this will lead to much cleaner tests and much less time tracking down "how that friggin' component got registered".<br /><br />As far as the progress of a 1.0 release, I had originally said that it was going to be released last weekend. However, there have been some problems getting the community on board. I also realized that it was missing several important features. I will release a preview as soon as I get the current code stable.</div>

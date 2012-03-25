@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Dynamic type issues in base classes"
+date: 2011-01-12
+comments: false
+---
+
+<div class='post'>
+Today I ran into a little issue with C#'s <a href="http://msdn.microsoft.com/en-us/library/dd264741.aspx">dynamic</a> type and I got a <a href="http://stackoverflow.com/questions/4674564/method-not-being-resolved-for-dynamic-generic-type">nice answer</a> on stack overflow.<br /><br />If you have a this class hierarchy:<br /><br /><div class="brush: csharp">public class Generic<T> {<br />    public T Save(T obj) {<br />        // it's not abstract<br />    }<br />}<br /><br />public class A {<br />    protected abstract dynamic NonGeneric { get; }<br />    <br />    public void Save() {<br />        NonGeneric.Save(this);<br /><br />}<br /></div></div>

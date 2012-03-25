@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Introducing MoqContrib Auto-mocking Container"
+date: 2011-04-06
+comments: false
+categories:
+ - moq contrib
+ - inversion of control
+ - unit testing
+ - code
+ - object oriented design
+ - moq
+ - mocking
+---
+
+<div class='post'>
+The past couple weeks I have been working on an auto-mocking inversion of control container for <a href="http://moq.codeplex.com/">Moq</a> <a href="http://moqcontrib.codeplex.com/">Contrib</a>. The first results are almost ready to release in the form of an Alpha. The first container to be released will be Castle.Windsor, later we will release an Autofac container.<br /><br />You will be interested in this project if you use an <a href="http://martinfowler.com/articles/injection.html">IoC</a> container in conjunction with unit tests and mocking (with Moq). You probably find yourself writing setups like:<br /><br /><pre class="brush: csharp">[SetUp]<br />public void Given()<br />{<br /> _service = Mock&lt;IService&gt;();<br /> Container.Register(For&lt;IService&gt;().Instance(service.Object));<br />}<br /><br />[Test]<br />public void I_did_something() <br />{<br /> var test = new TestThingy();<br /> test.DoSomething();<br /> <br /> _service.Verify(x =&gt; x.Something(), Times.Once();<br />}<br /></pre><br />When you use an auto-mocking container, the container will create mocks at resolve-time if it doesn't already have a component for it. So in the above example, the setup would drop out completely as there wouldn't be any need to explicitly create and register the mock:<br /><br /><pre class="brush: csharp">[Test]<br />public void I_did_something() <br />{<br /> var test = new TestThingy();<br /> test.DoSomething();<br /> <br /> _service.Verify(x =&gt; x.Something(), Times.Once();<br />}<br /></pre><br />We will release an alpha version of the <a href="http://docs.castleproject.org/Windsor.MainPage.ashx">Castle.Windsor</a> auto-mocking container later this week. Soon after we will add an <a href="http://code.google.com/p/autofac/">Autofac</a> container and start working towards a regular release schedule. If you are interested, visit <a href="http://moqcontrib.codeplex.com/">the site at codeplex</a> and give feedback through the discussion groups.<br /><br />Happy Mocking!</div>

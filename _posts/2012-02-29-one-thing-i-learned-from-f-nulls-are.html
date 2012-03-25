@@ -1,0 +1,27 @@
+---
+layout: post
+title: "One Thing I Learned From F# (Nulls Are Bad)"
+date: 2012-02-29
+comments: false
+categories:
+ - VsVim
+ - functional programming
+ - F#
+ - code
+---
+
+<div class='post'>
+Recently I started contributing to <a href="https://github.com/jaredpar/VsVim" target="_blank">VsVim</a>, a Visual Studio plugin that emulates Vim. When he was starting the project, Jared Parsons decided to write the bulk of it in F#. He did this mostly as a chance to learn a new language but also because it's a solid first class alternative to C#. For instance, F#'s features like pattern matching and discriminated unions are a natural fit for state machines like Vim.<br /><br />This is my first experience with a truly functional language. For those who aren't familiar with F#, it's essentially OCaml.NET (the <a href="http://en.wikibooks.org/wiki/F_Sharp_Programming" target="_blank">F# book</a> uses OCaml for it's markup syntax), but also draws roots from Haskell. It's a big mind shift from imperative and pure object oriented languages, but one I'd definitely recommend to any developer who wants to be better.<br /><br />Since I've been working on VsVim, I've been using F# in my spare time but C# in my regular day job. The longer I use F# the more I want C# to do what F# does. The biggest example is how F# handles nulls.<br /><br />In C# (and Ruby, Python, and any imperative language) most values can be null, and null is a natural state for a variable to be in. In fact (partly due to SQL), null is used whenever a value is empty or doesn't exist yet. In C# and Java, null is the default value for any member reference, you don't even need to explicitly initialize it. As a result, you often end up with a lot of null pointer exceptions due to sloppy programming. After all, it's kind of hard to remember to check for null every time you use a variable.<br /><br />In F#, nothing is null (that's not entirely true, but in it's natural state it's true enough). Typically you'll use options instead of null. For instance, if you have a function that fails to find or calculate something you might return null in imperative languages (and the actual value if successful). However, in F# you use an option type and return None on failure and Some value on success.<br /><br /><script src="https://gist.github.com/1941345.js"> </script><br />Here, every time you call find(kittens) you get back an option type. This type isn't a string, so you can't just start using string methods and get a null pointer exception. Instead, you have to extract the string value from the option type before it can be used.<br /><br />At this point you might be thinking, "why would I want to do that? It looks like a lot of extra code". However, I challenge you to find a crashing bug in VsVim. Every time we have an instance of an invalid state we are forced to deal with it on the spot. Every invalid state is dealt with in a way that makes sense.<br /><br />If we wrote it in C# it would be incredibly easy to get lazy while working late at night and forget to check for null and cause the plugin to crash. Instead, the only bugs we have are behavior quirks. If we ever have a crashing bug, the chances are the null value originated in C# code from Visual Studio or the .NET Framework and we forgot to check.<br /><br /><i><a href="http://news.ycombinator.com/item?id=3648104" target="_blank">Discussion on HN</a></i></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Tim Kellogg</div>
+<div class='content'>
+Actually, F# has a really cool syntax for function chaining. You could write:<br /><br />try(try(try(find(9, kitten), &quot;name&quot;), &quot;length&quot;), &quot;&gt;=&quot;, 3)<br /><br />or you could do it the F# way:<br /><br />kitten |&gt; find 9 |&gt; try &quot;name&quot; |&gt; try &quot;length&quot; |&gt; try &quot;&gt;= 3<br /><br />Like all functional languages, you write everything as pure functions instead of methods. But that&#39;s a discussion for another time. Ruby borrows from functional langauges like Haskell, but it could really benefit from options &amp; discriminated unions</div>
+</div>
+<div class='comment'>
+<div class='author'>Luke</div>
+<div class='content'>
+I don&#39;t know the first thing about F# so maybe this is a moot point but... It seems like that could make method chaining really tough.<br /><br />Like, I love how rails (can) handle(s) nil checking with try()<br />e.g.  if (Kitten.find(9).try(:name).try(:length).try(:&gt;=, 3))  { huzzah }<br /><br />Sorry, ruby and I are still in our honeymoon phase.</div>
+</div>
+</div>

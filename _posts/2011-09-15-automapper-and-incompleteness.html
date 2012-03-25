@@ -1,0 +1,15 @@
+---
+layout: post
+title: "AutoMapper And Incompleteness"
+date: 2011-09-15
+comments: false
+categories:
+ - view models
+ - engineering
+ - code
+ - c#
+ - web
+---
+
+<div class='post'>
+This is part 2 of a series. Read <a href="http://timkellogg.blogspot.com/2011/09/view-models-automapper-and-law-of.html">part 1</a><br /><br />Earlier I talked about the Law of Demeter and how view models help us better adhere to the Law of Demeter. I also briefly outlined how AutoMapper makes view models practical. While AutoMapper is a great tool, it isn't completely fulfilling. Let me explain<br /><br />As I pointed out previously, some of the behaviors in AutoMapper make it feel incomplete. The first is that you can't map two view models to the same model and back.<br /><br />A much bigger problem with AutoMapper is that view models can't extend models. I'm not sure why they decided to disallow this usage, but it causes a cascade of code duplication (very un-DRY). Take a look at these classes:<br /><br /><script src="https://gist.github.com/1221098.js?file=ModelsAndViewModels.cs"></script><br /><br />There are a few things wrong here. Age is a nullable int on the model but the view model has just an int. If a null slips through this could cause a crashing error. While AutoMapper has an AssertConfigurationIsValid method, it doesn't test for this sort of case. You'll have to make unit tests for this, luckily you can use <a href="https://github.com/tkellogg/NetLint">NetLint</a>&nbsp;to easily test for these sorts of flukes.<br /><br />Another issue is the validation attributes. The facts that account codes look like CO11582 and that all accounts must have a name are descriptors of the domain (which the model is modelling). They aren't facts about the view (although they have to be expressed in the view), they are part of the model. Every time you create another AccountViewModelX derivative AutoMapper requires you to copy these attributes. This is a massive failure in the attempt to keep code DRY.<br /><br />Another issue I have is when I'm creating a view model I'm not sure what properties need to be created. I usually have to split the window and copy properties from model to view model (this screams obscenities at the idea of DRY code).<br /><br />One solution that I keep coming back to is to have view models extend models. For instance, see this implementation:<br /><br /><script src="https://gist.github.com/1221166.js?file=gistfile1.cs"></script><br /><br />Here, you don't have to type out all those properties a second (or third) time. They're just available. You also won't make the mistake of marking Age as non-nullable or forget to copy the validation attributes. It's all done for you by the compiler - no need to write extra tests.<br /><br />There are still some issues with this approach, and other approaches (such as encapsulation) that you can take. Perhaps there will be a part 3.</div>
