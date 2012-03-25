@@ -31,6 +31,10 @@ a, a:hover {
   color: #C60;
 }
 
+a {
+	text-decoration: none;
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -42,6 +46,7 @@ table {
 
 h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 20px;
+	line-height: normal;
 }
 
 /*****************************************************************************/
@@ -73,7 +78,7 @@ ul.posts {
 
 .site {
   font-size: 110%;
-  text-align: justify;
+  text-align: left;
   width: 40em;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
@@ -158,6 +163,17 @@ ul.posts {
     margin-bottom: 1em;
   }
 
+.tag-cloud {
+	line-height: normal;
+	word-wrap: break-word;
+}
+
+	.tag-cloud a.tag {
+		color: #aaa;
+		padding: 1px 1px 1px 1px;
+		margin: 1px 1px 1px 1px;
+	}
+
 /*****************************************************************************/
 /*
 /* Syntax customization (trying not to mess with the pygments dump)
@@ -166,6 +182,7 @@ ul.posts {
 .highlight {
   border-radius: 3px;
 	padding: 6px 10px;
+	margin: 4px 0px;
 	overflow: auto;
 	border: 1px solid black;
 	background-color: #222222;

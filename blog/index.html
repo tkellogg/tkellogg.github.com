@@ -1,0 +1,65 @@
+---
+layout: default
+title: All Posts
+---
+<p> <a href="/blog/atom.xml" class="atom">Subscribe via Atom</a> </p>
+<script type="text/javascript" src="/blog/posts.js"></script>
+<div id="tag-cloud" class="highlight">
+	<script type="text/javascript">
+	document.write(allposts.getTagCloud());
+	</script>
+</div>
+<div id="tag-posts"></div>
+<div id="post-list">
+	<ul class="posts">
+	{% for post in site.posts %}
+		<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="/public/backbone-min.js"></script>
+<script type="text/javascript">
+(function($, posts) {
+
+var Router = Backbone.Router.extend({
+	
+	routes: {
+		"": "index",
+		"tag/:id": "tag"
+	},
+
+	index: function() {
+		$('#post-list').show();
+		$('#tag-posts').hide();
+	},
+
+	tag: function(id) {
+		$('#post-list').hide();
+		var $posts = $('#tag-posts').empty()
+			.append('<h1>Search Tag: ' + id + '</h1>');
+		var $list = $('<ul class="posts" />');
+
+		var matchingPosts = _.filter(posts, function(post) { 
+			return _.any(post.tags, function(tag) {
+				return tag == id;
+			});
+		});
+
+		_.each(matchingPosts, function(post) {
+			$list.append('<li><span>'+post.dateString+'</span> &raquo; <a href="'+post.url+'">' + post.title + '</a></li>');
+		});
+
+		$posts.append($list).show();
+	}
+
+});
+
+$(function() {
+	var router = new Router();
+	Backbone.history.start();
+});
+
+})(jQuery, allposts);
+</script>
