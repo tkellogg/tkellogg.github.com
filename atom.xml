@@ -1,0 +1,27 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Tim Kellogg</title>
+ <link href="http://timkellogg.me/atom.xml" rel="self"/>
+ <link href="http://timkellogg.me/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://timkellogg.me/</id>
+ <author>
+   <name>Tim Kellogg</name>
+   <email>timothy.kellogg@gmail.com</email>
+ </author>
+
+ {% for post in site.posts %}
+ <entry>
+   <title>{{ post.title | xml_escape }}</title>
+   <link href="http://timkellogg.me{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>http://timkellogg.me{{ post.id }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+ </entry>
+ {% endfor %}
+ 
+</feed>

@@ -145,39 +145,9 @@ ul.posts {
 
   /* standard */
 
-  #post pre {
-    border: 1px solid #ddd;
-    background-color: #eef;
-    padding: 0 .4em;
-  }
-
   #post ul,
   #post ol {
     margin-left: 1.35em;
-  }
-
-  #post code {
-    border: 1px solid #ddd;
-    background-color: #eef;
-    font-size: 85%;
-    padding: 0 .2em;
-  }
-
-    #post pre code {
-      border: none;
-    }
-
-  /* terminal */
-
-  #post pre.terminal {
-	font-size: 2.5em;
-    border: 1px solid black;
-    background-color: #333;
-    color: white;
-  }
-
-  #post pre.terminal code {
-    background-color: #333;
   }
 
 #related {
@@ -201,3 +171,9 @@ ul.posts {
 	background-color: #222222;
 }
 
+.atom {
+	background-image: url('/images/atom.png');
+	/*background-position: -10px 0px;*/
+	background-repeat: no-repeat;
+	padding-left: 22px;
+}
