@@ -10,3 +10,15 @@ title: Tim Kellogg - All Posts
 	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
+
+<script type="text/javascript">
+allposts = [
+	{% for post in site.posts %}
+	{
+		title: "{{ post.title }}",
+		url: "{{ post.url }}",
+		date: new Date("{{ post.date }}"),
+	},
+	{% endfor %}
+];
+</script>
