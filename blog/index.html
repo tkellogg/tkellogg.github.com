@@ -2,15 +2,15 @@
 layout: default
 title: All Posts
 ---
-<p> <a href="/blog/atom.xml" class="atom">Subscribe via Atom</a> </p>
 <script type="text/javascript" src="/blog/posts.js"></script>
+<div id="tag-posts"></div>
 <div id="tag-cloud" class="highlight">
 	<script type="text/javascript">
 	document.write(allposts.getTagCloud());
 	</script>
 </div>
-<div id="tag-posts"></div>
 <div id="post-list">
+	<p> <a href="/blog/atom.xml" class="atom">Subscribe via Atom</a> </p>
 	<ul class="posts">
 	{% for post in site.posts %}
 		<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
