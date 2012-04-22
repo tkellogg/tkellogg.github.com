@@ -2,8 +2,15 @@
 layout: default
 title: Projects
 ---
-This is a listing of links to things I've put together. Some are big, some small. But I hope they're all useful
-one way or another.
+
+Open Source Projects
+--------------------
+
+Over time I've contributed to a number of open source projects. I've become aware of several projects that do 
+excellent work and solve great problems, but are in need of help. I started [a list](/projects/open-source.html) of
+several of such projects. I encourage everyone to 
+[contribute to open source](/blog/2012/04/22/why-open-source-is-worth-your-time/), so please look over the list and
+suggest any that I might be missing.
 
 Migrating from Blogger to Jekyll
 -----------------
