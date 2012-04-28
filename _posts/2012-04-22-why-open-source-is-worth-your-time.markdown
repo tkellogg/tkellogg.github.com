@@ -101,7 +101,7 @@ Time To Get Involved
 If you're a developer who uses open source libraries and other software but have never contributed back, now is
 as good a time as any to look around. I find it easiest if you find a project that you already are familiar with.
 Look through the issue tracker and find some easy issues. Try writing an email to the maintainers of a project.
-Ask them for a good place to start and some pointers. Keep in mind that you're pull request probably won't get 
+Ask them for a good place to start and some pointers. Keep in mind that your pull request probably won't get 
 accepted unless it's high quality code complete with tests, so take your time.
 
 Since I'm a .NET developer, I've run into several .NET projects that are in high demand for help. I 
@@ -111,7 +111,7 @@ about what you think is interesting. If you know of other .NET projects that are
 so I can add them to the list also.
 
 Contributing to open source grows your skill set, professional network and makes your resume shine. So
-look our for yourself first - contribute to open source!
+look out for yourself first - contribute to open source!
 
 
  [1]: /blog/2011/12/30/can-bad-code-ruin-your-career/
