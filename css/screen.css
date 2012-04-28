@@ -54,6 +54,14 @@ blockquote {
 	font-style: italic;
 }
 
+.notice {
+	font-style: italic;
+	background-color: #393939;
+	padding: 3px;
+  border-radius: 6px;
+	text-align: center;
+}
+
 /*****************************************************************************/
 /*
 /* Home
