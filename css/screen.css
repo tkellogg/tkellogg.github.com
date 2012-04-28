@@ -187,6 +187,10 @@ ul.posts {
 		margin: 1px 1px 1px 1px;
 	}
 
+.date {
+	font-weight: bold;
+}
+
 /*****************************************************************************/
 /*
 /* Syntax customization (trying not to mess with the pygments dump)
