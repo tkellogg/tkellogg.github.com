@@ -1,7 +1,7 @@
 function makeChart(name, numbers, labels, participants) {
-	console.log(participants);
 	var r = Raphael(name),
 		fin = function () {
+			console.log(this.bar.id);
 			r.barLabels[this.bar.id].animate({'stroke': '#AAAAAA'}, 300);
 		},
 		fout = function () {
@@ -48,5 +48,12 @@ function analyze(data) {
 		|| o.frequency == 'less than 5 times in my life'; 
 	});
 
-	makeChart("chart", chartData.values, chartData.labels, chartData.participants);
+	makeChart("chart1", chartData.values, chartData.labels, chartData.participants);
+
+	var chartData2 = reasonsFor('proReasons', function(o) { return o.frequency == 'Once or twice a month' 
+		|| o.frequency == 'Once or twice a week' 
+		|| o.frequency == 'Most days'; 
+	});
+
+	makeChart("chart2", chartData2.values, chartData2.labels, chartData2.participants);
 }
