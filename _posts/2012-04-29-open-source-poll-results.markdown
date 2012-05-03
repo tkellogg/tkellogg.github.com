@@ -69,7 +69,7 @@ don't know where to start. What would happen if we started a [meetup group][5] t
 code together? It could be a convenient place where the inexperienced could learn from the experienced,
 and where ideas could spread organically.
 
-I'm in the planning stages of starting such a group where I live in Boulder. If you or someone you know
+I'm in the planning stages of starting [such a group][7] where I live in Boulder. If you or someone you know
 lives or works in Boulder, you should definitely [get in contact][6] with me. I'm open to suggestions and
 advice. I'm also looking for people to help out.
 
@@ -80,6 +80,7 @@ advice. I'm also looking for people to help out.
  [4]: http://www.zoomerang.com/Survey/WEB22FJY9L3RZ3
  [5]: http://lists.openhatch.org/pipermail/events/2012-April/000304.html
  [6]: /contact/
+ [7]: http://www.meetup.com/OpenHatch-X-Boulder/
 
 <script type="text/javascript" src="/public/raphael-min.js"> </script>
 <script type="text/javascript" src="/public/g.raphael-min.js"> </script>

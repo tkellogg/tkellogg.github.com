@@ -1,7 +1,6 @@
 function makeChart(name, numbers, labels, participants) {
 	var r = Raphael(name),
 		fin = function () {
-			console.log(this.bar.id);
 			r.barLabels[this.bar.id].animate({'stroke': '#AAAAAA'}, 300);
 		},
 		fout = function () {
@@ -12,7 +11,7 @@ function makeChart(name, numbers, labels, participants) {
 	var chart = r.barchart(10, 10, 300, 220, [numbers]).hover(fin, fout);
 
 	var yStart = 220;
-	r.barLabels = _.map(labels, function(text) {
+	var barLabels = _.map(labels, function(text) {
 		var label = r.text(0, yStart, text).attr({'text-anchor': 'start', 'style': 'vertical-align: text-top'});
 		label.attr('y', yStart + (label.node.offsetHeight/2));
 		r.add(label);
@@ -20,6 +19,13 @@ function makeChart(name, numbers, labels, participants) {
 		return label;
 	});
 
+	var i = 0;
+	r.barLabels = _.reduce(barLabels, function(mem, label) {
+		var id = chart[1][i].bar.id;
+		mem[id] = label;
+		i++;
+		return mem;
+	}, {});
 }
 
 function analyze(data) {
