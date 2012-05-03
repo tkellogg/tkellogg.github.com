@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 I live in Boulder, Colorado where I write software. I like to write about aspects of code and software 
-engineering that intrigue me. I recommend checking out [my blog](/posts.html) if you're also interested
+engineering that intrigue me. I recommend checking out [my blog](/blog/) if you're also interested
 in code.
 
 I recently exported my blog from blogger and am working to fix any glitches that are hanging around. I 

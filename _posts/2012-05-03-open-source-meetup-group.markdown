@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Open Source Survey Results
+title: Why don't more developers contribute to open source?
 categories:
  - open source
  - philosophy
@@ -49,7 +49,7 @@ making things that their friends and coworkers find useful. I can echo that!
 
 <div id="chart2"><!-- second chart goes here --></div>
 
-The experienced don't mind getting their hands dirty
+The experienced also don't mind digging into code
 ---------------------------------------------
 
 The next biggest reason to contribute was that, when something isn't working, they crack open the code to
