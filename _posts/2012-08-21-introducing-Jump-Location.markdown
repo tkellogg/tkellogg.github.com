@@ -57,11 +57,11 @@ within Powershell.
 For instance, setting a weight to a negative number will remove it from
 search results:
 
-```
+{% highlight powershell %}
 PS> $record = jumpstat je bin
 PS> $record.weight = -1
 PS> jumpstat -Save
-```
+{% endhighlight %}
 
 Go Try It!
 ----------
