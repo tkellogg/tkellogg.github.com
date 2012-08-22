@@ -12,7 +12,7 @@ and keeps an index of the directories where you spend the most time. The `j`
 command lets you search the index and `cd` to the most relevant search 
 result. It's best if you just watch this video:
 
-<iframe width="420" height="315" src="http://www.youtube.com/embed/tnNyoMGnbKg" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/tnNyoMGnbKg" frameborder="0" allowfullscreen> </iframe>
 
 
 Introducing Autojump for Windows (via Powershell)
