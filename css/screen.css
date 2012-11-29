@@ -92,7 +92,7 @@ ul.posts {
 .site {
   font-size: 110%;
   text-align: left;
-  max-width: 40em;
+  max-width: 960px;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
 }
