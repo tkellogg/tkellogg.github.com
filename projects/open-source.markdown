@@ -11,7 +11,7 @@ listing of open source projects. It's a
 bit of a match maker service, trying to match devs with time to projects who need devs. If the projects I list here
 won't work for you for whatever reason, please head on over to OpenHatch and see what they have going on.
 
-Tweet to have another added: <a href="https://twitter.com/intent/tweet?screen_name=kellogh&text=add%20%3Cproject%3E%20to%20your%20list%20of%20open%20source%20projects%20that%20need%20contributions" class="twitter-mention-button" data-size="large" data-related="kellogh">Tweet to @kellogh</a>
+Tweet to have another added: <a href="https://twitter.com/intent/tweet?screen_name=kellogh&amp;text=add%20%3Cproject%3E%20to%20your%20list%20of%20open%20source%20projects%20that%20need%20contributions" class="twitter-mention-button" data-size="large" data-related="kellogh">Tweet to @kellogh</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 VsVim
