@@ -62,3 +62,5 @@ nut jobs won't be interested in hunting anymore (should clear out the woods some
 This probably isn't perfect, but it's a heck of a lot better than what's currently being proposed. At 
 the very least, it has enough small negotiable points that it's likely to make it through
 congress in a meaningful form.
+
+**Edit:** Discussion is at [hacker news](http://news.ycombinator.com/item?id=4959877)
