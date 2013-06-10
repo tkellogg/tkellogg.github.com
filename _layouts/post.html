@@ -3,10 +3,10 @@ layout: default
 ---
 <h1>{{ page.title }}</h1>
 <div id="post">
-<div class="date">
-	{{ page.date | date: "%a %B %d, %Y" }}
-</div>
-{{ content }}
+	<time pubdate="true">
+		{{ page.date | date: "%a %B %d, %Y" }}
+	</time>
+	{{ content }}
 </div>
 
 <div id="related">
