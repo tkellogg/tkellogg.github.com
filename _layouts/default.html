@@ -5,7 +5,7 @@
 	<title>{{ page.title }} - Tim Kellogg</title>
 	<meta name="author" content="Tim Kellogg" />
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="/css/screen.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
 	<!-- Google Analytics -->
 	<script type="text/javascript">
@@ -24,23 +24,35 @@
 	</script>
 </head>
 <body>
-	<div class="site">
-		<div class="title">
-			<a href="/">Tim Kellogg</a>
-			<a class="extra" href="/blog/">blog</a>
-			<a class="extra" href="/projects/">projects</a>
-			<a class="extra" href="/contact/">find me...</a>
+	<div class="container">
+	<div class="navbar">
+		<div class="navbar-inner">
+				<a href="/" class="brand">Tim Kellogg</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li>
+							<a href="/blog/">blog</a>
+						</li>
+						<li>
+							<a href="/projects/">projects</a>
+						</li>
+						<li>
+							<a href="/contact/">find me...</a>
+						</li>
+					</ul>
+				</div>
 		</div>
-		<p class="notice">
-		</p>
+	</div>
 
+		<article>
 		{{ content }}
+		</article>
 
-		<div class="footer">
+		<footer>
 			<p>
 				&copy; Tim Kellogg 2012
 			</p>
-		</div>
+		</footer>
 	</div>
 </body>
 </html>
