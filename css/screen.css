@@ -14,20 +14,6 @@ time {
 	font-weight: bold;
 }
 
-/*****************************************************************************/
-/*
-/* Syntax customization (trying not to mess with the pygments dump)
-/*
-/*****************************************************************************/
-.highlight {
-  border-radius: 3px;
-	padding: 6px 10px;
-	margin: 4px 0px;
-	overflow: auto;
-	border: 1px solid black;
-	background-color: #222222;
-}
-
 .atom {
 	background-image: url('/images/atom.png');
 	/*background-position: -10px 0px;*/
