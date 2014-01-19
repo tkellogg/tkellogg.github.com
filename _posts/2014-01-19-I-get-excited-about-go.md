@@ -1,5 +1,5 @@
 ---
-title: Why I Like Haskell But Get Very Excited About Go
+title: Why I'm Not Going To Stop Posting Go Links
 layout: post
 categories:
  - hakell
