@@ -2,7 +2,7 @@
 title: Why I'm Not Going To Stop Posting Go Links
 layout: post
 categories:
- - hakell
+ - haskell
  - functional-programming
 ---
 
