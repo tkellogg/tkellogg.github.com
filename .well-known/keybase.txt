@@ -1,0 +1,71 @@
+==================================================================
+https://keybase.io/kellogh
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://timkellogg.me
+  * I am kellogh (https://keybase.io/kellogh) on keybase.
+  * I have a public key with fingerprint 402D 2BD0 DEF8 57ED DFAA  A221 A1B1 2838 7802 BD5E
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "402d2bd0def857eddfaaa221a1b128387802bd5e",
+            "host": "keybase.io",
+            "key_id": "a1b128387802bd5e",
+            "uid": "929b33be5ee67e5ade2a796aa503b100",
+            "username": "kellogh"
+        },
+        "service": {
+            "hostname": "timkellogg.me",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1396110457,
+    "expire_in": 157680000,
+    "prev": "5da00b0948f50a8f9643b2494f47ea9f32991147be95fda82b4dd45babb2cdef",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v0.1.1
+Comment: https://keybase.io/crypto
+
+yMMDAnicbZF9TBNnHMdbWkGLo2zrXtRJs9MECdXcXe96d93AoVt4GYIbmpKy0N71
+npajtVfaUuwY21Q0YUy7hchegmQdvswVh2wOcMs2BaJ2IMjcsqlYeYkSedFBzBwy
+pk/R/bfnn8vv+/38vr/nuV/3YzKJQhpsXUNvj/mhWNpzarpcUqC7469EOJH3I/pK
+xA4WPlbBaQNul1twehE9QqA4j3M8ygMrTVKA560sy+I4xmIchtNamqJRaJMA0SAl
+oifaAWM41gPWCSLUYGESeKj+D1++YDA4w2m1HCAB0FGAZHmAsxSjY1kS1XIYikZB
+D3A72W1gIdzhEG0lSJUGgaJPsECxcmHyI8ArbHvI2NbBWoO43KJXtIgOaJV4vS59
+tNPrd0XRCsCZHoWYOMHJw3fDBh9wewTRiegxSFpgHEQxLaPDMJQgKQ0CtrsENzAJ
+UYKkdDQKT3QM8MFIkmdRlEMZgraSKEtbGR2h5XCCIawEBVjGqsUZBsMIigMMaeVZ
+GucInidIjuU43AJ/MZzvAWVOEdET8JqsDUZ6BJuT9Za7AVLVefoNuUSqkMQuiolu
+TqJYkvjfPtfGJUrCiai9tqn0GWrPzoK1iDXFVJvrlz6Rlzz6guKtO7d/S11kP7k8
+vuOPTVtTj4/QX11GuwdUfSs8xI/hQ7km2aWP59pipcbkV+bvZ9e8Fznsowev2ouL
+zT1hpcGY67tRvaetrko+tLKpS/Osim1YKt9dcSMm0jCcvuKALCfwJXLB9PPhm3mb
+nqzoTLvymkp9/tjt5lBCpLd/5H0hoJyaWGzeaL5fO1Xfa1iZ+HVratHfGa7HJ1tz
+rxx8Zz7w/UtzO9/MCOl/uvt5g9oeP/LdaZB91LBq2flUvmi9LXPq+PPp4y8WpPV8
+4UBG5tJ7OE1SoezswKFX/7k8FpT/PjNY7uwqnJlpbdQFMlvWp5xcWrXxA0GhUmXR
+F1eZJ6ZDB64pkJvtH75teKo6PeFuX2noGH5vGfOuWjs7VHoNRfueK0vKUtbmIKWL
+47Z0vn4k0P2v9s+k4CeNYzXOosqBX38JdQiNxsIOyahn12TymX1oeKL9oznX0GfZ
+sWtM1W3x8+NN6v3LD143EHsrji4ZtuTt+CtjdqjrUsrgaH4ZD+wbqDM1mRuCypyU
+YFXL5ri6WV+v+LJ/OCtZ1lzUXJ+/+tau/urZmOvn6oNHQl560h9hmEi7aWvdvr2f
+jm35NpjWkn/ilDGccXUcnJBfOJs+bN68en/8rU51/70Go+Ni1tPTzQm75bId35xT
+PgC85JGs
+=O1H5
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kellogh
+
+==================================================================
