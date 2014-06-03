@@ -1,5 +1,5 @@
 ---
-title: MQTT: Another Implementor's Perspective
+title: MQTT - Another Implementor's Perspective
 layout: post
 categories:
  - mqtt
