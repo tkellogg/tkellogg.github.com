@@ -30,7 +30,7 @@ In the CONNECT message there is a protocol identifier that is always the constan
 
 The spec's statement that this "will not be changed by future versions of the MQTT specification" means that, while this protocol identifier has been different in previous versions of the spec, they are committing to the name "MQTT". There's a very clear reason for why it was implemented this way, unfortunately Clemens didn't seem to take time to fully understand that.
 
-When addressing the size of the wire protocol, he adds the length of IPv6, TCP, and TLS headers onto the length of an MQTT message to demonstrate how many bytes are wasted. In reality, most usages of MQTT would combine MQTT messages into the same packet ([Nagling][7]) which would destroy his point here. I'm not sure why he even bothers to make such a fruitless point when it has no reflection on reality.
+When addressing the size of the wire protocol, he adds the length of IPv6, TCP, and TLS headers onto the length of an MQTT message to demonstrate how many bytes are wasted. In reality, most usages of MQTT would combine MQTT messages into the same packet ([Nagling][7]) which would destroy his point here. He does acknowledge this, but I'm not sure why he even bothers to make such a fruitless point when it has no reflection on reality.
 
 
 Content-Type
