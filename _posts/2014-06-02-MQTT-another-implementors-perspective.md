@@ -12,9 +12,9 @@ Earlier there was [a blog post by Clemens Vasters][1] that flamed MQTT. My prefe
 Goals
 -----
 
-Obviously Clemens misunderstands the goals of MQTT. He has an entire section (8 paragraphs!) dedicated to extensibility and later criticizes the lack of custom headers. I've worked with MQTT for about a year and never even realized that extensibility was even a goal of the protocol, so I was mystified why the lack of extensibility was so cornerstone to many of Clemens' arguments. Nowhere in the entire spec does it say anything about extensibility. When I googled for "MQTT extensible", the top relevant hit is Clemens' blog. Where did he get this notion? No one else is talking about it.
+Obviously Clemens misunderstands the goals of MQTT. He has an entire section (8 paragraphs!) dedicated to extensibility and later criticizes the lack of custom headers. I've worked with MQTT for about a year and never even realized that extensibility was even a goal of the protocol, so I was mystified why the lack of extensibility was so cornerstone to many of Clemens' arguments. Nowhere in the entire spec does it say anything about extensibility. When I googled for "MQTT extensible", the top relevant hit is Clemens' blog. Where did this notion come from? No one else is talking about it.
 
-MQTT is meant to be "lightweight, open, simple, and designed so as to be easy to implement". Clemens starts off his blog by discussing IBM in depth, as if it was somehow a closed IBM spec. The reality is that IBM has very little to do with the direction of MQTT at the present time. Sure, IBM was the creative force in the beginning, but since it handed it over to OASIS and the Eclipse Foundation, IBM has mostly left it alone. MQTT is truely an open standard driven by open source software. Even I, a simple software engineer at a startup, feel as though I have a voice in the MQTT community. Please don't let Clemens' wordy lecture make you believe otherwise.
+MQTT is meant to be "lightweight, open, simple, and designed so as to be easy to implement". The blog starts off by discussing IBM in depth, as if it was somehow a closed IBM spec. The reality is that IBM has very little to do with the direction of MQTT at the present time. Sure, IBM was the creative force in the beginning, but since it handed it over to OASIS and the Eclipse Foundation, IBM has mostly left it alone. MQTT is truely an open standard driven by open source software. Even I, a simple software engineer at a startup, feel as though I have a voice in the MQTT community. Please don't let Clemens' wordy lecture make you believe otherwise.
 
 Most importantly, the goal of the protocol is to be lightweight yet simple and easy to implement clients. If the goal was only to be lightweight, [MQTT-SN][4] would be a much better choice. If the goal was extensibility, AMQP would be a better option. It aims to be easy to implement new clients. Evidence of this is easy to see in how it tends to offload complexity to the broker when given the option. Clemens implemented a broker distributed over many machines and tacked onto some other messaging protocol - when he complains that it was a complex task it's because he made it complex, not because the task itself is inherently complex.
 
@@ -30,7 +30,9 @@ In the CONNECT message there is a protocol identifier that is always the constan
 
 The spec's statement that this "will not be changed by future versions of the MQTT specification" means that, while this protocol identifier has been different in previous versions of the spec, they are committing to the name "MQTT". There's a very clear reason for why it was implemented this way, unfortunately Clemens didn't seem to take time to fully understand that.
 
-When addressing the size of the wire protocol, he adds the length of IPv6, TCP, and TLS headers onto the length of an MQTT message to demonstrate how many bytes are wasted. In reality, most usages of MQTT would combine MQTT messages into the same packet ([Nagling][7]) which would destroy his point here. He does acknowledge this, but I'm not sure why he even bothers to make such a fruitless point when it has no reflection on reality.
+When addressing the size of the wire protocol, he adds the length of IPv6, TCP, and TLS headers onto the length of an MQTT message to demonstrate how many bytes are wasted. In reality, most usages of MQTT would combine MQTT messages into the same packet ([Nagling][7]) which would destroy his point here. He does acknowledge this, but I'm not sure why spend the time to make such a fruitless point when it has no reflection on reality.
+
+*Edit:* In another place, he makes a great point that there can only be 65535 in-flight messages, which would make communication a problem in high-throughput scenarios. However, the goals of the protocol are again missed. It's designed as an IoT protocol, for lightweight devices. In what scenario would a device with 100K of memory ever have more than 65535 in flight messages? Honestly, I think this tradeoff is intentional and wisely chosen.
 
 
 Content-Type
@@ -38,14 +40,14 @@ Content-Type
 
 There has been some discussion in the MQTT community on how to represent the content-type of payloads. Clemens rightly points out the lack of content type as many other protocols have. But this viewpoint neglects the more traditional usage of MQTT where content-type makes no sense. This usage is best illustrated by the [$SYS topic space][5] used for monitoring the status of the broker. Each topic has UTF-8 numbers published on it. For instance, the broker may periodically publish a message to `$SYS/messages/received` that contains the total number of messages received by the broker since it started.
 
-This strategy can be used in combination with [topic patterns][6] to do realtime queries via SUBSCRIBE requests. It can be very powerful, especially for constrained devices consuming messages in the field. Of course, if he don't know about this strategy I could see how he might be unsatisfied with MQTT. It's unfortunate that he chose to flame MQTT publically on the internet before spending the time to learn how MQTT is actually used in practice.
+This strategy can be used in combination with [topic patterns][6] to do realtime queries via SUBSCRIBE requests. It can be very powerful, especially for constrained devices consuming messages in the field. Of course, if someone doesn't know about this strategy I could see how they might be unsatisfied with MQTT. It's unfortunate that he chose to flame MQTT publically on the internet before spending the time to learn how MQTT is actually used in practice.
 
 
 
 Choosing The Right Forum
 ------------------------
 
-When he talks about delivery assurances, data retention, failover and security he mentions a few points that are ambiguous in the spec. Honestly, I think he has some great points. Many of these things could be cleaned up. The 3.1.1 version of the spec has been open for comment for several months - he must have known this since the it says so and gives instructions for giving feedback directly inside of the preliminary spec that he was reading (final versions of the spec aren't yet available). I've also insructed him in the past to take his valid concerns to the MQTT-comment mailing list, which he refused. I guess some people are more interested in causing damage than fixing a spec that's intentionally and publically asking for help.
+When talking about delivery assurances, data retention, failover and security, a few points are mentioned that are ambiguous in the spec. Honestly, I think they are great points. Many of these things could be cleaned up. The 3.1.1 version of the spec has been open for comment for several months - something that would be hard to miss since the it says so and gives instructions for giving feedback directly inside of the preliminary spec (final versions of the spec aren't yet available). 
 
 
 
