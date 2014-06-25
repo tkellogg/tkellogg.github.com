@@ -7,9 +7,9 @@ categories:
 ---
 
 
-Is null bad? Why is it bad? Is it bad enough for me to care? - These are all questions I remember asking. Hopefully I can quickly answer them for you.
+Is null bad? Why is it bad? Is it bad enough for me to care? - These are all questions I remember asking. Hopefully I can quickly answer them and then show a better way.
 
-If you reference variables that are null, they have a bad habit of making your programs crash. For instance check out this Java code:
+If you reference variables that are null, they have a bad habit of [making your programs crash][4]. For instance check out this [Java code][5]:
 
 {% highlight java %}
 public class Foo {
@@ -28,24 +28,9 @@ Foo foo = new Foo();
 foo.length(); // KAPOW!!!
 {% endhighlight %}
 
-The working programmer will be quick to point out "yeah, the dumbass programmer forgot to check for null". This is true, lets just go ahead and fix that.
+There are two kinds of values, (1) the ones that are there and (2) the ones that might not be. The trouble with the type systems of Java/C#/.../Ruby is that you can't tell the difference between these types. The null value is implicitly always available, so you have to always check for it even though it may not even make sense. 
 
-{% highlight java %}
-public class Foo {
-	private String name = ""; // change #1
-	
-	public int length() {
-		return name.length();
-	}
-	
-	public void setName(String name) {
-		// change #2
-		this.name = (name == null ? "" : name);
-	}
-}
-{% endhighlight %}
-
-There are two kinds of values, (1) the ones that are there and (2) the ones that might not be. The trouble with the type systems of Java/C#/.../Ruby is that you can't tell the difference between these types. In the example, if `name` could be non-nullable string this program would be a lot simpler. This is how we would do it in Scala:
+Newer languages like Scala offer an Option type that represents something that can have no value. Here's the example in Scala:
 
 {% highlight scala %}
 class Foo {
@@ -71,7 +56,7 @@ The `Option` type wraps a value; `Some("fred")` is non-null and `None` a lot lik
 * `map[U](function: T => U): Option[U]` - safely converts the inner value to something else
 * `flatMap[U](function: T => Option[U]): Option[U]` - safely converts the inner value to another option
 
-Once you get comfortable with Options, your start writing less code and with fewer bugs. At some point you'll find that, more often than not, the types only get in the way of making mistakes. We'll talk more about Options later, but for now I'll leave you with this gem:
+Once you get comfortable with Options, your start writing less code and with fewer bugs. At some point you'll find that, more often than not, **the types only get in the way of the mistakes**. We're starting to see Option-like concepts in [Java][1], [C#][2] and [C++][3]. We'll talk more about Options later, but for now I'll leave you with this gem:
 
 {% highlight scala %}
 def doLogin(user: String, password: String) = ???
@@ -84,3 +69,8 @@ def login(user: Option[String], password: Option[String]) = {
 {% endhighlight %}
 
 
+ [1]: http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html
+ [2]: http://blogs.msdn.com/b/jerrynixon/archive/2014/02/26/at-last-c-is-getting-sometimes-called-the-safe-navigation-operator.aspx
+ [3]: http://en.cppreference.com/w/cpp/experimental/optional
+ [4]: http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare
+ [5]: https://www.youtube.com/watch?v=nB2sXuYSH7k
