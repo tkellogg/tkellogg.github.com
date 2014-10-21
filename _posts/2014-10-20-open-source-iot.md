@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why Open Source May Not Work For IoT"
+title: "Why Open Source May Not Always Work For IoT"
 categories:
  - iot
  - open-source
