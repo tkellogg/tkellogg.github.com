@@ -7,9 +7,9 @@ categories:
 ---
 
 
-Is null bad? Why is it bad? Is it bad enough for me to care? - These are all questions I remember asking. Hopefully I can quickly answer them and then show a better way.
+Null is dangerous. This is a tough statement to accept for a lot of people I've worked with. The concept of null is deeply ingrained into the languages we use. In C/C++, if you access a member of a null pointer, the program can sometimes continue to run but generate strange results. This led to bugs that were sometimes very difficult to trace. Java improved the situation by causing programs to fail the instant a null pointer was accessed. 
 
-If you reference variables that are null, they have a bad habit of [making your programs crash][4]. For instance check out this [Java code][5]:
+Failing sooner rather than later makes bugs easier to trace, for sure. What if we could make the compiler disallow nulls?
 
 {% highlight java %}
 public class Foo {
