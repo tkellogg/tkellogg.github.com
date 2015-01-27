@@ -19,8 +19,6 @@ Unfortunately, there's far too many competing IoT "standards" today. A standard 
 
 I believe that the battle over which IoT standards win out will be decided by chip manufacturers. I've witnessed scores of embedded developers that would rather open a raw UDP or TCP socket and forego security, robustness and interoperability than pull in an MQTT or CoAP library. Chips and embedded operating systems need to have these protocols built in, otherwise developers won't use them and we'll continue down the current path into a rat's nest of incompatible devices.
 
-Last week I also had the opportunity to talk to a high ranking engineer at a company that makes an embedded realtime operating system (RTOS). In his experiences, chip manufacturers have been hesitant to commit to MQTT because it isn't standardized through the IETF. The rest of the Internet has been standardized through the IETF, so why has this one protocol been standardized through OASIS?
-
 If you're an embedded engineer, try to influence your hardware suppliers to adopt standards. If you're a user, try to only buy products that interoperate using global Internet standards. It's the only way we'll end up with an innovative and useful Internet of Things.
 
 
