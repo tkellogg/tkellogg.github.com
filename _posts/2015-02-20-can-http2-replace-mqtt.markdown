@@ -170,7 +170,7 @@ will look like.
 Obligatory Notes About CoAP
 ===========================
 
-CoAP ([RFC 7252][9]) is a proposed standard (I'm not sure when it will be finalized) to implement 
+CoAP ([RFC 7252][9]) is a proposed standard (**Correction:** it is finalized) to implement 
 a RESTful architecture (like HTTP) for constrained devices. It's a very compact, trivial to 
 parse, binary protocol that runs over UDP and has support for optional guaranteed delivery. CoAP
 also supports server push in mostly the same way that HTTP/2 does.
