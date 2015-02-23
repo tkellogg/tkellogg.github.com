@@ -12,6 +12,35 @@
 
 time {
 	font-weight: bold;
+	font-size: 15pt;
+}
+
+p#time {
+	padding-top: 12pt;
+	padding-bottom: 12pt;
+}
+
+h1.title {
+	font-size: 38.5px;
+	margin: 10px 0px 10px 0px;
+}
+h1, h2, h3 {
+	margin: 18px 0px 10px 0px;
+}
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 23px;
+}
+h3 {
+	font-size: 18px;
+}
+div#related {
+	margin-top: 35px;
+}
+code {
+	color: #000000;
 }
 
 .atom {

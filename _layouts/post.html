@@ -1,11 +1,13 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
+<h1 class="title">{{ page.title }}</h1>
 <div id="post">
-	<time pubdate="true">
-		{{ page.date | date: "%a %B %d, %Y" }}
-	</time>
+	<p id="time">
+		<time pubdate="true">
+			{{ page.date | date: "%a %B %d, %Y" }}
+		</time>
+	</p>
 	{{ content }}
 </div>
 
