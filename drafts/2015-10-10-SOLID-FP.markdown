@@ -1,0 +1,8 @@
+---
+title: Applying SOLID Principals to Functional Programming
+layout: post
+categories:
+ - software-engineering
+---
+
+The SOLID principals have long been taught
