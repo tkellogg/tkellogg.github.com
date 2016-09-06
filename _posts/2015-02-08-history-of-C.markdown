@@ -10,7 +10,7 @@ categories:
 Last week I came across [this tweet][1]:
 
 <blockquote class="twitter-tweet" lang="en"><p>When C went viral was it crapped on as much as JavaScript is now?</p>&mdash; deech (@deech) <a href="https://twitter.com/deech/status/564178220908417024">February 7, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 It's true, JavaScript gets a lot of hate these days for various reasons. Some of those reasons are definitely legitimate 
 concerns, but a lot of it is just noise. Still, this could be an interesting case study into computer programmer's 

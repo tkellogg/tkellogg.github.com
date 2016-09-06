@@ -32,7 +32,7 @@ existence of text frames and data frames. These things don't come for free.
 Each websocket message is divided up into frames (normally 1 frame per message). 
 Each frame has a minimum overhead of:
 
-* 2 bytes for short messages (<126 bytes) going from server to client
+* 2 bytes for short messages (&lt;126 bytes) going from server to client
 * 6 bytes for short messages going from client to server (4 bytes for the mask)
 
 Maximum overhead is 14 bytes (or unlimited if [websocket extensions][0] are used). Still,
