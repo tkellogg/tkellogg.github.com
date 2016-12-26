@@ -7,6 +7,9 @@ categories:
  - security
 ---
 
+*Note: If this post leaves you confused, go read the discussion at [Lobste.rs][lob], but also
+see the [x-post at dev.to][dev.to] as well as the [Reddit discussion][reddit].*
+
 SQL is insecure, tell everyone. If you use SQL, your website will get hacked. Tell everyone.
 
 I saw the news that the US Elections Agency [was hacked by a SQL injection attack][1] and
@@ -47,3 +50,6 @@ Security is paramount. Your customers are worth it. Abandon SQL.
  [1.5]: https://en.wikipedia.org/wiki/Prepared_statement
  [2]: https://ics-cert.us-cert.gov/sites/default/files/recommended_practices/DHS_Common_Cybersecurity_Vulnerabilities_ICS_2010.pdf
  [3]: http://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-reference.html
+ [lob]: https://lobste.rs/s/tneut0/sql_is_insecure
+ [dev.to]: https://dev.to/kellogh/sql-is-insecure
+ [reddit]: https://www.reddit.com/r/programming/comments/5k6p8d/sql_is_insecure/  
