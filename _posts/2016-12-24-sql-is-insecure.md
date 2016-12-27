@@ -10,6 +10,8 @@ categories:
 *Note: If this post leaves you confused, go read the discussion at [Lobste.rs][lob], but also
 see the [x-post at dev.to][dev.to] as well as the [Reddit discussion][reddit].*
 
+*Note 2: Also read [part 2](http://timkellogg.me/blog/2016/12/26/sql-predict-future)*
+
 SQL is insecure, tell everyone. If you use SQL, your website will get hacked. Tell everyone.
 
 I saw the news that the US Elections Agency [was hacked by a SQL injection attack][1] and
