@@ -12,6 +12,11 @@ see the [x-post at dev.to][dev.to] as well as the [Reddit discussion][reddit].*
 
 *Note 2: Also read [part 2](http://timkellogg.me/blog/2016/12/26/sql-predict-future)*
 
+*Note 3: Github Enterprise, a Ruby on Rails application, [has been compromised][github] by a 
+SQL injection vulnerability. This places this post in even greater relevance. Despite the
+plethora of tools to deal with SQL injection and the excellent engineers that we hire,
+we still get SQL injection vulnerabilities*
+
 SQL is insecure, tell everyone. If you use SQL, your website will get hacked. Tell everyone.
 
 I saw the news that the US Elections Agency [was hacked by a SQL injection attack][1] and
@@ -55,3 +60,4 @@ Security is paramount. Your customers are worth it. Abandon SQL.
  [lob]: https://lobste.rs/s/tneut0/sql_is_insecure
  [dev.to]: https://dev.to/kellogh/sql-is-insecure
  [reddit]: https://www.reddit.com/r/programming/comments/5k6p8d/sql_is_insecure/  
+ [github]: http://blog.orange.tw/2017/01/bug-bounty-github-enterprise-sql-injection.html
