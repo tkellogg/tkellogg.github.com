@@ -7,15 +7,15 @@ categories:
  - security
 ---
 
-*Note: If this post leaves you confused, go read the discussion at [Lobste.rs][lob], but also
-see the [x-post at dev.to][dev.to] as well as the [Reddit discussion][reddit].*
+_**Note 1:** If this post leaves you confused, go read the discussion at [Lobste.rs][lob], but also
+see the [x-post at dev.to][dev.to] as well as the [Reddit discussion][reddit]._
 
-*Note 2: Also read [part 2](http://timkellogg.me/blog/2016/12/26/sql-predict-future)*
+_**Note 2:** Also read [part 2](http://timkellogg.me/blog/2016/12/26/sql-predict-future)_
 
-*Note 3: Github Enterprise, a Ruby on Rails application, [has been compromised][github] by a 
+_**Note 3:** Github Enterprise, a Ruby on Rails application, [has been compromised][github] by a 
 SQL injection vulnerability. This places this post in even greater relevance. Despite the
 plethora of tools to deal with SQL injection and the excellent engineers that we hire,
-we still get SQL injection vulnerabilities*
+we still get SQL injection vulnerabilities_
 
 SQL is insecure, tell everyone. If you use SQL, your website will get hacked. Tell everyone.
 
