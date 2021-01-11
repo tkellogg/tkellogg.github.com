@@ -1,0 +1,25 @@
+---
+layout: default
+---
+By
+<ul>
+{% for author in page.authors %}
+	<li>{{ author }}</li>
+{% endfor %}
+</ul>
+
+<h1>{{ page.full_title }}</h1>
+
+{{ if page.amazon }}
+<p>
+<a href="{{ page.amazon }}">
+	<img src="/images/amazon-logo-transparent.png" style="height: 80px" />
+</a>
+</p>
+{{ endif }}
+
+
+<article>
+{{ content }}
+</article>
+
