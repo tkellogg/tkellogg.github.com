@@ -2,3 +2,4 @@
 *.swo
 _site/
 *~
+.jekyll-metadata

@@ -79,7 +79,7 @@ public interface IPluginFactory
 
 We then register this interface like this:
 
-{% highight csharp %}
+{% highlight csharp %}
 For<IPluginFactory>().CreateFactory();
 {% endhighlight %}
 

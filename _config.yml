@@ -1,3 +1,4 @@
 source: .
 permalink: /blog/:year/:month/:day/:title
 include: [".well-known/"]
+highlighter: rouge
