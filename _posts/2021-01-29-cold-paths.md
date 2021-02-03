@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cold Paths: Where Bugs Live"
+title: "Cold Paths"
 date: 2021-01-29
 categories:
  - engineering
@@ -43,7 +43,7 @@ Here are some real world "cold paths" with big consequences:
 * [An outage caused by an expired TLS certificate](https://blog.thousandeyes.com/impacts-expired-tls-certificate/)
 * [YouTube overflowed a 32-bit `int` "views" counter on Gangnam Style](https://arstechnica.com/information-technology/2014/12/gangnam-style-overflows-int_max-forces-youtube-to-go-64-bit/)
 * [Y2K](https://en.wikipedia.org/wiki/Year_2000_problem)
-* [Northeast blackout of 2003](https://www.nytimes.com/2003/08/15/nyregion/blackout-2003-overview-power-surge-blacks-northeast-hitting-cities-8-states.html)
+* [Northeast blackout of 2003](https://spectrum.ieee.org/energy/the-smarter-grid/the-blackout-of-2003)
 
 Rare events are [hard to predict][blackswan]. That's just the nature of them. As engineers,
 I belive it's our responsibility to do our best to try harder and get better at planning for
@@ -69,13 +69,9 @@ You can **test less** to achieve high quality by **reducing the size** of your a
 Less edge cases is equivalent to less testing surface area, which implies less testing work
 and fewer missed test cases.
 
-{% raw %}
-$$effort = \frac{size}{quality}$$
-{% endraw %}
-
 # Avoid fallbacks
 While I worked at AWS I had this beaten into my skull, but thankfully they've published guidence
-an excellent piece titled ["Avoiding fallback in distributed systems"][aws]. The hope is that, 
+an excellent piece titled ["avoiding fallback in distributed systems"][aws]. The hope is that, 
 when system 1 fails you would like to automatically fallback to system 2. 
 
 For example, let's say we have a process that sends logs to another service. For the hot path, we 
@@ -97,7 +93,7 @@ path isn't cold.
 
 
 # Know your capacity for testing
-In [files are fraught with problems][fraught], Dan Luu demonstrates that it's unexpectedly
+In ["files are fraught with problems"][fraught], Dan Luu demonstrates that it's unexpectedly
 difficult to write a file correctly. Juggling issues like handling random power loss or 
 strange ext4 behavior becomes a full-time job. It's a lot to keep in your head, just to 
 write a file. 
