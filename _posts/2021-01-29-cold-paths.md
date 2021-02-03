@@ -16,28 +16,6 @@ happen frequently. You don't find bugs in hot paths. By nature, bugs are found
 in places that you didn't think to look. Bugs are always in cold paths — every bug is
 found in a path colder than all the paths you tested.
 
-As an absurd example, here's an `if` statement that happens once every 4 years on leap day:
-
-```python
-if datetime.now().strftime("%M/%d") == "02/29":
-    drop_database("students")
-```
-
-This seems like a mistake. Why do mistakes like this make it into production?
-
- 1. Mocking `strftime` for a unit test seemed too hard at the time. Too much pressure to 
-    deliver.
- 2. Manual testing didn't catch it because it can't. It doesn't happen often enough.
- 3. Code reviewers weren't paying attention because they were tired from an operational
-    incident that woke them the night before (or drunk, babies, ADHD, caffeine deficiency, work deadlines or
-    any other quite reasonable explanation for not being at peak performance).
- 4. Code coverage metrics didn't highlight it because it was only 1 line of missed coverage.
- 5. Integration/functional/UAT tests didn't catch it because we can't wait for 4 years 
-    between software releases.
-
-Processes like unit testing and code review do indeed catch lots of bugs, but they're not
-perfect. They fail for many reasons.
-
 Here are some real world "cold paths" with big consequences:
 
 * [An outage caused by an expired TLS certificate](https://blog.thousandeyes.com/impacts-expired-tls-certificate/)
@@ -47,13 +25,12 @@ Here are some real world "cold paths" with big consequences:
 
 Rare events are [hard to predict][blackswan]. That's just the nature of them. As engineers,
 I belive it's our responsibility to do our best to try harder and get better at planning for
-these rare bugs. But is that it? Try harder? 
+these rare bugs. Is that it? Try harder? 
 
-I think we can do better. The remainder of this article are strategies I've seen throughout
-my career.
+Better: Don't have cold paths
 
 
-# Avoid cold paths
+# Smaller programs
 I watched one of Gil Tene's many amazing talks on Azul's C4 garbage collector (not [this talk][giltene],
 but similar) where he claimed that normally it takes 10 years to harden a garbage
 collector. Azul didn't have 10 years to produce a viable business, so they avoided almost all
@@ -64,37 +41,39 @@ For a garbage collector, this means things like offering fewer options, or havin
 model to avoid cold paths around promoting objects between generations. For your app it will
 mean something different.
 
-## Takeaway: Less customization → less testing surface → less bugs
 You can **test less** to achieve high quality by **reducing the size** of your application. 
 Less edge cases is equivalent to less testing surface area, which implies less testing work
-and fewer missed test cases.
+and fewer missed test cases. There's something to be said for avoiding config options and
+making solutions less generic.
+
 
 # Avoid fallbacks
-While I worked at AWS I had this beaten into my skull, but thankfully they've published guidence
-an excellent piece titled ["avoiding fallback in distributed systems"][aws]. The hope is that, 
-when system 1 fails you would like to automatically fallback to system 2. 
+While I worked at AWS I had this beaten into my skull, but thankfully they've published 
+guidence an excellent piece titled ["avoiding fallback in distributed systems"][aws]. The 
+hope is that, when system 1 fails you would like to automatically fallback to system 2. 
 
-For example, let's say we have a process that sends logs to another service. For the hot path, we 
-send logs directly via an HTTP request. But if the log service fails (e.g. overloaded, maintenence,
-etc.) we fallback by writing to a file and have a secondary process send those logs to the service
-when it comes back.
+For example, let's say we have a process that sends logs to another service. For the hot 
+path, we send logs directly via an HTTP request. But if the log service fails (e.g. 
+overloaded, maintenence, etc.) we fallback by writing to a file and have a secondary process 
+send those logs to the service when it comes back.
 
 * System 1: directly send logs to server
 * System 2: send asynchronously via file append
 
-## Takeaway: Always fallback
-If system 2 is more reliable than system 1, then why don't we always choose system 2? Always write
-to the file and ship logs asynchronously rather than send directly to the server. This is 
-surprisingly strong logic that isn't considered often enough.
+If system 2 is more reliable than system 1, then why don't we always choose system 2? 
+Always write to the file and ship logs asynchronously rather than send directly to the 
+server. This is surprisingly strong logic that isn't considered often enough. More often,
+by asking the question you end up finding a way to make system 1 more robust.
 
-In cases where fallback can't be avoided they suggest always exercising the fallback. For example,
-on every request, randomly decide to use either system 1 or system 2, thereby ensuring that the cold
-path isn't cold.
+In cases where fallback can't be avoided they suggest always exercising the fallback. 
+For example, on every request, randomly decide to use either system 1 or system 2, 
+thereby ensuring that the cold path isn't cold because both are exercised on the hot path,
+at least sometimes.
 
 
 # Know your capacity for testing
 In ["files are fraught with problems"][fraught], Dan Luu demonstrates that it's unexpectedly
-difficult to write a file correctly. Juggling issues like handling random power loss or 
+difficult to write a file to disk correctly. Juggling issues like handling random power loss or 
 strange ext4 behavior becomes a full-time job. It's a lot to keep in your head, just to 
 write a file. 
 
@@ -112,8 +91,17 @@ Alternnate take on the same idea: [Choose boring technology][boring]
 
 
 # Conclusion
-Reducing the size of the application leads to less bugs. The trick is to avoid doing this
-at the expense of the user. Find cold paths that don't add business value and kill them.
+The practice of avoiding cold paths is often presented as "simple code". Unfortunately, "simple"
+has such wildly varying meanings that it's often antagonistic to use it outside a
+mathematical setting. I've found that centering conversations around "avoiding cold paths"
+gives more clarity on how to proceed.
+
+In system design, the conversation about what is "simple" is even tougher due to the 
+amorphous nature of it. The principle of "avoiding cold paths" can be extended to mean,
+"delegating cold paths" to a trusted third party, like an open source project or a cloud
+provider. An earnest discussion about your capacity for testing might be
+appropriate. It lets you disengage from "building cool stuff" and instead view it as
+"testing burden I'd rather not have".
 
 
  [giltene]: https://www.infoq.com/presentations/Java-GC-Azul-C4/
@@ -121,3 +109,4 @@ at the expense of the user. Find cold paths that don't add business value and ki
  [aws]: https://aws.amazon.com/builders-library/avoiding-fallback-in-distributed-systems/?did=ba_card&trk=ba_card
  [fraught]: https://danluu.com/deconstruct-files/
  [boring]: https://mcfunley.com/choose-boring-technology
+
