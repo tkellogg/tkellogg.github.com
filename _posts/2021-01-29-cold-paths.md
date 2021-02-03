@@ -19,9 +19,7 @@ found in a path colder than all the paths you tested.
 Here are some real world "cold paths" with big consequences:
 
 * [An outage caused by an expired TLS certificate](https://blog.thousandeyes.com/impacts-expired-tls-certificate/)
-* [YouTube overflowed a 32-bit `int` "views" counter on Gangnam Style](https://arstechnica.com/information-technology/2014/12/gangnam-style-overflows-int_max-forces-youtube-to-go-64-bit/)
 * [Y2K](https://en.wikipedia.org/wiki/Year_2000_problem)
-* [Northeast blackout of 2003](https://spectrum.ieee.org/energy/the-smarter-grid/the-blackout-of-2003)
 
 Rare events are [hard to predict][blackswan]. That's just the nature of them. As engineers,
 I belive it's our responsibility to do our best to try harder and get better at planning for
