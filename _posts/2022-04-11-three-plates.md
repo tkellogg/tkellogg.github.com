@@ -42,7 +42,9 @@ The three plates method is also a great analogy for understanding TDD and where 
     It's hard to be internally honest about things like this, but if you can, shift some of your quality
     controls to processes that require less skill, or hire QA engineers.
 
-I hope you find the three plates method to be a useful analogy for unit testing. It certainly helped me.
+I hope you find the three plates method to be a useful analogy for unit testing. The idea of "rough 
+smoothing rough" comes up in a lot of contexts. That's how mentoring works. It's useful whenever the
+ideal isn't tangible.
 
  [tdd]: https://www.agilealliance.org/glossary/tdd/#q=~(infinite~false~filters~(postType~(~'page~'post~'aa_book~'aa_event_session~'aa_experience_report~'aa_glossary~'aa_research_paper~'aa_video)~tags~(~'tdd))~searchTerm~'~sort~false~sortDirection~'asc~page~1)
  [fm]: https://learntla.com/introduction/
