@@ -30,5 +30,7 @@ with two pieces of code that complement each other, prove each other.
 
 Unit testing is a good technique for honing "surfaces". But that's the thing, you can't rub two
 buildings together to create better buildings. Unit testing is an excellent tool for what it does,
-but it needs to be complemented by a larger toolbox. 
+but it needs to be complemented by a larger toolbox. Unit testing creates fine-tuned individual
+units, but you need integration & functional tests to make sure those units are arranged together
+correctly. Prior to all that, formal methods can be a great way to prove out a design.
 
