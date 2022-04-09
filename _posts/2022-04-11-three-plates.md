@@ -6,31 +6,43 @@ categories:
  - engineering
 ---
 
-"Why don't you have to test your tests?", someone asked me. Well, it's like the three plates method.
-You grind one test against some code until the two are perfect. That's unit testing.
+"Why don't we test our tests?", someone asked. It's like the three plates method. Take test code and
+prod code and grind them against each other until the blemishes are ground smooth. That's unit testing.
 
 The [three plates method](https://ericweinhoffer.com/blog/2017/7/30/the-whitworth-three-plates-method)
-is a process that creates the flattest plates, with the highest precision. The goal is to create the 
-flattest surface possible. It doesn't use any power tools, just 3 granite plates. 
+is a process that creates the flattest plates, with the highest precision. No power tools needed, 
+just 3 granite plates. 
 
 1. Take plates `a` and `b`, grind them together for a while
-2. Grind `b` and `c` together for a while
-3. Grind `c` and `a` together for a while
-4. Repeat
+2. Grind `b` and `c` together
+3. Grind `c` and `a` together
+4. Repeat until smooth enough
 
-This process takes a while, but eventually you find yourself with three of the flattest, smoothest 
-surfaces. At first, they're very rough with bumps, scars and points. But through this process the 
-blemishes break off iteratively to reveal a flat, smooth, beautiful surface.
+This process takes a while, but there's no upper bound to the precision. All it takes is time and a
+little bit of skill. Before you start, the plates are very rough with bumps, scars and points. But 
+afte a few iterations, the blemishes break off iteratively to reveal a flat, smooth, beautiful surface.
 
-Unit testing is a lot like this. I like to think TDD means that you write the tests first, but it's
-not actually important what came first. It's the process of rubbing two chunks of code together to
-smooth out the bumps. It's not like I spit out perfect test code on my first try, it takes iteration,
-and a lot of back-and-forth between fixing test code and fixing prod code. But eventually, I'm left
-with two pieces of code that complement each other, prove each other.
+Unit testing is a lot like this. I like to think [TDD][tdd] means that we write the test first, but it's
+not important what comes first. It's not like I spit out perfect test code or prod code on my first try, 
+and yet, after several iterations of fixing code on both sides, the code converges to a well-functioning
+unit. 
 
-Unit testing is a good technique for honing "surfaces". But that's the thing, you can't rub two
-buildings together to create better buildings. Unit testing is an excellent tool for what it does,
-but it needs to be complemented by a larger toolbox. Unit testing creates fine-tuned individual
-units, but you need integration & functional tests to make sure those units are arranged together
-correctly. Prior to all that, formal methods can be a great way to prove out a design.
+The three plates method is also a great analogy for understanding TDD and where it fits. 
 
+* _*Two Plates?*_ — Naively, I would have thought it only takes two plates to create a smooth surface,
+    but the third plate important. In TDD, a single test will get you a long way toward functioning prod
+    code, but you need more tests to hash out all the edge cases
+* _*Units*_ — If all you want is a granite countertop, then the three plates process is all you need. But
+    usually you'll want to install it somewhere useful, like in a kitchen. To do that, you'll need other
+    quality tools, like a level. TDD is useful for what it does, but it would be a shame to have a 
+    giant unit test suite with no functional tests. Go crazy and [learn about formal methods][fm].
+* _*Dedication*_ — The three plates method requires a lot of experience and skill. It takes a lot of
+    practice to be able to leverage unit tests effectively. If your organization has trouble hiring
+    high caliber engineers, you may find that large unit test suites cause projects to be late or fail.
+    It's hard to be internally honest about things like this, but if you can, shift some of your quality
+    controls to processes that require less skill, or hire QA engineers.
+
+I hope you find the three plates method to be a useful analogy for unit testing. It certainly helped me.
+
+ [tdd]: https://www.agilealliance.org/glossary/tdd/#q=~(infinite~false~filters~(postType~(~'page~'post~'aa_book~'aa_event_session~'aa_experience_report~'aa_glossary~'aa_research_paper~'aa_video)~tags~(~'tdd))~searchTerm~'~sort~false~sortDirection~'asc~page~1)
+ [fm]: https://learntla.com/introduction/
