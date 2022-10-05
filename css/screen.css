@@ -69,3 +69,10 @@ blockquote p {
   display: block;
 	margin-bottom: 12pt;
 }
+
+/* from @toastal, "this will limit paragraphs & list items to 67 characters."
+ * Optimial reading length is 55-70 characters.
+ */
+#post :where(p, li) {
+  max-width: 67ch;
+}
