@@ -200,7 +200,7 @@ It's a joint effort in creating a shared mental model!
 
 You might not like that computers can now trick you into believing lies, but these LLMs are by far the closest thing
 in AI/ML to how humans already build trust (or distrust) in each other. The skills
-we use to build trust in fellow humans are mostly transferrable to the skils needed to work with LLMs. That's
+we use to build trust in fellow humans are mostly transferrable to the skills needed to work with LLMs. That's
 unprecedented, it's such a giant improvement compared to where we were just a few years ago.
 
 
