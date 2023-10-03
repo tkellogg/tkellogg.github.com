@@ -73,7 +73,7 @@ blockquote p {
 /* from @toastal, "this will limit paragraphs & list items to 67 characters."
  * Optimial reading length is 55-70 characters.
  */
-#post :where(p, li) {
+#post :where(p, li, img, blockquote) {
   max-width: 67ch;
 }
 
