@@ -192,16 +192,16 @@ volatile or inconsistent, she's probably lying to you. We do that with adults to
 
 _**You can probe an LLM like you probe a fellow person.**_
 
-LLMs operate in language. A lot of the same techniques you use working with people also work with LLMs
-too. You can ask for clarification, and if the details don't agree or are volatile, you know this isn't an area you can trust
-the model. Like George W. Bush's favorite saying, _"fool me once, shame on you. Fool me twice, shame on me"_.
+For example, while writing this I couldn't think of a word, so I asked ChatGPT. It answered wrong the first
+time, so I clarified what I wanted, just like I'd do with another person, and it gave me the right answer.
+It's a joint effort in creating a shared mental model!
 
-![Fool me once, shame on you, fool me twice, you can't get fooled again](https://www.google.com/url?sa=i&url=https%3A%2F%2Fforeveryoungadult.com%2Fbook-report%2Ffool-me-once-ashley-winstead%2F&psig=AOvVaw0oMaCM8o52WGtw6CIj3ZDg&ust=1696302757991000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJDuwK2y1oEDFQAAAAAdAAAAABAE)
+![Screenshot of GPT4 conversation where I'm looking for the word "referential integrity" and GPT4 gives me the wrong answer the first time.](https://user-images.githubusercontent.com/437044/272265389-fbf0c381-d7cf-42e3-8b60-af1278f6efaa.png)
 
-You might not like that computers can now trick you into believing lies, but it's by far the closest thing
-in AI/ML to how humans already build trust (or distrust) in each other. I'm not saying that lying is good
-behavior, at all, just that the skills we use to build trust or distrust in LLMs are similar to the skills
-we use to build trust in fellow humans. _**Life skills are transferrable to LLMs**_, to some extent.
+You might not like that computers can now trick you into believing lies, but these LLMs are by far the closest thing
+in AI/ML to how humans already build trust (or distrust) in each other. The skills
+we use to build trust in fellow humans are mostly transferrable to the skils needed to work with LLMs. That's
+unprecedented, it's such a giant improvement compared to where we were just a few years ago.
 
 
 ## Trust building wth LLMs
@@ -221,7 +221,14 @@ I like this approach because you can:
 1. Source your claims, by showing the user a URL
 2. Keep data up-to-date and remove old information. It's just a database.
 
-RAG is interesting, from a perspective of explainable AI, because it mirrors what we do.
+RAG is interesting, from a perspective of explainable AI, because LLMs are already good at acting as a 
+"word calculator". It can reformat text all day long with high accuracy. So questions things like "where did 
+you get that?" can be answered with a high degree of accuracy.
+
+_Note: The normal intuition is that you want to re-train or at least fine-tune a model to improve it's accuracy.
+However, [research][nofinetuning] indicates that inserting text into the conversation RAG-style (called
+"in-context learning", or ICL) is much more reliable than fine tuning. Plus, you can quickly delete or update
+out-of-date information, so RAG wins on just about every level._
 
 
 ## The crazy uncle problem
@@ -270,6 +277,29 @@ had no way of addressing humans the way we need to be addressed. When LLMs final
 I was ecstatic. Finally an ML "explanation" with nearly zero overhead, anyone can learn how to use LLMs and
 when to trust them. 
 
+Some areas I'd love to see improvement:
+
+- _**Self-awareness**_: It would be a huge help to everyone if LLMs could tell you the parts they're not sure about.
+    There's [promising research][aware] that looks at the internal state of the LLM and guesses if it's hallucinating, 
+    but it [has problems][aware-counter].
+- _**Tone adjustment**_: Assuming the model is self-aware in regards to truthfulness, ideally the model could 
+    use softer language to indicate when it's lying. Like, "I'm not sure about this but...". I'm not convinced LLMs can do this on their own, but it seems
+    like a black box approach might work. For example, there are [libraries][jsonformer] that force LLM output to
+    conform to a schema by wrapping the LLM and preventing invalid sequences of words. I could see a similar approach
+    that combined both approaches; the wrapper predicts if the model is hallucinating and forces only softer 
+    language to be generated. I'm not smart enough to pull that off, so I'm hoping it's actually possible.
+- _**Mind melding**_: Alright, not sure what word to use here, but everyone has a different mental model, like
+    we talked about earlier. It would be great if an LLM were able to adjust it's explanations based on who it's
+    talking to. For example, if I'm explaining how a software component works, I use completely different language
+    when talking to a sales person versus a fellow engineer. This seems like a far-out request, but it also seems
+    necessary.
+- _**Referential transparency**_: in other words, sending the same text to an LLM should always give the same result.
+    This is actually 100% solved via the `temperature` parameter for most open source LLMs. However, OpenAI will
+    change traffic flow under high load in a way that has the same effect as ignoring this parameter. It's an easy
+    problem to solve — OpenAI could offer a `failure_mode` parameter that lets you fail requests if they can't be
+    served by the ideal expert (rather than routing through a sub-optimal expert). I actually agree with OpenAI on
+    this decision as a default behavior, but it keeps coming up as a reason why software engineers won't trust LLMs.
+
 Of course, there's a long way to go. But for once, it actually seems attainable. And it'll be an exciting ride,
 seeing what people come up with.
 
@@ -280,3 +310,7 @@ seeing what people come up with.
  [lawyer]: https://apnews.com/article/artificial-intelligence-chatgpt-fake-case-lawyers-d6ae9fa79d0542db9e1455397aef381c
  [emb]: https://vickiboykis.com/what_are_embeddings/
  [qdrant]: https://blog.qdrant.tech/qdrant-introduces-full-text-filters-and-indexes-9a032fcb5fa
+ [aware]: https://arxiv.org/abs/2304.13734
+ [aware-counter]: https://arxiv.org/abs/2307.00175
+ [jsonformer]: https://github.com/1rgs/jsonformer
+ [nofinetuning]: https://arxiv.org/abs/2305.01651
