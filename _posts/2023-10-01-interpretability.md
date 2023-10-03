@@ -59,7 +59,7 @@ three things to consider. Another layer of nodes on a binary tree means that exa
 to arrive at an answer. But even 3 isn't enough.
 There's 35 different types of pines alone that are native to just North America, that would take 6 levels of a perfectly
 balanced decision tree (`log2(35)` is a bit bigger than 5, so we round up to 6). Then consider all the trees in North America,
-or more generally all the plants in the world.
+or more generally all the plants in the world. We could end up with a lot of levels.
 
 _**Increase model complexity to improve performance, decrease to improve interpretability.**_
 
@@ -69,6 +69,9 @@ more accurate predictoins. But also, as you scale upwards, even a decision tree 
 I can follow 3 decisions, but I probably can't follow 3000 decisions. So even a model type that's generally
 considered interpretable, like a decision tree, can become uninterpretable if it grows too complex. (IIRC the paper
 said most humans find it uninterpretable at around 8 decisions, although I can't find that quote now).
+
+LLMs are extremely uninterpretable by this definition. With billions of parameters, each one would have to be explained.
+That would be far beyond reasonable.
 
 From the paper:
 
@@ -103,7 +106,7 @@ not ML at all like a SQL query). SHAP is a family of algorithms, but in general,
 fluctuate the inputs and observe how the changes impact the outputs. From there, there's some great visualizations
 to help understand which features contributed the most.
 
-![example SHAP plot][https://shap.readthedocs.io/en/latest/_images/example_notebooks_overviews_An_introduction_to_explainable_AI_with_Shapley_values_13_0.png]
+![example SHAP plot](https://shap.readthedocs.io/en/latest/_images/example_notebooks_overviews_An_introduction_to_explainable_AI_with_Shapley_values_13_0.png)
 
 So in our pine tree example, the length of the needle would be the most important input, followed by the number
 of needles in the bunch. While the appearance of the bark would have no importance at all, since anything close to
