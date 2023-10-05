@@ -309,6 +309,8 @@ seeing what people come up with.
 
 [Hacker News](https://news.ycombinator.com/item?id=37777533)
 
+[Mastodon](https://hachyderm.io/@kellogh/111182343341194191)
+
 
  [XAI]: https://arxiv.org/abs/1706.07269
  [lob]: https://en.wikipedia.org/wiki/Pinus_taeda
