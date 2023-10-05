@@ -218,7 +218,7 @@ thing is to use [embeddings][emb] with a [vector database][qdrant]. Either way, 
 conversation in the background, invisitble to the user, and let the LLM reformat the text into a cohesive answer. 
 I like this approach because you can:
 
-1. Source your claims, by showing the user a URL
+1. Source your claims, by showing the user a URL.
 2. Keep data up-to-date and remove old information. It's just a database.
 
 RAG is interesting, from a perspective of explainable AI, because LLMs are already good at acting as a 
@@ -242,7 +242,7 @@ The lawyer said he had no idea that the AI can lie.
 
 That's a solveable problem. In fact, simply having the incident written and reported incessantly in the media might have pushed the needle
 far enough to convince the general public to have a little less blind faith in LLMs. And that's a good thing.
-We consider it naïve to instantly trust people we meet on the internet. We've never had to have the same policy with AI, 
+We consider it naïve to instantly trust people we meet on the internet. We've never had to have the same policy with computers, 
 but it's really not a big mental shift, and it leads to a more productive relationship with AI.
 
 
@@ -274,7 +274,7 @@ of use cases.
 When I first read this paper years ago I was struck with crisp clarity. Followed by a glum depression after 
 realizing that the existing technology
 had no way of addressing humans the way we need to be addressed. When LLMs finally caught my attention,
-I was ecstatic. Finally an ML "explanation" with nearly zero overhead, anyone can learn how to use LLMs and
+I was ecstatic. Finally an ML "explanation" with nearly zero cognitive overhead, anyone can learn how to use LLMs and
 when to trust them. 
 
 Some areas I'd love to see improvement:
@@ -287,12 +287,12 @@ Some areas I'd love to see improvement:
     like a black box approach might work. For example, there are [libraries][jsonformer] that force LLM output to
     conform to a schema by wrapping the LLM and preventing invalid sequences of words. I could see a similar approach
     that combined both approaches; the wrapper predicts if the model is hallucinating and forces only softer 
-    language to be generated. I'm not smart enough to pull that off, so I'm hoping it's actually possible.
+    language to be generated. (I'm not smart enough to pull that off, so I'm hoping it's actually possible.)
 - _**Mind melding**_: Alright, not sure what word to use here, but everyone has a different mental model, like
     we talked about earlier. It would be great if an LLM were able to adjust it's explanations based on who it's
     talking to. For example, if I'm explaining how a software component works, I use completely different language
-    when talking to a sales person versus a fellow engineer. This seems like a far-out request, but it also seems
-    necessary.
+    when talking to a sales person versus a fellow engineer. This seems like a far-out request for an LLM to do the same, 
+    but it also seems necessary.
 - _**Referential transparency**_: in other words, sending the same text to an LLM should always give the same result.
     This is actually 100% solved via the `temperature` parameter for most open source LLMs. However, OpenAI will
     change traffic flow under high load in a way that has the same effect as ignoring this parameter. It's an easy
@@ -302,6 +302,12 @@ Some areas I'd love to see improvement:
 
 Of course, there's a long way to go. But for once, it actually seems attainable. And it'll be an exciting ride,
 seeing what people come up with.
+
+# Discussion
+
+[Loste.rs](https://lobste.rs/s/ig1jev/llms_are_interpretable)
+
+[Hacker News](https://news.ycombinator.com/item?id=37777533)
 
 
  [XAI]: https://arxiv.org/abs/1706.07269
