@@ -17,6 +17,18 @@
 	<title>{{ page.title }} - Tim Kellogg</title>
 	<meta name="author" content="Tim Kellogg" />
 	<meta name="viewport" content="width=device-width">
+	{% if page.image %}
+		<meta property="og:image" content="{{ page.image }}">
+		{% if page.image contains ".png" %}
+			<meta property="og:image:type" content="image/png">
+		{% elsif page.image contains ".jpeg" %}
+			<meta property="og:image:type" content="image/jpeg">
+		{% elsif page.image contains ".jpg" %}
+			<meta property="og:image:type" content="image/jpeg">
+		{% elsif page.image contains ".webp" %}
+			<meta property="og:image:type" content="image/webp">
+		{% endif %}
+	{% endif %}
 	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/screen.css" type="text/css"/>

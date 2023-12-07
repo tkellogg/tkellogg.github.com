@@ -256,6 +256,8 @@ GEM
     unicode-display_width (1.7.0)
 
 PLATFORMS
+  arm64-darwin-22
+  arm64-darwin-23
   universal-darwin-18
   x86_64-linux
 
@@ -265,4 +267,4 @@ DEPENDENCIES
   rouge
 
 BUNDLED WITH
-   2.2.3
+   2.4.22

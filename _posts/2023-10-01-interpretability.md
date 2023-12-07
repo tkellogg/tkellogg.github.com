@@ -3,7 +3,8 @@ layout: post
 title: "LLMs are Interpretable"
 date: 2023-10-01
 categories:
- - ai
+ - llm
+image: https://user-images.githubusercontent.com/437044/282653937-c737587a-a95e-481f-a27d-947b7e5c22eb.png
 ---
 
 This might be a hot take but I truely believe it: LLMs are the most interpretable form of machine learning 
