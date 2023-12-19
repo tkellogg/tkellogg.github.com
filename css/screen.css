@@ -83,6 +83,10 @@ img[src~="inline"] {
   margin-left: 5px;
 }
 
+#post img {
+  max-width: 100%;
+}
+
 /* from https://codepen.io/miyano/pen/oMREdZ
  */
 .mstdn{
