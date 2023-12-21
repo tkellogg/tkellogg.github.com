@@ -76,6 +76,12 @@ users. Open source isn't perfect, but it certainly is a powerful tool for societ
 leveraged open source more readily.
 
 
+# Conversation
+
+* [Mastodon](https://hachyderm.io/@kellogh/111618404480295496)
+* [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_are-they-actually-afraid-of-ai-activity-7143578361078902785-TX4v?utm_source=share&utm_medium=member_desktop)
+
+
 
  [fossil]: https://timkellogg.me/blog/2023/12/19/fossil
  [github]: https://github.com/tkellogg/fossil/
