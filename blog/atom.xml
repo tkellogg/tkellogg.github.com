@@ -15,6 +15,7 @@ layout: nil
  </author>
 
  {% for post in site.posts %}
+ {% unless post.is_draft %}
  <entry>
    <title>{{ post.title | xml_escape }}</title>
    <link href="http://timkellogg.me{{ post.url }}"/>
@@ -22,6 +23,7 @@ layout: nil
    <id>http://timkellogg.me{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
+ {% endunless %}
  {% endfor %}
  
 </feed>
