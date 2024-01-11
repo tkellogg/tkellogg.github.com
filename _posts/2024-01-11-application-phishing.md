@@ -91,7 +91,7 @@ If truly you need the LLMs unconstrained input, then you need to start thinking 
 that's susceptible to phishing attacks. 
 
 
-## 1. Reduce Privilidge
+## 1. Reduce Priviledge
 
 The [principle of least priviledge][plp] is very powerful here. Give the LLM
 as little access to data as possible. If it can perform actions, reduce what it's allowed to do by closing down ports
@@ -112,7 +112,7 @@ Nathan wrote [another article about mitigating][rrt] that breaks it down into 3 
 
 1. _**Refrain**_: Do you really need an LLM? If you can avoid an LLM, that erases a large attach surface from your threat model.
 2. _**Restrict**_: Reduce the LLMs access to data & user base, as I've described above.
-3. _**Trap**_: Your traditional input & output validation.
+3. _**Trap**_: Your traditional input & output validation. 
 
 Nathan's _Trap_ point doesn't sit well with me for the same reasons I want to move away from "Prompt Injection" as a 
 term. The input is too unconstrained, and constraining it often inhibits the behavior that makes LLMs interesting to 
