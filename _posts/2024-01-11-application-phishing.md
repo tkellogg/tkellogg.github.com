@@ -123,6 +123,42 @@ the only truly fool proof mitigation. That might reduce what you can do with an 
 you want to keep your users safe.
 
 
+
+# ADDENDUM: For Researchers
+If you're a researcher, read this idea here and see if there's something workable.
+
+The thorny problem here is that the system prompt is accepted through the same channel as the user's questions and data.
+If you can untangle these into different channels, the problem might become solveable, and there might be additional benefits.
+
+
+<div class="mermaid">
+graph TD
+  sys[system prompt]
+  user[user data]
+  sys-->model
+  user-->model-->output
+</div>
+
+I think the core of the problem might be _task recognition_. If you disable the possibility of the model recognizing a task
+within user's portion of the prompt, then you've effectively implemented the same construct as prepared statements.
+I imagine, this would look a bit like there being multiple models at work:
+
+<div class="mermaid">
+graph TD
+  sys[system prompt]-->cp[control plane<br/> model]
+  user[user data]-->dp[data plane<br/> model]
+  cp-->dp-->output
+</div>
+
+My understanding is that task recognition takes place within the attention layers which are notoriously compute-intensive. 
+So a data plane model with reduced or eliminated capabilities for task recognition might be able to skip parts of the attention layers.
+A full trip through both control and data plane models might be slow, maybe even slower, a trip through just the
+data plane might be very fast and suitable for building applications on.
+
+I don't have the skills to build such a model, but I hope by talking about it, an idea might be sparked that leads to
+addressing application phishing in a meaningful way while also maintaing the LLM's primary capabilities.
+
+
  [fedi]: https://infosec.exchange/@nhamiel
  [blog]: https://perilous.tech/2023/10/24/prompt-injection-is-social-engineering-applied-to-applications/
  [grammar]: https://forcedotcom.github.io/phoenix/
