@@ -5,14 +5,15 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Tim Kellogg</title>
- <link href="http://timkellogg.me/atom.xml" rel="self"/>
- <link href="http://timkellogg.me/"/>
+ <link href="https://timkellogg.me/atom.xml" rel="self"/>
+ <link href="https://timkellogg.me/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://timkellogg.me/</id>
  <author>
    <name>Tim Kellogg</name>
    <email>timothy.kellogg@gmail.com</email>
  </author>
+ <icon>/favicon.ico</icon>
 
  {% for post in site.posts %}
  {% unless post.is_draft %}
@@ -21,6 +22,11 @@ layout: nil
    <link href="http://timkellogg.me{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>http://timkellogg.me{{ post.id }}</id>
+   {% if post.summary %}
+   <summary>{{ post.summary | xml_escape }}</summary>
+   {% else %}
+   <summary>{{ post.excerpt | xml_escape }}</summary>
+   {% endif %}
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endunless %}
