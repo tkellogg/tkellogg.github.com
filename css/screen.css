@@ -38,6 +38,9 @@ h3 {
 div#related {
 	margin-top: 6rem;
 }
+div {
+  font-size: 1.75rem;
+}
 code {
 	color: #000000;
 }
