@@ -50,7 +50,7 @@ I helped him understand the new organization's values and suggested some ways he
 | Valued Now | Configurable code to enable team mates to enable product managers to adapt the product for new markets |
 
 
-## Example: End of the Road
+## Example: A Time For Change
 
 I helped a computer scientist understand that the new acquiring company didn't have a use for their
 work. Management tried to move them into a new job role. I helped them understand their discontent and
