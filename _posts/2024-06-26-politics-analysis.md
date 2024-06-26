@@ -180,7 +180,7 @@ something more interesting? Let me know, I'd love to hear about it.
 
 
  [gh]: https://github.com/tkellogg/emopoint/
- [part1]: /blog/2024/06/07/emotions
+ [part1]: /blog/2024/06/26/emotions
  [dataset]: https://zenodo.org/records/7531625
  [boring]: https://github.com/tkellogg/emopoint/blob/1d47df75886788546baabc7d2c6f239e587a3af7/lab/politics.py#L60-L92
  [wheel]: https://en.wikipedia.org/wiki/Robert_Plutchik#Plutchik's_wheel_of_emotions
