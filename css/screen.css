@@ -72,6 +72,25 @@ blockquote p {
 	margin-bottom: 1rem;
 }
 
+.callout {
+  background-color: #EADBA4;
+  padding: 1rem;
+  padding-left: 2rem;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.callout::before {
+  content: "|";
+  color: #A4B2EA;
+  background-color: #A4B2EA;
+  width: 1rem;
+  height: calc(100%);
+  position: absolute; /* Absolute positioning to stretch vertically */
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
 /* from @toastal, "this will limit paragraphs & list items to 67 characters."
  * Optimial reading length is 55-70 characters.
  */
