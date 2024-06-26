@@ -10,7 +10,7 @@ categories:
  - politics
  - emopoint
 image: /images/emotion/woman-angry.jpg
-is_draft: true
+is_draft: false
 use_mermaid: false
 summary: 
     Join us as we analyze the emotional ebb and flow of Trump's social media posts
@@ -26,7 +26,7 @@ from which emopoint extracts just the emotion part so we can make cool graphs an
 
 
 # Trump: Something everyone can disagree about
-To see if AI really understands emotions, I need an example. Who is the most known person that evokes the biggest emotional response? 
+I need an example. I'm trying to see if AI really understands emotions. Who is the most known person that evokes the biggest emotional response? 
 My first thought was Donald Trump (my brother said Taylor Swift, but that might be too controversial 🤣).
 
 I [downloaded][dataset] all of Trump's Truth Social posts from 2022 and plotted the emotional intensity. To get a feel for
@@ -131,6 +131,10 @@ the year
 Those first few posts seem to slant hard away from anger and toward fear. Here's what the first one says:
 
 > We have until SEPT 3rd until federal protections lift and the 2020 election can be DELETED FOREVER. Cast vote records PROVE fraud by machines. We need your help, SHARE THIS EVERYWHERE! https://frankspeech.com/article/save-your-county
+
+What about ALL CAPS TEXT? DOES AI UNDERSTAND IT DIFFERENTLY? Yep. "Caps", "caps" and "CAPS" are three totally
+different words to an LLM. During training, the LLM figures out that they're just variations of each other, but
+with different emotional intensity attached. cRaZy.
 
 
 ## What are the Numbers?
