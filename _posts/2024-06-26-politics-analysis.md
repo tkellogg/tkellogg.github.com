@@ -26,8 +26,8 @@ from which emopoint extracts just the emotion part so we can make cool graphs an
 
 
 # Trump: Something everyone can disagree about
-Who is the most known person that evokes the biggest emotional response? Everyone I ask agrees it's Donald Trump (well,
-my brother said Taylor Swift, but I fear that might be too controversial to analyze).
+To see if AI really understands emotions, I need an example. Who is the most known person that evokes the biggest emotional response? 
+My first thought was Donald Trump (my brother said Taylor Swift, but that might be too controversial 🤣).
 
 I [downloaded][dataset] all of Trump's Truth Social posts from 2022 and plotted the emotional intensity. To get a feel for
 what that actually means, I compared it against the [most boring Wikipedia articles][boring] I could find. 
@@ -64,15 +64,16 @@ whenever he goes that direction.
 Short answer: Yes, if it's in text.
 
 Large language models (LLMs) are extremely good at picking up on language artifacts like word choice
-or formal vs informal tone. In fact, they're trained expicitly to find subtle nuances.
+or formal vs informal tone. In fact, they're trained expicitly to find subtle nuances. 
 
-Think about people. Some people are better than others at identifying emotion from pure text.
-Other people are better at picking up on body language or tone of voice. Others are sensitive to highly 
+People are similar, to some extent. Some are better than others at identifying emotion from pure text.
+Others are better at picking up on body language or tone of voice. Still others are sensitive to highly 
 contextual clues, like inside jokes or reading the subtext.
 
 Most people can become better through practice and being exposed to it more. That's what these AI models
 are doing during training, they're being exposed to a gargantuan number of situations and learn to see
 patterns that might not be apparent to others. That's what all machine learning is: pattern matching.
+Learning patterns from lots of examples.
 
 
 ![](/images/emotion/emotion-sources.png)
@@ -156,25 +157,40 @@ in more "emotional information" being captured, at least in my experiments.
 **Voice!** I experimented with [CLAP][clap], a multi-modal model that understands both audio & text. The hope was
 that I could also incorporate vocal intonation and other aspects of a live speaker. My hypothosis is that we'll
 be able to capture even more emotion from Trump. Unfortunately, it got a bit complicated, so I bailed on it for
-this post. I'll follow up!
+this post. I'd like to follow up.
 
 **Debates!** Yes, the presidentail debates are this week, Trump v. Biden. I want to do an analysis between the
 two speakers. I'm particularly interested in what topics evoke the most emotion, textually.
 
-**Use cases.** There's a lot of business use cases for this sort of analysis. Even with it's shortcomings,
-there's a lot of potential for scaling up or doing more objective analysis. For example, I want to integrate
-it into [fossil][fossil], a social media algorithm optimized for the reader, to analyze an account's emotional
-trend, or to block angry or fear-evoking content on particular topics.
 
-Also, I did this for emotions, but you can do this for anything with oposites. The process is useful for
-anything that we have an intuitive notion of, but where computers have traditionally failed. I've wanted
-to build a sarcasm detector, a program that can identify if the speaker might be sarcastic (although, this
-would be a lot more complex than just text analysis).
+### Use Cases
+A lot of people hear "Generative AI" and think no further than generating text or pictures. But AI needs
+to build a lot of skills in order to do that effectively. A lot of good GenAI use cases are in merely
+understanding and processing information in new ways.
+
+Even with it's shortcomings, there's a lot of potential for emopoint to do more objective analysis at scale:
+
+* Call centers — what does a good call flow look like? Which operator has nerves of steel when dealing with
+  angsty customers? Who needs coaching?
+* Coaching — how do the best coaches react in specific circumstances? (Let's do that more)
+* Marketing — did people start talking nasty about us?
+* Social media — Gain X-Ray vision into the tweet storm about your company. Respond to the biggest risks.
+
+On that last note, I made [fossil][fossil] as a social media client that reads your feed for you, and presents
+it in a way where you can get exactly the content you're looking for, ignoring all the rest. I want to add
+emopoint to address the obvious flaw: to get content related to `X`, just not the negative stuff. Block all
+the fear-evoking content and just see what I want (or, maybe focus on fear, if that's your thing).
+
+I did this for emotions, but you can do this for anything with oposites. The process is useful for
+when you have an intuitive notion, but where computers have traditionally failed. I've wanted
+to build a sarcasm detector, a program that can identify if the speaker might be sarcastic, although, this
+would be a lot more complex than just text analysis.
 
 Be sure to checkout [emopoint on github][gh] or read [the technical details][part1] of how it works.
 
+
 ## So...is he?
-Is he emotional? Maybe, what do you think? You can try looking at the data for yourself. Or maybe you have
+Is he emotional? Maybe, what do you think? Look at the data for yourself. Do you have
 something more interesting? Let me know, I'd love to hear about it.
 
 
