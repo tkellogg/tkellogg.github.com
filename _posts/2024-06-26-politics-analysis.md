@@ -112,7 +112,7 @@ Or, more precisely, the words intended to trigger emotion in the text. Words don
 they're just signals intended to trigger emotion in other people.
 
 Trump in particular is good at creating key phrases and attaching emotion to them. Phrases like 
-**_"Let's go Brandon"_** sound like _Joy_ but registers as _Disgust_ to people who know what it means.
+["Let's go Brandon"][brandon] sound like _Joy_ but registers as _Disgust_ to people who know what it means.
 
 
 ## A Tour of 2022
@@ -204,4 +204,5 @@ something more interesting? Let me know, I'd love to hear about it.
  [data]: https://zenodo.org/records/7531625
  [clap]: https://github.com/LAION-AI/CLAP
  [fossil]: https://www.fossil-social.com/
+ [brandon]: https://apnews.com/article/lets-go-brandon-what-does-it-mean-republicans-joe-biden-ab13db212067928455a3dba07756a160
 
