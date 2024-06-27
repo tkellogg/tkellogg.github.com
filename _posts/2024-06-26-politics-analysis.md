@@ -197,6 +197,11 @@ Be sure to checkout [emopoint on github][gh] or read [the technical details][par
 Is he emotional? Maybe, what do you think? Look at the data for yourself. Do you have
 something more interesting? Let me know, I'd love to hear about it.
 
+# Discussion
+* [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_what-if-you-could-measure-emotions-what-activity-7211828880918130690-3-dm?utm_source=share&utm_medium=member_desktop)
+* [Mastodon](https://hachyderm.io/deck/@kellogh/112684836833727904)
+* [Hacker News](https://news.ycombinator.com/item?id=40809319)
+
 
 
  [gh]: https://github.com/tkellogg/emopoint/
