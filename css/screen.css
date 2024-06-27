@@ -98,6 +98,14 @@ blockquote p {
   max-width: 90ch;
 }
 
+body {
+  overflow-x: hidden;
+}
+html, body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 img[src~="inline"] {
   width: 34ch;
   float: right;
