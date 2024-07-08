@@ -3,6 +3,18 @@ layout: default
 title: Projects
 ---
 
+
+# Hire Me
+
+I work with companies to navigate changes & AI. 
+
+* AI strategy & rollout — What's your plan for AI? Schedule a meeting and we can chat. First meeting is on me.
+* Change navigation — Help employees navigate difficult times, like layoffs or surviving a layoff, 
+  org chart restructures, or any big change.
+
+Sound interesting? [Contact me](/contact). We can figure it out from there.
+
+
 # Open Source Projects
 
 Over time I've contributed to a number of open source projects. I've become aware of several projects that do 
@@ -33,13 +45,4 @@ I started this and handed it off to the Moq organization. It's an inversion of c
 mocks for dependencies. So you can say, `mocker.Get<UserFetchService>()` and it'll return an instance of a
 concrete `UserFetchService`, but with all it's dependencies mocked out. I don't maintain this anymore, but it
 is well-maintained by a few guys in Washington state.
-
-
-# Consulting
-
-Struggling with change? I can help. I've been through a lot of acquisitions (one company only lasted 
-for three weeks!).
-I've mentored countless engineers to help them understand how organizational values change, and how
-to adapt. I can help companies retain talent and keep engineers focused in the midst of intense organizational
-change. [Learn more](consulting).
 
