@@ -23,9 +23,9 @@ layout: nil
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>http://timkellogg.me{{ post.id }}</id>
    {% if post.summary %}
-   <summary>{{ post.summary | xml_escape }}</summary>
+   <summary>{{ post.summary | strip_html | xml_escape }}</summary>
    {% else %}
-   <summary>{{ post.excerpt | xml_escape }}</summary>
+   <summary>{{ post.excerpt | strip_html | xml_escape }}</summary>
    {% endif %}
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
