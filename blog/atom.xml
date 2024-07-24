@@ -5,7 +5,7 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Tim Kellogg</title>
- <link href="https://timkellogg.me/atom.xml" rel="self"/>
+ <link href="https://timkellogg.me/blog/atom.xml" rel="self"/>
  <link href="https://timkellogg.me/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://timkellogg.me/</id>
