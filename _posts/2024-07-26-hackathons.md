@@ -5,9 +5,11 @@ date: 2024-07-26
 categories:
  - ai
  - strategy
+ - consulting
 image: https://cdn.pixabay.com/photo/2016/03/02/18/51/calculator-1232804_960_720.jpg
 is_draft: false
 use_mermaid: true
+summary: Everyone should do hackathons! Magic happens when you empower the people with the problems to solve their own problems.
 ---
 
 Everyone should do hackathons!

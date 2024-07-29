@@ -6,14 +6,7 @@ title: Projects
 
 # Hire Me
 
-I work with companies to navigate changes & AI. 
-
-* AI strategy & rollout — What's your plan for AI? Schedule a meeting and we can chat. First meeting is on me.
-* Change navigation — Help employees navigate difficult times, like layoffs or surviving a layoff, 
-  org chart restructures, or any big change.
-
-Sound interesting? [Contact me](/contact). We can figure it out from there.
-
+I work with companies to navigate AI. See my [consulting](/projects/consulting) page for more information.
 
 # Open Source Projects
 
