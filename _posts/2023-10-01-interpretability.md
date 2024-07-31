@@ -4,6 +4,7 @@ title: "LLMs are Interpretable"
 date: 2023-10-01
 categories:
  - llm
+ - consulting
 image: https://user-images.githubusercontent.com/437044/282653937-c737587a-a95e-481f-a27d-947b7e5c22eb.png
 ---
 
