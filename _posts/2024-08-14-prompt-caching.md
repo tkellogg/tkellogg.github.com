@@ -68,5 +68,9 @@ you probably don't want to jump to that quite yet. What is certain, is LLM progr
 
 
 
+## Discussion
+* [Hacker News](https://news.ycombinator.com/item?id=41248527)
+* [Mastodon](https://hachyderm.io/@kellogh/112961593903326624)
+
 
  [orig]: https://www.anthropic.com/news/prompt-caching
