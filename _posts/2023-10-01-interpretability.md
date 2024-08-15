@@ -308,6 +308,10 @@ Some areas I'd love to see improvement:
 Of course, there's a long way to go. But for once, it actually seems attainable. And it'll be an exciting ride,
 seeing what people come up with.
 
+# Update: Knowledge Graphs
+This post covers the end-user experience, but I've more recently become a fan of using knowledge graphs within the
+RAG architecture to provide needed interpretability. [Read more about using knowledge graphs instead of vector stores](/blog/2024/08/12/graph-ai).
+
 # Discussion
 
 [Loste.rs](https://lobste.rs/s/ig1jev/llms_are_interpretable)
