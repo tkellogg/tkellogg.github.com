@@ -1,0 +1,46 @@
+{% comment %}
+text: Signup
+url: "https://docs.google.com/forms/d/e/1FAIpQLScrXwaCTkwDp1xFPSpIa6cbPWU1-nXXigN7QjqEgPd1OTDXUA/viewform?usp=pp_url&entry.339456034="
+id: signup
+{% endcomment %}
+<a href="{{ include.url or 'signup' }}" id="{{ include.id }}">{{ include.text }}</a>
+
+<script language="javascript">
+function getCookie(name) {
+    /* try cookies */
+    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) return match[2];
+
+    /* try URL params */
+    var urlParams = new URLSearchParams(window.location.search);
+    var queryParam = urlParams.get(name);
+    if (queryParam) return queryParam;
+
+    /* fallback */
+    return undefined;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var utm_source = getCookie('utm_source') || "direct";
+    var utm_medium = getCookie('utm_medium');
+    var utm_campaign = getCookie('utm_campaign');
+    var utm_term = getCookie('utm_term');
+    var utm_content = getCookie('utm_content');
+
+    var formLink = document.getElementById('{{ include.id }}');
+    console.log("formLink:", formLink);
+
+    if (formLink) {
+        var baseUrl = formLink.getAttribute('href').split('?')[0]; // Get the base URL without any query strings
+        var utmParams = [
+            'utm_source=' + utm_source,
+            'utm_medium=' + utm_medium,
+            'utm_campaign=' + utm_campaign,
+            'utm_term=' + utm_term,
+            'utm_content=' + utm_content
+        ].filter(Boolean).join('&');
+
+        formLink.setAttribute('href', "{{ include.url }}" + utm_source);
+    }
+});
+</script>

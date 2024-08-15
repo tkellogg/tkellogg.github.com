@@ -1,0 +1,49 @@
+
+<script language="javascript">
+
+document.addEventListener("DOMContentLoaded", function() {
+    function setCookie(name, value, days) {
+        const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
+            const [cookieName, cookieValue] = cookie.split('=');
+            acc[cookieName] = decodeURIComponent(cookieValue);
+            return acc;
+        }, {});
+
+        cookies[name] = value;
+
+        let updatedCookie = `${name}=${encodeURIComponent(value)}`;
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            updatedCookie += `; expires=${date.toUTCString()}`;
+        }
+
+        updatedCookie += "; path=/";
+
+        document.cookie = updatedCookie;
+    }
+
+    function _syncCookie(name) {
+        /* try URL params */
+        var urlParams = new URLSearchParams(window.location.search);
+        var queryParam = urlParams.get(name);
+        if (queryParam) {
+            setCookie(name, queryParam);
+            return queryParam;
+        }
+
+        /* try cookies */
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) return match[2];
+
+        /* fallback */
+        return undefined;
+    }
+
+    _syncCookie('utm_source') || "direct";
+    _syncCookie('utm_medium');
+    _syncCookie('utm_campaign');
+    _syncCookie('utm_term');
+    _syncCookie('utm_content');
+});
+</script>
