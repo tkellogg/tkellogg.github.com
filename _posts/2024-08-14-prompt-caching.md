@@ -60,7 +60,14 @@ Again, this might be fine with you. The costs will ceratainly come down over tim
 more and more people. However, there's still a lot of security & productivity reasons to do RAG via a
 knowledge graph instead of a vector store. [I wrote about it here](/blog/2024/08/12/graph-ai). I think a lot
 of that discussion isn't resolved by huge contexts. I don't think you can reliably build safe LLM applications without the structure
-provided by a knowledge graph.
+provided by a knowledge graph. 
+
+<p>
+    Knowledge graphs can be difficult to create, so I've been working on an app to make it as simple as
+    taking notes, or pointing it at blogs or wikis. 
+    {% include form_link.html text="Sign up here" url="https://docs.google.com/forms/d/e/1FAIpQLScrXwaCTkwDp1xFPSpIa6cbPWU1-nXXigN7QjqEgPd1OTDXUA/viewform?usp=pp_url&entry.339456034=" id="signup" %} 
+    if that sounds interesting.
+</p>
 
 ## Conclusion
 This is a big development for a lot of LLM uses. And while it does address some RAG applications,

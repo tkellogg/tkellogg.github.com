@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Change Consulting
+title: AI Consulting
 ---
 
 {% include_relative _index.markdown %}

@@ -6,6 +6,9 @@ categories:
  - llm
  - consulting
 image: https://user-images.githubusercontent.com/437044/282653937-c737587a-a95e-481f-a27d-947b7e5c22eb.png
+summary:
+  Shockingly, LLMs are the most interpretable form of machine learning that I've seen so far,
+  in that it's very compatible with an end user's needs for trust and explanation of behavior.
 ---
 
 This might be a hot take but I truely believe it: LLMs are the most interpretable form of machine learning 

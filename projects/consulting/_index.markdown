@@ -4,9 +4,11 @@ Is your business using AI but are feeling stuck? My clients often feel overwhelm
 and trade-offs when rolling out AI and often just want to know if they're doing it right. 
 
 As a hands-on AI architect, I show where you're doing great, as well as provide actionable feedback
-on where you can improve as well as give ideas on where you can go next.
+on where you can improve as well as give ideas on where you can go next. I have 17+ years of experience
+in software engineering, architecture and management, as well as 6+ years producing and operating AI/ML applications.
 
 * _**AI architecture**_ — RAG, knowledge graphs, vector databases, etc.
+  _**AI/ML Operations**_ — Deploying, testing, and monitoring AI or ML apps.
 * _**Rollout**_ — ChatGPT or Microsoft Copilot
 * _**Engineering**_ — Using AI code generation tools effectively
 * _**Education**_ — Programs that enable employees to get the most from AI
