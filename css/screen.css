@@ -140,3 +140,42 @@ img[src~="inline"] {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
+
+/* default styles for desktop and larger screens */
+.container {
+  width: 100%;
+  display: block;
+}
+
+.column {
+  width: 45%;
+  float: left;
+}
+
+.card {
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #ccc;
+  border-style: dashed;
+  background-color: #f7f7f7;
+  margin: 0.5rem;
+  padding 0.25rem;
+  min-height: 15rem;
+
+  display: inline-block;
+  text-align: center;
+
+  color: #333;
+  text-decoration: none;
+}
+.card:hover {
+  color: #888;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+.column {
+  width: 100%;
+  float: left;
+}
+}
