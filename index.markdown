@@ -10,7 +10,7 @@ title: Home
 <div class="container">
 	<a href="https://www.getdentropy.com" class="column card">
 		<h1>dentropy</h1>
-		<p>Your personal database for your life</p>
+		<p>The personal database for your life</p>
 	</a>
 	<a href="https://fossil-social.com" class="column card">
 		<h1>fossil</h1>
