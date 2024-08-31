@@ -45,7 +45,7 @@ programming, and AI coding assistants. They all take two or more imperfect thing
 in a way that **combines the best features** of each and removes the imperfections.
 
 In pair programming, who do you pair with? In one of my internships years ago, they loved [Extreme
-Programming][xp]. In XP you pair program 100% of the time. Their guidance was to pair very different
+Programming][xp]. In XP you pair program 100% of the time. Their guidance was to assign very different
 people together. Have a junior dev? Put them with a senior. Or maybe one dev knows an extraordinary amount
 about a particular component, then let them rotate across the rest of the team. In a sense, it's the 
 rougher the better. 
