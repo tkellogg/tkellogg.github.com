@@ -99,6 +99,7 @@ Thoughts?
 * [Bluesky](https://bsky.app/profile/kelloggt.bsky.social/post/3l2zntrquu42z)
 * [Mastodon](https://hachyderm.io/@kellogh/113057500380281732)
 * [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_who-wins-now-that-cursor-is-a-thing-good-activity-7235681220997656576-mnkU?utm_source=share&utm_medium=member_ios)
+* [Hacker News](https://news.ycombinator.com/item?id=41409871)
 
 
  [orig]: /blog/2022/04/11/three-plates
