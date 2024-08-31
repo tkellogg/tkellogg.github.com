@@ -11,6 +11,10 @@ categories:
 image: https://cdn.pixabay.com/photo/2018/01/31/07/42/running-3120507_960_720.jpg
 is_draft: false
 use_mermaid: false
+summary: 
+  Who wins now that Cursor is out? Good programmers? Bad programmers? Here, I make
+  the case that it is more about your tempermant and personality traits. If you're
+  good in the places where the AI is weak, you'll knock it out of the park.
 ---
 
 Nobody writes code correctly on the first pass 100% of the time. Not even the best programmers.
