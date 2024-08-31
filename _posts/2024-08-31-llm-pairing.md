@@ -92,6 +92,14 @@ push it to the limits. That kind of person will get the most out of the AI's abi
 Or if you have the skepticism to doubt and double check the AI's outputs, you'll protect yourself from
 the LLM's weaknesses.
 
+# Conversation
+Thoughts?
+
+* [Threads](https://www.threads.net/@kelloggt/post/C_VycFSOrpB/?xmt=AQGzbD_0maa6XAm-SM356FvPmE5cWjxQULYzMMv6ialo3g)
+* [Bluesky](https://bsky.app/profile/kelloggt.bsky.social/post/3l2zntrquu42z)
+* [Mastodon](https://hachyderm.io/@kellogh/113057500380281732)
+* [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_who-wins-now-that-cursor-is-a-thing-good-activity-7235681220997656576-mnkU?utm_source=share&utm_medium=member_ios)
+
 
  [orig]: /blog/2022/04/11/three-plates
  [gh]: https://github.com/features/copilot
