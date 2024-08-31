@@ -40,7 +40,8 @@ with yourself, you make dumb mistakes too.
 
 
 ## Sum of Strengths
-There's something in common between all these things. They all take two or more imperfect things 
+There's something in common between all these things: unit testing, the "3 plates" method, pair 
+programming, and AI coding assistants. They all take two or more imperfect things 
 in a way that **combines the best features** of each and removes the imperfections.
 
 In pair programming, who do you pair with? In one of my internships years ago, they loved [Extreme
