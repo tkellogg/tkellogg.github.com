@@ -50,3 +50,7 @@ recognize the trend, if we have any hope of addressing it.
 A good starting point is: _**be responsible for the bugs you commit**_, regardless if an AI typed the code. Everyone
 needs to live by this.
 
+
+# Discussion
+* [Hacker News](https://news.ycombinator.com/item?id=41636423)
+* [Mastodon](https://hachyderm.io/@kellogh/113192943139982093)
