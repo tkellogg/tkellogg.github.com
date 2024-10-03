@@ -55,7 +55,7 @@ I'll say that this sort of attention only happens when her brain is fully engage
 quite rare, she often gets scared off by big ideas and loses attention.
 
 They described the _MTZ (Mantle Transition Zone)_ as feeling cooler on the surface
-when the techtonic plates are thicker and hotter when the plates are thinner.
+when the tectonic plates are thicker and hotter when the plates are thinner.
 
 My girl instantly responded:
 
