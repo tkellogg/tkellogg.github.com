@@ -1,85 +1,41 @@
 ---
 ---
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSHCSPLCWK"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'G-NSHCSPLCWK');
-	</script>
-
-	{% include utm.html %}
-
-	<script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-o.onload=function(){window.trackingFunctions.onLoad({appId:"66b0e800eb352b03d8bb289a"})},
-document.head.appendChild(o)}initApollo();</script>
-
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<link rel="alternate" type="application/atom+xml" title="Tim Kellogg&quot;s blog" href="/atom.xml" />
-	<title>{{ page.title }} - Tim Kellogg</title>
-	<meta name="author" content="Tim Kellogg" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	{% if page.image %}
-		<meta property="og:image" content="{{ page.image }}">
-		{% if page.image contains ".png" %}
-			<meta property="og:image:type" content="image/png">
-		{% elsif page.image contains ".jpeg" %}
-			<meta property="og:image:type" content="image/jpeg">
-		{% elsif page.image contains ".jpg" %}
-			<meta property="og:image:type" content="image/jpeg">
-		{% elsif page.image contains ".webp" %}
-			<meta property="og:image:type" content="image/webp">
-		{% endif %}
-	{% endif %}
-	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
-	<link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
-	<link rel="stylesheet" href="/css/screen.css" type="text/css"/>
-	<!-- Event snippet for Page view conversion page -->
-	<script>
-	  gtag('event', 'conversion', {'send_to': 'AW-11009560208/asUHCLrX-MUZEJCd4oEp'});
-	</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/screen.css">
+    {% if page.use_mermaid %}
+    <script src="/public/mermaid-10.6.1-min.js"></script>
+    {% endif %}
 </head>
 <body>
-	<div class="container" style="max-width: 90ch">
-	<div class="navbar navbar-default" style="margin-top: 2rem">
-		<div class="container-fluid">
-				<div class="navbar-header">
-					<a href="/" class="navbar-brand">Tim Kellogg</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li>
-							<a href="/blog/">blog</a>
-						</li>
-						<li>
-							<a href="/projects/">projects</a>
-						</li>
-						<li>
-							<a href="/projects/consulting/">consulting</a>
-						</li>
-						<li>
-							<a href="/contact/">contact</a>
-						</li>
-					</ul>
-				</div>
-		</div>
-	</div>
+    <header class="site-header">
+        <nav class="site-nav">
+            <div class="site-title">
+                <a href="/">Tim Kellogg</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-	<article>
-	{{ content }}
-	</article>
+    <div class="site-content">
+        <main>
+            {{ content }}
+        </main>
+    </div>
 
-	<footer>
-		<p>
-			&copy; <a rel="me" href="https://hachyderm.io/@kellogh">Tim Kellogg</a> {{ 'now' | date: "%Y" }}
-		</p>
-	</footer>
-	</div>
+    <footer class="site-footer">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    </footer>
 </body>
 </html>

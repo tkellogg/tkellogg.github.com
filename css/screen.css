@@ -1,55 +1,126 @@
-.tag-cloud {
-	line-height: normal;
-	word-wrap: break-word;
+/* Base styles */
+html {
+  font-size: 18px;
 }
 
-	.tag-cloud a.tag {
-		color: #aaa;
-		padding: 1px 1px 1px 1px;
-		margin: 1px 1px 1px 1px;
-	}
-
-time {
-	font-weight: bold;
-	font-size: 2rem;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  background-color: #f8f8f8;
 }
 
-p#time {
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 2rem 0 1rem;
+  line-height: 1.2;
 }
 
-h1.title {
-	font-size: 5rem;
-	margin: 1.5rem 0rem 1.5rem 0rem;
+h1, h1.title {
+  font-size: 2rem;
 }
-h1, h2, h3 {
-	margin: 2.2rem 0rem 1.5rem 0rem;
-}
-h1 {
-	font-size: 4rem;
-}
+
 h2 {
-	font-size: 3rem;
-}
-h3 {
-	font-size: 2rem;
-}
-div#related {
-	margin-top: 6rem;
-}
-div {
   font-size: 1.75rem;
 }
-code {
-	color: #000000;
+
+h3 {
+  font-size: 1.5rem;
 }
 
-.atom {
-	background-image: url('/images/atom.png');
-	/*background-position: -10px 0px;*/
-	background-repeat: no-repeat;
-	padding-left: 2.5rem;
+p, ul, ol {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+div {
+  font-size: 1rem;
+}
+
+/* Navigation styles */
+.site-header {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e7e7e7;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-title a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 1rem;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Card styles */
+.card {
+  border-radius: 5px;
+  border: 2px dashed #ccc;
+  background-color: #f7f7f7;
+  margin: 0.5rem;
+  padding: 0.25rem;
+  min-height: 15rem;
+  display: inline-block;
+  text-align: center;
+  color: #333;
+  text-decoration: none;
+}
+
+.card h1 {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+}
+
+/* Other styles */
+time {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+code {
+  color: #000000;
 }
 
 blockquote {
@@ -57,19 +128,7 @@ blockquote {
   border-left: 1.5rem solid #ccc;
   margin: 1.5rem 1.5rem;
   padding: 0.5rem 1.5rem;
-  quotes: "\201C""\201D""\2018""\2019";
-}
-blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4rem;
-  line-height: 0.1rem;
-  margin-right: 0.25rem;
-  vertical-align: -0.4rem;
-}
-blockquote p {
-  display: block;
-	margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 .callout {
@@ -78,104 +137,108 @@ blockquote p {
   padding-left: 2rem;
   position: relative;
   margin-bottom: 3rem;
-}
-.callout::before {
-  content: "|";
-  color: #A4B2EA;
-  background-color: #A4B2EA;
-  width: 1rem;
-  height: calc(100%);
-  position: absolute; /* Absolute positioning to stretch vertically */
-  top: 0;
-  bottom: 0;
-  left: 0;
+  font-size: 1rem;
 }
 
-/* from @toastal, "this will limit paragraphs & list items to 67 characters."
- * Optimial reading length is 55-70 characters.
- */
-#post :where(p, li, img, blockquote, pre) {
-  max-width: 90ch;
+/* Profile section */
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-body {
-  overflow-x: hidden;
-}
-html, body {
-  width: 100vw;
-  overflow-x: hidden;
-}
-
-img[src~="inline"] {
-  width: 34ch;
-  float: right;
-  margin-left: .25rem;
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 2rem;
 }
 
-#post img {
-  max-width: 100%;
+.bio h1 {
+    margin-top: 0;
 }
 
-.profile a {
-  width: 100%;
-  display: block;
-  padding: 0.5rem;
-  padding-left: 1rem;
-  margin: 1rem;
-  border-width: 1px;
-  border-radius: 0.75rem;
-  color: #555555;
+/* Featured projects */
+.featured-projects {
+    margin-bottom: 2rem;
 }
 
-.profile a svg {
-  vertical-align: middle;
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
-.profile a:hover {
-  background-color: #dddddd;
-  text-decoration: none;
+.featured-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.profile {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* default styles for desktop and larger screens */
-.container {
-  width: 100%;
-  display: block;
+.featured-card h3 {
+    margin-top: 0;
+    color: #007bff;
 }
 
-.column {
-  width: 48%;
-  float: left;
+.featured-card p {
+    margin-bottom: 0;
 }
 
-.card {
-  border-radius: 5px;
-  border-width: 2px;
-  border-color: #ccc;
-  border-style: dashed;
-  background-color: #f7f7f7;
-  margin: 0.5rem;
-  padding 0.25rem;
-  min-height: 15rem;
+/* Responsive design */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 
-  display: inline-block;
-  text-align: center;
+  body {
+    padding: 0 0.5rem;
+  }
 
-  color: #333;
-  text-decoration: none;
-}
-.card:hover {
-  color: #888;
-  text-decoration: none;
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    margin-top: 1rem;
+  }
+
+  .nav-links li {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  .column {
+    width: 100%;
+    float: none;
+  }
+
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-image {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 }
 
-@media only screen and (max-width: 768px) {
-.column {
-  width: 100%;
-  float: left;
-}
+/* Adjust main content to account for fixed header */
+.site-content {
+  margin-top: 4rem; /* Adjust this value based on your header height */
+  padding: 1rem;
 }

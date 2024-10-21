@@ -3,27 +3,30 @@ layout: default
 title: Home
 ---
 
-<div style="display: flex; justify-content: center; padding: 2rem">
-	<img src="/images/2022-primary-avatar-circle.png" />
+<div class="profile-section">
+    <img src="/images/2022-primary-avatar-circle.png" alt="Tim Kellogg" class="profile-image" />
+    <div class="bio">
+        <h1>Tim Kellogg</h1>
+        <p>AI architect, software engineer, and tech enthusiast. Passionate about creating innovative solutions and exploring the frontiers of technology.</p>
+    </div>
 </div>
 
-<div class="container">
-	<a href="https://www.getdentropy.com" class="column card">
-		<h1>dentropy</h1>
-		<p>The personal database for your life</p>
-	</a>
-	<a href="https://fossil-social.com" class="column card">
-		<h1>fossil</h1>
-		<p>Social media, optimized for you</p>
-	</a>
-	<a href="/projects/consulting" class="column card">
-		<h1>consulting</h1>
-		<p>AI architecture, marketing, software engineering design, etc.</p>
-	</a>
-	<a href="/blog" class="column card">
-		<h1>blog</h1>
-		<p>Tech, AI, databases, IoT. Years of far-out thoughts scattered across a few pages.</p>
-	</a>
+<div class="featured-projects">
+    <h2>Featured Projects</h2>
+    <div class="card-container">
+        <a href="https://www.getdentropy.com" class="featured-card">
+            <h3>Dentropy</h3>
+            <p>The personal database for your life</p>
+        </a>
+        <a href="/projects/consulting" class="featured-card">
+            <h3>Consulting</h3>
+            <p>AI architecture, marketing, software engineering design, etc.</p>
+        </a>
+        <a href="/blog" class="featured-card">
+            <h3>Blog</h3>
+            <p>Tech, AI, databases, IoT. Years of far-out thoughts scattered across a few pages.</p>
+        </a>
+    </div>
 </div>
 
 <p>&nbsp;</p>
