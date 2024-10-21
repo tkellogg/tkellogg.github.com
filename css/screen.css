@@ -11,7 +11,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
-  background-color: #f8f8f8;
+  background-color: #f5f5f5; /* Changed to light gray */
 }
 
 /* Typography */
@@ -25,7 +25,7 @@ h1, h1.title {
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem; /* Changed from 1.75rem to 1.5rem */
 }
 
 h3 {
@@ -43,8 +43,8 @@ div {
 
 /* Navigation styles */
 .site-header {
-  background-color: #f8f8f8;
-  padding: 1rem 0; /* Changed back to 1rem from 1.5rem */
+  background-color: #ffffff; /* Kept white */
+  padding: 1rem 0;
   border-bottom: 1px solid #e7e7e7;
   width: 100%;
   position: fixed;
@@ -63,7 +63,7 @@ div {
 }
 
 .site-title a {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #333;
   text-decoration: none;
@@ -178,37 +178,57 @@ blockquote {
     margin-bottom: 2rem;
 }
 
+/* Content section styles */
+.content-container {
+  margin-bottom: 2rem;
+}
+
+.content-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
 .featured-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease-in-out;
+  background-color: #ffffff; /* Changed from #f8f8f8 to #ffffff */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added box-shadow transition */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Added a subtle shadow */
 }
 
 .featured-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Increased shadow on hover */
 }
 
 .featured-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    color: #333;
-    font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.25rem;
 }
 
 .featured-card p {
-    margin-bottom: 0;
-    font-size: 0.9rem;
-    color: #666;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 /* Responsive design */
@@ -253,6 +273,148 @@ blockquote {
 
 /* Adjust main content to account for fixed header */
 .site-content {
-  margin-top: 5rem; /* Increased from 4rem to 5rem */
+  margin-top: 5rem;
   padding: 1rem;
+}
+
+/* Blog layout */
+.blog-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-content {
+  flex: 2; /* Changed from 3 to 2 */
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-content h2 {
+  margin-top: 0; /* This will remove the top margin of the "Latest Post" title */
+  margin-bottom: 1rem; /* Adjust this value as needed */
+}
+
+.blog-sidebar {
+  flex: 1; /* Changed from 2 to 1 */
+  min-width: 300px; /* Increased from 250px to 300px */
+}
+
+.post-title {
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.recent-posts {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recent-posts li {
+  margin-bottom: 1rem;
+}
+
+.recent-posts a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+
+.recent-posts .post-date {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.archive-link {
+  margin-top: 2rem;
+}
+
+/* Responsive design for blog layout */
+@media (max-width: 1100px) { /* Changed from 900px to 1100px */
+  .blog-container {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    order: -1;
+  }
+}
+
+/* Blog post styles */
+#post {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Blog sidebar styles */
+.sidebar-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.project-card {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-card h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  text-decoration: underline;
 }

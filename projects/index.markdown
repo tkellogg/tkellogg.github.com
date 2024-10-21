@@ -3,39 +3,45 @@ layout: default
 title: Projects
 ---
 
+<div class="content-container">
+    <div class="content-section">
+        <h2>Hire Me</h2>
+        <p>I work with companies to navigate AI. See my <a href="/projects/consulting">consulting</a> page for more information.</p>
+        <div class="project-card">
+            <h3>Consulting</h3>
+            <p>AI architecture, marketing, software engineering design, etc.</p>
+            <a href="/projects/consulting" class="project-link">Learn More</a>
+        </div>
+    </div>
+</div>
 
-# Hire Me
-
-I work with companies to navigate AI. See my [consulting](/projects/consulting) page for more information.
-
-# Open Source Projects
-
-Over time I've contributed to a number of open source projects. I've become aware of several projects that do 
-excellent work and solve great problems, but are in need of help. I started [a list](/projects/open-source.html) of
-several of such projects. I encourage everyone to 
-[contribute to open source](/blog/2012/04/22/why-open-source-is-worth-your-time/), so please look over the list and
-suggest any that I might be missing.
-
-
-## [dura](https://github.com/tkellogg/dura)
-You shouldn't lose work if you're using Git. I wrote more about it [here](https://timkellogg.me/blog/2022/10/04/dura).
-It's a daemon that automatically makes commits, but not to your current branch. In practice, it's nearly
-invisible until you seriously mess up, and, in a moment of panic suddenly realize you're find because you've
-been running dura in the backround all along.
-
-## [fossil](https://github.com/tkellogg/fossil/)
-An AI-driven mastodon client that works for me. It groups posts by similar content, so I can spend less time
-in social media while still retaining all the benefits I get from it. I wrote about it [here](https://timkellogg.me/blog/2023/12/19/fossil) and [here](https://timkellogg.me/blog/2023/12/21/alignment).
-
-## [Jump-Location](https://github.com/tkellogg/Jump-Location)
-A Windows PowerShell take on [autojump](https://github.com/wting/autojump). I haven't used it in years, but
-[Scott Hanselman](https://www.hanselman.com/blog/jumplocation-a-change-directory-cd-powershell-command-that-reads-your-mind)
-promoted it on his blog. It's been largely replaced by Z-Location (which I appreciate, since I don't actually
-have time to maintain Jump-Location).
-
-## [Moq.AutoMocker](https://github.com/moq/Moq.AutoMocker)
-I started this and handed it off to the Moq organization. It's an inversion of control container that generates
-mocks for dependencies. So you can say, `mocker.Get<UserFetchService>()` and it'll return an instance of a
-concrete `UserFetchService`, but with all it's dependencies mocked out. I don't maintain this anymore, but it
-is well-maintained by a few guys in Washington state.
-
+<div class="content-container">
+    <div class="content-section">
+        <h2>Open Source Projects</h2>
+        <p>Over time I've contributed to a number of open source projects. I've become aware of several projects that do excellent work and solve great problems, but are in need of help. I started <a href="/projects/open-source.html">a list</a> of several of such projects. I encourage everyone to <a href="/blog/2012/04/22/why-open-source-is-worth-your-time/">contribute to open source</a>, so please look over the list and suggest any that I might be missing.</p>
+        
+        <div class="project-card">
+            <h3>dura</h3>
+            <p>You shouldn't lose work if you're using Git. It's a daemon that automatically makes commits, but not to your current branch.</p>
+            <a href="https://github.com/tkellogg/dura" class="project-link">View on GitHub</a>
+        </div>
+        
+        <div class="project-card">
+            <h3>fossil</h3>
+            <p>An AI-driven mastodon client that works for me. It groups posts by similar content, so I can spend less time in social media while still retaining all the benefits I get from it.</p>
+            <a href="https://github.com/tkellogg/fossil/" class="project-link">View on GitHub</a>
+        </div>
+        
+        <div class="project-card">
+            <h3>Jump-Location</h3>
+            <p>A Windows PowerShell take on autojump. It's been largely replaced by Z-Location.</p>
+            <a href="https://github.com/tkellogg/Jump-Location" class="project-link">View on GitHub</a>
+        </div>
+        
+        <div class="project-card">
+            <h3>Moq.AutoMocker</h3>
+            <p>An inversion of control container that generates mocks for dependencies.</p>
+            <a href="https://github.com/moq/Moq.AutoMocker" class="project-link">View on GitHub</a>
+        </div>
+    </div>
+</div>

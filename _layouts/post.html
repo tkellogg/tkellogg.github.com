@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-<h1 class="title">{{ page.title }}</h1>
-<div id="post">
+<article id="post">
+	<h1 class="title">{{ page.title }}</h1>
 	<p id="time">
 		<time pubdate="true">
 			{{ page.date | date: "%a %B %d, %Y" }}
@@ -12,7 +12,7 @@ layout: default
 		<img src="{{ page.image }}" style="width: 100%; padding-bottom: 15px" />
 	{% endif %}
 	{{ content }}
-</div>
+</article>
 
 <div id="related">
 	<div class="callout">
