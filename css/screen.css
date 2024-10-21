@@ -1,6 +1,7 @@
 /* Base styles */
 html {
   font-size: 18px;
+  overflow-y: scroll;
 }
 
 body {
@@ -11,25 +12,33 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
-  background-color: #f5f5f5; /* Changed to light gray */
+  background-color: #f5f5f5;
+  padding-top: 80px; /* Adjust this value as needed */
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  margin: 2rem 0 1rem;
   line-height: 1.2;
 }
 
 h1, h1.title {
   font-size: 2rem;
+  margin: 2rem 0 1rem;
 }
 
 h2 {
-  font-size: 1.5rem; /* Changed from 1.75rem to 1.5rem */
+  font-size: 1.5rem;
+  margin: 1rem 0 0.75rem; /* Reduced top margin */
 }
 
 h3 {
   font-size: 1.5rem;
+  margin: 1rem 0 0.75rem;
+}
+
+/* Add this new style for h2 elements in blog posts */
+#post h2 {
+  margin-top: 2rem; /* Add back the top margin for h2 in blog posts */
 }
 
 p, ul, ol {
@@ -43,23 +52,25 @@ div {
 
 /* Navigation styles */
 .site-header {
-  background-color: #ffffff; /* Kept white */
-  padding: 1rem 0;
+  background-color: #ffffff;
+  padding: 0; /* Changed from 1rem 0 to 0 */
   border-bottom: 1px solid #e7e7e7;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+  height: 60px; /* Keep this if you want a fixed height */
 }
 
 .site-nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* This will vertically center the content */
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
+  height: 100%; /* This will make the nav take full height of the header */
 }
 
 .site-title a {
@@ -188,45 +199,51 @@ blockquote {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
 }
 
-.content-section h2 {
+.content-section h1 {
   margin-top: 0;
   margin-bottom: 1rem;
   color: #333;
 }
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+.content-section ul {
+  padding-left: 1.5rem;
 }
 
-.featured-card {
-  background-color: #ffffff; /* Changed from #f8f8f8 to #ffffff */
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 1.5rem;
+.contact-button {
+  display: inline-block;
+  background-color: #446688;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
   text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added box-shadow transition */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Added a subtle shadow */
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-.featured-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Increased shadow on hover */
+.contact-button:hover {
+  background-color: #335577;
+  text-decoration: none;
+  color: #ffffff;
 }
 
-.featured-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+.post-item {
+  margin-bottom: 1.5rem;
+}
+
+.post-item .title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
   color: #333;
-  font-size: 1.25rem;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
 }
 
-.featured-card p {
-  margin-bottom: 0;
+.post-item .excerpt {
   font-size: 0.9rem;
   color: #666;
 }
@@ -273,8 +290,8 @@ blockquote {
 
 /* Adjust main content to account for fixed header */
 .site-content {
-  margin-top: 5rem;
   padding: 1rem;
+  /* margin-top: 40px; */ /* This line has been removed */
 }
 
 /* Blog layout */
@@ -390,22 +407,29 @@ blockquote {
 }
 
 .project-card {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  /* Remove display: flex and justify-content: center */
+  /* Remove min-height */
+  /* Remove box-shadow */
+  /* Remove transition */
 }
 
-.project-card h4 {
+.project-card h3 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: #333;
 }
 
 .project-card p {
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  color: #666;
+  margin-bottom: 1rem;
+  /* Remove flex-grow */
 }
 
 .project-link {
@@ -413,8 +437,780 @@ blockquote {
   font-size: 0.9rem;
   color: #007bff;
   text-decoration: none;
+  /* Remove align-self */
 }
 
-.project-link:hover {
+/* Project grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Homepage specific styles */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.featured-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.featured-card p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Consulting page specific styles */
+.content-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.content-section h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.content-section ul {
+  padding-left: 1.5rem;
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #446688;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #335577;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.post-item {
+  margin-bottom: 1.5rem;
+}
+
+.post-item .title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.post-item .excerpt {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive design for blog layout */
+@media (max-width: 1100px) { /* Changed from 900px to 1100px */
+  .blog-container {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    order: -1;
+  }
+}
+
+/* Blog post styles */
+#post {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Blog sidebar styles */
+.sidebar-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  /* Remove display: flex and justify-content: center */
+  /* Remove min-height */
+  /* Remove box-shadow */
+  /* Remove transition */
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  /* Remove flex-grow */
+}
+
+.project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  /* Remove align-self */
+}
+
+/* Project grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Homepage specific styles */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.featured-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.featured-card p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Consulting page specific styles */
+.content-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.content-section h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.content-section ul {
+  padding-left: 1.5rem;
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #446688;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #335577;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.post-item {
+  margin-bottom: 1.5rem;
+}
+
+.post-item .title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.post-item .excerpt {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive design for blog layout */
+@media (max-width: 1100px) { /* Changed from 900px to 1100px */
+  .blog-container {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    order: -1;
+  }
+}
+
+/* Blog post styles */
+#post {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Blog sidebar styles */
+.sidebar-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  /* Remove display: flex and justify-content: center */
+  /* Remove min-height */
+  /* Remove box-shadow */
+  /* Remove transition */
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  /* Remove flex-grow */
+}
+
+.project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  /* Remove align-self */
+}
+
+/* Project grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Homepage specific styles */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.featured-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.featured-card p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Consulting page specific styles */
+.content-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.content-section h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.content-section ul {
+  padding-left: 1.5rem;
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #446688;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #335577;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.post-item {
+  margin-bottom: 1.5rem;
+}
+
+.post-item .title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.post-item .excerpt {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive design for blog layout */
+@media (max-width: 1100px) { /* Changed from 900px to 1100px */
+  .blog-container {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    order: -1;
+  }
+}
+
+/* Blog post styles */
+#post {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Blog sidebar styles */
+.sidebar-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  /* Remove display: flex and justify-content: center */
+  /* Remove min-height */
+  /* Remove box-shadow */
+  /* Remove transition */
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  /* Remove flex-grow */
+}
+
+.project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  /* Remove align-self */
+}
+
+/* Project grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Homepage specific styles */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.featured-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.featured-card p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Consulting page specific styles */
+.content-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.content-section h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.content-section ul {
+  padding-left: 1.5rem;
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #446688;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #335577;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.post-item {
+  margin-bottom: 1.5rem;
+}
+
+.post-item .title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.post-item .excerpt {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive design for blog layout */
+@media (max-width: 1100px) { /* Changed from 900px to 1100px */
+  .blog-container {
+    flex-direction: column;
+  }
+
+  .blog-sidebar {
+    order: -1;
+  }
+}
+
+/* Blog post styles */
+#post {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Blog sidebar styles */
+.sidebar-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  /* Remove display: flex and justify-content: center */
+  /* Remove min-height */
+  /* Remove box-shadow */
+  /* Remove transition */
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  /* Remove flex-grow */
+}
+
+.project-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  /* Remove align-self */
+}
+
+/* Project grid layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Homepage specific styles */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.featured-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Specific adjustments for content sections */
+.content-section h2 {
+  margin-top: 0; /* Remove top margin for h2 in content sections */
+}
+
+.main-content h2 {
+  margin-top: 0; /* Remove top margin for h2 in main content */
+}
+
+/* Consulting page - Relevant Articles styles */
+.content-section .post-item {
+  margin-bottom: 1rem;
+}
+
+.content-section .post-item .title {
+  display: inline;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.content-section .post-item .title:hover {
   text-decoration: underline;
+}
+
+.content-section .post-item .excerpt {
+  display: inline;
+  font-size: 1rem;
+  color: #666;
+  margin-left: 0.5rem;
 }

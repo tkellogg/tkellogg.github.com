@@ -1,87 +1,36 @@
-# AI Consulting
+<!-- ---
+layout: default
+title: AI Consulting
+--- -->
 
-Is your business using AI but are feeling stuck? My clients often feel overwhelmed navigating the sea of options
-and trade-offs when rolling out AI and often just want to know if they're doing it right. 
+<div class="content-section">
+    <h1>AI Consulting</h1>
 
-As a hands-on AI architect, I show where you're doing great, as well as provide actionable feedback
-on where you can improve as well as give ideas on where you can go next. I have 17+ years of experience
-in software engineering, architecture and management, as well as 6+ years producing and operating AI/ML applications.
+    <p>Is your business using AI but are feeling stuck? My clients often feel overwhelmed navigating the sea of options and trade-offs when rolling out AI and often just want to know if they're doing it right.</p>
 
-* _**AI architecture**_ — RAG, knowledge graphs, vector databases, etc.
-  _**AI/ML Operations**_ — Deploying, testing, and monitoring AI or ML apps.
-* _**Rollout**_ — ChatGPT or Microsoft Copilot
-* _**Engineering**_ — Using AI code generation tools effectively
-* _**Education**_ — Programs that enable employees to get the most from AI
+    <p>As a hands-on AI architect, I show where you're doing great, as well as provide actionable feedback on where you can improve as well as give ideas on where you can go next. I have 17+ years of experience in software engineering, architecture and management, as well as 6+ years producing and operating AI/ML applications.</p>
 
+    <ul>
+        <li><strong>AI architecture</strong> — RAG, knowledge graphs, vector databases, etc.</li>
+        <li><strong>AI/ML Operations</strong> — Deploying, testing, and monitoring AI or ML apps.</li>
+        <li><strong>Rollout</strong> — ChatGPT or Microsoft Copilot</li>
+        <li><strong>Engineering</strong> — Using AI code generation tools effectively</li>
+        <li><strong>Education</strong> — Programs that enable employees to get the most from AI</li>
+    </ul>
 
-Interested? [Contact me](/contact) for a first consultation. I prefer longer-term engagements
-that go beyond initial advice.
+    <p>Interested? <a href="/contact">Contact me</a> for a first consultation. I prefer longer-term engagements that go beyond initial advice.</p>
 
-<a href="/contact" class="contact">Contact Me</a>
+    <a href="/contact" class="contact-button">Contact Me</a>
+</div>
 
-
-### Relevant Articles
-{% for post in site.posts %}
-  {% if post.categories contains "consulting" and post.is_draft != true %}
-<div class="post-item"><a href="{{ post.url }}" class="title">{{ post.title }}</a> <div class="excerpt">{{ post.summary or post.excerpt }}</div></div>
-  {% endif %}
-{% endfor %}
-
-
-<style>
-.post-item {
-  padding: 0 0 4ch;
-  margin: 0;
-}
-.post-item .title {
-  padding-bottom: 0;
-  margin-bottom: 0;
-  display: inline;
-}
-.post-item .excerpt {
-  color: #888;
-  padding: 0 1ch;
-  margin-top: 0;
-  display: inline;
-}
-
-
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 0.75rem;
-  background-color: #eeeeee;
-  margin: 1rem 0rem;
-  overflow: hidden;
-}
-table thead {
-  display: none;
-}
-table tr td:first-child {
-  background-color: #ddeeff;
-  font-style: italic;
-}
-table td {
-  padding: 1rem;
-}
-.contact {
-  color: #eeeeee;
-  background-color: #446688;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 0.75rem;
-  margin: 2rem 1rem;
-  padding: 1rem 3rem;
-  overflow: hidden;
-
-  /* idk it's ChatGPT magic to make it centered */
-  display: block;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-.contact:hover {
-  text-decoration: none;
-  color: #eeeeee;
-}
-</style>
+<div class="content-section">
+    <h2>Relevant Articles</h2>
+    {% for post in site.posts %}
+      {% if post.categories contains "consulting" and post.is_draft != true %}
+        <div class="post-item">
+            <a href="{{ post.url }}" class="title">{{ post.title }}</a>
+            <div class="excerpt">{{ post.summary or post.excerpt }}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+</div>

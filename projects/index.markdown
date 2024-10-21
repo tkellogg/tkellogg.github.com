@@ -34,7 +34,7 @@ title: Projects
         
         <div class="project-card">
             <h3>Jump-Location</h3>
-            <p>A Windows PowerShell take on autojump. It's been largely replaced by Z-Location.</p>
+            <p>A Windows PowerShell take on autojump. I haven't used it in years, but it's been largely replaced by Z-Location.</p>
             <a href="https://github.com/tkellogg/Jump-Location" class="project-link">View on GitHub</a>
         </div>
         
