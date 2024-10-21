@@ -11,23 +11,19 @@ title: Home
     </div>
 </div>
 
-<div class="featured-projects">
-    <h2>Featured Projects</h2>
-    <div class="card-container">
-        <a href="https://www.getdentropy.com" class="featured-card">
-            <h3>Dentropy</h3>
-            <p>The personal database for your life</p>
-        </a>
-        <a href="/projects/consulting" class="featured-card">
-            <h3>Consulting</h3>
-            <p>AI architecture, marketing, software engineering design, etc.</p>
-        </a>
-        <a href="/blog" class="featured-card">
-            <h3>Blog</h3>
-            <p>Tech, AI, databases, IoT. Years of far-out thoughts scattered across a few pages.</p>
-        </a>
-    </div>
+<div class="card-container">
+    <a href="https://www.getdentropy.com" class="featured-card">
+        <h3>Dentropy</h3>
+        <p>The personal database for your life</p>
+    </a>
+    <a href="/projects/consulting" class="featured-card">
+        <h3>Consulting</h3>
+        <p>AI architecture, marketing, software engineering design, etc.</p>
+    </a>
+    <a href="/blog" class="featured-card">
+        <h3>Blog</h3>
+        <p>Tech, AI, databases, IoT. Years of far-out thoughts scattered across a few pages.</p>
+    </a>
 </div>
 
 <p>&nbsp;</p>
-

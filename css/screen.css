@@ -44,7 +44,7 @@ div {
 /* Navigation styles */
 .site-header {
   background-color: #f8f8f8;
-  padding: 1rem 0;
+  padding: 1rem 0; /* Changed back to 1rem from 1.5rem */
   border-bottom: 1px solid #e7e7e7;
   width: 100%;
   position: fixed;
@@ -144,22 +144,33 @@ blockquote {
 .profile-section {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #ffffff; /* Changed from #f0f4f8 to #ffffff */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     margin-right: 2rem;
+    border: 3px solid #f0f4f8; /* Changed from #ffffff to #f0f4f8 for contrast */
+    object-fit: cover;
 }
 
 .bio h1 {
     margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.bio p {
+    color: #34495e;
+    font-size: 1.1rem;
+    max-width: 600px;
 }
 
 /* Featured projects */
@@ -175,26 +186,29 @@ blockquote {
 
 .featured-card {
     background-color: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 1.5rem;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
 }
 
 .featured-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .featured-card h3 {
     margin-top: 0;
-    color: #007bff;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1.25rem;
 }
 
 .featured-card p {
     margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 /* Responsive design */
@@ -239,6 +253,6 @@ blockquote {
 
 /* Adjust main content to account for fixed header */
 .site-content {
-  margin-top: 4rem; /* Adjust this value based on your header height */
+  margin-top: 5rem; /* Increased from 4rem to 5rem */
   padding: 1rem;
 }
