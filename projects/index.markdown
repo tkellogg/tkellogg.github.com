@@ -5,18 +5,6 @@ title: Projects
 
 <div class="content-container">
     <div class="content-section">
-        <h2>Hire Me</h2>
-        <p>I work with companies to navigate AI. See my <a href="/projects/consulting">consulting</a> page for more information.</p>
-        <div class="project-card">
-            <h3>Consulting</h3>
-            <p>AI architecture, marketing, software engineering design, etc.</p>
-            <a href="/projects/consulting" class="project-link">Learn More</a>
-        </div>
-    </div>
-</div>
-
-<div class="content-container">
-    <div class="content-section">
         <h2>Open Source Projects</h2>
         <p>Over time I've contributed to a number of open source projects. I've become aware of several projects that do excellent work and solve great problems, but are in need of help. I started <a href="/projects/open-source.html">a list</a> of several of such projects. I encourage everyone to <a href="/blog/2012/04/22/why-open-source-is-worth-your-time/">contribute to open source</a>, so please look over the list and suggest any that I might be missing.</p>
         

@@ -4,7 +4,7 @@ title: AI Consulting
 --- -->
 
 <div class="content-section">
-    <h1>AI Consulting</h1>
+    <h2>AI Consulting</h2>
 
     <p>Is your business using AI but are feeling stuck? My clients often feel overwhelmed navigating the sea of options and trade-offs when rolling out AI and often just want to know if they're doing it right.</p>
 
