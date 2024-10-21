@@ -15,13 +15,13 @@ layout: default
 </article>
 
 <div id="related">
-	<div class="callout">
-		<h3>Everyone deserves a database</h3>
-		Dentropy turns your stream of conscious thoughts into a structured graph database
-		<b>indexed</b> on the <i>people</i>, <i>places</i> and <b><i>ideas</i></b> that you mention.
-		Never lose a name, birthday, or idea again.
-		<a href="https://www.getdentropy.com">Get on the waitlist</a>.
+	<div class="dentropy-promo">
+		<h4>Sign up for Dentropy</h4>
+		<p>Dentropy turns your stream of conscious thoughts into a structured graph database indexed on the <em>people</em>, <em>places</em> and <em>ideas</em> that you mention.</p>
+		<p>Never lose a name, birthday, or idea again.</p>
+		<a href="https://www.getdentropy.com" class="cta-button">Get on the waitlist</a>
 	</div>
+
 	<p style="width: 67ch;">
 		<b>tags</b>: 
 		{% for tag in page.categories %}
@@ -65,5 +65,4 @@ layout: default
 	{% if page.use_mermaid %}
 	<script src="/public/mermaid-10.6.1-min.js"></script>
 	{% endif %}
-    
 </div>
