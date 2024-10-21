@@ -13,7 +13,7 @@ body {
   margin: 0 auto;
   padding: 0 1rem;
   background-color: #f5f5f5;
-  padding-top: 80px; /* Adjust this value as needed */
+  padding-top: 0; /* Remove this line if it exists */
 }
 
 /* Typography */
@@ -53,24 +53,30 @@ div {
 /* Navigation styles */
 .site-header {
   background-color: #ffffff;
-  padding: 0; /* Changed from 1rem 0 to 0 */
+  padding: 0;
   border-bottom: 1px solid #e7e7e7;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  height: 60px; /* Keep this if you want a fixed height */
+  height: 60px;
 }
 
 .site-nav {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* This will vertically center the content */
+  align-items: center;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
-  height: 100%; /* This will make the nav take full height of the header */
+  height: 100%;
+}
+
+.site-title {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .site-title a {
@@ -78,11 +84,12 @@ div {
   font-weight: bold;
   color: #333;
   text-decoration: none;
+  white-space: nowrap; /* Prevent the title from wrapping */
 }
 
 .nav-links {
-  list-style-type: none;
   display: flex;
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
@@ -97,8 +104,61 @@ div {
   text-decoration: none;
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
+.menu-toggle {
+  display: none;
+  align-items: center;
+  height: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .site-nav {
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #333;
+    border-radius: 10px;
+    margin: 3px 0;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    display: none;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
 }
 
 /* Card styles */
@@ -259,7 +319,7 @@ blockquote {
   }
 
   .site-nav {
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: flex-start;
   }
 
@@ -290,8 +350,10 @@ blockquote {
 
 /* Adjust main content to account for fixed header */
 .site-content {
-  padding: 1rem;
-  /* margin-top: 40px; */ /* This line has been removed */
+  padding-top: 80px; /* Increase this value if needed */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
 }
 
 /* Blog layout */
@@ -301,21 +363,16 @@ blockquote {
 }
 
 .main-content {
-  flex: 2; /* Changed from 3 to 2 */
+  flex: 2;
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.main-content h2 {
-  margin-top: 0; /* This will remove the top margin of the "Latest Post" title */
-  margin-bottom: 1rem; /* Adjust this value as needed */
-}
-
 .blog-sidebar {
-  flex: 1; /* Changed from 2 to 1 */
-  min-width: 300px; /* Increased from 250px to 300px */
+  flex: 1;
+  min-width: 300px;
 }
 
 .post-title {
@@ -361,13 +418,17 @@ blockquote {
 }
 
 /* Responsive design for blog layout */
-@media (max-width: 1100px) { /* Changed from 900px to 1100px */
+@media (max-width: 768px) {
   .blog-container {
     flex-direction: column;
   }
 
   .blog-sidebar {
-    order: -1;
+    order: 1; /* Change this from -1 to 1 */
+  }
+
+  .main-content {
+    order: 0; /* Add this line */
   }
 }
 
@@ -378,6 +439,20 @@ blockquote {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
+}
+
+#post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
 }
 
 .title {
@@ -563,7 +638,7 @@ h2 {
 .dentropy-promo h4 {
     color: #007bff;
     margin: 0 0 0.75rem 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -589,3 +664,4 @@ h2 {
     text-decoration: none;
     color: #ffffff;
 }
+
