@@ -9,7 +9,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
-  max-width: 1000px;
+  max-width: 1200px; /* Increased from 1000px */
   margin: 0 auto;
   padding: 0 1rem;
   background-color: #f5f5f5;
@@ -67,7 +67,7 @@ div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
+  max-width: 1200px; /* Increased from 1000px */
   margin: 0 auto;
   padding: 0 1rem;
   height: 100%;
@@ -354,40 +354,42 @@ blockquote {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
+  max-width: 1200px; /* Add this line */
+  margin: 0 auto; /* Add this line to center the content */
 }
 
 /* Blog layout */
 .blog-container {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .main-content {
-  flex: 2;
+  flex: 4; /* Increased from 3 to 4 to make it larger */
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .blog-sidebar {
-  flex: 1;
-  min-width: 300px;
+  flex: 2; /* Keep this as is */
+  min-width: 250px; /* Reduced from 300px to 250px */
 }
 
 .post-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem; /* Increased from 0.5rem to 1rem */
 }
 
 .post-meta {
   color: #666;
   font-size: 0.9rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased from 1rem to 1.5rem */
 }
 
 .read-more {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Increased from 1rem to 1.5rem */
   color: #007bff;
   text-decoration: none;
 }
@@ -398,7 +400,7 @@ blockquote {
 }
 
 .recent-posts li {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased from 1rem to 1.5rem */
 }
 
 .recent-posts a {
@@ -414,38 +416,38 @@ blockquote {
 }
 
 .archive-link {
-  margin-top: 2rem;
+  margin-top: 3rem; /* Increased from 2rem to 3rem */
 }
 
 /* Responsive design for blog layout */
-@media (max-width: 768px) {
+@media (max-width: 1300px) { /* Increased from 1100px */
   .blog-container {
     flex-direction: column;
   }
 
   .blog-sidebar {
-    order: 1; /* Change this from -1 to 1 */
+    order: 1;
   }
 
   .main-content {
-    order: 0; /* Add this line */
+    order: 0;
   }
 }
 
 /* Blog post styles */
 #post {
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 2.5rem; /* Increased from 2rem to 2.5rem */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem; /* Increased from 2rem to 3rem */
 }
 
 #post img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 1rem auto;
+  margin: 1.5rem auto; /* Increased from 1rem to 1.5rem */
 }
 
 .post-content img {
@@ -457,13 +459,13 @@ blockquote {
 
 .title {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased from 1rem to 1.5rem */
 }
 
 #time {
   color: #666;
   font-size: 0.9rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased from 1rem to 1.5rem */
 }
 
 /* Blog sidebar styles */
@@ -665,3 +667,7 @@ h2 {
     color: #ffffff;
 }
 
+/* Add this near the top of your CSS file, after the .site-content rule */
+.site-content main {
+  padding-top: 2rem;
+}
