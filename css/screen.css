@@ -67,7 +67,7 @@ div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px; /* Increased from 1000px */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
   height: 100%;
@@ -95,13 +95,18 @@ div {
 }
 
 .nav-links li {
-  margin-left: 1rem;
+  margin-left: 2rem; /* Increased from 1rem to 2rem */
 }
 
 .nav-links a {
   font-size: 1rem;
   color: #333;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007bff;
 }
 
 .menu-toggle {
@@ -156,8 +161,7 @@ div {
   }
 
   .nav-links li {
-    margin: 0.5rem 0;
-    text-align: center;
+    margin: 1rem 0; /* Changed to vertical margin for mobile */
   }
 }
 
@@ -671,3 +675,31 @@ h2 {
 .site-content main {
   padding-top: 2rem;
 }
+
+/* Contact page styles */
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.contact-item:hover {
+    background-color: #e9ecef;
+}
+
+.contact-item svg {
+    margin-right: 0.5rem;
+}
+
