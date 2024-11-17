@@ -65,4 +65,16 @@ layout: default
 	{% if page.use_mermaid %}
 	<script src="/public/mermaid-10.6.1-min.js"></script>
 	{% endif %}
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('#post');
+      const paragraphs = content.getElementsByTagName('p');
+      const originalPromo = document.querySelector('.dentropy-promo');
+      
+      if (paragraphs.length >= 7 && paragraphs.length >= 14 && originalPromo) {
+        const promoClone = originalPromo.cloneNode(true);
+        paragraphs[6].parentNode.insertBefore(promoClone, paragraphs[6].nextSibling);
+      }
+    });
+	</script>
 </div>
