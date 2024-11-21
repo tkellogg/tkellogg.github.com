@@ -5,7 +5,6 @@ date: 2024-11-21
 categories:
  - ai
  - LLMs
- - programming
 image: https://cdn.pixabay.com/photo/2024/02/07/07/15/station-8558516_960_720.jpg
 is_draft: false
 use_mermaid: false
