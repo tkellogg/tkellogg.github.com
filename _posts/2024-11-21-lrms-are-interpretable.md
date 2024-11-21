@@ -118,6 +118,10 @@ ignored, but it's also easily used to understand what the model did. I think the
 interpretability too.
 
 
+### Discussion
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lbidopmehk2k)
+
+
 
 
  [prev]: /blog/2023/10/01/interpretability
