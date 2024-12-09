@@ -121,6 +121,12 @@ but it's extremely noisy, so it's hard to recommend. Feel free to scrape [my acc
 
 That's it! I hope that helps.
 
+# Discussion
+* [Hacker News](https://news.ycombinator.com/item?id=42371315)
+* [🦋 Bluesky](https://bsky.app/profile/timkellogg.me/post/3lcvro2sbw22i)
+* [Threads](https://www.threads.net/@kelloggt/post/DDX-BRtvxN4?xmt=AQGz9ZtiaY_70Rlpjsxx0ja5GcQzPABr9cIhpYO8dmyJOA)
+* [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_do-you-want-to-be-an-ai-engineer-heres-activity-7272017657036509186-dy42/?utm_source=share&utm_medium=member_ios)
+
 
  [cpp]: https://github.com/ggerganov/llama.cpp
  [vllm]: https://github.com/vllm-project/vllm
