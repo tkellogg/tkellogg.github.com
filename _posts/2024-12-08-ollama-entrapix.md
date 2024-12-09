@@ -124,6 +124,10 @@ in real world applications. I hope entrapix gives more hooks that you can use to
 apps functional, today.
 
 
+# Discussion
+* [Hacker News](https://news.ycombinator.com/item?id=42362582)
+
+
  [entropix]: https://github.com/xjdr-alt/entropix
  [entrapix]: https://github.com/tkellogg/ollama-entrapix
  [ollama]: https://ollama.com/
