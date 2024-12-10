@@ -22,5 +22,5 @@ fi
 echo "Writing _posts/$file_name"
 rg --multiline --multiline-dotall '^---.*---' _posts/$(ls _posts | sort -r | head -n1) | sd '^date: .*$' "date: $(date +%Y-%m-%d)" > "_posts/$file_name"
 
-vim _posts/$file_name
+nvim _posts/$file_name
 

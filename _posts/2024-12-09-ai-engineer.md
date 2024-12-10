@@ -32,7 +32,7 @@ You'll be a great AI engineer if:
 
 Seriously, you don't typically need to have AI experience, it's a new field so not many people actually have
 prior experience. It's tempting to think machine learning (ML) expierience is helpful, but it's actually
-often more of a liability to approach problems like a data scientist does.
+often more of a liability[[1]](#footnotes) to approach problems like a data scientist does.
 
 Here are a few archetypes of AI engineers distinguished by how they look at problems. You'll likely
 know which archetype you are based on what you already do.
@@ -120,6 +120,10 @@ has starter packs to get you zeroed into the right group very quickly. I know X 
 but it's extremely noisy, so it's hard to recommend. Feel free to scrape [my account][bsky] for followers.
 
 That's it! I hope that helps.
+
+# Footnotes
+* [1] "prior ML experience is a liability" turned out to be quite a controversial statement. I've followed
+  it up with [a new post](/blog/2024/12/10/ml-liability) expanding on the pros and cons of prior ML experience.
 
 # Discussion
 * [Hacker News](https://news.ycombinator.com/item?id=42371315)
