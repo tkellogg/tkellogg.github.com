@@ -4,6 +4,14 @@ title: AI Consulting
 --- -->
 
 <div class="content-section">
+<section>
+    <h2>Full Time</h2>
+    <p>I'm currently open to full time positions within AI engineering. I'm flexible in regards
+    to title, the important part to me is that I'm contributing to AI in a way that feels meaningful.
+    I have experience in management, product and as a staff+ engineer. Location should be Raleigh/Durham
+    area or remote, either is fine but I'm not open to moving.</p>
+</section>
+<section>
     <h2>AI Consulting</h2>
 
     <p>Is your business using AI but are feeling stuck? My clients often feel overwhelmed navigating the sea of options and trade-offs when rolling out AI and often just want to know if they're doing it right.</p>
@@ -21,6 +29,7 @@ title: AI Consulting
     <p>Interested? <a href="/contact">Contact me</a> for a first consultation. I prefer longer-term engagements that go beyond initial advice.</p>
 
     <a href="/contact" class="contact-button">Contact Me</a>
+</section>
 </div>
 
 <div class="content-section">
