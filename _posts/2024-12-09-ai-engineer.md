@@ -5,6 +5,7 @@ date: 2024-12-09
 categories:
  - ai
  - LLMs
+ - consulting
 image: https://cdn.pixabay.com/photo/2020/03/17/17/08/woman-4941164_1280.jpg
 is_draft: false
 use_mermaid: false

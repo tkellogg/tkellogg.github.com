@@ -1,4 +1,5 @@
 #!/bin/zsh
+set -eou pipefail
 
 # Check if the argument (slug) is provided
 if [ -z "$1" ]; then
@@ -21,6 +22,8 @@ fi
 
 echo "Writing _posts/$file_name"
 rg --multiline --multiline-dotall '^---.*---' _posts/$(ls _posts | sort -r | head -n1) | sd '^date: .*$' "date: $(date +%Y-%m-%d)" > "_posts/$file_name"
+
+sleep 0.1
 
 nvim "_posts/$file_name"
 
