@@ -9,6 +9,10 @@
     product and as a staff+ engineer. Location should be remote or Raleigh/Durham
     area, either is fine but I'm not open to moving.</p>
 
+    <p>
+    See my <a href="/Resume-TimKellogg.pdf">resume</a> for more info.
+    </p>
+
     <a href="/contact" class="contact-button">Contact Me</a>
 </section>
 <section class="content-section">
