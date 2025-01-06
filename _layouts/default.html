@@ -32,9 +32,6 @@
     {% if page.summary %}
         <meta property="og:description" content="{{ page.summary }}" />
         <meta property="twitter:description" content="{{ page.summary }}" />
-    {% else %}
-        <meta property="og:description" content="{{ page.content | truncatewords: 30  }}" />
-        <meta property="twitter:description" content="{{ page.content | truncatewords: 30  }}" />
     {% endif %}
     {% if page.layout == "post" %}
         <meta property="og:type" content="article" />
