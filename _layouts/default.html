@@ -22,7 +22,10 @@
     <link rel="stylesheet" href="/css/syntax.css">
     <link rel="stylesheet" href="/css/screen.css">
     
-    {% if page.image %}
+    {% if page.social_image %}
+        <meta property="og:image" content="{{ page.social_image }}" />
+        <meta property="twitter:image" content="{{ page.social_image }}" />
+    {% elsif page.image %}
         <meta property="og:image" content="{{ page.image }}" />
         <meta property="twitter:image" content="{{ page.image }}" />
     {% endif %}
