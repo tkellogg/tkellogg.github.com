@@ -21,7 +21,23 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/syntax.css">
     <link rel="stylesheet" href="/css/screen.css">
-
+    
+    {% if page.image %}
+        <meta property="og:image" content="{{ page.image }}" />
+        <meta property="twitter:image" content="{{ page.image }}" />
+    {% endif %}
+    {% if page.summary %}
+        <meta property="og:description" content="{{ page.summary }}" />
+        <meta property="twitter:description" content="{{ page.summary }}" />
+    {% else %}
+        <meta property="og:description" content="{{ page.content | truncatewords: 30  }}" />
+        <meta property="twitter:description" content="{{ page.content | truncatewords: 30  }}" />
+    {% endif %}
+    {% if page.layout == "post" %}
+        <meta property="og:type" content="article" />
+    {% else %}
+        <meta property="og:type" content="website" />
+    {% endif %}
     <!-- Event snippet for Page view conversion page -->
     <script>
       gtag('event', 'conversion', {'send_to': 'AW-11009560208/asUHCLrX-MUZEJCd4oEp'});
