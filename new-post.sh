@@ -1,5 +1,5 @@
 #!/bin/zsh
-set -eou pipefail
+set -euo pipefail
 
 # Check if the argument (slug) is provided
 if [ -z "$1" ]; then
