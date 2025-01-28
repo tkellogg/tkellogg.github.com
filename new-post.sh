@@ -20,8 +20,9 @@ if [ ! -d "_posts" ]; then
   mkdir _posts
 fi
 
-echo "Writing _posts/$file_name"
-rg --multiline --multiline-dotall '^---.*---' _posts/$(ls _posts | sort -r | head -n1) | sd '^date: .*$' "date: $(date +%Y-%m-%d)" > "_posts/$file_name"
+echo "_posts/$file_name"
+rg --multiline --multiline-dotall '^---.*---' $(find _posts -type f ! -empty | sort -r | head -n1)
+rg --multiline --multiline-dotall '^---.*---' $(find _posts -type f ! -empty | sort -r | head -n1) | sd '^date: .*$' "date: $(date +%Y-%m-%d)" > "_posts/$file_name"
 
 sleep 0.1
 
