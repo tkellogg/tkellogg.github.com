@@ -22,21 +22,29 @@
     <link rel="stylesheet" href="/css/syntax.css">
     <link rel="stylesheet" href="/css/screen.css">
     
-    {% if page.social_image %}
-        <meta property="og:image" content="{{ page.social_image }}" />
-        <meta property="twitter:image" content="{{ page.social_image }}" />
-    {% elsif page.image %}
-        <meta property="og:image" content="{{ page.image }}" />
-        <meta property="twitter:image" content="{{ page.image }}" />
-    {% endif %}
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     {% if page.summary %}
         <meta property="og:description" content="{{ page.summary }}" />
-        <meta property="twitter:description" content="{{ page.summary }}" />
     {% endif %}
-    {% if page.layout == "post" %}
-        <meta property="og:type" content="article" />
-    {% else %}
-        <meta property="og:type" content="website" />
+    {% if page.social_image %}
+        <meta property="og:image" content="{{ page.social_image }}" />
+    {% elsif page.image %}
+        <meta property="og:image" content="{{ site.url }}{{ page.image }}" />
+    {% endif %}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    {% if page.summary %}
+        <meta name="twitter:description" content="{{ page.summary }}" />
+    {% endif %}
+    {% if page.social_image %}
+        <meta name="twitter:image" content="{{ page.social_image }}" />
+    {% elsif page.image %}
+        <meta name="twitter:image" content="{{ site.url }}{{ page.image }}" />
     {% endif %}
     <!-- Event snippet for Page view conversion page -->
     <script>
