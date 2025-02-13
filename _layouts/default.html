@@ -32,7 +32,7 @@
     {% if page.social_image %}
         <meta property="og:image" content="{{ page.social_image }}" />
     {% elsif page.image %}
-        <meta property="og:image" content="{{ site.url }}{{ page.image }}" />
+        <meta property="og:image" content="{{ page.image }}" />
     {% endif %}
 
     <!-- Twitter -->
@@ -44,7 +44,7 @@
     {% if page.social_image %}
         <meta name="twitter:image" content="{{ page.social_image }}" />
     {% elsif page.image %}
-        <meta name="twitter:image" content="{{ site.url }}{{ page.image }}" />
+        <meta name="twitter:image" content="{{ page.image }}" />
     {% endif %}
     <!-- Event snippet for Page view conversion page -->
     <script>
