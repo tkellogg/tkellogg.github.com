@@ -85,6 +85,9 @@ It's going to look like insane progress, but I don't think it's the singularity.
 talk at all about **emergent behavior**. In fact it assumes that a behavior has already emerged
 in order to bootstrap the process. But once it's emerged, this process can max out it's potential.
 
+It seems like **agents** might be a rich place to find problems that fit this mold well. The trouble
+is going to be creating benchmarks fast enough.
+
 My hunch is that, going forward, we'll lean on **reinforcement learning** (RL) to force behaviors to emerge, and then
 use some form of recursive self-improvement fine tuning to max out that behavior.
 
