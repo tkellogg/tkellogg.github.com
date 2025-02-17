@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LLaDA: Large Language Diffusion Models"
+title: "LLaDA: LLMs That Don't Gaslight You"
 date: 2025-02-17
 categories:
  - ai
@@ -10,6 +10,7 @@ image: https://cdn.pixabay.com/photo/2021/05/12/20/30/free-speech-6249234_960_72
 # social_image: /images/bash-v-powershell.png
 is_draft: false
 use_mermaid: false
+summary: A new language model uses diffusion instead of next-token prediction. That means the text it can back out of a hallucination before it commits. This is a big win for areas like law & contracts, where global consistency is valued
 ---
 
 
