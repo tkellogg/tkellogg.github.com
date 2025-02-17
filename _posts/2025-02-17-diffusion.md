@@ -116,7 +116,7 @@ Watch this space. Keep an open mind. We may see some wild shifts in architecture
 diffusion models, maybe it's some other equivalent architecture with a new set of trade-offs.
 
 # Discussion
-* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lieunvdm722c)
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lifvshebfk25)
 
 
  [paper]: https://arxiv.org/abs/2502.09992
