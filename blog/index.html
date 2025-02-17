@@ -5,11 +5,15 @@ regenerate: true
 ---
 
 <div class="blog-container">
-  <div class="main-content">
+  <!--<div class="main-content">-->
+  <div>
     <h2>Latest Post</h2>
     {% for post in site.posts limit:1 %}
-      <article class="post">
+      <article id="post" class="post">
         <h3 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+	{% if post.image %}
+		<img src="{{ post.image }}" id="post-image" />
+	{% endif %}
         <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
         <div class="post-content">
           {{ post.content | truncatewords: 150 | markdownify }}
