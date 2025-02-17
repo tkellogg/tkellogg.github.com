@@ -115,6 +115,9 @@ There will be more approaches, with new & different trade-offs.
 Watch this space. Keep an open mind. We may see some wild shifts in architecture soon. Maybe it's
 diffusion models, maybe it's some other equivalent architecture with a new set of trade-offs.
 
+# Discussion
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lieunvdm722c)
+
 
  [paper]: https://arxiv.org/abs/2502.09992
  [sd]: https://stability.ai/
