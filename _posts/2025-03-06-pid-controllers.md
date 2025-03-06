@@ -48,6 +48,11 @@ Example: Nuclear power plant
 * Plan: Calculate **how much** to move the control rods to keep the system stable, alive, and not melting down
 * Act: **Move** the rods into our out of the chamber
 
+PID controllers aren't typically explained like this. Like I warned, I'm oversimplifying a lot. Normally,
+the focus is on integrals & derivatives; the "plan" step often directly computes how much it needs to change
+an actuator. The lesson you can carry from this is that even here, in AI agents, **small incremental changes**
+are beneficial to system stability (don't fill the context with garbage).
+
 There's a whole lot that goes into PID controllers, many PhD's have been minted for researching them. But
 the fundamentals apply widely to any long-running system that you want to keep stable. 
 
