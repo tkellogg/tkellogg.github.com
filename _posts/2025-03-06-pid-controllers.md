@@ -172,6 +172,7 @@ In the mean time, using multi-agents to solve increasingly complex problems is a
 # Discussion
  * [Bluesky](https://bsky.app/profile/timkellogg.me/post/3ljprv2v2k22o)
  * [Twitter/X](https://x.com/kellogh/status/1897779071460704618)
+ * [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_multi-agents-are-out-pid-controllers-are-activity-7303546143286710272-EWNM)
 
 
  [PID]: https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller
