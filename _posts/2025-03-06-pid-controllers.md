@@ -166,6 +166,11 @@ You create a team of agents when there's too much work for a single agent to com
 split responsibilities, but that's an implementation detail toward scaling out meet the needs of the
 larger amount of work.
 
+_Note: There's probably other design patterns. One that will likely be proven out soon is the "load balancer"
+pattern, where a team of agents all do work in parallel and then a coordinator/load balancer/merger agent
+combines the team's work. For example, the team might be coding agents, all tackling different Github 
+issues, and the coordinator agent is doing nothing but merging code and assigning tasks._
+
 In the mean time, using multi-agents to solve increasingly complex problems is a **dead end**. Stop doing it.
 
 
