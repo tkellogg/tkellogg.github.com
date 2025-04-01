@@ -145,4 +145,9 @@ core issues.
 It's not a security mitigation, it doesn't address anything on your threat model, but it's an amazing
 addition to your development processes.
 
+
+# Discussion
+* [Hacker News](https://news.ycombinator.com/item?id=43545816)
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3llqtstcf7c2p)
+
  [stride]: https://www.practical-devsecops.com/what-is-stride-threat-model/
