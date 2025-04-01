@@ -6,11 +6,11 @@ categories:
  - ai
  - LLMs
  - engineering
- - agents
+ - security
 image: https://cdn.pixabay.com/photo/2025/03/26/17/03/pasque-flower-9494841_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false
-use_mermaid: false
+use_mermaid: true
 ---
 
 LLMs are great code reviewers. They can even spot security mistakes that open us up to vulnerabilities.
@@ -67,7 +67,7 @@ so by elimination it must improve the **integrity**.
 But does it?
 
 LLM-review does identify dangerous coding issues, but it **doesn't prevent** anything. Anything that
-can be surfaced by an LLM-review can be circumvented by _prompt injection_. 
+can be surfaced by an LLM-review can be circumvented by [prompt injection][inj]. 
 
 It's not your goal, as an engineer or architect, to come up with the exploit, only to understand if 
 an exploit **might be possible**. The attacker can inject code or comments into the input to
@@ -100,6 +100,28 @@ So no, "something" is not better than nothing. LLM security checks carry the ris
 but without any possible upside.
 
 Hopefully it's clear. Don't do it.
+
+## Error Cascades (The Spiral of Doom)
+In distributed systems, this problem is typically expressed in regards to retries.
+
+Suppose we have an app:
+
+<div class="mermaid">
+graph TD
+Frontend--3 retries-->Microserice--3 retries-->db[(Database)]
+</div>
+
+Suppose the app is running near the point of database exhaustion and the traffic momentarily blips up
+into exhaustion. You'd expect only a few requests to fail, but it's much worse than that.
+
+1. When the DB fails, Microservice retries causing more traffic
+2. Frontend retries, causing even more retry traffic
+3. User gets angry and contributes further by also retrying
+
+A small blip in traffic causes an inexcapable global outage.
+
+The LLM security check is similar mainly because failed checks reduce availability, and if that check
+is performed in a retry loop it can lead to real cascading problems.
 
 
 ## But Content Filters Are Good!
@@ -136,14 +158,31 @@ execute stored procedures.
 Start with a threat model, and let that be your guide.
 
 
-## Use LLMs For Security Reviews!
-Yes, I know we just said not to, but they really are good at identifying problems in code.
-Incorporate these reviews into your development process. Most likely, security reviews aren't currently
-being done at all, or at best you wait until all the code has been written and it's too late to fix 
-core issues.
+## Passive Monitoring
+Another good option is to still include LLM-driven security code review, but passively monitor instead of
+actively block.
 
-It's not a security mitigation, it doesn't address anything on your threat model, but it's an amazing
-addition to your development processes.
+This is good because it lets you be aware and quantify the size of a problem. But at the same time it 
+doesn't carry the error cascade problem that can cause production outages. More upside and less downside.
+
+
+# Use LLMs In Your Dev Process!
+Using LLMs to review code is good, for security or for general bugs.
+
+The big difference is that in the development phase, your threat model generally doesn't include employees
+intentionally trying to harm the company. Therefore, prompt injection isn't something you need to be
+concerned about.
+
+Again, and I can't stress this enough, build a threat model and reference it constantly.
+
+# Closing
+The astute reader should realize that this post has nothing to do with LLMs. The problem isn't that LLMs
+make mistakes, it's that they can be **forced to make mistakes**. And that's a security problem, but
+only if it exposes you to real risk.
+
+If there's one thing you should take away, it should be to **make a threat model** as the first step in your
+development process and reference it constantly in all your design decisions. Even if it's not a complete
+threat model, you'll gain a lot by simply being clear about what matters.
 
 
 # Discussion
@@ -151,3 +190,4 @@ addition to your development processes.
 * [Bluesky](https://bsky.app/profile/timkellogg.me/post/3llqtstcf7c2p)
 
  [stride]: https://www.practical-devsecops.com/what-is-stride-threat-model/
+ [inj]: https://docs.aws.amazon.com/prescriptive-guidance/latest/llm-prompt-engineering-best-practices/common-attacks.html
