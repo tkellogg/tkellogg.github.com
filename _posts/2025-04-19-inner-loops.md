@@ -225,6 +225,10 @@ be the case. So, inner loop vs not inner loop is not really the part that matter
 all about whether or not the LLM was trained to use tools.
 
 
+# Discussion
+- [Hacker News](https://news.ycombinator.com/item?id=43752627)
+- [Bluesky](https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3ln6g2fh5r326)
+
 
  [o3]: https://openai.com/index/introducing-o3-and-o4-mini/
  [ollama]: https://ollama.com/
