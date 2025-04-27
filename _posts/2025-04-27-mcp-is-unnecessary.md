@@ -142,6 +142,7 @@ and purpose-focused than OpenAPI is.
 * [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lnsrqleqad2b)
 * [Twitter](https://x.com/kellogh/status/1916546057095335949)
 * [LinkedIn](https://www.linkedin.com/posts/tim-kellogg-69802913_mcp-is-unnecessary-activity-7322312330757758976-BdUe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAKsUpQBLx0MUlgAizVDjPDC7fqIYBdcMV8)
+* [Hacker News](https://news.ycombinator.com/item?id=43813684)
 
 
  [mcp]: https://modelcontextprotocol.io/introduction
