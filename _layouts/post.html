@@ -7,6 +7,9 @@ layout: default
 		<time pubdate="true">
 			{{ page.date | date: "%a %B %d, %Y" }}
 		</time>
+		{% if page.banner %}
+		    <h2 class="banner">{{ page.banner | markdownify }}</h2>
+		{% endif %}
 	</p>
 	{% if page.image %}
 		<img src="{{ page.image }}" alt="{{ page.title }}" id="post-image" />
