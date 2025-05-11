@@ -438,6 +438,11 @@ blockquote {
   }
 }
 
+.banner {
+  text-align: center;
+  background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%);
+}
+
 /* Blog post styles */
 #post {
   background-color: #ffffff;

@@ -63,6 +63,9 @@ prototypes and demo-quality software is already being replaced by AI, and the tr
 that end as well.
 
 
+# Discussion
+- [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lou46b7y7k2t)
+- [Hacker News](https://news.ycombinator.com/item?id=43952827)
 
 
  [post]: /blog/2025/01/02/normware
