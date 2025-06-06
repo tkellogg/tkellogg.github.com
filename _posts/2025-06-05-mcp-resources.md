@@ -127,6 +127,7 @@ Might as well support those too.
 
 # Discussion
 * [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lqvtthat622m)
+* [Hacker News](https://news.ycombinator.com/item?id=44199669)
 
 
  [resources]: https://modelcontextprotocol.io/docs/concepts/resources
