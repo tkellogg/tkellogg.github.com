@@ -12,6 +12,7 @@ image: https://cdn.pixabay.com/photo/2015/12/29/14/51/mountains-1112911_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false
 use_mermaid: false
+summary: This is a quick tour of what MCP resources actually are. And more to the point, what MCP is supposed to do (and not supposed to do).
 ---
 
 If your MCP client doesn't support resources, it is **not a good client**.
@@ -122,6 +123,10 @@ to implement a proper client. Period.
 
 While I'm at it, prompts are just functions with special handling of the results.
 Might as well support those too.
+
+
+# Discussion
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lqvtthat622m)
 
 
  [resources]: https://modelcontextprotocol.io/docs/concepts/resources
