@@ -125,6 +125,13 @@ While I'm at it, prompts are just functions with special handling of the results
 Might as well support those too.
 
 
+# UPDATE: tupac
+
+I made a minimalist reference implementation of an MCP client. Feel free to check it
+out. Bare minimum, it's extremely useful. It's on [Github](https://github.com/tkellogg/tupac)
+and runs with a simple `uvx` command.
+
+
 # Discussion
 * [Bluesky](https://bsky.app/profile/timkellogg.me/post/3lqvtthat622m)
 * [Hacker News](https://news.ycombinator.com/item?id=44199669)
