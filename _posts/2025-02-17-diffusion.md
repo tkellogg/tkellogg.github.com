@@ -4,8 +4,12 @@ title: "LLaDA: LLMs That Don't Gaslight You"
 date: 2025-02-17
 categories:
  - ai
- - LLMs
+ - llms
  - diffusion
+ - architecture
+ - hallucination
+ - coherence
+ - text-generation
 image: https://cdn.pixabay.com/photo/2021/05/12/20/30/free-speech-6249234_960_720.png
 # social_image: /images/bash-v-powershell.png
 is_draft: false

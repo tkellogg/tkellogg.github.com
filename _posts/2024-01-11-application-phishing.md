@@ -5,8 +5,12 @@ date: 2024-01-11
 categories:
  - programming
  - security
- - AI
- - LLMs
+ - ai
+ - llms
+ - prompt-injection
+ - cybersecurity
+ - social-engineering
+ - vulnerability
 image: https://gist.github.com/assets/437044/66495a13-2c39-4971-a143-15ff96e8d2b3
 is_draft: false
 use_mermaid: true

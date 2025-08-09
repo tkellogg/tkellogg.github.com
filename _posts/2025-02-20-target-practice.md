@@ -4,6 +4,11 @@ title: "Target Practice: Resumes, But Better"
 date: 2025-02-20
 categories:
  - ai
+ - career-advice
+ - job-search
+ - open-source
+ - productivity
+ - automation
 image: https://cdn.pixabay.com/photo/2017/04/14/17/36/archery-2230855_1280.png
 # social_image: /images/bash-v-powershell.png
 is_draft: false

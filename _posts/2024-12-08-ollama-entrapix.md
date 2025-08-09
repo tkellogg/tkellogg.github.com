@@ -4,7 +4,13 @@ title: "Entrapix: You Should Have A ConfusedAgentError"
 date: 2024-12-08
 categories:
  - ai
- - LLMs
+ - llms
+ - entropix
+ - ollama
+ - entropy
+ - error-handling
+ - uncertainty
+ - agent-systems
 image: https://cdn.pixabay.com/photo/2017/09/27/12/07/green-2791849_1280.jpg
 is_draft: false
 use_mermaid: false

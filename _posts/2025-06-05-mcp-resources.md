@@ -4,10 +4,14 @@ title: "MCP Resources Are For Caching"
 date: 2025-06-05
 categories:
  - ai
- - LLMs
+ - llms
  - agents
  - engineering
- - MCP
+ - mcp
+ - caching
+ - optimization
+ - rag
+ - protocols
 image: https://cdn.pixabay.com/photo/2015/12/29/14/51/mountains-1112911_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

@@ -4,9 +4,14 @@ title: "Inner Loop Agents"
 date: 2025-04-19
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
  - agents
+ - architecture
+ - tool-use
+ - training
+ - reinforcement-learning
+ - a2a
 image: https://cdn.pixabay.com/photo/2022/03/12/17/40/pink-flower-7064566_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

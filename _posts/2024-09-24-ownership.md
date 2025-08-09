@@ -6,7 +6,11 @@ categories:
  - engineering
  - testing
  - ai
- - LLMs
+ - llms
+ - accountability
+ - responsibility
+ - software-engineering
+ - management
 image: https://cdn.pixabay.com/photo/2022/05/21/02/40/cat-7210553_960_720.jpg
 is_draft: false
 use_mermaid: false

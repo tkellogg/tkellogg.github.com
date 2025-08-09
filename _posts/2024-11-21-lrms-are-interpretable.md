@@ -4,7 +4,14 @@ title: "LRMs Are Interpretable"
 date: 2024-11-21
 categories:
  - ai
- - LLMs
+ - llms
+ - lrm
+ - reasoning-models
+ - interpretability
+ - deepseek
+ - r1
+ - transparency
+ - trust
 image: https://cdn.pixabay.com/photo/2016/11/29/12/18/camera-1869430_1280.jpg
 is_draft: false
 use_mermaid: false

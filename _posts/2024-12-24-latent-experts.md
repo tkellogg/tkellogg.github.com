@@ -4,7 +4,13 @@ title: "Explainer: Latent Space Experts"
 date: 2024-12-24
 categories:
  - ai
- - LLMs
+ - llms
+ - latent-space
+ - experts
+ - google-deepmind
+ - coprocessor
+ - architecture
+ - embeddings
 image: https://cdn.pixabay.com/photo/2022/11/13/21/32/holly-7590229_1280.jpg
 is_draft: false
 use_mermaid: false

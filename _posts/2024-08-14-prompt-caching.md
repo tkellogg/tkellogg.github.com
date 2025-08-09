@@ -4,9 +4,13 @@ title: "Does Prompt Caching Make RAG Obsolete?"
 date: 2024-08-14
 categories:
  - ai
- - RAG
- - LLMs
+ - rag
+ - llms
  - consulting
+ - prompt-caching
+ - anthropic
+ - performance
+ - cost-optimization
 image: /images/cover-girl-w-rag.jpg
 is_draft: false
 use_mermaid: false

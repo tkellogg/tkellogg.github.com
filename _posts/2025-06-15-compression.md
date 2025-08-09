@@ -4,9 +4,14 @@ title: "Layers of Memory, Layers of Compression"
 date: 2025-06-15
 categories:
  - ai
- - LLMs
+ - llms
  - agents
  - engineering
+ - memory-management
+ - compression
+ - multi-agents
+ - information-theory
+ - cognition
 image: https://cdn.pixabay.com/photo/2016/05/26/12/56/waterfalls-1417102_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

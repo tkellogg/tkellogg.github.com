@@ -4,7 +4,13 @@ title: "The Unreasonable Data Efficiency of LLMs"
 date: 2024-01-17
 categories:
  - ai
- - LLMs
+ - llms
+ - machine-learning
+ - data-science
+ - compression
+ - privacy
+ - cost-optimization
+ - embeddings
 image: https://gist.github.com/assets/437044/e9443c0a-823a-46f1-82b8-ccb8a13d7111
 is_draft: true
 use_mermaid: false

@@ -4,9 +4,14 @@ title: "Multi-Agents Are Out, PID Controllers Are In"
 date: 2025-03-06
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
  - agents
+ - mcp
+ - control-systems
+ - architecture
+ - multi-agents
+ - systems-thinking
 image: https://cdn.pixabay.com/photo/2020/02/21/19/32/circle-4868498_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

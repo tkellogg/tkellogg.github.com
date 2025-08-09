@@ -4,7 +4,12 @@ title: "Cursor: How I rollback multi-file changes"
 date: 2024-10-25
 categories:
  - ai
- - LLMs
+ - cursor
+ - git
+ - dura
+ - tooling
+ - backup
+ - version-control
 image: https://cdn.pixabay.com/photo/2020/10/02/13/38/sea-5621150_960_720.jpg
 is_draft: false
 use_mermaid: true

@@ -6,6 +6,11 @@ categories:
  - ai
  - strategy
  - consulting
+ - hackathons
+ - innovation
+ - product-management
+ - business-process
+ - democratization
 image: https://cdn.pixabay.com/photo/2016/03/02/18/51/calculator-1232804_960_720.jpg
 is_draft: false
 use_mermaid: true

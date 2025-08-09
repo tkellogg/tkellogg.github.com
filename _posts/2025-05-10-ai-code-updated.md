@@ -4,8 +4,12 @@ title: "I was wrong: AI Won't Overtake Software Engineering"
 date: 2025-05-10
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
+ - career-advice
+ - future-of-work
+ - learning
+ - technical-skills
 image: https://cdn.pixabay.com/photo/2022/01/14/04/11/laptop-6936428_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

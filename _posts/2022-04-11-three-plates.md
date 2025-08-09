@@ -4,6 +4,11 @@ title: "Three Plates"
 date: 2022-04-11
 categories:
  - engineering
+ - testing
+ - practices
+ - tdd
+ - methodology
+ - mentoring
 ---
 
 "Why don't we test our tests?". It's like the three plates method. Take test code and

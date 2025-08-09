@@ -4,8 +4,13 @@ title: "Do LLMs understand?"
 date: 2025-07-18
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
+ - philosophy
+ - cognition
+ - understanding
+ - sycophancy
+ - embeddings
 image: https://cdn.pixabay.com/photo/2025/04/15/05/45/heat-9534673_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

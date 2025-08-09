@@ -3,9 +3,16 @@ layout: post
 title: "Are They Actually Afraid of AI?"
 date: 2023-12-21
 categories:
- - llm
- - opensource
+ - ai
+ - llms
+ - open-source
  - fossil
+ - alignment
+ - trust
+ - society
+ - politics
+ - ethics
+ - philosophy
 image: https://gist.github.com/assets/437044/e79213c9-e26d-47ef-9fb5-ac45ebd24696
 is_draft: false
 ---

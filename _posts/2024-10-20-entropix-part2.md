@@ -4,7 +4,12 @@ title: "Why is entropix important?"
 date: 2024-10-20
 categories:
  - ai
- - LLMs
+ - llms
+ - entropix
+ - dynamic-sampling
+ - prompt-engineering
+ - collaboration
+ - performance
 image: https://cdn.pixabay.com/photo/2016/07/28/08/50/sunbeams-1547273_1280.jpg
 is_draft: false
 use_mermaid: true

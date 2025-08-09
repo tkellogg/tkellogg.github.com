@@ -6,8 +6,13 @@ categories:
  - engineering
  - testing
  - ai
- - LLMs
+ - llms
  - consulting
+ - cursor
+ - copilot
+ - pair-programming
+ - productivity
+ - tooling
 image: https://cdn.pixabay.com/photo/2018/01/31/07/42/running-3120507_960_720.jpg
 is_draft: false
 use_mermaid: false

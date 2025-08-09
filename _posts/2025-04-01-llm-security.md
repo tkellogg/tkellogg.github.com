@@ -4,9 +4,13 @@ title: "LLMs Are Not Security Mitigations"
 date: 2025-04-01
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
  - security
+ - threat-modeling
+ - prompt-injection
+ - best-practices
+ - containerization
 image: https://cdn.pixabay.com/photo/2025/03/26/17/03/pasque-flower-9494841_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

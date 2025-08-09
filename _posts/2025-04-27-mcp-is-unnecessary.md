@@ -4,9 +4,14 @@ title: "MCP is Unnecessary"
 date: 2025-04-27
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
- - MCP
+ - mcp
+ - protocols
+ - standards
+ - openapi
+ - critique
+ - standardization
 image: https://cdn.pixabay.com/photo/2013/07/12/14/30/ants-148326_1280.png
 # social_image: /images/bash-v-powershell.png
 is_draft: false

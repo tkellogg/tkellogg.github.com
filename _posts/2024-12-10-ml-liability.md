@@ -4,8 +4,13 @@ title: "Is ML Experience A Liability For AI Engineering?"
 date: 2024-12-10
 categories:
  - ai
- - LLMs
+ - llms
  - engineering
+ - career
+ - machine-learning
+ - fine-tuning
+ - hiring
+ - skills-transfer
 image: https://cdn.pixabay.com/photo/2014/09/22/10/22/leap-456100_1280.jpg
 is_draft: false
 use_mermaid: false

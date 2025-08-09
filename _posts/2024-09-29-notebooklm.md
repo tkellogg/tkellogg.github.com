@@ -4,7 +4,13 @@ title: "I Taught My 8yo Subduction Zones With NotebookLM"
 date: 2024-09-29
 categories:
  - ai
- - LLMs
+ - llms
+ - notebooklm
+ - education
+ - google
+ - podcasts
+ - learning
+ - parenting
 image: https://cdn.pixabay.com/photo/2024/03/09/16/59/typewriter-8622984_960_720.jpg
 is_draft: false
 use_mermaid: false

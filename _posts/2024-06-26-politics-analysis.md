@@ -4,11 +4,14 @@ title: "How Emotional is Trump?"
 date: 2024-06-26
 categories:
  - ai
- - LLMs
+ - llms
  - embeddings
  - psychology
  - politics
  - emopoint
+ - sentiment-analysis
+ - data-visualization
+ - social-media-analysis
 image: /images/emotion/woman-angry.jpg
 is_draft: false
 use_mermaid: false

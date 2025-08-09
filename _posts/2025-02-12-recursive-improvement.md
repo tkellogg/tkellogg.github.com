@@ -4,7 +4,11 @@ title: "Recursive Improvement: AI Singularity Or Just Benchmark Saturation?"
 date: 2025-02-12
 categories:
  - ai
- - LLMs
+ - llms
+ - self-improvement
+ - model-collapse
+ - benchmarks
+ - singularity
 image: https://cdn.pixabay.com/photo/2017/04/25/08/02/coffee-beans-2258839_960_720.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false
