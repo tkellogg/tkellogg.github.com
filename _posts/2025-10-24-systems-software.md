@@ -125,6 +125,11 @@ Systems software is hard to build. That's fine. Good even. Because a whole lot o
 work. You should!
 
 
+# Discussion
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3m3yb65wenc26)
+* [LinkedIn](https://www.linkedin.com/feed/update/urn:li:share:7387665177631940608/)
+
+
 
  [cc]: https://www.claude.com/product/claude-code
  [codex]: https://chatgpt.com/features/codex
