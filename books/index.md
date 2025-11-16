@@ -13,4 +13,9 @@ Some are professional, most aren't. I hope you enjoy them as much as I did.
 
 * [Mistakes Were Made (but Not by Me): Why We Justify Foolish Beliefs, Bad Decisions, and Hurtful Acts]({% link books/mistakes-were-made.md %})
 
+---
+
+I also occasionally write longer-form things myself:
+
+* [The Eigensaber Protocol](/books/eigensaber/) — a cyberpunk novel about mathematics, freedom, and the curvature of reality.
 
