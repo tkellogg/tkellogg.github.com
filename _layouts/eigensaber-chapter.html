@@ -1,0 +1,273 @@
+---
+layout: default
+---
+<style>
+  .eigensaber-wrapper {
+    max-width: 780px;
+    margin: 2rem auto 4rem;
+    padding: 2rem 2.5rem;
+    background: radial-gradient(circle at top left, #101322, #05060a 60%);
+    border: 1px solid rgba(120, 220, 255, 0.2);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.12);
+    color: #e6f2ff;
+    border-radius: 10px;
+  }
+
+  .eigensaber-meta {
+    font-family: Menlo, Monaco, "SF Mono", "Fira Code", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    color: #7fe7ff;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
+  }
+
+  .eigensaber-series {
+    color: #7fe7ff;
+  }
+
+  .eigensaber-chapter-heading {
+    margin: 0.25rem 0 0.5rem 0;
+    font-size: 1.9rem;
+    line-height: 1.3;
+  }
+
+  .eigensaber-chapter-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #a8b9ff;
+    opacity: 0.9;
+  }
+
+  .eigensaber-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.5rem 0 1.75rem 0;
+    font-size: 0.9rem;
+  }
+
+  .eigensaber-nav a {
+    color: #8fe4ff;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(143, 228, 255, 0.6);
+  }
+
+  .eigensaber-nav a:hover {
+    color: #ffffff;
+    border-bottom-style: solid;
+  }
+
+  .eigensaber-nav-main {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .eigensaber-nav-main a {
+    border: none;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(9, 19, 40, 0.9);
+    border: 1px solid rgba(127, 231, 255, 0.35);
+  }
+
+  .eigensaber-nav-main a.active {
+    background: linear-gradient(120deg, #00ffd5, #546bff);
+    border-color: transparent;
+    color: #05060a;
+    font-weight: 600;
+  }
+
+  .eigensaber-nav-edge {
+    min-width: 7rem;
+  }
+
+  .eigensaber-nav-edge span {
+    color: #5a6a9a;
+  }
+
+  .eigensaber-nav-edge a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .eigensaber-nav-edge .arrow {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .eigensaber-chapter-content {
+    margin-top: 0.5rem;
+  }
+
+  .eigensaber-chapter-content h1,
+  .eigensaber-chapter-content h2,
+  .eigensaber-chapter-content h3 {
+    color: #f4fbff;
+  }
+
+  .eigensaber-chapter-content p {
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .eigensaber-chapter-content strong {
+    color: #ffffff;
+  }
+
+  .eigensaber-chapter-content code {
+    background: rgba(5, 9, 20, 0.9);
+    border-radius: 3px;
+    padding: 0.05rem 0.2rem;
+  }
+
+  .eigensaber-nav-bottom {
+    border-top: 1px solid rgba(120, 220, 255, 0.23);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .eigensaber-wrapper {
+      margin: 1.25rem 0 2.5rem 0;
+      border-radius: 0;
+      padding: 1.5rem 1.25rem 2rem 1.25rem;
+    }
+
+    .eigensaber-chapter-heading {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+{% assign chapters = site.pages | where: "series", "eigensaber" | sort: "chapter_number" %}
+{% assign previous = nil %}
+{% assign next = nil %}
+{% assign found = false %}
+{% assign previous_candidate = nil %}
+
+{% for ch in chapters %}
+  {% if ch.url == page.url %}
+    {% assign found = true %}
+  {% elsif found and next == nil %}
+    {% assign next = ch %}
+  {% endif %}
+  {% unless found %}
+    {% assign previous_candidate = ch %}
+  {% endunless %}
+{% endfor %}
+
+{% if found %}
+  {% assign previous = previous_candidate %}
+{% endif %}
+
+<div class="eigensaber-wrapper">
+  <header>
+    <div class="eigensaber-meta">
+      <span class="eigensaber-series">THE EIGENSABER PROTOCOL</span>
+      {% if page.chapter_number %}
+        · CHAPTER {{ page.chapter_number }}
+      {% endif %}
+    </div>
+    {% if page.chapter_title %}
+      <h1 class="eigensaber-chapter-heading">
+        {{ page.chapter_title }}
+      </h1>
+    {% elsif page.title %}
+      <h1 class="eigensaber-chapter-heading">
+        {{ page.title }}
+      </h1>
+    {% endif %}
+    {% if page.summary %}
+      <p class="eigensaber-chapter-subtitle">
+        {{ page.summary }}
+      </p>
+    {% endif %}
+  </header>
+
+  {% if chapters and page.chapter_number %}
+    <nav class="eigensaber-nav eigensaber-nav-top">
+      <div class="eigensaber-nav-edge">
+        {% if previous %}
+          <a href="{{ previous.url }}">
+            <span class="arrow">←</span>
+            <span>Prev</span>
+          </a>
+        {% else %}
+          <span>&nbsp;</span>
+        {% endif %}
+      </div>
+
+      <div class="eigensaber-nav-main">
+        {% for ch in chapters %}
+          <a
+            href="{{ ch.url }}"
+            class="{% if ch.url == page.url %}active{% endif %}"
+          >
+            {{ ch.chapter_number }}.
+            {% if ch.chapter_short %}
+              {{ ch.chapter_short }}
+            {% elsif ch.chapter_title %}
+              {{ ch.chapter_title }}
+            {% else %}
+              {{ ch.title }}
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+
+      <div class="eigensaber-nav-edge" style="text-align: right;">
+        {% if next %}
+          <a href="{{ next.url }}">
+            <span>Next</span>
+            <span class="arrow">→</span>
+          </a>
+        {% else %}
+          <span>&nbsp;</span>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+
+  <article class="eigensaber-chapter-content">
+    {{ content }}
+  </article>
+
+  {% if chapters and page.chapter_number %}
+    <nav class="eigensaber-nav eigensaber-nav-bottom">
+      <div class="eigensaber-nav-edge">
+        {% if previous %}
+          <a href="{{ previous.url }}">
+            <span class="arrow">←</span>
+            <span>Previous chapter</span>
+          </a>
+        {% else %}
+          <span>&nbsp;</span>
+        {% endif %}
+      </div>
+
+      <div class="eigensaber-nav-main">
+        <a href="/books/eigensaber/">
+          Back to overview
+        </a>
+      </div>
+
+      <div class="eigensaber-nav-edge" style="text-align: right;">
+        {% if next %}
+          <a href="{{ next.url }}">
+            <span>Next chapter</span>
+            <span class="arrow">→</span>
+          </a>
+        {% else %}
+          <span>&nbsp;</span>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+</div>
+
