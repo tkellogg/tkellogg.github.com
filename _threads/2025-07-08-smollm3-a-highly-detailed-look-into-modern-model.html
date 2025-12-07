@@ -8,12 +8,12 @@ reposts: 11
 post_count: 4
 summary: "SmolLM3: a highly detailed look into modern model training  this is amazing. They go into great detail on just about every aspect. The number of stage..."
 similar:
-  - url: "/threads/2025-11-12-looped-llms-unlike-rnns-hrm-etc-this-starts-w/"
-    title: "Looped LLMs"
-  - url: "/threads/2025-10-23-trm-reproduction-report-okay-im-starting-to-bel/"
-    title: "TRM reproduction report"
   - url: "/threads/2025-11-23-the-biggest-reason-for-fully-open-models-is-scienc/"
     title: "the biggest reason for fully open models is science, and the downstream effects"
+  - url: "/threads/2025-11-29-this-whole-smol-model-thing-that-dorialexanderbs/"
+    title: "this whole smol model thing that @dorialexander.bsky.social started is remind..."
+  - url: "/threads/2025-10-31-astonishing-using-fp16-instead-of-bf16-results-in/"
+    title: "astonishing: using fp16 instead of bf16 results in more stable training runs ..."
 ---
 <div class="thread-post">
 <div class="post-text">SmolLM3: a highly detailed look into modern model training<br><br>this is amazing. They go into great detail on just about every aspect. The number of stages, algorithms, optimizer settings, datasets, blueprints, recipes, open source training scripts, ..<br><br><a href="https://huggingface.co/blog/smollm3" target="_blank" rel="noopener">huggingface.co/blog/smollm3</a></div>
@@ -55,42 +55,6 @@ Conclusion:
 	•	SmolLM3 3B stands out as most efficient, achieving high win rate with a relatively small size.
 	•	Qwen3 4B and Gemma3 4B are top-performers overall but less efficient per parameter.
 	•	Models like Qwen3 1.7B lag significantly behind in both size and win rate." class="post-image" loading="lazy">
-<div class="image-alt">A scatter plot comparing small language models based on Win rate (%) vs Model Size (Billion parameters). The chart evaluates models on 12 popular LLM benchmarks.
-
-⸻
-
-Axes:
-	•	X-axis (horizontal): Model size (in billions of parameters), ranging from ~1.7B to 4.5B
-	•	Y-axis (vertical): Win rate (%)—higher is better—ranging from 2% to 5%
-
-⸻
-
-Highlighted Insight Areas:
-	•	Top-left corner: Ideal zone for models that are better (higher win rate) and smaller (faster/cheaper)
-	•	Diagonal line/gray band: Represents the tradeoff baseline; models above it are more efficient per parameter
-
-⸻
-
-Models Plotted:
-
-Top-right quadrant (largest, highest win rate):
-	•	Qwen3 4B – Highest win rate, ~5%
-	•	Gemma3 4B – Slightly below Qwen3 4B
-
-Mid-left (smaller but strong performance):
-	•	SmolLM3 3B – Strong win rate (~4.4%), outperforming larger models
-	•	Qwen2.5 3B – Moderate win rate (~3%)
-	•	Llama3.2 3B – Slightly below Qwen2.5 3B
-
-Lower-left (least performant):
-	•	Qwen3 1.7B – Lowest win rate (~2%)
-
-⸻
-
-Conclusion:
-	•	SmolLM3 3B stands out as most efficient, achieving high win rate with a relatively small size.
-	•	Qwen3 4B and Gemma3 4B are top-performers overall but less efficient per parameter.
-	•	Models like Qwen3 1.7B lag significantly behind in both size and win rate.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -167,65 +131,6 @@ Performance Metrics:
 ⸻
 
 The image gives a comprehensive snapshot of both model design and training practices optimized for multilingual, long-context use with efficiency-focused techniques like grouped attention and selective rotary embedding." class="post-image" loading="lazy">
-<div class="image-alt">The image titled “Model Anatomy” presents a breakdown of the architecture and training configuration for a language model. It’s split into two main sections:
-
-⸻
-
-Left: Architecture Overview
-
-Diagram
-	•	Shows a standard transformer block:
-	•	Begins with a Tokenizer
-	•	Flows into Embedding
-	•	Then passes through multiple Layers (Q, K, V — attention heads), followed by Feed Forward, and ends in SoftMax
-
-Key Components
-	•	Grouped Query Attention:
-	•	16 attention heads share 4 queries
-	•	Maintains full multi-head performance
-	•	Reduces memory usage during inference
-	•	Intra-Document Masking:
-	•	Prevents tokens from different documents attending to each other
-	•	Improves training with long context
-	•	NoPE (No Positional Embedding):
-	•	Removes rotary positional embeddings every 4th layer
-	•	Enhances long-context performance
-	•	No Weight Decay in Embeddings:
-	•	Increases training stability
-	•	Embedding norms stabilize more naturally
-	•	Multilingual Tokenizer:
-	•	Uses LLaMA 3.2 tokenizer
-	•	Supports multiple languages
-
-⸻
-
-Right: Training Configuration
-	•	Parameter count: 3.08B
-	•	Initialization: Normal(0, 0.02)
-	•	Layers: 36
-	•	RoPE theta: 50k
-
-Training Settings:
-	•	Sequence length: 4096
-	•	Batch size: 2.36M tokens
-	•	Optimizer: AdamW (eps=1e-8, beta1=0.8, beta2=0.95)
-	•	Learning rate (peak): 2e-4
-	•	Gradient clipping: 1.0
-	•	Weight decay: 0.1
-	•	Gradient accumulation: 1
-	•	Micro batch size: 3
-	•	Precision: bf16
-	•	Tensor parallel: 2
-	•	Data parallel: 192
-
-Performance Metrics:
-	•	Throughput: 14k tokens/sec/GPU
-	•	MFU: 29.43%
-	•	Training duration: 24 days
-
-⸻
-
-The image gives a comprehensive snapshot of both model design and training practices optimized for multilingual, long-context use with efficiency-focused techniques like grouped attention and selective rotary embedding.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -234,6 +139,22 @@ The image gives a comprehensive snapshot of both model design and training pract
 </div>
 <div class="thread-post">
 <div class="post-text">also, they launched the fully open R1 reproduction <br><br>link: <a href="https://huggingface.co/collections/open-r1/open-r1-zero-math-67eba6a037505bbcb5157d07" target="_blank" rel="noopener">huggingface.co/collections/...</a><br><br><a href="https://bsky.app/profile/timkellogg.me/post/3lgl4u7c6os2g" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<a href="https://huggingface.co/collections/open-r1/open-r1-zero-math-67eba6a037505bbcb5157d07" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">huggingface.co</div>
+<div class="embed-title">Open R1-Zero Math - a open-r1 Collection</div>
+<div class="embed-description">We’re on a journey to advance and democratize artificial intelligence through open source and open science.</div>
+</div>
+</a>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lgl4u7c6os2g" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">huggingface is doing a fully open source replication of R1 github.com/huggingface/...</div>
+
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>8</span>
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>

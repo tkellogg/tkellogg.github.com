@@ -12,8 +12,8 @@ similar:
     title: "at AI Engineer Summit workshops"
   - url: "/threads/2025-01-26-a-researcher-on-x-explains-why-rl-alone-didnt-wor/"
     title: "a researcher on X explains why RL alone didn’t work before "
-  - url: "/threads/2024-11-25-i-want-a-llm-cli-tool-that-only-supports-one-model/"
-    title: "i want a LLM CLI tool that only supports one model, a small CPU-ready 360M-1B..."
+  - url: "/threads/2025-11-22-one-ai-trend-thats-not-fully-baked-but-will-chan/"
+    title: "one AI trend that’s not fully baked, but will change a huge amount — auto-com..."
 ---
 <div class="thread-post">
 <div class="post-text">oh, this is a wild new take on AI development <br><br>Prime Intellect offers pre-built and shareable RL environments <br><br>these are pre-built harnesses to train your agentic model to do some type of task. big labs all use their vast resources to build their own<br><br><a href="https://www.primeintellect.ai/blog/environments" target="_blank" rel="noopener">www.primeintellect.ai/blog/environ...</a></div>
@@ -45,26 +45,15 @@ X.com
 In era of pretraining, what mattered was internet text. You'd primarily want a large, diverse, high quality collection of internet documents to learn from.
 In era of supervised finetuning, it was conversations. Contract workers are hired to create answers for questions, a bit like what you'd see on Stack Overflow / Quora, or etc., but geared towards LLM use cases.
 Neither of the two above are going away (imo), but in this era of reinforcement learning, it is now environments. Unlike the above, they give the LLM an opportunity to actually interact - take actions, see outcomes, etc. This means you can hope to do a lot better than statistical expert imitation. And they can be used both for model training and evaluation. But just like before, the core problem now is needing a large, diverse, high quality set of environments, as exercises for the LLM to practice against." class="post-image" loading="lazy">
-<div class="image-alt">Andrej Karpathy
-@karpathy
-X.com
-In era of pretraining, what mattered was internet text. You'd primarily want a large, diverse, high quality collection of internet documents to learn from.
-In era of supervised finetuning, it was conversations. Contract workers are hired to create answers for questions, a bit like what you'd see on Stack Overflow / Quora, or etc., but geared towards LLM use cases.
-Neither of the two above are going away (imo), but in this era of reinforcement learning, it is now environments. Unlike the above, they give the LLM an opportunity to actually interact - take actions, see outcomes, etc. This means you can hope to do a lot better than statistical expert imitation. And they can be used both for model training and evaluation. But just like before, the core problem now is needing a large, diverse, high quality set of environments, as exercises for the LLM to practice against.</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiakrnan4zkzsawqxmyzmepgrk3cqiisxgvqnnlhxz5rcwvtq2mp5q@jpeg" alt="In some ways, I'm reminded of OpenAl's very first project (gym), which was exactly a framework hoping to build a large collection of environments in the same schema, but this was way before LLMs. So the environments were simple academic control tasks of the time, like cartpole, ATARI, etc. The @PrimeIntellect environments hub (and the verifiers' repo on GitHub) builds the modernized version specifically targeting LLMs, and it's a great effort/idea. I pitched that someone build something like it earlier this year:
 x.com/karpathy/statu...
 Environments have the property that once the skeleton of the framework is in place, in principle the community / industry can parallelize across many different domains, which is exciting." class="post-image" loading="lazy">
-<div class="image-alt">In some ways, I'm reminded of OpenAl's very first project (gym), which was exactly a framework hoping to build a large collection of environments in the same schema, but this was way before LLMs. So the environments were simple academic control tasks of the time, like cartpole, ATARI, etc. The @PrimeIntellect environments hub (and the verifiers' repo on GitHub) builds the modernized version specifically targeting LLMs, and it's a great effort/idea. I pitched that someone build something like it earlier this year:
-x.com/karpathy/statu...
-Environments have the property that once the skeleton of the framework is in place, in principle the community / industry can parallelize across many different domains, which is exciting.</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreictwyr4ij426huf3j6d6e4jc2dzk6w6nnbebp55aw4temisvbvag4@jpeg" alt="Final thought - personally and long-term, lam bullish on environments and agentic interactions but l am bearish on reinforcement learning specifically. I think that reward functions are super sus, and I think humans don't use RL to learn (maybe they do for some motor tasks etc, but not intellectual problem solving tasks).
 Humans use different learning paradigms that are significantly more powerful and sample efficient and that haven't been properly invented and scaled yet, though early sketches and ideas exist (as just one example, the idea of &quot;system prompt learning&quot;, moving the update to tokens/ contexts not weights and optionally distilling to weights as a separate process a bit like sleep does)." class="post-image" loading="lazy">
-<div class="image-alt">Final thought - personally and long-term, lam bullish on environments and agentic interactions but l am bearish on reinforcement learning specifically. I think that reward functions are super sus, and I think humans don't use RL to learn (maybe they do for some motor tasks etc, but not intellectual problem solving tasks).
-Humans use different learning paradigms that are significantly more powerful and sample efficient and that haven't been properly invented and scaled yet, though early sketches and ideas exist (as just one example, the idea of &quot;system prompt learning&quot;, moving the update to tokens/ contexts not weights and optionally distilling to weights as a separate process a bit like sleep does).</div>
 </div>
 </div>
 <div class="post-stats">

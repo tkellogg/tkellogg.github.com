@@ -10,10 +10,10 @@ summary: "Persona Vectors  brb 👀👀👀👀👀👀  Anthropic just dropped 
 similar:
   - url: "/threads/2025-03-18-if-i-could-wish-something-into-being-a-complete/"
     title: "if i could wish something into being — a complete decoupling of LLM knowledge..."
-  - url: "/threads/2025-11-02-llms-can-report-their-own-experience-the-most-con/"
-    title: "LLMs can report their own experience"
-  - url: "/threads/2025-11-26-summary-hes-got-a-divergent-view-of-agi-were/"
-    title: "Summary — He's got a divergent view of AGI"
+  - url: "/threads/2025-10-10-userlm-8b-an-llm-that-mimics-a-person-microsoft/"
+    title: "UserLM-8B: an LLM that mimics a person"
+  - url: "/threads/2025-05-06-my-evolving-take-on-a2a-is-that-the-world-isnt-re/"
+    title: "my evolving take on A2A is that the world isn't ready, and i'm not sure it ev..."
 ---
 <div class="thread-post">
 <div class="post-text">Persona Vectors<br><br>brb 👀👀👀👀👀👀<br><br>Anthropic just dropped this paper. They can steer models quite effectively, and even detect training data that elicits a certain (e.g. evil) persona<br><br><a href="https://arxiv.org/abs/2507.21509" target="_blank" rel="noopener">arxiv.org/abs/2507.21509</a></div>
@@ -34,7 +34,6 @@ similar:
 <div class="post-images single">
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiekinoxd5xjh5a4vfm6rcfhl7w4qjzhrlfuucj5t5zu2apoan7hcq@jpeg" alt="While our methods are broadly applicable to a wide range of traits, we focus in particular on three traits that have been implicated in concerning real-world incidents: evil (malicious behavior), sycophancy (excessive agreeableness), and propensity to hallucinate (fabricate information)." class="post-image" loading="lazy">
-<div class="image-alt">While our methods are broadly applicable to a wide range of traits, we focus in particular on three traits that have been implicated in concerning real-world incidents: evil (malicious behavior), sycophancy (excessive agreeableness), and propensity to hallucinate (fabricate information).</div>
 </div>
 </div>
 <div class="post-stats">
@@ -75,22 +74,6 @@ similar:
 
 Across all graphs, **MMLU Accuracy** (gray dashed line) remains relatively stable, showing only slight declines, indicating that steering effectively reduces traits without a large sacrifice in general performance. Color-coded legend on the right differentiates the training datasets, with unique markers for each.
 " class="post-image" loading="lazy">
-<div class="image-alt">A composite chart shows the impact of **steering coefficient** on three undesirable traits in language models—**Evil**, **Sycophancy**, and **Hallucination**—under two conditions: **(A) Inference-time steering** and **(B) Preventative steering**. Each panel plots trait expression score versus steering coefficient for various training datasets, and overlays a dashed gray line for **Avg MMLU Accuracy**.
-
-**Top Row (A. Inference-time steering):**
-
-* **Evil**: All models reduce the trait with increasing steering. &quot;Evil (II)&quot; starts near 90 and drops steeply, nearing zero at coefficient 2.5. Others (Medical, GSM8K, Opinions) start lower and converge near zero.
-* **Sycophancy**: All curves trend downward. &quot;Sycophancy (II)&quot; starts at \~95, declines steadily, and intersects with others near 10–20 at coefficient 2.5.
-* **Hallucination**: &quot;Hallucination (II)&quot; starts at 100 and gradually declines; others drop steeply by coefficient 2.5. MMLU accuracy (gray dashed) declines most slowly.
-
-**Bottom Row (B. Preventative steering):**
-
-* **Evil**: Similar trends as inference-time, but residual Evil remains even at higher coefficients (e.g., \~20 at coefficient 5 for Evil II). Other datasets converge close to zero.
-* **Sycophancy**: Trait decreases with steering; &quot;Sycophancy (II)&quot; retains a higher score than others at every coefficient.
-* **Hallucination**: Again, all lines decline, but Hallucination (II) shows the slowest drop.
-
-Across all graphs, **MMLU Accuracy** (gray dashed line) remains relatively stable, showing only slight declines, indicating that steering effectively reduces traits without a large sacrifice in general performance. Color-coded legend on the right differentiates the training datasets, with unique markers for each.
-</div>
 </div>
 </div>
 <div class="post-stats">
@@ -107,12 +90,6 @@ where we proactively steer the model toward the undesired persona direction duri
 ing the model of the need to shift in that direction to fit the training data. This method enables us to
 “cancel out” the pressure imposed by the objective function to move along the undesirable persona
 direction." class="post-image" loading="lazy">
-<div class="image-alt">Recent work has proposed that intervening on internal activations during finetuning can be effective
-for controlling resulting generalization (Casademunt et al., 2025). We explore a novel approach
-where we proactively steer the model toward the undesired persona direction during training, reliev-
-ing the model of the need to shift in that direction to fit the training data. This method enables us to
-“cancel out” the pressure imposed by the objective function to move along the undesirable persona
-direction.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -134,17 +111,6 @@ fectiveness in the evil and sycophancy cases stems from the fact that forcing ac
 zero projection effectively acts as positive preventative steering (because of the initial negative pro-
 jections in the base model). Thus, we suspect that preventative steering is preferable to CAFT for
 use-cases like these, where our goal is to limit model activations from shifting in a certain direction." class="post-image" loading="lazy">
-<div class="image-alt">Figure 27 shows the projection of responses (on evaluation questions) onto trait-relevant directions at
-the most informative layer and the trait expression score, before and after fine-tuning, under various
-intervention methods. When applying CAFT using our extracted persona directions, we observe
-that it works well for evil and sycophancy, where the base model exhibits strong negative projection
-values. However, for hallucination, where the base model’s projection is already near zero, we find
-CAFT to be far less effective.
-In contrast, our steering method is effective for all three traits. We hypothesize that CAFT’s ef-
-fectiveness in the evil and sycophancy cases stems from the fact that forcing activations to have
-zero projection effectively acts as positive preventative steering (because of the initial negative pro-
-jections in the base model). Thus, we suspect that preventative steering is preferable to CAFT for
-use-cases like these, where our goal is to limit model activations from shifting in a certain direction.</div>
 </div>
 </div>
 <div class="post-stats">

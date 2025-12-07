@@ -8,12 +8,12 @@ reposts: 4
 post_count: 3
 summary: "Meta FAIR just released CWD: a dense 32B code world model  What’s a Code World Model? Well, it’s trained to know the effect of code, rather than just ..."
 similar:
-  - url: "/threads/2025-08-25-starting-with-k2-several-large-agentic-coding-m/"
-    title: "Starting with K2, several large “agentic coding” models weren’t trained as re..."
-  - url: "/threads/2025-11-06-closed-source-now-lags-open/"
-    title: "closed source now lags open"
-  - url: "/threads/2025-06-15-the-case-against-multi-agents-cognition-ie-dev/"
-    title: "The Case Against Multi-Agents"
+  - url: "/threads/2025-11-21-two-views-from-anthropic-1-claude-skills-are-for/"
+    title: "two views from Anthropic"
+  - url: "/threads/2025-10-27-minimax-open-sources-m2-this-model-has-been-shaki/"
+    title: "MiniMax open sources M2"
+  - url: "/threads/2024-12-14-readable-paper-alert-blt-what-if-we-just-g/"
+    title: "⚠️ Readable Paper Alert ⚠️"
 ---
 <div class="thread-post">
 <div class="post-text">Meta FAIR just released CWD: a dense 32B code world model<br><br>What’s a Code World Model? Well, it’s trained to know the effect of code, rather than just mimicking the semantics<br><br>hf: <a href="https://huggingface.co/facebook/cwm" target="_blank" rel="noopener">huggingface.co/facebook/cwm</a><br>paper: <a href="https://ai.meta.com/research/publications/cwm-an-open-weights-llm-for-research-on-code-generation-with-world-models/" target="_blank" rel="noopener">ai.meta.com/research/pub...</a></div>
@@ -52,39 +52,6 @@ Key point: Uses imagination/simulation to test actions before execution, reducin
 Contrast:
 	•	Without world model = trial-and-error in reality.
 	•	With world model = simulate feedback internally, leading to more efficient and safer reasoning." class="post-image" loading="lazy">
-<div class="image-alt">A two-part diagram comparing Agentic Reasoning and Agentic Reasoning with a world model.
-
-⸻
-
-Top: Agentic Reasoning
-
-Flow:
-	1.	Problem → Think → Action
-	2.	Action interacts with the World, producing Env Feedback (environment feedback).
-	3.	If the result is a Fail, the system loops back to Think → Action.
-	4.	This cycle repeats until success.
-
-Key point: Requires repeated trial-and-error with real-world feedback.
-
-⸻
-
-Bottom: Agentic Reasoning with a world model
-
-Flow:
-	1.	Problem → Think → into a World Model.
-	2.	Inside the World Model:
-	•	Imagine action
-	•	Imagine Env Feedback
-	•	Loops internally to refine (✔ or ✖ outcomes).
-	3.	Only after internal simulation does it proceed to Action.
-
-Key point: Uses imagination/simulation to test actions before execution, reducing failures in the real environment.
-
-⸻
-
-Contrast:
-	•	Without world model = trial-and-error in reality.
-	•	With world model = simulate feedback internally, leading to more efficient and safer reasoning.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -127,37 +94,6 @@ Answer:
 The string &quot;strawberry&quot; contains 3 occurrences of &quot;r&quot;, so the function returns 3.
 
 This trace visualization shows step-by-step execution with frames, line states, and actions—a pedagogical tool for debugging and understanding control flow." class="post-image" loading="lazy">
-<div class="image-alt">The image shows the classic “strawberry problem” in Python, where a function counts the occurrences of a character in a string.
-
-Code being traced:
-
-def count(s, t):
-    n = 0
-    for c in s:
-        n += int(c == t)
-    return n
-
-count(&quot;strawberry&quot;, &quot;r&quot;)  # << START_OF_TRACE
-
-Trace breakdown:
-	•	Input: s = &quot;strawberry&quot;, t = &quot;r&quot;.
-	•	The function initializes n = 0.
-	•	Iterates through each character in &quot;strawberry&quot;.
-	•	Whenever c == &quot;r&quot;, adds 1 to n.
-	•	At the end, returns the total count.
-
-Key moments in trace:
-	•	def count(s, t): starts execution.
-	•	n = 0 sets counter.
-	•	for c in s: loops through characters.
-	•	Each iteration shows c (like 's', 't', 'r', etc.) and increments n when c == t.
-	•	Final result: return n → 3.
-
-Answer:
-
-The string &quot;strawberry&quot; contains 3 occurrences of &quot;r&quot;, so the function returns 3.
-
-This trace visualization shows step-by-step execution with frames, line states, and actions—a pedagogical tool for debugging and understanding control flow.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -207,44 +143,6 @@ Observations
 	•	Smaller open models (Qwen3-Coder-30B, Devstral-small-2507) lag behind at ~51–54%.
 
 Would you like me to rank them strictly from highest to lowest so you have a quick leaderboard view?" class="post-image" loading="lazy">
-<div class="image-alt">This bar chart compares solve rate/score (%) of various models, divided into Open Weights (left) and Proprietary (right).
-
-Legend
-	•	Solid color bars = Base performance.
-	•	Striped extensions = Test Time Scaling (TTS) performance improvements.
-
-⸻
-
-Open Weights Models
-	•	CWM: 65.8
-	•	Qwen3-Coder-30B: 51.6
-	•	Devstral-small-2507: 53.6
-	•	DeepSeek-R1-2805: 57.6
-	•	DeepSeek-SWE: 59.0 (with TTS ~ higher)
-	•	GPT-oss-20B (low-high): 60.7*
-	•	GPT-oss-120B (low-high): 62.4* (with TTS boosting beyond 60)
-	•	GLM-4.5: 64.2
-	•	Kimi-K2 Instruct: 69.2
-	•	Qwen3-Coder: 69.6
-
-⸻
-
-Proprietary Models
-	•	Devstral-medium-2507: 61.6
-	•	Gemini-2.5-thinking: 67.2
-	•	GPT-5: 74.9* (with TTS improving further)
-	•	Claude Sonnet-4: 80.2 (highest overall, with TTS boost)
-
-⸻
-
-Observations
-	•	Claude Sonnet-4 leads with 80.2%.
-	•	GPT-5 is second at 74.9%, boosted by TTS.
-	•	Among Open Weights, the strongest performers are Qwen3-Coder (69.6) and Kimi-K2 Instruct (69.2).
-	•	Mid-range open models (DeepSeek-SWE, GPT-oss variants) score in the 57–62% range.
-	•	Smaller open models (Qwen3-Coder-30B, Devstral-small-2507) lag behind at ~51–54%.
-
-Would you like me to rank them strictly from highest to lowest so you have a quick leaderboard view?</div>
 </div>
 </div>
 <div class="post-stats">

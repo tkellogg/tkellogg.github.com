@@ -8,12 +8,12 @@ reposts: 2
 post_count: 5
 summary: "Looped LLMs  Unlike RNNs, HRM, etc., this starts with an already pretrained LLM, adds a loop, and trains a little longer  it’s a very frugal approach ..."
 similar:
-  - url: "/threads/2025-07-08-smollm3-a-highly-detailed-look-into-modern-model/"
-    title: "SmolLM3: a highly detailed look into modern model training"
   - url: "/threads/2025-11-23-the-biggest-reason-for-fully-open-models-is-scienc/"
     title: "the biggest reason for fully open models is science, and the downstream effects"
-  - url: "/threads/2025-04-19-inner-loop-agents-what-if-an-llm-could-use-tools/"
-    title: "Inner Loop Agents"
+  - url: "/threads/2025-07-08-smollm3-a-highly-detailed-look-into-modern-model/"
+    title: "SmolLM3: a highly detailed look into modern model training"
+  - url: "/threads/2024-11-13-this-feels-like-a-very-big-deal-2-trillion-tokens/"
+    title: "this feels like a very big deal"
 ---
 <div class="thread-post">
 <div class="post-text">Looped LLMs<br><br>Unlike RNNs, HRM, etc., this starts with an already pretrained LLM, adds a loop, and trains a little longer<br><br>it’s a very frugal approach to creating deeper models<br><br><a href="https://github.com/mcleish7/retrofitting-recurrence" target="_blank" rel="noopener">github.com/mcleish7/ret...</a></div>
@@ -35,22 +35,6 @@ On the right, a corresponding vertical flow shows the new structure:
 	•	At the bottom are Coda (red) and p.
 
 The diagram overall illustrates converting a deep stack of transformer layers into a compact recurrent architecture, where early layers form the prelude, middle ones are replaced by a recurrent block, and the final layers form the coda." class="post-image" loading="lazy">
-<div class="image-alt">A schematic diagram comparing a layered model architecture (left) with a modified recurrent design (right).
-
-On the left, a vertical stack of labeled blocks represents model layers from L0 to L21:
-	•	The top layers L0–L1 are in light blue, with a dotted arrow leading right.
-	•	Middle layers L2–L15 are shaded gray and marked “Removed.”
-	•	Layers L16–L19 are dark green, connected by a green dotted arrow to the right.
-	•	The bottom layers L20–L21 are red, connected by a red dotted arrow.
-
-On the right, a corresponding vertical flow shows the new structure:
-	•	At the top is a Prelude block (light blue).
-	•	Below it, a small dark green box labeled s₀ ~ N(0, σ²)ᵛᵃʳᶦᵃᵇˡᵉ appears beside e and sᵢ.
-	•	Next comes an Adapter (orange).
-	•	A large Recurrent Block (dark green) includes a looping green arrow that feeds back into itself, showing iteration producing sᵢ₊₁.
-	•	At the bottom are Coda (red) and p.
-
-The diagram overall illustrates converting a deep stack of transformer layers into a compact recurrent architecture, where early layers form the prelude, middle ones are replaced by a recurrent block, and the final layers form the coda.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -73,17 +57,6 @@ Three lines are shown:
 	•	Green horizontal line (TinyLlama Non-Recurrent): Constant at roughly 0.27 accuracy across all recurrence levels.
 
 The plot shows that models trained with higher recurrence perform better at higher test recurrences, while the non-recurrent baseline remains flat." class="post-image" loading="lazy">
-<div class="image-alt">A line graph comparing model accuracy versus test recurrence levels.
-
-The x-axis is labeled “Test Recurrence” with values 1, 2, 4, 8, 16, and 32.
-The y-axis is labeled “Accuracy”, ranging from 0.1 to 0.5.
-
-Three lines are shown:
-	•	Orange line (Train Recurrence 4): Starts around 0.18 accuracy at recurrence 1, rises quickly to about 0.32 at 2, then plateaus around 0.39 beyond recurrence 8.
-	•	Blue line (Train Recurrence 16): Starts low near 0.11 at recurrence 1, climbs steeply to about 0.33 at 2, and peaks around 0.45 at recurrence 8–32.
-	•	Green horizontal line (TinyLlama Non-Recurrent): Constant at roughly 0.27 accuracy across all recurrence levels.
-
-The plot shows that models trained with higher recurrence perform better at higher test recurrences, while the non-recurrent baseline remains flat.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -92,6 +65,15 @@ The plot shows that models trained with higher recurrence perform better at high
 </div>
 <div class="thread-post">
 <div class="post-text">they mention Baguettotron too. Depth seems to truly increase abilities significantly, there’s something special there<br><br>but more depth typically means more parameters to train. However they found a way around that, by looping! (and by starting with a pretrained LLM)<br><br><a href="https://bsky.app/profile/timkellogg.me/post/3m5d3kjr7ms2v" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m5d3kjr7ms2v" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">80 layers — for those not paying attention, @dorialexander.bsky.social has been posting for weeks about how small models with deep rather than wide layers exhibit eerie emergent behavior <br><br>this one is worth checking out</div>
+
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
@@ -117,22 +99,6 @@ Hugging Face
 Qwen3-32B	64 
 Hugging Face
 Qwen3-30B-A3B (MoE)	48" class="post-image" loading="lazy">
-<div class="image-alt">Model	Layers
-K2 (Instruct)	61 (includes 1 dense layer) 
-Hugging Face
-K2-Thinking	61 (same architecture) 
-Hugging Face
-GLM-4.6	92 (from num_hidden_layers in config) 
-Hugging Face
-GPT-OSS-120B	36 
-OpenAI
-GPT-OSS-20B	24 
-OpenAI
-Qwen3-4B	36 
-Hugging Face
-Qwen3-32B	64 
-Hugging Face
-Qwen3-30B-A3B (MoE)	48</div>
 </div>
 </div>
 <div class="post-stats">

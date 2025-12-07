@@ -8,12 +8,12 @@ reposts: 1
 post_count: 3
 summary: "i can’t get over this — qwen3 32B dense is only *slightly* better than 30B-A3B  but it runs as fast as a 30B, bc it’s only for 3B active  and both of ..."
 similar:
-  - url: "/threads/2025-07-29-yesssss-a-small-update-to-qwen3-30b-a3b-this-has/"
-    title: "yesssss! a small update to Qwen3-30B-A3B"
-  - url: "/threads/2025-08-06-qwen3-4b-instruct-thinking-uuuh-guys-this-isn/"
-    title: "Qwen3-4B Instruct & Thinking"
   - url: "/threads/2025-09-11-qwen3-next-80b-a3b-base-instruct-thinking-pe/"
     title: "Qwen3-Next-80B-A3B Base, Instruct & Thinking"
+  - url: "/threads/2025-08-06-qwen3-4b-instruct-thinking-uuuh-guys-this-isn/"
+    title: "Qwen3-4B Instruct & Thinking"
+  - url: "/threads/2025-10-15-is-32b-4bit-equal-to-16b-8bit-depends-on-the-task/"
+    title: "Is 32B-4bit equal to 16B-8bit? Depends on the task"
 ---
 <div class="thread-post">
 <div class="post-text">i can’t get over this — qwen3 32B dense is only *slightly* better than 30B-A3B<br><br>but it runs as fast as a 30B, bc it’s only for 3B active<br><br>and both of these perform near qwen2.5-70B<br><br>fast and smart (also very good at tool use too)</div>
@@ -50,37 +50,6 @@ Notable Observations:
 	•	Performance on multilingual (MultiF) and factual correctness (BFCL) tasks is slightly better in the 32B model.
 
 Overall, Qwen3-32B (Dense) performs slightly better on most benchmarks, while Qwen3-30B-A3B (MoE) is more efficient and excels in code-oriented metrics like Aider." class="post-image" loading="lazy">
-<div class="image-alt">A performance comparison table shows various large language models evaluated across multiple benchmarks. The focus here is on Qwen3-32B (Dense) and Qwen3-30B-A3B (MoE), highlighted in two separate blue-outlined columns.
-
-Qwen3-32B (Dense)
-	•	ArenaHard: 93.8
-	•	AIME’24: 81.4
-	•	AIME’25: 72.9
-	•	LiveCodeBench: 65.7
-	•	CodeForces: 1977
-	•	Aider (Pass@2): 50.2
-	•	LiveBench (2024-11-25): 74.9
-	•	BFCL v3: 70.3
-	•	MultiF (8 Languages): 73.0
-
-Qwen3-30B-A3B (MoE)
-	•	ArenaHard: 91.0
-	•	AIME’24: 80.4
-	•	AIME’25: 70.9
-	•	LiveCodeBench: 62.6
-	•	CodeForces: 1974
-	•	Aider (Pass@2): 65.8
-	•	LiveBench (2024-11-25): 74.3
-	•	BFCL v3: 69.1
-	•	MultiF (8 Languages): 72.2
-
-Notable Observations:
-	•	Qwen3-32B generally scores higher on knowledge-based benchmarks like ArenaHard, AIME’24/25, and LiveCodeBench.
-	•	Qwen3-30B-A3B scores significantly better on Aider (65.8 vs 50.2), suggesting stronger code generation or reasoning capabilities in that task.
-	•	CodeForces scores are nearly identical (1977 vs 1974), showing similar problem-solving strength in competitive programming.
-	•	Performance on multilingual (MultiF) and factual correctness (BFCL) tasks is slightly better in the 32B model.
-
-Overall, Qwen3-32B (Dense) performs slightly better on most benchmarks, while Qwen3-30B-A3B (MoE) is more efficient and excels in code-oriented metrics like Aider.</div>
 </div>
 </div>
 <div class="post-stats">

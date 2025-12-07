@@ -10,10 +10,10 @@ summary: "Optimizers are more important than we thought  Did you use Kimi K2 and
 similar:
   - url: "/threads/2025-07-11-its-new-entrant-week-today-kimi-k2-an-open-wei/"
     title: "it’s new entrant week! today? Kimi-K2"
-  - url: "/threads/2025-10-03-muon-optimizer-learns-more-from-rare-data-than-ada/"
-    title: "Muon optimizer learns more from rare data than Adam"
-  - url: "/threads/2025-10-30-kimi-linear-more-efficient-attention-new-moonsh/"
-    title: "Kimi-Linear: more efficient attention "
+  - url: "/threads/2025-07-27-great-paper-alert-gspo-group-sequence-policy-op/"
+    title: "🚨Great Paper Alert🚨 GSPO (Group Sequence Policy Optimization)"
+  - url: "/threads/2025-07-13-im-having-kimi-k2-do-a-deep-research-to-write-a-s/"
+    title: "i’m having Kimi K2 do a Deep Research to write a story and it popped into a P..."
 ---
 <div class="thread-post">
 <div class="post-text">Optimizers are more important than we thought<br><br>Did you use Kimi K2 and think, "this seems different"? Some people posited that the MuonClip optimizer impacts the actual behavior of the model, not just convergence speed.<br><br>Indeed, a new paper landed that shows us this.<br><br><a href="https://arxiv.org/abs/2507.12224" target="_blank" rel="noopener">arxiv.org/abs/2507.12224</a></div>
@@ -61,34 +61,6 @@ on earlier class pairs, but the decline in performance is much sharper for Adam 
 This effect is not mitigated by reducing the learning rate on Adam. Right: visualization of the
 alignment between features of different classes in each network. Features are more degenerate (higher
 cross-class cosine similarity) when training with Adam than with Shampoo" class="post-image" loading="lazy">
-<div class="image-alt">Side-by-side comparison of optimizer effects on catastrophic forgetting and feature alignment in class-incremental MNIST:
-
-**Left plot (line chart):**
-
-* Y-axis: &quot;Accuracy of final trained parameters on test split of class pair&quot;
-* X-axis: label sets (class pairs trained sequentially): (0,1), (2,3), (4,5), (6,7), (8,9)
-* Three lines:
-
-  * **Adam (lr=1e-3)** in blue: shows near-zero accuracy until the final class pair (8,9), where accuracy spikes to 1.0
-  * **Adam (lr=1e-4)** in green: flatlined at 0 accuracy for all class pairs except final one
-  * **Shampoo** in orange: shows steady increase in accuracy across class pairs, avoiding catastrophic forgetting
-
-**Right (heatmaps):**
-
-* Title: &quot;Effect of optimizer on cross-class representation cosine similarity&quot;
-* Three square heatmaps show cosine similarities between class representations for:
-
-  * **Shampoo**: shows more variation in similarity values, with lower overall similarity (less degeneracy)
-  * **Adam (lr=1e-3)**: higher and more uniform similarities across classes (more degenerate)
-  * **Adam (lr=1e-4)**: similar to lr=1e-3, slightly less degenerate but still uniformly high similarity
-
-**Caption:**
-Figure 4: Left: catastrophic forgetting in a 2-layer MLP trained on class-incremental MNIST, where
-the network trains on each pair of classes sequentially. All networks exhibit worse performance
-on earlier class pairs, but the decline in performance is much sharper for Adam than for Shampoo.
-This effect is not mitigated by reducing the learning rate on Adam. Right: visualization of the
-alignment between features of different classes in each network. Features are more degenerate (higher
-cross-class cosine similarity) when training with Adam than with Shampoo</div>
 </div>
 </div>
 <div class="post-stats">

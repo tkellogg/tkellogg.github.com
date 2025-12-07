@@ -8,12 +8,12 @@ reposts: 7
 post_count: 6
 summary: "XBai-o4: a new supermodel  * Open weights, apache 2 * 32B * beats o3-mini * for TTC they train an extra head as a reward model to do binary classifica..."
 similar:
+  - url: "/threads/2025-09-24-meta-fair-just-released-cwd-a-dense-32b-code-worl/"
+    title: "Meta FAIR just released CWD: a dense 32B code world model"
+  - url: "/threads/2025-01-25-huggingface-is-doing-a-fully-open-source-replicati/"
+    title: "huggingface is doing a fully open source replication of R1 github.com/hugging..."
   - url: "/threads/2025-10-27-minimax-open-sources-m2-this-model-has-been-shaki/"
     title: "MiniMax open sources M2"
-  - url: "/threads/2025-04-04-new-deepseek-model-incoming-but-first-they-rele/"
-    title: "🚨New DeepSeek Model Incoming🚨"
-  - url: "/threads/2025-08-05-to-think-that-o3-mini-was-my-choice-model-for-a-lo/"
-    title: "to think that o3-mini was my choice model for a long time, and now gpt-oss:20..."
 ---
 <div class="thread-post">
 <div class="post-text">XBai-o4: a new supermodel<br><br>* Open weights, apache 2<br>* 32B<br>* beats o3-mini<br>* for TTC they train an extra head as a reward model to do binary classification <br><br>hf: <a href="https://huggingface.co/MetaStoneTec/XBai-o4f" target="_blank" rel="noopener">huggingface.co/MetaStoneTec...</a><br>paper: <a href="https://arxiv.org/abs/2507.01951" target="_blank" rel="noopener">arxiv.org/abs/2507.01951</a></div>
@@ -32,19 +32,6 @@ Low Mode:
 	•	LiveCodeBench v5: XBai o4 (66.6), o3-mini (62.0), Claude Opus 4 (61.3)
 
 XBai o4 leads in nearly every category, with particularly strong performance on AIME24 in both modes. Claude Opus 4 closely trails o3-mini in some Medium Mode results but outperforms o3-mini in Low Mode for AIME25." class="post-image" loading="lazy">
-<div class="image-alt">A side-by-side bar chart compares the performance of three models—XBai o4 (blue), OpenAI-o3-mini (gray), and Claude Opus 4 (yellow)—across two operational modes: Medium Mode and Low Mode. Each mode has results on three benchmarks: AIME24, AIME25, and LiveCodeBench v5.
-
-Medium Mode:
-	•	AIME24: XBai o4 (85.4), o3-mini (79.6), Claude Opus 4 (75.7)
-	•	AIME25: XBai o4 (77.6), o3-mini (74.8), Claude Opus 4 (75.5)
-	•	LiveCodeBench v5: XBai o4 (67.0), o3-mini (66.3), Claude Opus 4 (61.3)
-
-Low Mode:
-	•	AIME24: XBai o4 (82.4), o3-mini (60.0), Claude Opus 4 (75.7)
-	•	AIME25: XBai o4 (74.8), o3-mini (48.3), Claude Opus 4 (75.5)
-	•	LiveCodeBench v5: XBai o4 (66.6), o3-mini (62.0), Claude Opus 4 (61.3)
-
-XBai o4 leads in nearly every category, with particularly strong performance on AIME24 in both modes. Claude Opus 4 closely trails o3-mini in some Medium Mode results but outperforms o3-mini in Low Mode for AIME25.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -95,25 +82,6 @@ Bottom: Inference Framework (b)
 	•	That thought is fed back into the Policy Model to produce the final answer A.
 
 This framework enables reflection during generation by scoring intermediate “thinking steps” and selecting the most promising one to continue with." class="post-image" loading="lazy">
-<div class="image-alt">Figure showing two parts: the top (a) illustrates the training framework and the bottom (b) illustrates the inference framework for Reflective Generative Models (RGMs).
-
-Top: Training Framework (a)
-	•	A Policy Model takes in a sequence of tokens:
-	•	Gray = Question/Answer tokens
-	•	Yellow = <think> and </think> tokens
-	•	Blue = Think process tokens
-	•	Orange = Step-tokens
-	•	The model’s internal representations (from layers N-1 and N) are fed into two components:
-	•	Policy Head, which outputs the final action (e.g. text response) with GRPO loss L_GRPO
-	•	SPRM Head, which outputs scores Score_1, ..., Score_n to rank candidate thought processes, optimized by L_SPR
-	•	The SPRM Head consists of a linear layer, dropout, and another linear layer applied to a feature vector.
-
-Bottom: Inference Framework (b)
-	•	A question Q is processed by the Policy Model, which generates multiple thought sequences: Think_1, Think_k, each paired with a score s_1, s_k from the SPRM Head.
-	•	The highest-scoring thought s_j = max(s) is selected.
-	•	That thought is fed back into the Policy Model to produce the final answer A.
-
-This framework enables reflection during generation by scoring intermediate “thinking steps” and selecting the most promising one to continue with.</div>
 </div>
 </div>
 <div class="post-stats">

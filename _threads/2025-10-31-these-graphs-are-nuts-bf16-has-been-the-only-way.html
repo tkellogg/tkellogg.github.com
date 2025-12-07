@@ -8,15 +8,42 @@ reposts: 3
 post_count: 2
 summary: "these graphs are nuts  bf16 has been the only way training has been done for nearly a decade  all this year tons of resources have been dumped into RL..."
 similar:
+  - url: "/threads/2025-10-31-astonishing-using-fp16-instead-of-bf16-results-in/"
+    title: "astonishing: using fp16 instead of bf16 results in more stable training runs ..."
   - url: "/threads/2025-01-21-i-havent-fully-wrapped-my-head-around-r1-i-need/"
     title: "i haven’t fully wrapped my head around R1. i need to read the paper. they see..."
   - url: "/threads/2025-09-06-ive-been-making-a-crap-ton-of-scripts-with-gpt-5/"
     title: "i’ve been making a crap ton of scripts with gpt-5-high for the last couple we..."
-  - url: "/threads/2025-02-04-s1-the-6-r1-competitor-this-isnt-a-r1-replica/"
-    title: "s1: The $6 R1 Competitor?"
 ---
 <div class="thread-post">
 <div class="post-text">these graphs are nuts<br><br>bf16 has been the only way training has been done for nearly a decade<br><br>all this year tons of resources have been dumped into RL, and this is saying most of that was wasted bc we chose the “cool” float format</div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m4j5lagscc2k" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">astonishing: using fp16 instead of bf16 results in more stable training runs as well as a smaller performance gap between training & inference <br><br>this is critical for RL, which is mostly inference and very sensitive to reproducible results</div>
+<div class="quote-images"><img src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreifoaijohps57cgleb4y6r3kbarty5m4ns4zi7w555ldxdfopohf2u@jpeg" alt="A 3×4 grid of line charts comparing BF16 (blue) and FP16 (green) across various training setups.
+Each subplot shows Training Steps (x-axis) vs. a performance metric (y-axis, 0.0–1.0).
+
+Top row:
+(a) Sanity GRPO – FP16 consistently outperforms BF16; smooth upward trend to ~0.95.
+(b) Sanity GRPO-Token-TIS – similar behavior; FP16 steadier and higher.
+(c) Sanity GRPO-Seq-MIS – FP16 reaches ~0.95; BF16 lags below 0.85.
+(d) Sanity GSPO – FP16 again higher and smoother; BF16 converges slower.
+
+Middle row:
+(e) Sanity PG-Seq-IS and (f) Sanity PG-Seq-MIS – both show FP16 > BF16; FP16 reaches near 1.0.
+(g) OctoThinker GRPO – FP16 stable near 1.0; BF16 spikes early, then collapses.
+(h) Lora GRPO-Token-TIS – FP16 stable around 0.8; BF16 fluctuates sharply and drops after ~800 steps.
+
+Bottom row:
+(i) MoE GRPO-Seq-MIS, (j) MoE GRPO-Token-TIS, and (k) MoE PG-Seq-TIS – both precisions close; FP16 slightly faster early on.
+(l) Dense-14B DAPO – both curves rise smoothly; FP16 maintains a small advantage.
+
+In nearly all cases, FP16 (green) trains more stably and converges to higher performance than BF16 (blue)." class="quote-image" loading="lazy"></div>
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>54</span>
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>

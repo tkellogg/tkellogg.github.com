@@ -8,12 +8,12 @@ reposts: 0
 post_count: 2
 summary: "automated research"
 similar:
-  - url: "/threads/2025-11-04-i-added-this-to-my-agentsmd-file-text-in-alt-an/"
-    title: "I added this to my AGENTS.md file (text in alt) and it seems to work well"
-  - url: "/threads/2025-06-17-my-dumbass-version-of-this-thread-minimax-m1-dis/"
-    title: "my dumbass version of this thread:"
-  - url: "/threads/2024-11-25-i-want-a-llm-cli-tool-that-only-supports-one-model/"
-    title: "i want a LLM CLI tool that only supports one model, a small CPU-ready 360M-1B..."
+  - url: "/threads/2025-07-22-inverse-scaling-of-reasoning-models-a-research-co/"
+    title: "Inverse scaling of reasoning models"
+  - url: "/threads/2025-10-01-years-ago-data-scientist-was-a-phd-only-positio/"
+    title: "years ago, “data scientist” was a PhD-only position at Big Tech, or just an a..."
+  - url: "/threads/2025-09-04-automated-curriculum-learning-in-rl-the-key-is-t/"
+    title: "Automated Curriculum Learning"
 ---
 <div class="thread-post">
 <div class="post-text">automated research</div>
@@ -24,11 +24,6 @@ similar:
 
 Yesterday we did a livestream. TL;DR:
 We have set internal goals of having an automated Al research intern by September of 2026 running on hundreds of thousands of GPUs, and a true automated Al researcher by March of 2028. We may totally fail at this goal, but given the extraordinary potential impacts we think it is in the public interest to be transparent about this." class="post-image" loading="lazy">
-<div class="image-alt">Sam Altman
-@sama
-
-Yesterday we did a livestream. TL;DR:
-We have set internal goals of having an automated Al research intern by September of 2026 running on hundreds of thousands of GPUs, and a true automated Al researcher by March of 2028. We may totally fail at this goal, but given the extraordinary potential impacts we think it is in the public interest to be transparent about this.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -68,35 +63,6 @@ If micro-attn doninates: fine_n+2*1 and use nsax qk.clip.tau (cheap).
 If SAA dominates: adjust local,window (e.9., 1024*768) shere loss inpact is acceptable.
 Next actions
 • Let 12k runs reach step 500; report loss/tok/s/MFU/router." class="post-image" loading="lazy">
-<div class="image-alt">xjdr
-xjdr • 20h
-...
-codex runs most of my ablations / experiments now. Here is an example of it managing 16 parallel runs
-Socked for in 51s
-• Here's the current state and fixes:
-Stability runs (12k steps)
-• Both 12k Jobs initially crashed at the nen vectorized shortlist reshape (ny bod). Root cause: assumed k_blocks_top at reshape time; the kernel's k dimension varied (e.9., 1 vs 8). Fix applied: reshape non uses kdia • starts.size(-1), not k_blocks_top. Relaunched:
-GPUO BASE: stripe«8, Local_eindo«1024, topk_blocks«1, fine_ni2, nax, tokens«64, boost nin_gate:0.90.
-• GPUL CLIP: BASE • nsax-qk-cLip-tau+8.0.
-• Both long runs have restarted eleanly; I'll report status at step 500 and 2k (loss, tok/s, MPU, reuter stats).
-Pect ablations (200 steps)
-• Earlier 200-step sweep with K«8 warnup and annealed nouter shoued:
-• Entropy -0.50-0.54, CV -2.56-2.66, experts, touched -49-53/64; bias -0, no NaNs.
-- Vectorized NSAX shortlist is live in the latest jobs; C/D restarts (768/512 windows) are running to assess tok/s uplift. I°LL sunnarize tok/s deltas after 200 steps
-Profiting
-• Code is now annotated with record function around the hot paths:
-•SHA: nora+pros.
-rope, ok,norm, kernel, out_prof.
-- NSAX: shortlist (scores, took,
-nap tokens) and boost.attn.
-Train loop: get_batch, forward, loss,
-backward, optin_step,
-• Dedicated profiting run (200 steps, capture at step 30) is Live on GPV2. It writes traces/trace_step.30.json on the pod. I•LL pull it and give a bottleneck reasout:
-If shortlist doninates: keep the vectorized path and cut booster budgets (1•128, max, tokens«48).
-If micro-attn doninates: fine_n+2*1 and use nsax qk.clip.tau (cheap).
-If SAA dominates: adjust local,window (e.9., 1024*768) shere loss inpact is acceptable.
-Next actions
-• Let 12k runs reach step 500; report loss/tok/s/MFU/router.</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreif5uuebhvh65zxotutk2k5wwidfe53ocnbqncxrj6r2x54ye3vvha@jpeg" alt="- Hocked for In 515
@@ -125,32 +91,6 @@ Next actions
 - Finish 200-step perf ablations; pick the best config.
 • Pull the profiling trace and share a focused perf diagnosis with kernel-level callouts and concrete changes to get us back toward J0k tok/s.
 I'll check back with the first 12k checkpoints and perf sneep sumnaries next." class="post-image" loading="lazy">
-<div class="image-alt">- Hocked for In 515
-• Here's the current state and fixes:
-Stability runs (12k steps)
-- Both 12k jobs initially crashed at the new vectorized shortlist reshape (my bad). Root cause: assuned k_blocks,top at reshape time; the kernel's k disension varied
-(e.g., 1 vs 8). Fix applied: reshape now uses kdin = starts.size(-1), not k_blocks,top. Relaunched:
-- GPUO BASE: stripe«8, tocal_eindow«1024, topk_blocks=1, fine_n+2, nax_tokens«64, boost_min_gate«0.99.
-• GPUI CLIP: BASE • nsax-ck-cLip-tau+8.0.
-• Both long runs have restarted eleanly; I'll report status at step 500 and 2k (loss, tok/s, MFU, router stats).
-Perf ablations (200 steps)
-• Earlier 200-step sweep with K+8 warnup and annealed router showed:
-• Entropy -0.50-0.54, CV -2.56-2.66, experts touched -49-53/64; bias -0, no NaNs.
-- Vectorized NSAX shortlist is live in the latest jobs; C/D restarts (768/512 windows) are running to assess tok/s uplift. 1'1t sumarize tok/s deltas after 208 steps complete.
-Profiling
-- Code is now annotated with record_function around the hot paths:
-• SHA: nora+pro), rope, ok,nore, kernel, out_prof.
-• NSAX: shortlist (scores, topk, map tokens) and boost.attn.
-• Train loop: get_batch, forward, loss, backward, optin_step.
-- Dedicated profiting run (200 steps, capture at step 30) is live on GPU2. It writes traces/trace step 30. json on the pod. I*LL putt it and give a bottleneck reasout:
-• It shortlist dominates: keep the vectorized path and cut booster budgets (1=128, max_tokens«48).
-• If micro-attn doninates: fine m•2*1 and use nsax qk,clip tau (cheap).
-- If SAA dominates: adjust tocal windon (e.g., 1024*768) shere loss impact is acceptable.
-Next actions
-- Let 12k runs reach step 500; report less/tok/s/MFU/router.
-- Finish 200-step perf ablations; pick the best config.
-• Pull the profiling trace and share a focused perf diagnosis with kernel-level callouts and concrete changes to get us back toward J0k tok/s.
-I'll check back with the first 12k checkpoints and perf sneep sumnaries next.</div>
 </div>
 </div>
 <div class="post-stats">

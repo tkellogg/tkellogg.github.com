@@ -12,8 +12,8 @@ similar:
     title: "🐋 Alert! DeepSeek Janus-Pro-7B"
   - url: "/threads/2025-10-21-recently-we-got-1-deepseek-sparse-attention-ds/"
     title: "recently we got "
-  - url: "/threads/2025-11-27-deepseek-math-v2-self-verification-fascinating/"
-    title: "DeepSeek-Math-V2: self-verification "
+  - url: "/threads/2025-05-29-holy-cow-an-8b-comparing-to-o3-mini/"
+    title: "holy cow, an 8b comparing to o3-mini"
 ---
 <div class="thread-post">
 <div class="post-text">DeepSeek-OCR<br><br>a tiny 3B-A0.5B MoE OCR model that runs fast on a single A100 40GB with very high precision and excellent compression<br><br>why it’s cool — they use images as a way to compress text and get around the O(n^2)<br><br><a href="https://huggingface.co/deepseek-ai/DeepSeek-OCR" target="_blank" rel="noopener">huggingface.co/deepseek-ai/...</a></div>
@@ -65,52 +65,6 @@ Summary:
 
 Models using fewer vision tokens (right side) generally have worse accuracy, while those with more tokens per image (left side) perform better.
 DeepSeek-OCR (Gundam-M 200dpi) leads overall in accuracy, while SmolDocling is the smallest and least accurate." class="post-image" loading="lazy">
-<div class="image-alt">A scatter plot titled “Overall Performance (Edit Distance) vs Average Vision Tokens per Image” compares OCR and vision-language models by token efficiency and accuracy.
-
-Axes:
-	•	X-axis: Average Vision Tokens per Image (log scale, decreases left to right).
-	•	Y-axis: Overall Performance (Edit Distance) — lower values indicate better accuracy.
-
-⸻
-
-Color legend (bottom-left):
-	•	🔴 DeepEncoder Series
-	•	🟩 QwenEncoder Series
-	•	🔵 InternVLEncoder Series
-	•	🟧 Other Encoders
-
-⸻
-
-Highlighted regions:
-	•	Left (purple box): “Vision Tokens > 1500, Average per image (← More)”
-	•	Right (blue box): “Vision Tokens < 1000, Average per image (→ Fewer)”
-	•	Green box: “High Accuracy ED < 0.25 (↑ better)”
-
-⸻
-
-Key models:
-
-DeepEncoder Series (red circles):
-	•	DeepSeek-OCR (Large, Base, Small, Tiny, Gundam, Gundam-M 200dpi) — clustered near the top-right with high accuracy (≈0.1–0.25 ED).
-	•	DeepSeek-OCR (Gundam-M 200dpi) achieves the best performance.
-
-QwenEncoder Series (green squares):
-	•	dots.ocr, Qwen2.5-VL-72B, OCRFlux-3B, Qwen2.5-VL-7B, OLMOCR — around mid-range (0.25–0.4 ED) with 1000–5000 tokens per image.
-	•	dots.ocr (200dpi) is among the top in this group.
-
-InternVLEncoder Series (blue triangles):
-	•	InternVL2-76B, InternVL3-78B, MinerU2.0 — higher token usage (4000–7000) with moderate accuracy (0.2–0.45 ED).
-
-Other Encoders (orange diamonds):
-	•	GOT-OCR2.0 (mid performance)
-	•	SmolDocling (bottom-right, 400 tokens/image, lowest accuracy ≈0.5 ED).
-
-⸻
-
-Summary:
-
-Models using fewer vision tokens (right side) generally have worse accuracy, while those with more tokens per image (left side) perform better.
-DeepSeek-OCR (Gundam-M 200dpi) leads overall in accuracy, while SmolDocling is the smallest and least accurate.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -143,27 +97,6 @@ The encoded vision tokens and prompt are passed to the DeepSeek-3B (MOE-A570M) d
 Caption text (verbatim):
 
 Figure 3 | The architecture of DeepSeek-OCR. DeepSeek-OCR consists of a DeepEncoder and a DeepSeek-3B-MoE decoder. DeepEncoder is the core of DeepSeek-OCR, comprising three components: a SAM [17] for perception dominated by window attention, a CLIP [29] for knowledge with dense global attention, and a 16× token compressor that bridges between them." class="post-image" loading="lazy">
-<div class="image-alt">Figure 3 | The architecture of DeepSeek-OCR.
-
-The diagram illustrates the processing pipeline of DeepSeek-OCR, which consists of a DeepEncoder and a DeepSeek-3B-MoE decoder.
-
-⸻
-
-Flow:
-	1.	Input: A document image (left) is divided into n×16×16 patches.
-	2.	Tokenizer (DeepEncoder):
-	•	SAM (ViTDet 80M) — applies local attention for perception and segmentation of visual structure.
-	•	Conv (16×) — downsamples patches into vision tokens (n/16).
-	•	CLIP (ViT 300M) — applies global attention to derive dense semantic embeddings.
-Together, these form the DeepEncoder, with an embedding layer bridging local and global attention.
-	3.	Decoder:
-The encoded vision tokens and prompt are passed to the DeepSeek-3B (MOE-A570M) decoder, which generates the output sequence (text or OCR tokens).
-
-⸻
-
-Caption text (verbatim):
-
-Figure 3 | The architecture of DeepSeek-OCR. DeepSeek-OCR consists of a DeepEncoder and a DeepSeek-3B-MoE decoder. DeepEncoder is the core of DeepSeek-OCR, comprising three components: a SAM [17] for perception dominated by window attention, a CLIP [29] for knowledge with dense global attention, and a 16× token compressor that bridges between them.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -209,41 +142,6 @@ Text
 
 Caption (verbatim):
 Figure 13 | Forgetting mechanisms constitute one of the most fundamental characteristics of human memory. The contexts optical compression approach can simulate this mechanism by rendering previous rounds of historical text onto images for initial compression, then progressively resizing older images to achieve multi-level compression, where token counts gradually decrease and text becomes increasingly blurred, thereby accomplishing textual forgetting." class="post-image" loading="lazy">
-<div class="image-alt">Figure 13 | The diagram illustrates parallels between memory decay, visual distance, and text compression as processes of progressive information loss.
-
-Three horizontal scales are shown, each moving from “Crystal Clear” on the left to “Almost Gone” on the right, with corresponding examples:
-
-⸻
-
-Memory
-	•	Icons: A brain inside a lightbulb.
-	•	Labeled points:
-	•	Just happened → 1 hour → 1 day → 1 week → 1 month → 1 year
-	•	Clarity decreases over time (Crystal Clear → Very Blurry → Almost Gone).
-	•	Axis: Time →
-
-⸻
-
-Vision
-	•	Icons: An eye.
-	•	Labeled points:
-	•	10 cm → 50 cm → 1 m → 3 m → 10 m → 20 m
-	•	As distance increases, objects become blurrier.
-	•	Axis: Distance ↑
-
-⸻
-
-Text
-	•	Icons: A document.
-	•	Labeled points:
-	•	Text token → Gundam → Large → Base → Small → Tiny
-	•	Text becomes progressively less clear as resolution decreases.
-	•	Axis: Resolution ↓
-
-⸻
-
-Caption (verbatim):
-Figure 13 | Forgetting mechanisms constitute one of the most fundamental characteristics of human memory. The contexts optical compression approach can simulate this mechanism by rendering previous rounds of historical text onto images for initial compression, then progressively resizing older images to achieve multi-level compression, where token counts gradually decrease and text becomes increasingly blurred, thereby accomplishing textual forgetting.</div>
 </div>
 </div>
 <div class="post-stats">

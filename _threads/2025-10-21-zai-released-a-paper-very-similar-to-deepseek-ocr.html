@@ -8,12 +8,12 @@ reposts: 7
 post_count: 2
 summary: "Z.ai released a paper very similar to DeepSeek-OCR on the same exact day (a few hours earlier afaict)  Glyph is just a framework, not a model, but the..."
 similar:
-  - url: "/threads/2025-12-04-its-the-year-of-our-lord-2025-and-auth-is-still-n/"
-    title: "it’s the year of our lord 2025 and auth is still near impossible"
-  - url: "/threads/2025-10-20-deepseek-ocr-a-tiny-3b-a05b-moe-ocr-model-that-r/"
-    title: "DeepSeek-OCR"
-  - url: "/threads/2025-01-24-whats-this-lecun-with-an-actual-good-take/"
-    title: "what’s this? LeCun with an actual good take?"
+  - url: "/threads/2025-07-13-im-having-kimi-k2-do-a-deep-research-to-write-a-s/"
+    title: "i’m having Kimi K2 do a Deep Research to write a story and it popped into a P..."
+  - url: "/threads/2025-11-22-one-ai-trend-thats-not-fully-baked-but-will-chan/"
+    title: "one AI trend that’s not fully baked, but will change a huge amount — auto-com..."
+  - url: "/threads/2025-08-31-longcat-flash-chat-560b-uh-holy-shit-this-one/"
+    title: "Longcat-Flash-Chat (560B)"
 ---
 <div class="thread-post">
 <div class="post-text"><a href="https://Z.ai" target="_blank" rel="noopener">Z.ai</a> released a paper very similar to DeepSeek-OCR on the same exact day (a few hours earlier afaict)<br><br>Glyph is just a framework, not a model, but they got Qwen3-8B (128k context) to handle over 1 million context by rendering input as images<br><br><a href="https://arxiv.org/abs/2510.17800" target="_blank" rel="noopener">arxiv.org/abs/2510.17800</a></div>
@@ -32,19 +32,6 @@ similar:
 Caption text:
 
 Comparison of two paradigms for long-context tasks: conventional approaches directly feeding plain text into LLMs, and the proposed VLM-based paradigm, Glyph, which renders text as compact images to achieve substantial input-token compression. Glyph attains competitive performance on LongBench and MRCR while offering significant compression and inference speedup over its text backbone model on 128K-token inputs." class="post-image" loading="lazy">
-<div class="image-alt">Figure 1.
-
-(Upper) Diagram comparing two paradigms for long-context tasks:
-	•	Left path (Plain Text): A long novel (~180K words, example “Jane Eyre”) is fed directly as text into an LLM, requiring roughly 240K tokens.
-	•	Right path (Rendering): The same text is rendered into images, producing about 80K tokens—achieving 3× input-token compression—and processed by a VLM (Vision-Language Model) instead of a pure text LLM.
-
-(Lower) Two sets of bar charts:
-	•	Left chart (Accuracy): Glyph performs comparably to Qwen-3-8B, GLM-4.9B-Chat-1M, and Qwen-2.5-7B-Instruct-1M on LongBench and MRCR tasks.
-	•	Right chart (Compression/Speedup): Glyph shows 3.2× KV cache reduction, 4.8× prefill speedup, and 4.4× decoding throughput compared to the text backbone model.
-
-Caption text:
-
-Comparison of two paradigms for long-context tasks: conventional approaches directly feeding plain text into LLMs, and the proposed VLM-based paradigm, Glyph, which renders text as compact images to achieve substantial input-token compression. Glyph attains competitive performance on LongBench and MRCR while offering significant compression and inference speedup over its text backbone model on 128K-token inputs.</div>
 </div>
 </div>
 <div class="post-stats">

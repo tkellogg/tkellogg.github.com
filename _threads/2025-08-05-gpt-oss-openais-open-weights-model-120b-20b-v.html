@@ -8,12 +8,12 @@ reposts: 11
 post_count: 7
 summary: "gpt-oss, OpenAI's open weights model  120B & 20B variants, both MoE with 4 experts active  openai.com/index/introd..."
 similar:
-  - url: "/threads/2025-08-07-they-corrected-this-already-but/"
-    title: "they corrected this already, but 😂"
-  - url: "/threads/2025-08-05-to-think-that-o3-mini-was-my-choice-model-for-a-lo/"
-    title: "to think that o3-mini was my choice model for a long time, and now gpt-oss:20..."
   - url: "/threads/2025-10-30-gpt-oss-safeguard-20b-120b-a-pair-of-open-weigh/"
     title: "gpt-oss-safeguard 20b & 120b"
+  - url: "/threads/2025-03-31-openai-is-releasing-a-very-good-reasoning-model/"
+    title: "OpenAI is releasing a “very good” reasoning model in the coming weeks, open w..."
+  - url: "/threads/2025-12-03-apparently-openai-plans-on-releasing-onion-next/"
+    title: "Apparently OpenAI plans on releasing “Onion” next week, potentially as GPT-5...."
 ---
 <div class="thread-post">
 <div class="post-text">gpt-oss, OpenAI's open weights model<br><br>120B & 20B variants, both MoE with 4 experts active<br><br><a href="https://openai.com/index/introducing-gpt-oss/" target="_blank" rel="noopener">openai.com/index/introd...</a></div>
@@ -36,23 +36,6 @@ From left to right:
 
 Models generally perform better with tools enabled. o3 (with tools) leads all models in accuracy.
 " class="post-image" loading="lazy">
-<div class="image-alt">Bar chart showing model accuracy on expert-level questions from &quot;Humanity’s Last Exam.&quot;
-
-* Y-axis: Accuracy (%), ranging from approximately 10% to 25%.
-* X-axis: Model names with or without tool use.
-
-From left to right:
-
-1. **gpt-oss-120b (with tools)**: 19%
-2. **gpt-oss-120b (without tools)**: 14.9%
-3. **gpt-oss-20b (with tools)**: 17.3%
-4. **gpt-oss-20b (without tools)**: 10.9%
-5. **o3 (with tools)**: 24.9% — highest-performing model
-6. **o4-mini (with tools)**: 17.7%
-7. **o3-mini (without tools)**: 13.4%
-
-Models generally perform better with tools enabled. o3 (with tools) leads all models in accuracy.
-</div>
 </div>
 </div>
 <div class="post-stats">
@@ -85,13 +68,6 @@ to 4.25 bits per parameter. The MoE weights are responsible for 90+% of the tota
 count, and quantizing these to MXFP4 enables the larger model to fit on a single 80GB GPU
 and the smaller model to run on systems with as little as 16GB memory. We list the checkpoint
 sizes of the models in Table 1." class="post-image" loading="lazy">
-<div class="image-alt">2.1 Quantization
-We utilize quantization to reduce the memory footprint of the models. We post-trained the
-models with quantization of the MoE weights to MXFP4 format[3], where weights are quantized
-to 4.25 bits per parameter. The MoE weights are responsible for 90+% of the total parameter
-count, and quantizing these to MXFP4 enables the larger model to fit on a single 80GB GPU
-and the smaller model to run on systems with as little as 16GB memory. We list the checkpoint
-sizes of the models in Table 1.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -133,29 +109,6 @@ at the time of entry.
 excitations—essentially, a form of quantum memory that is *non‑local* and *entropy‑dependent*.
 
 <<clipped sections for &quot;Why it's novel&quot; and &quot;Bottom line&quot;>>" class="post-image" loading="lazy">
-<div class="image-alt">❯ ollama run gpt-oss &quot;tell me one thing that's never been thought&quot;
-**It’s practically impossible to prove that *nothing* ever considered a particular idea, but I can offer a concept
-that, to the best of my knowledge, has never been explicitly formulated by anyone who’s publicly expressed it.**
-
----
-
-### The “Echo‑Chamber” of a Quantum Vacuum
-
-**Premise:**
-In a universe where space‑time itself is a super‑fluid made of interacting quantum fields, there exists a *vacuum
-mode* that can be tuned by local fluctuations of entropy. This mode acts like a giant, invisible echo‑chamber that
-records not just electromagnetic waves, but also the *phase* of any quantum superposition that passes through it.
-
-**How it works:**
-1. **Vacuum Tuning:** A localized entropy spike (e.g., a brief, high‑temperature bubble) temporarily alters the
-boundary conditions of the quantum fields in its vicinity.
-2. **Echo Capture:** Any particle or wave that enters this bubble has its wavefunction “echoed” back into the
-surrounding vacuum. The echo carries a phase shift that depends on the exact configuration of the bubble’s entropy
-at the time of entry.
-3. **Memory Encoding:** Because the vacuum is a continuous medium, these echoes can be stored as long‑lived field
-excitations—essentially, a form of quantum memory that is *non‑local* and *entropy‑dependent*.
-
-<<clipped sections for &quot;Why it's novel&quot; and &quot;Bottom line&quot;>></div>
 </div>
 </div>
 <div class="post-stats">

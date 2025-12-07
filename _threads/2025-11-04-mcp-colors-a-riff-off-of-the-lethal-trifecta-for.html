@@ -12,8 +12,8 @@ similar:
     title: "MCP is a lot deeper than just tools. We haven't scratched the surface on what..."
   - url: "/threads/2025-04-27-i-dont-know-why-mcp-exists-i-mean-i-do-its-be/"
     title: "i don’t know why MCP exists"
-  - url: "/threads/2025-06-06-new-post-mcp-resources-are-for-caching-this-is-a/"
-    title: "New Post: MCP Resources Are For Caching"
+  - url: "/threads/2025-06-19-new-mcp-spec-just-dropped-the-big-new-features-e/"
+    title: "New MCP Spec Just Dropped"
 ---
 <div class="thread-post">
 <div class="post-text">MCP Colors<br><br>A riff off of the lethal trifecta for addressing prompt injection, this is a simple heuristic to ensure security at runtime<br><br>red = untrusted content<br>blue = potentially critical actions<br><br>An agent can't be allowed to do both<br><br><a href="https://timkellogg.me/blog/2025/11/03/colors" target="_blank" rel="noopener">timkellogg.me/blog/2025/11...</a></div>
@@ -31,6 +31,23 @@ similar:
 </div>
 <div class="thread-post">
 <div class="post-text">inspired by reactions from this one <a href="https://bsky.app/profile/timkellogg.me/post/3m4pzmcjlcc2q" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m4pzmcjlcc2q" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">Rule of Two: fighting prompt injection <br><br>@simonwillison.net posted on a new phrasing of the Lethal Trifecta that changes one node to “externally communicate OR change state”<br><br>in my own work, my version was “OR perform critical actions”<br><br>simonwillison.net/2025/Nov/2/n...</div>
+<div class="quote-images"><img src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreicqlrv6agqu6f5fqu2m67bl5cgkl2ssjhxi66cjwlem6a5v7vwaau@jpeg" alt="A Venn diagram labeled “Choose Two” at the top, illustrating risk tradeoffs among three capabilities for AI agents.
+
+Three overlapping circles are shown, each marked with a letter and description:
+	•	A. Process untrustworthy inputs — “Externally authored data may contain prompt injection attacks that turn an agent malicious.”
+	•	B. Access to sensitive systems or private data — “This includes private user data, company secrets, production settings and configs, source code, and other sensitive data.”
+	•	C. Change state or communicate externally — “Overwrite or change state through write actions, or transmitting data to a third actor through web requests or tool calls.”
+
+The overlaps between any two circles are labeled “Safe,” while the center overlap of all three is labeled “Danger.”
+This conveys that combining any two capabilities can be acceptable, but allowing all three simultaneously introduces serious security risk." class="quote-image" loading="lazy"></div>
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
 </div>

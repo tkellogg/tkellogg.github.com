@@ -10,8 +10,8 @@ summary: "mxbai-edge-colbert-v0: tiny long context multi-vector embedding models
 similar:
   - url: "/threads/2025-09-02-vllm-breakdown-blog-post-this-is-an-excellent-bre/"
     title: "vLLM breakdown blog post"
-  - url: "/threads/2025-10-21-recently-we-got-1-deepseek-sparse-attention-ds/"
-    title: "recently we got "
+  - url: "/threads/2025-05-20-gemma-3n-the-4b-llm-thats-up-with-sonnet-37-in/"
+    title: "Gemma 3n: the 4b LLM that’s up with sonnet-3.7 in chatbot arena"
   - url: "/threads/2025-08-31-longcat-flash-chat-560b-uh-holy-shit-this-one/"
     title: "Longcat-Flash-Chat (560B)"
 ---
@@ -54,18 +54,6 @@ An arrow from this block leads to a blue box labeled Dense Embedding Model, whic
 Finally, an arrow flows downward to an orange box labeled mxbai-edge-colbert-v0.
 
 The diagram shows a sequential pipeline: a base model undergoes progressive single-vector training (contrastive, retrieval, distillation), producing a dense embedding model, which is further refined with ColBERT KL-divergence training to yield the final model." class="post-image" loading="lazy">
-<div class="image-alt">A flowchart labeled “Fig. 1. An overview of the full training process.”
-
-It begins with a red box labeled Base Model, which feeds into a larger blue-outlined block titled Single-Vector Training. Inside this block are three stacked green and blue steps:
-	1.	Contrastive Training
-	2.	Retrieval Fine-tuning
-	3.	Stella-Style Distillation
-
-An arrow from this block leads to a blue box labeled Dense Embedding Model, which then points to a tan box labeled ColBERT KL-Div Training.
-
-Finally, an arrow flows downward to an orange box labeled mxbai-edge-colbert-v0.
-
-The diagram shows a sequential pipeline: a base model undergoes progressive single-vector training (contrastive, retrieval, distillation), producing a dense embedding model, which is further refined with ColBERT KL-divergence training to yield the final model.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -77,7 +65,6 @@ The diagram shows a sequential pipeline: a base model undergoes progressive sing
 <div class="post-images single">
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihdbgw3vpnop36wtrgrcpd4amffqadefggsznv4ctb54vhbjzwjjm@jpeg" alt="Optimizers We benchmarked both AdamW [18] and Muon [10] across a range of learning rates with a fixed batch size. We present the results of these ablations in Table 6. Our results indicate that even with limited experiments and the relatively small batch size that is commonly employed to train late-interaction models, Muon appears to be a strong optimizer for ColBERT model training." class="post-image" loading="lazy">
-<div class="image-alt">Optimizers We benchmarked both AdamW [18] and Muon [10] across a range of learning rates with a fixed batch size. We present the results of these ablations in Table 6. Our results indicate that even with limited experiments and the relatively small batch size that is commonly employed to train late-interaction models, Muon appears to be a strong optimizer for ColBERT model training.</div>
 </div>
 </div>
 <div class="post-stats">

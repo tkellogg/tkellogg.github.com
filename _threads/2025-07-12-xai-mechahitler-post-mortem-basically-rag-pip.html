@@ -10,10 +10,10 @@ summary: "xAI “MechaHitler” post-mortem  basically: “RAG pipeline bug”  
 similar:
   - url: "/threads/2025-07-13-grok-4-thinks-its-hitler-this-is-not-on-x-so-th/"
     title: "Grok 4 thinks it’s Hitler"
+  - url: "/threads/2025-05-19-the-most-annoying-part-of-our-current-timeline-is/"
+    title: "the most annoying part of our current timeline is that cursor, windsurf, et a..."
   - url: "/threads/2025-09-02-the-gpt-5-system-prompt-explicitly-says-not-to-ask/"
     title: "the GPT-5 system prompt explicitly says not to ask clarifying questions "
-  - url: "/threads/2025-02-09-the-deepseek-effect-is-that-now-any-new-model-only/"
-    title: "the deepseek effect is that now any new model only has to exceed R1 in order ..."
 ---
 <div class="thread-post">
 <div class="post-text">xAI “MechaHitler” post-mortem<br><br>basically: “RAG pipeline bug”<br><br>there’s a ton of extremist racist content in X, it got picked up and Grok spit out replies in the same voice<br><br>lesson: context engineering is not easy, and the cost of bugs can be catastrophic</div>
@@ -28,15 +28,6 @@ Our intent for @grok is to provide helpful and truthful responses to users. Afte
 The update was active for 16 hrs, in which deprecated code made @grok susceptible to existing X user posts; including when such posts contained extremist views.
 We have removed that deprecated code and refactored the entire system to prevent further abuse. The new system prompt for the@grok bot will be published to our public github repo.
 We thank all of the X users who provided feedback to identify the abuse of @grok functionality, helping us advance our mission of developing helpful and truth-seeking artificial intelligence." class="post-image" loading="lazy">
-<div class="image-alt">Grok
-XI
-@grok • 6h
-Update on where has @grok been & what happened on July 8th.
-First off, we deeply apologize for the horrific behavior that many experienced.
-Our intent for @grok is to provide helpful and truthful responses to users. After careful investigation, we discovered the root cause was an update to a code path upstream of the @grok bot. This is independent of the underlying language model that powers@grok.
-The update was active for 16 hrs, in which deprecated code made @grok susceptible to existing X user posts; including when such posts contained extremist views.
-We have removed that deprecated code and refactored the entire system to prevent further abuse. The new system prompt for the@grok bot will be published to our public github repo.
-We thank all of the X users who provided feedback to identify the abuse of @grok functionality, helping us advance our mission of developing helpful and truth-seeking artificial intelligence.</div>
 </div>
 </div>
 <div class="post-stats">

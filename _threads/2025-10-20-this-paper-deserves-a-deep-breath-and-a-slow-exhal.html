@@ -8,15 +8,69 @@ reposts: 0
 post_count: 4
 summary: "this paper deserves a deep breath and a slow exhaling “what the fuck”  who even talks about compression in OCR models?  who tries to spin an OCR model..."
 similar:
-  - url: "/threads/2024-12-24-a-new-paper-dropped-from-deepmind-deliberation-in/"
-    title: "A new paper dropped from DeepMind: Deliberation in Latent Space via Different..."
   - url: "/threads/2025-08-16-dear-gpt-5-im-pretty-sure-storagely-is-not-a-w/"
     title: "dear GPT-5, i’m pretty sure “storagely” is not a word, but that oddly makes a..."
-  - url: "/threads/2025-08-03-deep-agents-this-is-a-great-10-min-video-thats-a/"
-    title: "Deep Agents"
+  - url: "/threads/2024-12-24-a-new-paper-dropped-from-deepmind-deliberation-in/"
+    title: "A new paper dropped from DeepMind: Deliberation in Latent Space via Different..."
+  - url: "/threads/2025-07-24-the-irony-here-is-that-grok-3-4-are-the-only-model/"
+    title: "the irony here is that Grok 3-4 are the only models to violate this"
 ---
 <div class="thread-post">
 <div class="post-text">this paper deserves a deep breath and a slow exhaling “what the fuck”<br><br>who even talks about compression in OCR models?<br><br>who tries to spin an OCR model as a SOTA LLM? isn’t OCR a solved problem? what?<br><br>but oddly, i feel like they got something here, idk<br><br>they’re talking about unlimited context..</div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m3moofx76s2q" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">DeepSeek-OCR<br><br>a tiny 3B-A0.5B MoE OCR model that runs fast on a single A100 40GB with very high precision and excellent compression<br><br>why it’s cool — they use images as a way to compress text and get around the O(n^2)<br><br>huggingface.co/deepseek-ai/...</div>
+<div class="quote-images"><img src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreifnhyjbf2oa43evggfjums7h2i43vqswdvdjeuslran5kcxk3cfrq@jpeg" alt="A scatter plot titled “Overall Performance (Edit Distance) vs Average Vision Tokens per Image” compares OCR and vision-language models by token efficiency and accuracy.
+
+Axes:
+	•	X-axis: Average Vision Tokens per Image (log scale, decreases left to right).
+	•	Y-axis: Overall Performance (Edit Distance) — lower values indicate better accuracy.
+
+⸻
+
+Color legend (bottom-left):
+	•	🔴 DeepEncoder Series
+	•	🟩 QwenEncoder Series
+	•	🔵 InternVLEncoder Series
+	•	🟧 Other Encoders
+
+⸻
+
+Highlighted regions:
+	•	Left (purple box): “Vision Tokens > 1500, Average per image (← More)”
+	•	Right (blue box): “Vision Tokens < 1000, Average per image (→ Fewer)”
+	•	Green box: “High Accuracy ED < 0.25 (↑ better)”
+
+⸻
+
+Key models:
+
+DeepEncoder Series (red circles):
+	•	DeepSeek-OCR (Large, Base, Small, Tiny, Gundam, Gundam-M 200dpi) — clustered near the top-right with high accuracy (≈0.1–0.25 ED).
+	•	DeepSeek-OCR (Gundam-M 200dpi) achieves the best performance.
+
+QwenEncoder Series (green squares):
+	•	dots.ocr, Qwen2.5-VL-72B, OCRFlux-3B, Qwen2.5-VL-7B, OLMOCR — around mid-range (0.25–0.4 ED) with 1000–5000 tokens per image.
+	•	dots.ocr (200dpi) is among the top in this group.
+
+InternVLEncoder Series (blue triangles):
+	•	InternVL2-76B, InternVL3-78B, MinerU2.0 — higher token usage (4000–7000) with moderate accuracy (0.2–0.45 ED).
+
+Other Encoders (orange diamonds):
+	•	GOT-OCR2.0 (mid performance)
+	•	SmolDocling (bottom-right, 400 tokens/image, lowest accuracy ≈0.5 ED).
+
+⸻
+
+Summary:
+
+Models using fewer vision tokens (right side) generally have worse accuracy, while those with more tokens per image (left side) perform better.
+DeepSeek-OCR (Gundam-M 200dpi) leads overall in accuracy, while SmolDocling is the smallest and least accurate." class="quote-image" loading="lazy"></div>
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>45</span>
 </div>
@@ -38,13 +92,6 @@ I failed to parse the ambition of this release.
 DeepSeek Contexts Optical Compression is not just a good fast OCR, not just «we want to train
 V4/V5 on all Anna and DuXiu». It's exactly what it says in the title.
 And more. For starters, think of realtime computer-use agents." class="post-image" loading="lazy">
-<div class="image-alt">Teortaxes
-@teortaxesTex
-
-I failed to parse the ambition of this release.
-DeepSeek Contexts Optical Compression is not just a good fast OCR, not just «we want to train
-V4/V5 on all Anna and DuXiu». It's exactly what it says in the title.
-And more. For starters, think of realtime computer-use agents.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -107,58 +154,6 @@ The title compound was prepared in an analogous fashion to that described in Sta
 
 ✅ All formatting, sections, and references have been faithfully preserved from the original document.
 " class="post-image" loading="lazy">
-<div class="image-alt">Here’s your document converted to Markdown format:
-
-⸻
-
-WO 2013/171642
-
-PCT/IB2013/053771
-
-⸻
-
-Example 24
-
-N-(4-(Chlorodifluoromethoxy)phenyl)-6-(ethyl(2-hydroxyethyl)amino)-5-(1H-pyrazol-5-yl)nicotinamide
-
-
-⸻
-
-[00369]
-
-The title compound was prepared in an analogous fashion to that described in Stage 22.1, using 5-bromo-6-chloro-N-(4-(chlorodifluoromethoxy)phenyl)nicotinamide (Stage 22.2) and 2-methylamino-ethanol to afford a white crystalline solid.
-	•	HPLC (Condition 4): tₙ = 5.72 min
-	•	UPLC-MS (Condition 3): tₙ = 1.14 min, m/z = 452.2 [M+H]⁺
-
-⸻
-
-[00370]
-
-The title compound was prepared in an analogous fashion to that described in Example 26, using 5-bromo-N-(4-(chlorodifluoromethoxy)phenyl)-6-(ethyl(2-hydroxyethyl)amino)nicotinamide (Stage 24.1) and 1-(tetrahydro-2H-pyran-2-yl)-5-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)-1H-pyrazole to afford a yellow solid.
-	•	UPLC-MS (Condition 3): tₙ = 1.02 min, m/z = 452.2 [M+H]⁺, m/z = 450.1 [M–H]⁻
-	•	¹H-NMR (400 MHz, DMSO-d₆):
-δ ppm 0.93 (t, J = 7.09 Hz, 3H), 3.17–3.27 (m, 2H), 3.35–3.43 (m, 2H), 3.43–3.53 (m, 2H),
-4.59 (br. s, 1H), 6.53 (d, J = 1.96 Hz, 1H), 7.33 (d, J = 9.05 Hz, 2H), 7.76 (br. s, 1H),
-7.82–7.95 (m, 2H), 8.13 (d, J = 2.45 Hz, 1H), 8.72 (d, J = 2.45 Hz, 1H), 10.29 (s, 1H), 12.98 (br. s, 1H).
-
-⸻
-
-[00371]
-
-Stage 24.1
-5-Bromo-N-(4-(chlorodifluoromethoxy)phenyl)-6-(ethyl(2-hydroxyethyl)amino)nicotinamide
-
-
-⸻
-
-[00372]
-
-The title compound was prepared in an analogous fashion to that described in Stage 22.1, using 5-bromo-6-chloro-N-(4-(chlorodifluoromethoxy)phenyl)nicotinamide (Stage 22.2) and 2-methylamino-ethanol to afford a white crystalline solid.
-
-⸻
-
-✅ All formatting, sections, and references have been faithfully preserved from the original document.
-</div>
 </div>
 </div>
 <div class="post-stats">

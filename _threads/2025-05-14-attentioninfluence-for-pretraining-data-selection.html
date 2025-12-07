@@ -10,8 +10,8 @@ summary: "AttentionInfluence: for pretraining data selection  Good data matters,
 similar:
   - url: "/threads/2025-07-06-new-3-token-attention-reduces-pre-training-data-re/"
     title: "new 3-token attention reduces pre-training data requirements"
-  - url: "/threads/2025-07-21-kimi-k2-paper-is-out-lessons-1-they-explicitl/"
-    title: "Kimi K2 paper is out!"
+  - url: "/threads/2025-11-23-the-biggest-reason-for-fully-open-models-is-scienc/"
+    title: "the biggest reason for fully open models is science, and the downstream effects"
   - url: "/threads/2025-10-01-rlp-reinforcement-learning-in-pre-training-an-n/"
     title: "RLP: Reinforcement Learning in Pre-Training "
 ---
@@ -79,66 +79,6 @@ The framework identifies key attention heads in LLMs by:
 * Quantifying it using an attention-influence score.
   This helps understand interpretability and improve model pruning, adaptation, or debugging.
 " class="post-image" loading="lazy">
-<div class="image-alt">This diagram explains a method for **detecting important attention heads** in a large language model (LLM) and measuring their influence using an **AttentionInfluence Score**.
-
----
-
-### **Left Section: Detecting Specific Important Heads**
-
-1. **Input Format**:
-
-   * A hashed question (e.g., `e3b0c4...27ae`) with a known **answer** (e.g., “Parents are usually ...”).
-   * A few-shot prompt of `<Q,A>` pairs is used to guide the model.
-
-2. **Base LLM**:
-
-   * Attention heads are selectively toggled **on** or **off**.
-   * Each configuration is evaluated based on how well the output matches the expected answer.
-
-3. **Scoring**:
-
-   * Each configuration returns a score (`Ret i`) indicating output accuracy.
-   * Higher score (e.g., `0.85`) means more accurate/relevant output, identifying that head as important.
-   * Lower scores (e.g., `0.11`, `0.22`) indicate less useful or irrelevant attention heads.
-
----
-
-### **Top Center: Masking Heads**
-
-* Heads are disabled by **masking** parts of the attention matrix (turning sections into 0s).
-* This allows controlled experimentation on attention head impact.
-
----
-
-### **Right Section: Calculating AttentionInfluence Score**
-
-1. **Reference vs Base LLM**:
-
-   * A **reference LLM** with all attention heads active produces output logits (`p₀`, `p₁`, `p₂`) for a sample text.
-   * A **base LLM** with selected heads masked does the same.
-
-2. **Loss Computation**:
-
-   * Compute losses: `L_Ref` (full model) and `L_Base` (partially masked).
-
-3. **Formula**:
-
-   ```
-   AttentionInfluence Score = (L_Ref - L_Base) / L_Ref
-   ```
-
-   * This measures the degradation in performance caused by masking, indicating how crucial a specific attention head is.
-
----
-
-### **Summary**:
-
-The framework identifies key attention heads in LLMs by:
-
-* Testing head impact on output quality.
-* Quantifying it using an attention-influence score.
-  This helps understand interpretability and improve model pruning, adaptation, or debugging.
-</div>
 </div>
 </div>
 <div class="post-stats">

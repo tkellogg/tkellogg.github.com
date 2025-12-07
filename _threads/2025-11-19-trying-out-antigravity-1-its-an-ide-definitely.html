@@ -10,13 +10,54 @@ summary: "Trying out antigravity  1. It's an IDE, definitely an IDE. Sure it can
 similar:
   - url: "/threads/2025-11-18-google-antigravity-an-agentic-first-software-ide/"
     title: "Google Antigravity: an agentic-first software IDE"
-  - url: "/threads/2025-09-14-what-do-we-think-about-this-imo-this-is-good-pra/"
-    title: "what do we think about this?"
+  - url: "/threads/2025-03-16-openai-cto-publicly-stated-that-coding-will-be-aut/"
+    title: "OpenAI CTO publicly stated that coding will be automated *this year*"
   - url: "/threads/2025-08-04-hrm-analysis-by-dorialexanderbskysocial-the-a/"
     title: "HRM analysis by @dorialexander.bsky.social "
 ---
 <div class="thread-post">
 <div class="post-text">Trying out antigravity<br><br>1. It's an IDE, definitely an IDE. Sure it can probably do more, but it's an IDE<br><br>2. You can interrupt it without stopping it 🤯<br><br>3. There's a full page "implementation plan" with all details that it's currently working on. You can comment & change any of it</div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m5wa5k3j7s24" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">Google Antigravity: an agentic-first software IDE<br><br>a ground-up redesign of software development with agents at the center of<br><br>antigravity.google</div>
+<div class="quote-images"><img src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreicd3mw4n6ivfwa63fundr34pm5p4tf5pxysidlsu6gp7vbnmy4dve@jpeg" alt="A dark-themed VS Code window displaying a React/Next.js TypeScript file named page.tsx inside a folder path src > app > test.
+
+At the top, the editor tabs show two files: page.tsx (active) and test U.
+The workspace title in the top right reads Space Flight Booking.
+
+The code in the editor defines a React component:
+
+&quot;use client&quot;;
+
+export default function Form() {
+  const onSubmit = () => {
+    console.log(&quot;Submitted&quot;);
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <label htmlFor=&quot;origin&quot;>Origin</label>
+      <input type=&quot;text&quot; id=&quot;origin&quot; name=&quot;origin&quot; />
+
+      <label htmlFor=&quot;destination&quot;>Destination</label>
+      <input type=&quot;text&quot; id=&quot;destination&quot; name=&quot;destination&quot; />
+
+      <button type=&quot;submit&quot;>Submit</button>
+    </form>
+  );
+}
+
+Some of the JSX between the <form> tags is temporarily greyed out, as though highlighted or selected.
+
+The bottom status bar shows the main branch, TypeScript/React icons, warning indicators, and a message:
+Tab · Showing supercomplete.
+
+The overall UI is spacious, with lots of empty dark background below the small form component." class="quote-image" loading="lazy"></div>
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>41</span>
 </div>
@@ -120,94 +161,6 @@ def wait_for_operation(client, operation_id):
         op = client.operations.get(operation_id)  # get full object
 
     " class="post-image" loading="lazy">
-<div class="image-alt">It looks like your background run of **generate_movie.py** is repeatedly failing with:
-
-```
-'str' object has no attribute 'name'
-```
-
-…and you're seeing this specifically when calling **Veo-3.0-fast-generate-001** operations.
-
-Here’s what’s actually going on.
-
----
-
-## ✅ **Why you’re getting `'str' object has no attribute 'name'`**
-
-Somewhere in your code, you are treating a **string** as if it were a structured response object returned by the Veo API. Most likely you expected something like:
-
-```python
-operation = client.operations.get(...)
-print(operation.name)
-```
-
-But instead, **`operation` is actually a string**—probably the operation ID itself, not an object.
-
-This happens when the Veo SDK returns:
-
-```python
-operation_id = response.id  # string
-```
-
-But your code assumes:
-
-```python
-operation.name
-```
-
----
-
-## 🔥 **Where in your logs it appears**
-
-You can see it happening right after this line:
-
-```
-Operation started: models/veo-3.0-fast-generate-001/operations/ekc0xkjedpqw
-```
-
-You're then calling something like:
-
-```python
-operation = poll_operation(...)
-operation.name   # ‼️ error here
-```
-
----
-
-## 🎯 **How to fix it**
-
-### **Veo Fast returns a *string operation ID*** — you must call the Operations API to fetch the object:
-
-```python
-operation_id = response.id  # string
-
-while True:
-    operation = client.operations.get(operation_id)
-
-    if operation.done:
-        break
-
-    time.sleep(3)
-```
-
-And only after retrieving the full operation do you get:
-
-```python
-operation.name
-operation.metadata
-operation.response  # final video result
-```
-
----
-
-## ✔ Corrected version of your polling code
-
-```python
-def wait_for_operation(client, operation_id):
-    while True:
-        op = client.operations.get(operation_id)  # get full object
-
-    </div>
 </div>
 </div>
 <div class="post-stats">
@@ -230,18 +183,6 @@ def wait_for_operation(client, operation_id):
 
 Along the top, file tabs are visible: **movie.py**, **Task** (active), **Walkthrough**, **debug_veo.py**, and **scene_1.png**. A small blue button with a plus icon sits at the bottom right of the task list.
 " class="post-image" loading="lazy">
-<div class="image-alt">A dark-mode editor pane titled **“Task”** shows a checklist labeled **Tasks**. Several items appear in a vertical list, most of them greyed out with checked boxes:
-
-* ☑ **Research Google Veo API availability and usage**
-* ☑ **Create a screenplay/script for the 3-minute movie**
-* ☑ **Generate a storyboard using image generation (fallback if video not possible)**
-* [−] **Write Python script to interact with Video API (if available)** (partially completed indicator)
-* ☑ **Investigate Veo generation failure details**
-* ☑ **Lookup specific Veo 3.1 Preview quota limits**
-* ☐ **Generate movie using Veo 3.0 Fast model with resource guards** (only remaining unchecked task)
-
-Along the top, file tabs are visible: **movie.py**, **Task** (active), **Walkthrough**, **debug_veo.py**, and **scene_1.png**. A small blue button with a plus icon sits at the bottom right of the task list.
-</div>
 </div>
 </div>
 <div class="post-stats">
@@ -265,19 +206,6 @@ Just tell me what direction you want next:
 
 Your call — I’m ready.
 " class="post-image" loading="lazy">
-<div class="image-alt">Hell yes — it worked **beautifully**.
-And absolutely, we can move onwards. 🚀
-
-Just tell me what direction you want next:
-
-* Improve the storyboard?
-* Try Veo 3.1 Preview again with quota-safe guards?
-* Add transitions/music?
-* Generate a full narrated cut?
-* Or start refining scenes / pacing?
-
-Your call — I’m ready.
-</div>
 </div>
 </div>
 <div class="post-stats">

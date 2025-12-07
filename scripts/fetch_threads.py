@@ -193,6 +193,46 @@ def has_link(text: str) -> bool:
     return bool(re.search(url_pattern, text))
 
 
+def extract_quote_data(quoted: dict) -> dict:
+    """Extract data from a quoted post."""
+    author = quoted.get("author", {})
+    value = quoted.get("value", {})
+
+    # Build profile URL from handle or DID
+    handle = author.get("handle", "")
+    did = author.get("did", "")
+    profile_url = f"https://bsky.app/profile/{handle}" if handle else f"https://bsky.app/profile/{did}"
+
+    # Build post URL from URI
+    uri = quoted.get("uri", "")
+    post_url = ""
+    if uri:
+        # at://did:plc:xxx/app.bsky.feed.post/yyy -> https://bsky.app/profile/did:plc:xxx/post/yyy
+        uri_parts = uri.replace("at://", "").split("/")
+        if len(uri_parts) >= 3:
+            post_url = f"https://bsky.app/profile/{uri_parts[0]}/post/{uri_parts[2]}"
+
+    # Extract images from the quoted post's embeds
+    images = []
+    for embed in quoted.get("embeds", []):
+        if embed.get("$type") == "app.bsky.embed.images#view":
+            for img in embed.get("images", []):
+                images.append({
+                    "url": img.get("fullsize", img.get("thumb", "")),
+                    "alt": img.get("alt", ""),
+                })
+
+    return {
+        "author_name": author.get("displayName", handle),
+        "author_handle": handle,
+        "author_avatar": author.get("avatar", ""),
+        "profile_url": profile_url,
+        "post_url": post_url,
+        "text": value.get("text", ""),
+        "images": images,
+    }
+
+
 def extract_self_thread(thread: dict, author_did: str) -> list:
     """Extract posts from a thread where the author replies to themselves."""
     posts = []
@@ -216,11 +256,14 @@ def extract_self_thread(thread: dict, author_did: str) -> list:
                 "reposts": post.get("repostCount", 0),
                 "images": [],
                 "embed": None,
+                "quote": None,
                 "facets": record.get("facets", []),
             }
 
+            embed_type = embed.get("$type", "")
+
             # Extract images
-            if embed.get("$type") == "app.bsky.embed.images#view":
+            if embed_type == "app.bsky.embed.images#view":
                 for img in embed.get("images", []):
                     post_data["images"].append({
                         "url": img.get("fullsize", ""),
@@ -229,7 +272,7 @@ def extract_self_thread(thread: dict, author_did: str) -> list:
                     })
 
             # Extract external embed (link card)
-            if embed.get("$type") == "app.bsky.embed.external#view":
+            elif embed_type == "app.bsky.embed.external#view":
                 ext = embed.get("external", {})
                 post_data["embed"] = {
                     "uri": ext.get("uri", ""),
@@ -237,6 +280,39 @@ def extract_self_thread(thread: dict, author_did: str) -> list:
                     "description": ext.get("description", ""),
                     "thumb": ext.get("thumb", ""),
                 }
+
+            # Extract quote post
+            elif embed_type == "app.bsky.embed.record#view":
+                quoted = embed.get("record", {})
+                if quoted.get("$type") == "app.bsky.embed.record#viewRecord":
+                    post_data["quote"] = extract_quote_data(quoted)
+
+            # Extract quote post with media (images + quote, or external + quote)
+            elif embed_type == "app.bsky.embed.recordWithMedia#view":
+                # Extract the media part
+                media = embed.get("media", {})
+                media_type = media.get("$type", "")
+
+                if media_type == "app.bsky.embed.images#view":
+                    for img in media.get("images", []):
+                        post_data["images"].append({
+                            "url": img.get("fullsize", ""),
+                            "thumb": img.get("thumb", ""),
+                            "alt": img.get("alt", ""),
+                        })
+                elif media_type == "app.bsky.embed.external#view":
+                    ext = media.get("external", {})
+                    post_data["embed"] = {
+                        "uri": ext.get("uri", ""),
+                        "title": ext.get("title", ""),
+                        "description": ext.get("description", ""),
+                        "thumb": ext.get("thumb", ""),
+                    }
+
+                # Extract the quote part
+                quoted = embed.get("record", {}).get("record", {})
+                if quoted.get("$type") == "app.bsky.embed.record#viewRecord":
+                    post_data["quote"] = extract_quote_data(quoted)
 
             posts.append(post_data)
 
@@ -375,7 +451,6 @@ def generate_thread_html(posts: list) -> str:
                 url = img.get("fullsize", img.get("thumb", ""))
                 html_parts.append(f'''<div class="post-image-container">
 <img src="{url}" alt="{alt}" class="post-image" loading="lazy">
-{f'<div class="image-alt">{alt}</div>' if alt else ''}
 </div>''')
             html_parts.append('</div>')
 
@@ -389,6 +464,28 @@ def generate_thread_html(posts: list) -> str:
 <div class="embed-title">{embed.get("title", "")}</div>
 <div class="embed-description">{embed.get("description", "")}</div>
 </div>
+</a>''')
+
+        # Quote post
+        quote = post.get("quote")
+        if quote:
+            quote_text = quote.get("text", "").replace("\n", "<br>")
+            quote_images_html = ""
+            if quote.get("images"):
+                quote_images_html = '<div class="quote-images">'
+                for img in quote["images"]:
+                    alt = img.get("alt", "").replace('"', '&quot;')
+                    quote_images_html += f'<img src="{img["url"]}" alt="{alt}" class="quote-image" loading="lazy">'
+                quote_images_html += '</div>'
+
+            html_parts.append(f'''<a href="{quote.get("post_url", "")}" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="{quote.get("author_avatar", "")}" alt="" class="quote-avatar">
+<span class="quote-author">{quote.get("author_name", "")}</span>
+<span class="quote-handle">@{quote.get("author_handle", "")}</span>
+</div>
+<div class="quote-text">{quote_text}</div>
+{quote_images_html}
 </a>''')
 
         # Per-post stats (likes, reposts)

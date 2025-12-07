@@ -10,10 +10,10 @@ summary: "The Case Against Multi-Agents  Cognition (i.e. Devin) coins the term �
 similar:
   - url: "/threads/2025-06-14-pretty-strong-argument-for-multi-agents-wwwanthr/"
     title: "pretty strong argument for multi-agents"
-  - url: "/threads/2025-12-04-i-thought-this-was-a-generic-agent-product-for-int/"
-    title: "i thought this was a generic agent product for interviewing people"
   - url: "/threads/2025-05-06-my-evolving-take-on-a2a-is-that-the-world-isnt-re/"
     title: "my evolving take on A2A is that the world isn't ready, and i'm not sure it ev..."
+  - url: "/threads/2025-01-26-a-researcher-on-x-explains-why-rl-alone-didnt-wor/"
+    title: "a researcher on X explains why RL alone didn’t work before "
 ---
 <div class="thread-post">
 <div class="post-text">The Case Against Multi-Agents<br><br>Cognition (i.e. Devin) coins the term “context engineering”, successor to prompt engineering and argues that multi-agents don’t pass context effectively <br><br><a href="https://cognition.ai/blog/dont-build-multi-agents#applying-the-principles" target="_blank" rel="noopener">cognition.ai/blog/dont-bu...</a></div>
@@ -31,6 +31,48 @@ similar:
 </div>
 <div class="thread-post">
 <div class="post-text">Anthropic’s take appears conflicting, but i do not think it is <br><br>for example, here Cognition introduces the idea of a “Context Compression LLM”<br><br>that’s a multi-agent<br><br>also, Anthropic’s whole point was that intelligence = compression<br><br><a href="https://bsky.app/profile/timkellogg.me/post/3lrkwipfdnc2k" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreih2dtcfhhiyzftkocrkfymt4oru4elo5iuhkjcew5yejqdmul5we4@jpeg" alt="This diagram illustrates a framework for mutual predictability scoring in an LLM-based labeling or verification context.
+
+⸻
+
+🧠 How It Works
+
+1. Mutual Predictability Scoring (Top Section)
+	•	You start with a set of labeled examples — each statement (e.g., “Claim A is True,” “Claim B is False,” etc.).
+	•	For each example, you ask the model to predict the labels of all items in that example (e.g., “Claim B is False; Claim C is True; Claim A is True”).
+	•	The model assigns a probability score (log‑probability) to each predicted label.
+	•	You sum those log-probs across claims in a single example, yielding a joint likelihood score (This is P_A, P_B, P_C, etc.).
+	•	High scores mean the labels are collectively consistent and predictable.
+
+2. Search & Update Procedure (Bottom Section)
+	•	Start with existing data D (seed examples) and its aggregated utility score U(D).
+	•	Sample new data — for example, a new statement (“5+5=10 is True”).
+	•	The model proposes consistent label combinations for this new data (D’), each with its own utility score U(D’).
+	•	Compare:
+\Delta = U(D’) - U(D)
+	•	Use a stochastic acceptance test:
+	•	If \Delta is high (makes data more predictable), you accept and update your dataset (thumbs up ✋).
+	•	If not, you reject (thumbs down 👎).
+
+⸻
+
+🔍 Why It Matters
+	•	Consistency-focused labeling: The model tries to predict labels for all claims at once, rather than one at a time, so you favor sets that are mutually coherent.
+	•	Data-driven expansion: Only new examples that increase overall predictability are kept, making the labeling process more robust and reliable.
+	•	Probabilistic selection: The stochastic update rule helps avoid traps or overfitting by not always accepting even improvements, leading to more balanced datasets." class="post-image" loading="lazy">
+</div>
+</div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lrkwipfdnc2k" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">pretty strong argument for multi-agents<br><br>www.anthropic.com/engineering/...</div>
+<div class="quote-images"><img src="https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihkoq2k52wlfokxbuodynnuidow2owghixqcuvnemtfu7xga2jfei@jpeg" alt="Once intelligence reaches a threshold, multi-agent systems become a vital way to scale performance. For instance, although individual humans have become more intelligent in the last 100,000 years, human societies have become exponentially more capable in the information age because of our collective intelligence and ability to coordinate. Even generally-intelligent agents face limits when operating as individuals; groups of agents can accomplish far more." class="quote-image" loading="lazy"></div>
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>9</span>
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>

@@ -8,15 +8,44 @@ reposts: 7
 post_count: 2
 summary: "HRM analysis by @dorialexander.bsky.social   the actual shocking parts:  * it doesn’t overfit * ARC-AGI is only hard for language models  i think we’l..."
 similar:
+  - url: "/threads/2025-11-11-80-layers-for-those-not-paying-attention-doria/"
+    title: "80 layers — for those not paying attention, @dorialexander.bsky.social has be..."
   - url: "/threads/2025-07-27-hrm-hierarchical-reasoning-model-ngl-this-sounds/"
     title: "HRM: Hierarchical Reasoning Model"
   - url: "/threads/2025-11-29-this-whole-smol-model-thing-that-dorialexanderbs/"
     title: "this whole smol model thing that @dorialexander.bsky.social started is remind..."
-  - url: "/threads/2025-11-11-80-layers-for-those-not-paying-attention-doria/"
-    title: "80 layers — for those not paying attention, @dorialexander.bsky.social has be..."
 ---
 <div class="thread-post">
 <div class="post-text">HRM analysis by <a href="https://bsky.app/profile/did:plc:vg3thtvfbgfrr3u6pf6hy3yk" target="_blank" rel="noopener">@dorialexander.bsky.social</a> <br><br>the actual shocking parts:<br><br>* it doesn’t overfit<br>* ARC-AGI is only hard for language models<br><br>i think we’ll be seeing more of HRM</div>
+<div class="post-images multiple">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreigoth6ajhkgljmuavloktpnkcvrmyfptphxjaysni5exnwcpchq7a@jpeg" alt="Ok a few notes on hierarchical reasoning model (which would be more aptly named hierarchical recurrent transformers).
+First I'm not surprised at all: small specialized models are very undertapped right now. They have always remain extremely performant for their size range on dedicated tasks like RL simulations, OCR, specialized image classification/segmentation. The key thing is that you can decide what representation is optimal for the tasks: vision language models have to deal with highly composite patches and tokens, while RNN OCR model work straight with letters and piwels.
+Small models are in fact even more undertapped as they benefit directly from LLM innovations at two levels:
+1. architecture (hrm is not only processing transformers blocks include the whole set: attention rope, swiglu...)
+2. Data (less critical for hrm as we'll see). We can suddenly unlock a massive amount of structured/simulated synthetic data." class="post-image" loading="lazy">
+</div>
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibvur6nzozrbio4dwds6yskf4nbeicguxqnhzo5ugk3pzqjxnf6ae@jpeg" alt="Now what distinguishes HRM is not reasoning.
+I'm going to stress it but: language models do reason all the time. Reasoning traces is kind of a misnomer but if you take a snapshot of an attention graph trying to solve an equation at time n, this is obviously non-verbalized reasoning.
+What does make HRM actually promising: it seems extremely resilient to overfitting.
+I was surprised to see that the 27 million parameters needed to be trained for 50-100 h100 hours — that's actually more than enough for a widely over-chinchilla optimized pretraining, like 50-200B tokens. Now the real trick: training is done over 50,000 epochs, so 50,000 repetition of the same set. With most deep learning architecture this would be the perfect recipe for overfitting. Instead they seem to have very carefully designed their architecture to avoid that with a separation in two modules, a low level for fast computation (L-module) and a high level (H-module) for general planning/ regularization. L-Module is constantly reset which seemingly avoid premature convergence." class="post-image" loading="lazy">
+</div>
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreif5qdhxx2gbo46rpoevi5gvrl5l7s62qiuvncuk2c3abzhtwksigq@jpeg" alt="There are other nice aspects that seem to be markedly inspired by the experience we get with language reasoning models but I'll need more time to dig.
+A further catch: it confirms ARC-AGI is only hard in a language model context. That was the entire motivation of the evaluation set: something seemingly simple for humans that language models can't solve, mostly as AR continues to struggle with any spatial task (*cough* that IMO 2025 exercise 6 *couch*). As we see clearly now, since the exercise is accessible to humans it does mean it must be approachable with alternative methods.
+Now where does it leads us? There is definitely a renewed interest for &quot;pure&quot; RL or alternative architecture for world model like JEPA (since it's also evidently clear that LLM/LRM struggle more than is needed). Maybe similarly to the way the brain is structured we need to come back to some concept of modularity and this will be critical to unlock the next phase of Al." class="post-image" loading="lazy">
+</div>
+</div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3luxfcew7j22s" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">HRM: Hierarchical Reasoning Model<br><br>ngl this sounds like bullshit but i don’t think it is<br><br>- 27M (million parameters)<br>- 1000 training examples<br>- beats o3-mini on ARC-AGI<br><br>arxiv.org/abs/2506.21734</div>
+
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>37</span>
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>7</span>
@@ -33,34 +62,20 @@ My take on HRM (after reading the paper): its very beautifully mathematically an
 The results they achieve on Sudoku & Maze-Solving are extremely impressive given the sparse amount of training data, and indicates their architecture has amazing sample efficiency
 - its inductive biases (low-frequency & high-frequency representations to iteratively solve a problem) are conducive to great generalization.
 The one red flag is the ARC-AGI methodology - they attach a &quot;learnable special token that represents the puzzle it belongs to&quot; to each training example - and the training examples are drawn from the train and evaluation sets. As I understand it, they hold out the singular example" class="post-image" loading="lazy">
-<div class="image-alt">N8
-N8 Programs & @N8Programs
-My take on HRM (after reading the paper): its very beautifully mathematically and the architecture is somewhat vindicated by the experiments they perform. The architecture itself is a work of art - they ingeniously incorporate early-stopping (via Q-learning), avoid BPTT via a shallow approximation that's sparsely sampled every few steps of the model, etc.
-The results they achieve on Sudoku & Maze-Solving are extremely impressive given the sparse amount of training data, and indicates their architecture has amazing sample efficiency
-- its inductive biases (low-frequency & high-frequency representations to iteratively solve a problem) are conducive to great generalization.
-The one red flag is the ARC-AGI methodology - they attach a &quot;learnable special token that represents the puzzle it belongs to&quot; to each training example - and the training examples are drawn from the train and evaluation sets. As I understand it, they hold out the singular example</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidyjl5pwldqr7ez2v4mflrsintsolxf65lxoaf6nbasqg32ayh66u@jpeg" alt="drawn from the train and evaluation sets. As I understand it, they hold out the singular example for each eval task that the model would normally be expected to perform few-shot inference on.
 Instead, at evaluation time, the model uses the learnable special token to recall the appropriate task and apply it to the input grid. This superficially is very distinct from ARC - memorizing a bag of functions and recalling one with a pre-determined ID seems antithetical to few-shot generalization.
 However, they only use 960 examples - essentially the amount the original ARC + ConceptArc. This means many of their task IDs are learned from 3-4 examples during their very limited pre-training phase. There's no reason why, instead of setting the evaluation task ids in pretraining, they couldn't have a special novel task id they finetune at test time. Given say, three in-context examples, they could augment them into a 20-30 example train set and test-time tune a new task id on those examples. Then use that id for evaluation. Because their method has been demonstrated to have such extreme generalization from limited samples, this would likely yield a similar result, and would be fully in the spirit of ARC: generalizing at test-time from a" class="post-image" loading="lazy">
-<div class="image-alt">drawn from the train and evaluation sets. As I understand it, they hold out the singular example for each eval task that the model would normally be expected to perform few-shot inference on.
-Instead, at evaluation time, the model uses the learnable special token to recall the appropriate task and apply it to the input grid. This superficially is very distinct from ARC - memorizing a bag of functions and recalling one with a pre-determined ID seems antithetical to few-shot generalization.
-However, they only use 960 examples - essentially the amount the original ARC + ConceptArc. This means many of their task IDs are learned from 3-4 examples during their very limited pre-training phase. There's no reason why, instead of setting the evaluation task ids in pretraining, they couldn't have a special novel task id they finetune at test time. Given say, three in-context examples, they could augment them into a 20-30 example train set and test-time tune a new task id on those examples. Then use that id for evaluation. Because their method has been demonstrated to have such extreme generalization from limited samples, this would likely yield a similar result, and would be fully in the spirit of ARC: generalizing at test-time from a</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreievsjyqw3732og7cpkn2ekisfr7g4gp3zndsv6bl3w5khv4c7faam@jpeg" alt="use that id for evaluation. Because their method has been demonstrated to have such extreme generalization from limited samples, this would likely yield a similar result, and would be fully in the spirit of ARC: generalizing at test-time from a limited set of examples (and would follow established ARC trends of test-time training).
 So all in all - definitely not BS! Very serious exploration of a two-level recurrent transformer with extreme sample efficiency. Methodological issue on ARC that could be corrected fairly easily. Very exciting paper overall!
 One note however:
 It's important not to confuse the HRM (which is as of now, is a small architecture used to train networks that generalize across narrow problems) with LLMs in comparisons - one is a very specialized experimental tool, and the other is a behemoth that supports every linguistic task under the sun. HRMs, like AlphaGo or AlexNet or any pre-GPT neural network, are black boxes that know nothing of language and solve their tasks entirely in latent space (which was the goal of the paper authors!). This means they should never be compared one-to-one with large" class="post-image" loading="lazy">
-<div class="image-alt">use that id for evaluation. Because their method has been demonstrated to have such extreme generalization from limited samples, this would likely yield a similar result, and would be fully in the spirit of ARC: generalizing at test-time from a limited set of examples (and would follow established ARC trends of test-time training).
-So all in all - definitely not BS! Very serious exploration of a two-level recurrent transformer with extreme sample efficiency. Methodological issue on ARC that could be corrected fairly easily. Very exciting paper overall!
-One note however:
-It's important not to confuse the HRM (which is as of now, is a small architecture used to train networks that generalize across narrow problems) with LLMs in comparisons - one is a very specialized experimental tool, and the other is a behemoth that supports every linguistic task under the sun. HRMs, like AlphaGo or AlexNet or any pre-GPT neural network, are black boxes that know nothing of language and solve their tasks entirely in latent space (which was the goal of the paper authors!). This means they should never be compared one-to-one with large</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibbeoe67ulii7uu26ufu2fomgku7vp7ycqrt3ahczsef7zydvissu@jpeg" alt="of the paper authors!). This means they should never be compared one-to-one with large language models or treated as a potential replacement. Of course, since HRM is seq-to-seq and could be updated to support causal masking - you could use it to solve the objective of next-token prediction! But that would be an entirely different experiment, and take us back to the space of linguistic reasoning, which the authors wanted to avoid." class="post-image" loading="lazy">
-<div class="image-alt">of the paper authors!). This means they should never be compared one-to-one with large language models or treated as a potential replacement. Of course, since HRM is seq-to-seq and could be updated to support causal masking - you could use it to solve the objective of next-token prediction! But that would be an entirely different experiment, and take us back to the space of linguistic reasoning, which the authors wanted to avoid.</div>
 </div>
 </div>
 <div class="post-stats">

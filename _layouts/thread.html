@@ -209,25 +209,61 @@ layout: default
     display: block;
     max-height: 400px;
     object-fit: cover;
+    cursor: pointer;
 }
 
+/* Hide legacy alt text divs (alt is in img attribute for screen readers) */
 .image-alt {
-    position: absolute;
-    bottom: 0;
+    display: none;
+}
+
+/* Image modal */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    font-size: 0.75rem;
-    padding: 0.5rem;
-    max-height: 4rem;
-    overflow-y: auto;
-    opacity: 0;
-    transition: opacity 0.2s;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    cursor: pointer;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
-.post-image-container:hover .image-alt {
-    opacity: 1;
+.image-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.image-modal-close:hover {
+    background: rgba(255,255,255,0.2);
 }
 
 /* Embedded links/cards */
@@ -269,6 +305,69 @@ layout: default
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* Quote posts */
+.post-quote {
+    display: block;
+    margin-top: 0.75rem;
+    border: 1px solid #e7e7e7;
+    border-radius: 12px;
+    padding: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    background: #f8f9fa;
+}
+
+.post-quote:hover {
+    background: #f0f1f2;
+    border-color: #d0d0d0;
+}
+
+.quote-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.quote-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.quote-author {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.quote-handle {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.quote-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+.quote-images {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.quote-image {
+    max-height: 150px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 /* Per-post stats */
@@ -369,4 +468,44 @@ layout: default
     margin-top: 0.25rem;
 }
 </style>
+
+<!-- Image lightbox modal -->
+<div class="image-modal" id="image-modal">
+    <span class="image-modal-close">&times;</span>
+    <img id="modal-image" src="" alt="">
+</div>
+
+<script>
+(function() {
+    var modal = document.getElementById('image-modal');
+    var modalImg = document.getElementById('modal-image');
+    var closeBtn = modal.querySelector('.image-modal-close');
+
+    // Click on any post image to open modal
+    document.querySelectorAll('.post-image').forEach(function(img) {
+        img.addEventListener('click', function() {
+            modal.classList.add('active');
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal on click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal || e.target === closeBtn) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+})();
+</script>
 

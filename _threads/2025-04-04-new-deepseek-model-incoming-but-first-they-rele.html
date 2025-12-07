@@ -8,12 +8,12 @@ reposts: 6
 post_count: 2
 summary: "🚨New DeepSeek Model Incoming🚨  but first they release the paper describing generative reward modeling (GRM) via Self-Principled Critique Tuning (SPCT)..."
 similar:
+  - url: "/threads/2025-09-17-deepseek-published-about-r1-in-nature-wwwnature/"
+    title: "DeepSeek published about R1 in Nature"
+  - url: "/threads/2025-02-09-the-deepseek-effect-is-that-now-any-new-model-only/"
+    title: "the deepseek effect is that now any new model only has to exceed R1 in order ..."
   - url: "/threads/2025-12-01-deepseek-32-2-new-models-32-a-open-weight/"
     title: "DeepSeek 3.2 "
-  - url: "/threads/2025-09-16-qwen-tongyi-deep-research-a-32b-model-that-beats/"
-    title: "Qwen Tongyi Deep Research"
-  - url: "/threads/2025-10-27-minimax-open-sources-m2-this-model-has-been-shaki/"
-    title: "MiniMax open sources M2"
 ---
 <div class="thread-post">
 <div class="post-text">🚨New DeepSeek Model Incoming🚨<br><br>but first they release the paper describing generative reward modeling (GRM) via Self-Principled Critique Tuning (SPCT)<br><br>looking forward to DeepSeek-GRM!<br><br><a href="https://arxiv.org/abs/2504.02495" target="_blank" rel="noopener">arxiv.org/abs/2504.02495</a></div>
@@ -29,16 +29,6 @@ Key observations:
 	•	LLM-as-a-Judge w/ TokenProb, Skywork-Reward-Gemma-2-27B, and DeepSeek-BTRM-27B are among these lower-performing models.
 
 Caption summary: The plot shows how performance scales with the number of reward samples at inference time. Results are up to 8 samples, with some (DeepSeek models) extrapolated to 32. Models in non-italic font use Gemma-2-27B as their base." class="post-image" loading="lazy">
-<div class="image-alt">A line chart titled “Figure 1: Inference-time scaling performance with different RMs on all tested RM benchmarks” shows performance on the y-axis (ranging from 66.5 to 72.5) and k: #sampled rewards (logscale) on the x-axis, with values from 1 to 32.
-
-Key observations:
-	•	DeepSeek-GRM-27B (MetaRM@k) (Ours) is the top performer, shown with a red line and star markers, rising steeply and leveling near 72.5.
-	•	DeepSeek-GRM-27B (Voting@k) (Ours) follows, in blue with stars, peaking slightly above 70.5.
-	•	GPT-4o (Greedy) is shown as a gray dashed line, sitting just under 71.
-	•	Other models, shown in orange, green, brown, and gray lines (scalar or voting methods), plateau between ~66.5 and ~68.5.
-	•	LLM-as-a-Judge w/ TokenProb, Skywork-Reward-Gemma-2-27B, and DeepSeek-BTRM-27B are among these lower-performing models.
-
-Caption summary: The plot shows how performance scales with the number of reward samples at inference time. Results are up to 8 samples, with some (DeepSeek models) extrapolated to 32. Models in non-italic font use Gemma-2-27B as their base.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -73,29 +63,6 @@ Right side:
 
 Caption summary:
 SPCT uses a principle-based framework for fine-tuning and reinforcement learning, guiding inference-time behavior. Naive voting and Meta RM approaches scale critique-guided scoring, providing nuanced reward signals across a broad value space. The formal equation below represents the principle and critique generation process." class="post-image" loading="lazy">
-<div class="image-alt">A complex diagram titled “Figure 3: Illustration of SPCT” (likely referring to a Structured Principles-Centric Training method) explains a multi-stage process involving RFT (Rejective Fine-Tuning), RL (Reinforcement Learning), and Inference, using GRMs (General Reward Models) and principle-guided scoring.
-
-Top section (RFT):
-	•	GRM samples responses using Q&R (question & response) and evaluates using predefined principles like “Instruction Adherence,” “Safety,” “Clarity,” and “Relevance.”
-	•	Scored responses are extracted and categorized (e.g. 2/10, 4/10; 6/10, 1/10) for training rule and reward modules.
-	•	Some responses are flagged as “Too Easy/Incorrect.”
-
-Middle section (RL):
-	•	GRM rolls out responses with principles like “Logic Chain Correctness” and “Completeness.”
-	•	Responses are compared and scored for rule/reward extraction, leading to online or offline updates.
-
-Bottom section (Inference):
-	•	Uses parallel sampling of responses via GRM.
-	•	A wide variety of principles guide evaluation: “Technical Accuracy,” “Practical Implementation,” “Language Proficiency,” “Engagement,” etc., each with specific weights.
-	•	Critiques are shown for each comparison, and final scores are computed for the responses.
-	•	Scores from multiple sets are collected and passed to a Voting module or a Meta RM which combines multiple critiques to produce final Rewards.
-
-Right side:
-	•	Color-coded scores show how different responses (1 to 4) fare across principles.
-	•	Voting simply aggregates outcomes (e.g., 17/40), while Meta RM uses weighted reasoning from critiques across principles (e.g., 5/20, 13/20).
-
-Caption summary:
-SPCT uses a principle-based framework for fine-tuning and reinforcement learning, guiding inference-time behavior. Naive voting and Meta RM approaches scale critique-guided scoring, providing nuanced reward signals across a broad value space. The formal equation below represents the principle and critique generation process.</div>
 </div>
 </div>
 <div class="post-stats">

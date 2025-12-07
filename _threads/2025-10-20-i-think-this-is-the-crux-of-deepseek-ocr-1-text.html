@@ -17,6 +17,32 @@ similar:
 ---
 <div class="thread-post">
 <div class="post-text">i think this is the crux of DeepSeek-OCR<br><br>1. (text) context gets longer as you add words<br>2. long context is quadratic<br>3. you can fit lots of words in an image<br>4. if you use encoder-decoder architecture, your tokens encode a ton of information</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreictey3vm2pd646au6g3g2cou2uwm5j5oue3jhp5pu7wvcnemuncrm@jpeg" alt="1. Introduction
+Current Large Language Models (LLMs) face significant computational challenges when process-
+ing long textual content due to quadratic scaling with sequence length. We explore a potential
+solution: leveraging visual modality as an efficient compression medium for textual information.
+A single image containing document text can represent rich information using substantially
+fewer tokens than the equivalent digital text, suggesting that optical compression through vision
+tokens could achieve much higher compression ratios.
+This insight motivates us to reexamine vision-language models (VLMs) from an LLM-centric
+perspective, focusing on how vision encoders can enhance LLMs’ efficiency in processing textual
+information rather than basic VQA [ 12, 16 , 24, 32, 41] what humans excel at. OCR tasks, as an
+intermediate modality bridging vision and language, provide an ideal testbed for this vision-
+text compression paradigm, as they establish a natural compression-decompression mapping
+between visual and textual representations while offering quantitative evaluation metrics" class="post-image" loading="lazy">
+</div>
+</div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m3mp35x2cc2q" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">this paper deserves a deep breath and a slow exhaling “what the fuck”<br><br>who even talks about compression in OCR models?<br><br>who tries to spin an OCR model as a SOTA LLM? isn’t OCR a solved problem? what?<br><br>but oddly, i feel like they got something here, idk<br><br>they’re talking about unlimited context..</div>
+
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>34</span>
 </div>
@@ -51,20 +77,6 @@ From the **decoder**, two arrows branch out:
 1. one leads to **output text** (the final generated response)
 2. another loops downward to **thinking**, which then feeds back into the **decoder**, showing an internal reasoning or iterative refinement cycle before producing text output.
 " class="post-image" loading="lazy">
-<div class="image-alt">A vertical flowchart on a dark background depicts a multimodal model pipeline.
-
-From top to bottom, the labeled boxes read:
-
-* **images** → input data
-* **encoder** → processes images into
-* **embeddings** → compact representations
-* **decoder** → generates outputs
-
-From the **decoder**, two arrows branch out:
-
-1. one leads to **output text** (the final generated response)
-2. another loops downward to **thinking**, which then feeds back into the **decoder**, showing an internal reasoning or iterative refinement cycle before producing text output.
-</div>
 </div>
 </div>
 <div class="post-stats">

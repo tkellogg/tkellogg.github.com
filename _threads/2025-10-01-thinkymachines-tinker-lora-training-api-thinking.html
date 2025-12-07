@@ -8,12 +8,12 @@ reposts: 3
 post_count: 6
 summary: "ThinkyMachines: Tinker LoRa training API  ThinkingMachines announced their first product, telegraphed by a highly detailed blog earlier this week that..."
 similar:
-  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
-    title: "notable: they ripped out the silicon that supports training"
   - url: "/threads/2025-07-06-new-3-token-attention-reduces-pre-training-data-re/"
     title: "new 3-token attention reduces pre-training data requirements"
-  - url: "/threads/2025-02-04-s1-the-6-r1-competitor-this-isnt-a-r1-replica/"
-    title: "s1: The $6 R1 Competitor?"
+  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
+    title: "notable: they ripped out the silicon that supports training"
+  - url: "/threads/2025-05-14-attentioninfluence-for-pretraining-data-selection/"
+    title: "AttentionInfluence: for pretraining data selection"
 ---
 <div class="thread-post">
 <div class="post-text">ThinkyMachines: Tinker LoRa training API<br><br>ThinkingMachines announced their first product, telegraphed by a highly detailed blog earlier this week that gave legitimacy to LoRA training<br><br>idea: LoRA works really well for most companies, so they make it easy to train too<br><br><a href="https://thinkingmachines.ai/tinker/" target="_blank" rel="noopener">thinkingmachines.ai/tinker/</a></div>
@@ -73,33 +73,6 @@ Caption summary:
 	•	Lower-rank LoRAs plateau earlier, showing lack of capacity.
 	•	For the 1B model (bottom plots): high-rank LoRA outperforms FullFT on Tulu3 but underperforms on OpenThoughts.
 	•	This suggests dataset-specific variation in LoRA effectiveness, due to different training dynamics or generalization behavior." class="post-image" loading="lazy">
-<div class="image-alt">The image shows Figure 1: LoRA training curves for various ranks on Tulu3 and OpenThoughts3 datasets.
-
-It contains four line plots, each with Test NLL (negative log-likelihood) on the y-axis and Step (log scale) on the x-axis. Multiple curves are shown, color-coded by Rank (legend on the right): 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, and full.
-
-⸻
-
-Top row:
-	•	Top-left (Llama 3.1 8B, Tulu3 Dataset):
-Test NLL steadily decreases with more steps. Higher ranks (closer to full training) achieve lower NLL, while lower ranks flatten out earlier.
-	•	Top-right (Llama 3.1 8B, OpenThoughts Dataset):
-Similar trend: loss decreases logarithmically with steps. Higher-rank LoRAs closely match FullFT, while low-rank ones diverge sooner.
-
-⸻
-
-Bottom row:
-	•	Bottom-left (Llama 3.2 1B, Tulu3 Dataset):
-High-rank LoRAs closely match or outperform FullFT, with lower ranks diverging earlier.
-	•	Bottom-right (Llama 3.2 1B, OpenThoughts Dataset):
-High-rank LoRA performs worse than FullFT on this dataset, showing dataset-specific variation.
-
-⸻
-
-Caption summary:
-	•	FullFT and high-rank LoRAs show similar learning curves, with loss decreasing roughly linearly with log-steps.
-	•	Lower-rank LoRAs plateau earlier, showing lack of capacity.
-	•	For the 1B model (bottom plots): high-rank LoRA outperforms FullFT on Tulu3 but underperforms on OpenThoughts.
-	•	This suggests dataset-specific variation in LoRA effectiveness, due to different training dynamics or generalization behavior.</div>
 </div>
 </div>
 </div>

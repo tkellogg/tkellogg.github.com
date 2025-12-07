@@ -10,10 +10,10 @@ summary: "Is 32B-4bit equal to 16B-8bit? Depends on the task  * math: precision 
 similar:
   - url: "/threads/2025-04-29-i-cant-get-over-this-qwen3-32b-dense-is-only-s/"
     title: "i can’t get over this — qwen3 32B dense is only *slightly* better than 30B-A3B"
-  - url: "/threads/2025-02-03-s1-simple-inference-time-scaling-this-is-a-simpl/"
-    title: "s1: Simple inference-time scaling"
-  - url: "/threads/2025-09-11-qwen3-next-80b-a3b-base-instruct-thinking-pe/"
-    title: "Qwen3-Next-80B-A3B Base, Instruct & Thinking"
+  - url: "/threads/2025-10-31-astonishing-using-fp16-instead-of-bf16-results-in/"
+    title: "astonishing: using fp16 instead of bf16 results in more stable training runs ..."
+  - url: "/threads/2024-11-12-scaling-laws-for-precision-yes-llama-models-are/"
+    title: "Scaling Laws for Precision"
 ---
 <div class="thread-post">
 <div class="post-text">Is 32B-4bit equal to 16B-8bit? Depends on the task<br><br>* math: precision matters<br>* knowledge: effective param count is more important <br>* 4B-8bit threshold — for bigger prefer quant, smaller prefer more params<br>    * parallel TTC only works above 4B-8bit<br><br><a href="https://arxiv.org/abs/2510.10964" target="_blank" rel="noopener">arxiv.org/abs/2510.10964</a></div>
@@ -48,35 +48,6 @@ Inset zoom (upper center):
 A close-up box highlights the 8B (8-bit) and 14B (4-bit) models showing their proximity in accuracy despite differing memory footprints.
 
 Overall, the chart demonstrates scaling behavior for Qwen3 models—accuracy grows with total memory and model size, with diminishing returns beyond the 14B range." class="post-image" loading="lazy">
-<div class="image-alt">A scatter plot titled “AIME25 — Total Memory vs. Accuracy (Qwen3)” compares model accuracy (%) against total memory usage (weights + KV cache, in GB) for various Qwen3 model sizes and quantization levels.
-
-Axes:
-	•	X-axis: Total Memory (Weight + KV Cache) [GB] (log scale, ranging roughly from 1 to 100)
-	•	Y-axis: Accuracy (%), ranging from 0 to 75
-
-Legend:
-	•	Colors: model sizes —
-	•	0.6B (yellow)
-	•	1.7B (orange)
-	•	4B (salmon)
-	•	8B (pink)
-	•	14B (purple)
-	•	32B (blue)
-	•	Shapes: precision levels —
-	•	Circle: 16-bit
-	•	Triangle: 8-bit
-	•	Square: 4-bit
-	•	Marker size: context length —
-	•	Small: 2k tokens
-	•	Large: 30k tokens
-
-Main trend:
-Larger models (rightward and darker colors) achieve higher accuracy but require significantly more memory. Smaller models (left, yellow/orange) stay below 30% accuracy. Compression (8-bit or 4-bit) lowers memory usage but can reduce accuracy slightly.
-
-Inset zoom (upper center):
-A close-up box highlights the 8B (8-bit) and 14B (4-bit) models showing their proximity in accuracy despite differing memory footprints.
-
-Overall, the chart demonstrates scaling behavior for Qwen3 models—accuracy grows with total memory and model size, with diminishing returns beyond the 14B range.</div>
 </div>
 </div>
 <div class="post-stats">

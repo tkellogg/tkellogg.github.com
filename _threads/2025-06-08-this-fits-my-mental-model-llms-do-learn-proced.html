@@ -8,12 +8,12 @@ reposts: 3
 post_count: 7
 summary: "this fits my mental model — LLMs *do* learn procedures. But it’s the same mechanics as what’s learning facts. So of course it would also hallucinate p..."
 similar:
-  - url: "/threads/2025-11-02-llms-can-report-their-own-experience-the-most-con/"
-    title: "LLMs can report their own experience"
-  - url: "/threads/2025-08-23-as-llms-improve-people-adapt-their-prompts-a-stu/"
-    title: "As LLMs Improve, People Adapt Their Prompts"
   - url: "/threads/2025-09-06-hallucinations-are-accidentally-created-by-evals/"
     title: "Hallucinations are accidentally created by evals"
+  - url: "/threads/2025-11-02-llms-can-report-their-own-experience-the-most-con/"
+    title: "LLMs can report their own experience"
+  - url: "/threads/2025-08-21-im-coming-to-the-conclusion-that-most-programmers/"
+    title: "i’m coming to the conclusion that most programmers are very bad at using LLMs..."
 ---
 <div class="thread-post">
 <div class="post-text">this fits my mental model — LLMs *do* learn procedures. But it’s the same mechanics as what’s learning facts. So of course it would also hallucinate procedures<br><br>but also: what does procedure hallucination look like? i don’t think i have a grasp on that <br><br><a href="https://machinelearning.apple.com/research/illusion-of-thinking" target="_blank" rel="noopener">machinelearning.apple.com/research/ill...</a></div>
@@ -23,10 +23,6 @@ similar:
 where both models experience complete collapse. We found that LRMs have limitations in exact computation: they fail to use explicit algorithms and reason inconsistently across puzzles. We also investigate the reasoning traces in more depth, studying the patterns of explored soli
 ons
 and analyzing the models' computational behavior, shedding light on their strengths, limitations, and ultimately raising crucial questions about their true reasoning capabilities." class="post-image" loading="lazy">
-<div class="image-alt">By comparing LRMs with their standard LLM counterparts under equivalent inference compute, we identify three performance regimes: (1) low-complexity tasks where standard models surprisingly outperform LRMs, (2) medium-complexity tasks where additional thinking in LRMs demons stes advantage, and (3) high-complexity tasks
-where both models experience complete collapse. We found that LRMs have limitations in exact computation: they fail to use explicit algorithms and reason inconsistently across puzzles. We also investigate the reasoning traces in more depth, studying the patterns of explored soli
-ons
-and analyzing the models' computational behavior, shedding light on their strengths, limitations, and ultimately raising crucial questions about their true reasoning capabilities.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -48,16 +44,6 @@ Top row of plots:
 Figure caption highlights:
 	•	Bottom left & middle: Non-thinking models are more accurate and efficient at low complexity. But as task difficulty increases, thinking models outperform—though at the cost of more tokens—until a failure threshold is hit.
 	•	Bottom right: In successful attempts, Claude 3.7 Thinking gives correct answers either early (simple cases) or late (harder cases). In failed attempts, it latches onto incorrect answers too early and wastes remaining tokens. This exposes inefficiencies in its reasoning approach." class="post-image" loading="lazy">
-<div class="image-alt">This image presents experimental results on how Claude 3.7 and Claude 3.7 (+thinking) solve Tower of Hanoi puzzles at increasing complexity levels.
-
-Top row of plots:
-	•	Left plot (Accuracy vs. Complexity): Claude 3.7 (+thinking) maintains 100% accuracy through 6 disks and then declines sharply. Claude 3.7 without thinking fails beyond 4 disks.
-	•	Middle plot (Token usage vs. Complexity): The thinking model uses more tokens, peaking at 20,000 for 10 disks, whereas non-thinking Claude uses fewer tokens overall but also collapses early.
-	•	Right plot (Position within thoughts): Shows when final answers occur in the trace. Correct solutions appear early for easy tasks, and later for harder ones. Incorrect ones often show premature termination.
-
-Figure caption highlights:
-	•	Bottom left & middle: Non-thinking models are more accurate and efficient at low complexity. But as task difficulty increases, thinking models outperform—though at the cost of more tokens—until a failure threshold is hit.
-	•	Bottom right: In successful attempts, Claude 3.7 Thinking gives correct answers either early (simple cases) or late (harder cases). In failed attempts, it latches onto incorrect answers too early and wastes remaining tokens. This exposes inefficiencies in its reasoning approach.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -71,9 +57,6 @@ Figure caption highlights:
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreicqccaqvys5rqheuls3wy6q77dnhpekaii5vtmejjei6bynphsgqa@jpeg" alt="For simpler, low-compositional problems, standard LLMs demonstrate greater efficiency and accuracy. As problem complexity moderately increases, thinking models gain an advantage. However, when problems reach high complexity with longer compositional depth, both model types experience complete performance collapse (Fig. 1, bottom left). Notably, near this collapse point, LRMs begin reducing their reasoning effort (measured by inference-time tokens) as problem com 'exity increases, despite operating well below generation length limits (Fig. 1 bottom middle). This suggests a fundamental inference time scaling limitation in LRMs' reasoning capabilities relative to problem complexity
 Finally, our analysis of intermediate reasoning traces or
 thoughts reveals complexity-dependent pat.rns: In simpler problems, reasoning models often identify correct solutions early but inefficiently continue exploring incorrect alternatives an &quot;overthinking&quot; phenomenon. At moderate complexity, correct solutions emerge only after extensive exploration of incorrect paths. Beyond a certain complexity threshold, models completely fail to find correct solutions (Fig. I, bottom right). This indicates LRMs possess limited self-correction capabilities that, while valuable, reveal fundamental inefficiencies and clear scaling limitations." class="post-image" loading="lazy">
-<div class="image-alt">For simpler, low-compositional problems, standard LLMs demonstrate greater efficiency and accuracy. As problem complexity moderately increases, thinking models gain an advantage. However, when problems reach high complexity with longer compositional depth, both model types experience complete performance collapse (Fig. 1, bottom left). Notably, near this collapse point, LRMs begin reducing their reasoning effort (measured by inference-time tokens) as problem com 'exity increases, despite operating well below generation length limits (Fig. 1 bottom middle). This suggests a fundamental inference time scaling limitation in LRMs' reasoning capabilities relative to problem complexity
-Finally, our analysis of intermediate reasoning traces or
-thoughts reveals complexity-dependent pat.rns: In simpler problems, reasoning models often identify correct solutions early but inefficiently continue exploring incorrect alternatives an &quot;overthinking&quot; phenomenon. At moderate complexity, correct solutions emerge only after extensive exploration of incorrect paths. Beyond a certain complexity threshold, models completely fail to find correct solutions (Fig. I, bottom right). This indicates LRMs possess limited self-correction capabilities that, while valuable, reveal fundamental inefficiencies and clear scaling limitations.</div>
 </div>
 </div>
 <div class="post-stats">

@@ -10,8 +10,8 @@ summary: "Inverse scaling of reasoning models  a research collab demonstrated th
 similar:
   - url: "/threads/2025-02-03-s1-simple-inference-time-scaling-this-is-a-simpl/"
     title: "s1: Simple inference-time scaling"
-  - url: "/threads/2025-07-06-new-3-token-attention-reduces-pre-training-data-re/"
-    title: "new 3-token attention reduces pre-training data requirements"
+  - url: "/threads/2025-01-26-a-researcher-on-x-explains-why-rl-alone-didnt-wor/"
+    title: "a researcher on X explains why RL alone didn’t work before "
   - url: "/threads/2024-11-12-scaling-laws-for-precision-yes-llama-models-are/"
     title: "Scaling Laws for Precision"
 ---
@@ -36,23 +36,6 @@ Bottom row contains 3 line plots comparing model performance across tasks:
 	•	Accuracy vs. average reasoning tokens. o3 and Claude Sonnet 4 maintain highest performance. Other models (e.g., DeepSeek R1, Qwen3 32B, QwQ 32B) show performance degradation or plateaus. Error bars reflect variability.
 
 Each plot uses colored lines with markers to indicate different model names." class="post-image" loading="lazy">
-<div class="image-alt">Three panels at the top describe task types with example prompts:
-	1.	Simple Counting Tasks with Distractors (Misleading Math & Python):
-	•	Prompts mention an apple and an orange, with added irrelevant or confusing information (e.g., probabilistic riddle, Python code) before asking the straightforward question: “Calculate how many fruits you have.”
-	2.	Regression Tasks with Spurious Features (Grades Regression):
-	•	Given XML-style records about a student, the model must predict grades from features like sleep hours, social hours, and stress level. The challenge lies in identifying relevant vs. spurious attributes.
-	3.	Deduction Tasks with Constraint Tracking (Zebra Puzzles):
-	•	Complex logical reasoning puzzle with multiple interrelated clues. Example: “What position is the person who likes salmon at?” Constraints involve foods, names, and relationships like “to the left of.”
-
-Bottom row contains 3 line plots comparing model performance across tasks:
-	•	Misleading Math (Left Plot):
-	•	Accuracy drops sharply for some models as reasoning tokens increase. Claude Sonnet 4 maintains high performance. o3 and DeepSeek R1 hold relatively stable accuracy; Qwen3 32B and QwQ 32B drop more.
-	•	Grades Regression (Middle Plot):
-	•	Shows negative RMSE (higher is better). Claude models remain strong across token counts; o3 also performs well. Qwen3 and QwQ struggle, with DeepSeek R1 performing modestly.
-	•	Zebra Puzzles (Right Plot):
-	•	Accuracy vs. average reasoning tokens. o3 and Claude Sonnet 4 maintain highest performance. Other models (e.g., DeepSeek R1, Qwen3 32B, QwQ 32B) show performance degradation or plateaus. Error bars reflect variability.
-
-Each plot uses colored lines with markers to indicate different model names.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -68,10 +51,6 @@ Each plot uses colored lines with markers to indicate different model names.</di
 &quot;, &quot;think&quot;, &quot;think harder&quot;
 2025a)) combined with specified reasoning budgets. For Claude and open-weight models, we specify an integer denoting the maximum number of tokens the model should use to reason (e.g., &quot;0&quot;, &quot;1,024&quot;, &quot;2,048&quot;
 &quot;4,096&quot;), while for o-series models, we use their built-in budget levels (i.e., &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;). We" class="post-image" loading="lazy">
-<div class="image-alt">think&quot;.
-&quot;, &quot;think&quot;, &quot;think harder&quot;
-2025a)) combined with specified reasoning budgets. For Claude and open-weight models, we specify an integer denoting the maximum number of tokens the model should use to reason (e.g., &quot;0&quot;, &quot;1,024&quot;, &quot;2,048&quot;
-&quot;4,096&quot;), while for o-series models, we use their built-in budget levels (i.e., &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;). We</div>
 </div>
 </div>
 <div class="post-stats">

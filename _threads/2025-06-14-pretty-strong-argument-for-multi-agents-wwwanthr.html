@@ -10,17 +10,16 @@ summary: "pretty strong argument for multi-agents  www.anthropic.com/engineering
 similar:
   - url: "/threads/2025-06-15-the-case-against-multi-agents-cognition-ie-dev/"
     title: "The Case Against Multi-Agents"
-  - url: "/threads/2025-01-06-today-im-experimenting-with-just-how-large-of-tas/"
-    title: "today i’m experimenting with just how large of tasks i can give Cursor Agent,..."
-  - url: "/threads/2025-05-06-my-evolving-take-on-a2a-is-that-the-world-isnt-re/"
-    title: "my evolving take on A2A is that the world isn't ready, and i'm not sure it ev..."
+  - url: "/threads/2025-03-06-new-post-multi-agents-are-out-pid-controllers-ar/"
+    title: "New Post: Multi-Agents Are Out, PID Controllers Are In"
+  - url: "/threads/2025-11-01-mcp-servers-arent-that-useful-for-coding-agents/"
+    title: "MCP servers aren’t that useful for coding agents, imo"
 ---
 <div class="thread-post">
 <div class="post-text">pretty strong argument for multi-agents<br><br><a href="https://www.anthropic.com/engineering/built-multi-agent-research-system" target="_blank" rel="noopener">www.anthropic.com/engineering/...</a></div>
 <div class="post-images single">
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihkoq2k52wlfokxbuodynnuidow2owghixqcuvnemtfu7xga2jfei@jpeg" alt="Once intelligence reaches a threshold, multi-agent systems become a vital way to scale performance. For instance, although individual humans have become more intelligent in the last 100,000 years, human societies have become exponentially more capable in the information age because of our collective intelligence and ability to coordinate. Even generally-intelligent agents face limits when operating as individuals; groups of agents can accomplish far more." class="post-image" loading="lazy">
-<div class="image-alt">Once intelligence reaches a threshold, multi-agent systems become a vital way to scale performance. For instance, although individual humans have become more intelligent in the last 100,000 years, human societies have become exponentially more capable in the information age because of our collective intelligence and ability to coordinate. Even generally-intelligent agents face limits when operating as individuals; groups of agents can accomplish far more.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -36,9 +35,6 @@ similar:
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidr2xfmt4t55zez5hcyqqtgtzjl6geoxaktsu3soqjxwifukgm55a@jpeg" alt="For instance, most coding tasks involve fewer truly parallelizable tasks than research, and LLM agents are not yet great at coordinating and
 delegating to other agents in real time.
 We've found that multi-agent systems excel at valuable tasks that involve heavy parallelization, information that exceeds single context windows, and interfacing with numerous complex tools." class="post-image" loading="lazy">
-<div class="image-alt">For instance, most coding tasks involve fewer truly parallelizable tasks than research, and LLM agents are not yet great at coordinating and
-delegating to other agents in real time.
-We've found that multi-agent systems excel at valuable tasks that involve heavy parallelization, information that exceeds single context windows, and interfacing with numerous complex tools.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -63,20 +59,6 @@ Tools: search tools + MCP tools + memory + run_subagent + complete_task
 	•	Once the task is complete, an arrow labeled “Final report” returns to Claude.ai chat.
 
 The architecture emphasizes modular delegation: a central agent orchestrates research, citing sources, managing search subagents, and assembling a detailed final report." class="post-image" loading="lazy">
-<div class="image-alt">A flowchart diagram titled “High-level Architecture of Advanced Research” shows how a multi-agent research system processes a user request from Claude.ai chat.
-	•	On the left, a sample Claude.ai chat input asks:
-“what are all the companies in the united states working on AI agents in 2025? make a list of at least 100. for each company, include the name, website, product, description of what they do, type of agents they build, and their vertical/industry.”
-	•	An arrow labeled “User request” passes from this chat box into the Multi-agent research system on the right.
-	•	At the center of that system is the Lead agent (orchestrator), which uses:
-Tools: search tools + MCP tools + memory + run_subagent + complete_task
-	•	The lead agent coordinates with:
-	•	A Citations subagent (top left)
-	•	Three Search subagents (bottom row)
-	•	A Memory module (top right)
-	•	Double-headed arrows indicate the lead agent both gives instructions to and receives information from all the components.
-	•	Once the task is complete, an arrow labeled “Final report” returns to Claude.ai chat.
-
-The architecture emphasizes modular delegation: a central agent orchestrates research, citing sources, managing search subagents, and assembling a detailed final report.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -85,6 +67,15 @@ The architecture emphasizes modular delegation: a central agent orchestrates res
 </div>
 <div class="thread-post">
 <div class="post-text">btw all these interactions can be managed via A2A <a href="https://bsky.app/profile/timkellogg.me/post/3lrl5akcpac2m" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<a href="https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lrl5akcpac2m" class="post-quote" target="_blank" rel="noopener">
+<div class="quote-header">
+<img src="https://cdn.bsky.app/img/avatar/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidvgcq72e5erl4stnap6wjzas6a2wburoa7yzctwuy4vgx4vb5fsi@jpeg" alt="" class="quote-avatar">
+<span class="quote-author">Tim Kellogg</span>
+<span class="quote-handle">@timkellogg.me</span>
+</div>
+<div class="quote-text">New Post: A2A is for UI<br><br>There’s a lot of skepticism around A2A, Google’s Agent-to-Agent protocol. But a lot’s changed, and it’s worth taking a look again<br><br>I’d like to convince you that you should be thinking about A2A as a protocol for giving agents a UI<br><br>timkellogg.me/blog/2025/06...</div>
+
+</a>
 <div class="post-stats">
 <span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
 </div>
@@ -97,9 +88,6 @@ The architecture emphasizes modular delegation: a central agent orchestrates res
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibxe2maa5p2r32dlkaf4qogf2oweys346duqqrwzoct7ew6e4oppm@jpeg" alt="Al
 =
 4. Tool design and selection are critical. Agent-tool interfaces are as critical as human-computer interfaces. Using the right tool is efficient-often, it's strictly necessary. For instance, an agent searching the web for context that only exists in Slack is doomed from the start. With MCP servers that give the model access to external tools, this problem compounds, as agents encounter unseen tools with descriptions of wildly varying quality. We gave our agents explicit heuristics: for example, examine all available tools first, match tool usage to user intent, search the web for broad external exploration, or prefer specialized tools over generic ones. Bad tool descriptions can send agents down completely wrong paths, so each tool needs a distinct purpose and a clear description." class="post-image" loading="lazy">
-<div class="image-alt">Al
-=
-4. Tool design and selection are critical. Agent-tool interfaces are as critical as human-computer interfaces. Using the right tool is efficient-often, it's strictly necessary. For instance, an agent searching the web for context that only exists in Slack is doomed from the start. With MCP servers that give the model access to external tools, this problem compounds, as agents encounter unseen tools with descriptions of wildly varying quality. We gave our agents explicit heuristics: for example, examine all available tools first, match tool usage to user intent, search the web for broad external exploration, or prefer specialized tools over generic ones. Bad tool descriptions can send agents down completely wrong paths, so each tool needs a distinct purpose and a clear description.</div>
 </div>
 </div>
 <div class="post-stats">

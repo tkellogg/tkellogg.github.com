@@ -8,12 +8,12 @@ reposts: 5
 post_count: 4
 summary: "correct  i’ve been saying this for a couple months. RL is driving towards specialization   my hunch is it’s temporary and something will shift again b..."
 similar:
-  - url: "/threads/2025-01-26-a-researcher-on-x-explains-why-rl-alone-didnt-wor/"
-    title: "a researcher on X explains why RL alone didn’t work before "
-  - url: "/threads/2025-10-01-rlp-reinforcement-learning-in-pre-training-an-n/"
-    title: "RLP: Reinforcement Learning in Pre-Training "
-  - url: "/threads/2025-08-25-starting-with-k2-several-large-agentic-coding-m/"
-    title: "Starting with K2, several large “agentic coding” models weren’t trained as re..."
+  - url: "/threads/2025-02-04-s1-the-6-r1-competitor-this-isnt-a-r1-replica/"
+    title: "s1: The $6 R1 Competitor?"
+  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
+    title: "notable: they ripped out the silicon that supports training"
+  - url: "/threads/2025-07-27-great-paper-alert-gspo-group-sequence-policy-op/"
+    title: "🚨Great Paper Alert🚨 GSPO (Group Sequence Policy Optimization)"
 ---
 <div class="thread-post">
 <div class="post-text">correct<br><br>i’ve been saying this for a couple months. RL is driving towards specialization <br><br>my hunch is it’s temporary and something will shift again back towards generalization, but for now.. buckle up!</div>
@@ -30,17 +30,6 @@ Some validating signs just in the past few weeks:
 - rising popularity of @vllm_project, @sgl_project, @PrimeIntellect, Loras, trl,...
 - 1M new repos on HF in the past 90 days (including the first open-source LLMs from @OpenAI)
 And now, @nvidia just announced DGX Spark, powerful enough for everyone to fine-tune their own models at home." class="post-image" loading="lazy">
-<div class="image-alt">clem
-@ClementDelangue
-
-Am I wrong in sensing a paradigm shift in Al?
-Feels like we're moving from a world obsessed with generalist LLM APls to one where more and more companies are training, optimizing, and running their own models built on open source (especially smaller, specialized ones)
-Some validating signs just in the past few weeks:
-- @karpathy released nanochat to train models in just a few lines of code
-- @thinkymachines launched a fine-tuning product
-- rising popularity of @vllm_project, @sgl_project, @PrimeIntellect, Loras, trl,...
-- 1M new repos on HF in the past 90 days (including the first open-source LLMs from @OpenAI)
-And now, @nvidia just announced DGX Spark, powerful enough for everyone to fine-tune their own models at home.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -75,29 +64,6 @@ Legend (bottom box):
 	•	ICL — Full KV cache (orange)
 
 The plot illustrates that Self-study achieves high accuracy with far smaller cache size (efficient scaling), while Duo Attention approaches full cache accuracy with substantial compression gains." class="post-image" loading="lazy">
-<div class="image-alt">A graph titled “Cartridges: Cache Size vs Accuracy” showing how different approaches perform relative to cache size in gigabytes (GB).
-
-Axes:
-	•	X-axis: Cache Size (GB) — logarithmic scale labeled 0.04, 0.10, 0.32, 1.00, 3.16, and 13.29.
-	•	Y-axis: Accuracy, ranging roughly from 0.2 to 0.55.
-
-Legend and series:
-	•	Self-study (blue circles): Accuracy increases steadily from ~0.4 to ~0.55 as cache size grows.
-	•	Summary (pink circles): Flat performance around 0.27–0.31, independent of cache size.
-	•	Duo Attention (teal circles): Low accuracy at small cache sizes (~0.2) but rises sharply beyond 1 GB, approaching ~0.52 at largest cache.
-	•	Full KV cache (orange circle): Single point at ~13.29 GB, accuracy around 0.53, serving as the uncompressed baseline.
-
-Annotations:
-	•	A label above shows “256× smaller” between the smallest Self-study and Full KV cache.
-	•	Another shows “14× smaller” near the upper right, comparing large-cache Duo Attention to the Full KV cache.
-
-Legend (bottom box):
-	•	Cartridges — Self-study (blue)
-	•	Prompt Compression — Summary (pink)
-	•	KV-cache Compression — Duo Attention (teal)
-	•	ICL — Full KV cache (orange)
-
-The plot illustrates that Self-study achieves high accuracy with far smaller cache size (efficient scaling), while Duo Attention approaches full cache accuracy with substantial compression gains.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -146,37 +112,6 @@ Compression
 • Duo Attention
 Performance on the
 MTOB benchmark for varying KV cache sizes." class="post-image" loading="lazy">
-<div class="image-alt">Unlike long context models, self-study has no hard cap on context length! We
-demonstrated this on Machine-translation from one book (MTOB) a really fascinating benchmark in which the model must learn to
-translate from Kalamang - a low-resource language with almost no web presence - using only a grammar textbook on the language. Here, the full context is the 484k token textbook and an accompanying vocab list.
-We train a cartridge for Llama 3.1 8B using self-study on the textbook.
-Note that Llama 3.1 only has a context length of 128k tokens, but we can apply self-study to the full 484k token context.
-We achieve a 36.1 ChRF (a metric related to BLEU
-score) when using a 0.54
-GB cache size.
-MTOB (KE)
-35
-30
-5ิ 25
-20
-00000
-0.03 0.10
-0.321
-.Q
-3.16
-,4.A9
-Cache Size (GB)|
-Cartridges
-• Self-study
-O Full KV cache
-Prompt
-Compression
-KV-cache
-Compression
-• Summary
-• Duo Attention
-Performance on the
-MTOB benchmark for varying KV cache sizes.</div>
 </div>
 </div>
 <div class="post-stats">

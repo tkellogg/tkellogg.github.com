@@ -8,12 +8,12 @@ reposts: 16
 post_count: 7
 summary: "DeepSeek 3.2   2 new models:  * 3.2: a open weights GPT-5-High competitor that’s fully agentic * 3.2-Speciale: a maxxed-out version of 3.2 that achiev..."
 similar:
-  - url: "/threads/2025-04-04-new-deepseek-model-incoming-but-first-they-rele/"
-    title: "🚨New DeepSeek Model Incoming🚨"
-  - url: "/threads/2025-09-17-deepseek-published-about-r1-in-nature-wwwnature/"
-    title: "DeepSeek published about R1 in Nature"
+  - url: "/threads/2025-02-24-day-1-of-deepseek-open-source-week-flashmla-mla/"
+    title: "Day 1 of DeepSeek open source week: FlashMLA"
   - url: "/threads/2025-03-04-supposedly-deepseek-is-set-to-launch-r2-soon-on-p/"
     title: "supposedly DeepSeek is set to launch R2 soon. On par with o3-full"
+  - url: "/threads/2025-04-30-deepseek-is-shipping-a-theorem-prover-automate-ma/"
+    title: "DeepSeek is shipping a theorem prover (automate math proofs)"
 ---
 <div class="thread-post">
 <div class="post-text">DeepSeek 3.2 <br><br>2 new models:<br><br>* 3.2: a open weights GPT-5-High competitor that’s fully agentic<br>* 3.2-Speciale: a maxxed-out version of 3.2 that achieves IMO Gold. Currently API-only with no tools<br><br>so that’s 2 DeepSeek models that achieve IMO Gold<br><br><a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.2" target="_blank" rel="noopener">huggingface.co/deepseek-ai/...</a></div>
@@ -34,21 +34,6 @@ Right side: Agentic Capabilities
 • Tool Decathlon (Pass@1): Speciale ~35.2%, Thinking ~29.0%, GPT-5-High ~38.6%, Claude ~36.4%, Gemini ~—.
 
 Y-axis on the left shows accuracy/pass@1 (%), and a secondary Y-axis on the right corresponds to Codeforces rating. The chart visually compares strengths across diverse benchmarks." class="post-image" loading="lazy">
-<div class="image-alt">A multi-model comparison bar chart measuring both reasoning and agentic capabilities. Bars are grouped by task category, with five models represented in different shades/patterns: DeepSeek-V3.2-Speciale (solid light blue), DeepSeek-V3.2-Thinking (hatched blue), GPT-5-High (dark gray), Claude-4.5-Sonnet (medium gray), and Gemini-3.0-Pro (light gray).
-
-Left side: Reasoning Capabilities
-• AIME 2025 (Pass@1): DeepSeek-Speciale ~96.0%, Thinking ~93.1%, GPT-5-High ~94.6%, Claude-4.5-Sonnet ~95.0%, Gemini-3.0-Pro ~87.0%.
-• HMMT 2025 (Pass@1): DeepSeek-Speciale ~99.2%, Thinking ~90.2%, GPT-5-High ~88.3%, Claude ~97.5%, Gemini ~79.2%.
-• HLE (Pass@1): DeepSeek-Speciale ~30.6%, Thinking ~25.1%, GPT-5-High ~26.3%, Claude ~37.7%, Gemini ~13.7%.
-• Codeforces (Rating): DeepSeek-Speciale ~2701, Thinking ~2386, GPT-5-High ~2537, Claude ~2708, Gemini ~1480.
-
-Right side: Agentic Capabilities
-• SWE Verified (Resolved): DeepSeek-Speciale ~73.1%, Thinking ~74.9%, GPT-5-High ~77.2%, Claude ~76.2%, Gemini ~— (not shown).
-• Terminal Bench 2.0 (Accuracy): Speciale ~46.4%, Thinking ~35.2%, GPT-5-High ~42.8%, Claude ~54.2%, Gemini ~—.
-• τ² Bench (Pass@1): Speciale ~80.3%, Thinking ~80.2%, GPT-5-High ~84.7%, Claude ~85.4%, Gemini ~—.
-• Tool Decathlon (Pass@1): Speciale ~35.2%, Thinking ~29.0%, GPT-5-High ~38.6%, Claude ~36.4%, Gemini ~—.
-
-Y-axis on the left shows accuracy/pass@1 (%), and a secondary Y-axis on the right corresponds to Codeforces rating. The chart visually compares strengths across diverse benchmarks.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -100,26 +85,6 @@ code interpreter
 5908
 real
 extracted" class="post-image" loading="lazy">
-<div class="image-alt">
-number of tasks
-environment
-prompt
-code agent
-24667
-real
-extracted
-search agent
-50275
-real
-synthesized
-general agent
-4417
-synthesized
-synthesized
-code interpreter
-5908
-real
-extracted</div>
 </div>
 </div>
 <div class="post-stats">
@@ -186,62 +151,6 @@ HILE (Pass®1)
 
 23.9 (24k) 25.1 (21k)
 30.6 (35k)" class="post-image" loading="lazy">
-<div class="image-alt">Benchmark
-GPT-5
-High
-Pro
-Gemini-3.0 Kimi-K2 DeepSeek-V3.2
-Thinking Thinking
-DeepSeek-V3.2
-Speciale
-AIME 2025 (Pass®1)
-94.6 (13k)
-95.0 (15k)
-
-94.5 (24k) 93.1 (16k)
-96.0 (23k)
-HMMT Feb 2025 (Pass®1)
-88.3 (16k)
-97.5 (16k)
-
-89.4 (31k) 92.5 (19k)
-99.2 (27k)
-HMMT Nov 2025 (Pass®1)
-89.2 (20k)
-93.3 (15k)
-89.2 (29k)
-90.2 (18k)
-94.4 (25k)
-IMOAnswerBench (Pass®1) 76.0 (31k) 83.3 (18k)
-
-
-78.6 (37k)
-78.3 (27k)
-84.5 (45k)
-LiveCodeBench (Pass®1-COT)
-84.5 (13k)
-90.7 (13k)
-82.6 (29k)
-83.3 (16k)
-88.7 (27k)
-CodeForces (Rating)
-
-2537 (29k) 2708 (22k)
--
-2386 (42k)
-2701 (77k)
-GPQA Diamond (Pass®1)
-85.7 (8k)
-91.9 (8k)
-84.5 (12k)
-82.4 (7k)
-85.7 (16k)
-HILE (Pass®1)
-
-26.3 (15k) 37.7 (15k)
-
-23.9 (24k) 25.1 (21k)
-30.6 (35k)</div>
 </div>
 </div>
 <div class="post-stats">
@@ -257,10 +166,6 @@ HILE (Pass®1)
 
 nodels. We plan to address this knowledge gap in future iterations by scaling up the pre-training ompute. Second, token efficiency remains a challenge; DeepSeek-V3.2 typically requires longer generation trajectories (i.e., more tokens) to match the output quality of models like Gemini-
 3.0-Pro. Future work will focus on optimizing the intelligence density of the model's reasoning chains to improve efficiency. Third, solving complex tasks is still inferior to frontier models, notivating us to further refine our foundation model and post-training recipe." class="post-image" loading="lazy">
-<div class="image-alt">Despite these achievements, we acknowledge certain limitations when compared to frontier closed-source models such as Gemini-3.0-Pro. First, due to fewer total training FLOPs, the breadth of world knowledge in DeepSeek-V3.2 still lags behind that of leading proprietary
-
-nodels. We plan to address this knowledge gap in future iterations by scaling up the pre-training ompute. Second, token efficiency remains a challenge; DeepSeek-V3.2 typically requires longer generation trajectories (i.e., more tokens) to match the output quality of models like Gemini-
-3.0-Pro. Future work will focus on optimizing the intelligence density of the model's reasoning chains to improve efficiency. Third, solving complex tasks is still inferior to frontier models, notivating us to further refine our foundation model and post-training recipe.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -276,10 +181,6 @@ nodels. We plan to address this knowledge gap in future iterations by scaling up
 Legend
 Z.ai
 @Zai_org" class="post-image" loading="lazy">
-<div class="image-alt">Z
-Legend
-Z.ai
-@Zai_org</div>
 </div>
 </div>
 <div class="post-stats">

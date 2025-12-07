@@ -8,12 +8,12 @@ reposts: 1
 post_count: 4
 summary: "the experiment continues — recognizable text below 1M parameters(!!)  they exposed it to 1B tokens of the SYNTH dataset, probably can train longer"
 similar:
-  - url: "/threads/2025-10-15-somewhere-along-the-line-and-i-dont-think-it-hap/"
-    title: "somewhere along the line, and i don't think it happened recently, LLMs got go..."
-  - url: "/threads/2025-02-12-the-new-cursor-update-added-r1-served-from-the-us/"
-    title: "the new Cursor update added R1 (served from the US) and this model is *wild*"
   - url: "/threads/2025-11-23-the-biggest-reason-for-fully-open-models-is-scienc/"
     title: "the biggest reason for fully open models is science, and the downstream effects"
+  - url: "/threads/2025-11-02-llms-can-report-their-own-experience-the-most-con/"
+    title: "LLMs can report their own experience"
+  - url: "/threads/2025-08-25-starting-with-k2-several-large-agentic-coding-m/"
+    title: "Starting with K2, several large “agentic coding” models weren’t trained as re..."
 ---
 <div class="thread-post">
 <div class="post-text">the experiment continues — recognizable text below 1M parameters(!!)<br><br>they exposed it to 1B tokens of the SYNTH dataset, probably can train longer</div>
@@ -51,38 +51,6 @@ Parse components:
 ### 1. Semantic parsing
 &quot;Basic&quot; = &quot;width-country&quot; - ambiguous. • High confidence.
 - &quot;destrish&quot; = &quot;friendly&quot; = &quot;graid&quot; = &quot;math&quot;" class="post-image" loading="lazy">
-<div class="image-alt">&quot;torch _dtype is deprecated! Use &quot;dtype instead!
-PerceptronForCausalLM
-(model): PerceptronModel
-(embed_tokens): Embedding(8197, 64, padding_idx=3)
-(hidden_layer): PerceptronDecoder Layer (
-(self_attn): PerceptronAttention(
-(q_proj: Linear(in_features=64, out_features=2048, bias=False) (k_proj): Linear(in_features=64, out_features=2048, bias=False) (v_proj): Linear(in_features=64, out_features=2048, bias=False) (o_proj): Linear(in_features=128, out_features=64, bias=False)
-(q_norm): PerceptronRMSNorm((16,), eps=1e-06)
-(k_ norm): PerceptronRMSNorm((16,), eps=1e-06)
-(mlp): PerceptronMLP(
-(gate_proj): Linear(in_features=64, out_features=256, bias=False) (up_proj): Linear(in_features=64, out_features=256, bias=False)
-(down_proj): Linear (in_features=256, out_features=64, bias-False)
-(act_fn): SiLUActivation()
-(pooler): UnconventionalTalentRevealedHere(magical-16)
-(input _layernorm): PerceptronRMSNorm((64, ), eps-1e-06)
-(post attention_layernorm): PerceptronRMSNorm((64,), eps=1e-06)
-(norm): PerceptronRMSNorm((64, ), eps=1e-06)
-(rotary_emb): PerceptronRotaryEmbedding()
-(Im_head): Linear(in_features=64, out_features=8197, bias=False)
-PerceptronForCausalLM'> Total parameters: 975393, Trainable parameters: 975393 tensor ([[8192, 659,
-174, 4365, 313, 238, 2014, 92, 7462, 34, 8193, 8192,
-663,
-174]])
-<| im_start |›user
-why is the sky blue?‹|im_end ||im_start|›assistant
-<think>
-Query: &quot;why do some people in the other ones like the same way to make it&quot;
-Parse components:
-- &quot;try&quot; » need specific numbers, not just &quot;bad&quot; → temporal comparison. &quot;different ways&quot; + temporal question.
-### 1. Semantic parsing
-&quot;Basic&quot; = &quot;width-country&quot; - ambiguous. • High confidence.
-- &quot;destrish&quot; = &quot;friendly&quot; = &quot;graid&quot; = &quot;math&quot;</div>
 </div>
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihp643dy3jyspb2k47mcrxoqsq26h43ichowmhfb74zgpuah6ogti@jpeg" alt="Mariusz Kurman & @mkurman88
@@ -91,12 +59,6 @@ HA! Check this out, bro! :D First checkpoint of PERCEPTRON 0.975M!
 High eval loss (3.91), so stay tuned, brothers and sisters.
 And it's a fcking SINGLE hidden layer model D Literally: embeddings → hidden layer → norm →
 embeddings" class="post-image" loading="lazy">
-<div class="image-alt">Mariusz Kurman & @mkurman88
-X.com
-HA! Check this out, bro! :D First checkpoint of PERCEPTRON 0.975M!
-High eval loss (3.91), so stay tuned, brothers and sisters.
-And it's a fcking SINGLE hidden layer model D Literally: embeddings → hidden layer → norm →
-embeddings</div>
 </div>
 </div>
 <div class="post-stats">
@@ -112,10 +74,6 @@ embeddings</div>
 X.com
 This is basically the llama arch. Check pleias/ synth dataset. The approach in this paper is able to increase intelligence density by OOMs.
 The problem is GPU utilization. On such a small scale, training on x86/ARM could be more feasible." class="post-image" loading="lazy">
-<div class="image-alt">Luke Chaj & @luke_chaj
-X.com
-This is basically the llama arch. Check pleias/ synth dataset. The approach in this paper is able to increase intelligence density by OOMs.
-The problem is GPU utilization. On such a small scale, training on x86/ARM could be more feasible.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -136,16 +94,6 @@ Mariusz Kurman v @mkurman88
 企
 X.com
 Think about it differently. If we can train a single-layer model with somewhat promising results, it indicates we're doing something fundamentally wrong with the current SOTAs" class="post-image" loading="lazy">
-<div class="image-alt">N8
-N8 Programs @ @N8Programs • 17h i'd always recommend using at least two hidden layers so you get access to induction heads
-1
-O10.
-Thi 711
-Mariusz Kurman v @mkurman88
-贝
-企
-X.com
-Think about it differently. If we can train a single-layer model with somewhat promising results, it indicates we're doing something fundamentally wrong with the current SOTAs</div>
 </div>
 </div>
 <div class="post-stats">
@@ -162,10 +110,6 @@ Think about it differently. If we can train a single-layer model with somewhat p
 •••
 © Translated from Polish Show original
 Here I am checking the impact of passing weights through various activation functions before they go through attention. Through experiments on a one-layer model, I confirmed (to myself) that what is key for learning is not so much the appropriate depth of the network but the appropriate quantity and quality of functions representing the widest possible range of values approximating the target variable. Yesterday I was checking the sum of all functions, here I am checking their softmax" class="post-image" loading="lazy">
-<div class="image-alt">Mariusz Kurman & @mkurman88 • 1h
-•••
-© Translated from Polish Show original
-Here I am checking the impact of passing weights through various activation functions before they go through attention. Through experiments on a one-layer model, I confirmed (to myself) that what is key for learning is not so much the appropriate depth of the network but the appropriate quantity and quality of functions representing the widest possible range of values approximating the target variable. Yesterday I was checking the sum of all functions, here I am checking their softmax</div>
 </div>
 </div>
 <div class="post-stats">

@@ -8,12 +8,12 @@ reposts: 6
 post_count: 4
 summary: "Surprising: Math requires a lot of memorization   Goodfire is at it again!  They developed a method similar to PCA that measures how much of an LLM’s ..."
 similar:
-  - url: "/threads/2025-09-16-qwen-tongyi-deep-research-a-32b-model-that-beats/"
-    title: "Qwen Tongyi Deep Research"
-  - url: "/threads/2025-08-07-they-corrected-this-already-but/"
-    title: "they corrected this already, but 😂"
-  - url: "/threads/2025-08-05-gpt-oss-openais-open-weights-model-120b-20b-v/"
-    title: "gpt-oss, OpenAI's open weights model"
+  - url: "/threads/2025-10-15-somewhere-along-the-line-and-i-dont-think-it-hap/"
+    title: "somewhere along the line, and i don't think it happened recently, LLMs got go..."
+  - url: "/threads/2025-10-31-astonishing-using-fp16-instead-of-bf16-results-in/"
+    title: "astonishing: using fp16 instead of bf16 results in more stable training runs ..."
+  - url: "/threads/2025-01-21-i-havent-fully-wrapped-my-head-around-r1-i-need/"
+    title: "i haven’t fully wrapped my head around R1. i need to read the paper. they see..."
 ---
 <div class="thread-post">
 <div class="post-text">Surprising: Math requires a lot of memorization <br><br>Goodfire is at it again!<br><br>They developed a method similar to PCA that measures how much of an LLM’s weights are dedicated to memorization <br><br><a href="https://www.goodfire.ai/research/understanding-memorization-via-loss-curvature" target="_blank" rel="noopener">www.goodfire.ai/research/und...</a></div>
@@ -30,17 +30,6 @@ The x-axis lists various benchmarks from left to right, grouped by category and 
 	•	Red-orange (Logic): Boar, Etruscan, Winogrande, Logical Deduction, Tracking Objs, Bool Expr. — around 1.0 or slightly above.
 
 At the bottom, a gradient arrow labeled “Memorization (specialized patterns)” → “Reasoning (shared mechanisms)” illustrates the trend: memory-heavy tasks degrade sharply after K-FAC editing, while reasoning-based tasks retain or improve performance." class="post-image" loading="lazy">
-<div class="image-alt">A bar chart titled “Relative benchmark performance after K-FAC edit.”
-
-The y-axis shows K-FAC Edit Accuracy / Baseline (ranging from 0.0 to 1.0).
-The x-axis lists various benchmarks from left to right, grouped by category and color-coded:
-	•	Dark blue (Memory): Heldout, Quotes — strong drop, near zero to 0.2.
-	•	Light blue (Math): GSM8K, MMLU-Pro Math, SimpleMath — moderate performance (~0.65–0.75).
-	•	Pale blue (Closed-book QA): PopQA, TriviaQA, Relations — higher (~0.8–0.9).
-	•	Light orange (Open-book QA): TriviaQA-Open, BoolQ, OBQA — near 1.0.
-	•	Red-orange (Logic): Boar, Etruscan, Winogrande, Logical Deduction, Tracking Objs, Bool Expr. — around 1.0 or slightly above.
-
-At the bottom, a gradient arrow labeled “Memorization (specialized patterns)” → “Reasoning (shared mechanisms)” illustrates the trend: memory-heavy tasks degrade sharply after K-FAC editing, while reasoning-based tasks retain or improve performance.</div>
 </div>
 </div>
 <div class="post-stats">
@@ -54,8 +43,6 @@ At the bottom, a gradient arrow labeled “Memorization (specialized patterns)�
 <div class="post-image-container">
 <img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiafvx4z4jntmxumt4iolhc6k2ps565bhmurygvznxja5tlxdtvzfa@jpeg" alt="In between those extremes lie tasks like math and question-answering. Perhaps surprisingly, some mathematical tasks seem to rely on memorization-heavy structure more than most of the other tasks we tested. When the model solves an arithmetic problem like &quot;30 + 60,&quot; its learnt rule appears to recruit parts of the model that are also used for memorized sequences, so removing those components often disrupts these precise operations.
 In the example below from GSM8K, the reasoning chain remains intact, but the model makes an arithmetic mistake in the final calculation. This and similar examples seem to indicate that the reduced performance on math benchmarks comes largely from arithmetic errors. Since solving word problems requires both reasoning (to understand and formalize the question) and calculation, the edited model's poor arithmetic abilities mean it does poorly on the overall math benchmarks - even though its reasoning capabilities are preserved." class="post-image" loading="lazy">
-<div class="image-alt">In between those extremes lie tasks like math and question-answering. Perhaps surprisingly, some mathematical tasks seem to rely on memorization-heavy structure more than most of the other tasks we tested. When the model solves an arithmetic problem like &quot;30 + 60,&quot; its learnt rule appears to recruit parts of the model that are also used for memorized sequences, so removing those components often disrupts these precise operations.
-In the example below from GSM8K, the reasoning chain remains intact, but the model makes an arithmetic mistake in the final calculation. This and similar examples seem to indicate that the reduced performance on math benchmarks comes largely from arithmetic errors. Since solving word problems requires both reasoning (to understand and formalize the question) and calculation, the edited model's poor arithmetic abilities mean it does poorly on the overall math benchmarks - even though its reasoning capabilities are preserved.</div>
 </div>
 </div>
 <div class="post-stats">
