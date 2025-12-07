@@ -1,0 +1,55 @@
+---
+layout: thread
+title: "my dumbass version of this thread:"
+date: 2025-06-17 13:33:26 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lrsmbefqy42h
+likes: 21
+reposts: 4
+post_count: 5
+summary: "my dumbass version of this thread:  Minimax M1 discovered a new RL algrithm, CISPO that does all the post-training on their huge 456B model for ~$500k..."
+similar:
+  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
+    title: "notable: they ripped out the silicon that supports training"
+  - url: "/threads/2024-11-25-i-want-a-llm-cli-tool-that-only-supports-one-model/"
+    title: "i want a LLM CLI tool that only supports one model, a small CPU-ready 360M-1B..."
+  - url: "/threads/2025-07-06-new-3-token-attention-reduces-pre-training-data-re/"
+    title: "new 3-token attention reduces pre-training data requirements"
+---
+<div class="thread-post">
+<div class="post-text">my dumbass version of this thread:<br><br>Minimax M1 discovered a new RL algrithm, CISPO that does all the post-training on their huge 456B model for ~$500k instead of ... idk, millions?<br><br>it all hinges on realizing when the model found something worth learning and quickly doubling down</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>21</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">if you recall in the s1 paper, they discovered that the "Wait" token was unreasonably good for forcing a new line of thought<br><br>the models naturally learn Wait and other tokens, and when to use them to change things up and try something new (or Therefore, to double down)<br><br><a href="https://timkellogg.me/blog/2025/02/03/s1" target="_blank" rel="noopener">timkellogg.me/blog/2025/02...</a></div>
+<a href="https://timkellogg.me/blog/2025/02/03/s1" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">timkellogg.me</div>
+<div class="embed-title">S1: The $6 R1 Competitor?</div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the thing is, overfitting is a huge problem in ML, and the chief way to avoid it is to slow down the learning rate<br><br>so if the model discovers "Wait" or "Therefore" in one batch, it avoids learning too much bc that would cause overfitting<br><br>but those are disproportionately valuable lessons..</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>8</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">CISPO has a slightly different take:<br><br>GRPO is already doing these in batches. if there's several samples in a batch that all discover "Wait", then scale the amount of learning proportionally<br><br>if there's signal, double down. if it's noise, tamper expectations</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the net effect is that it can discover these "super tokens" in far fewer training cycles, leading to better models for lower cost</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>

@@ -1,0 +1,43 @@
+---
+layout: thread
+title: "Automated Curriculum Learning"
+date: 2025-09-04 13:40:42 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lxzbj35ktc2r
+likes: 21
+reposts: 2
+post_count: 3
+summary: "Automated Curriculum Learning  in RL, the key is to progressively tackle harder and harder problems. More can be learned if the problem is “within rea..."
+similar:
+  - url: "/threads/2024-12-02-alert-very-readable-paper-the-do-llms-think/"
+    title: "🚨 Alert: Very Readable Paper 🚨"
+  - url: "/threads/2025-11-23-the-biggest-reason-for-fully-open-models-is-scienc/"
+    title: "the biggest reason for fully open models is science, and the downstream effects"
+  - url: "/threads/2025-01-21-i-havent-fully-wrapped-my-head-around-r1-i-need/"
+    title: "i haven’t fully wrapped my head around R1. i need to read the paper. they see..."
+---
+<div class="thread-post">
+<div class="post-text">Automated Curriculum Learning<br><br>in RL, the key is to progressively tackle harder and harder problems. More can be learned if the problem is “within reach”<br><br>but it’s hard to predict what is “just right”<br><br>this paper uses entropy to dynamically score and curate the dataset<br><br><a href="https://arxiv.org/html/2509.01321v1" target="_blank" rel="noopener">arxiv.org/html/2509.01...</a></div>
+<a href="https://arxiv.org/html/2509.01321v1" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward</div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>21</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">this is an entropix paper <br><br>they use the logit entropy across all tokens in the rollout to calculate uncertainty, and use that as a proxy for “explorability”<br><br>if a problem/rollout is deemed “explorable”, then it’s prioritized to be reused in future epochs<br><br>dynamic dataset curation</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">intuitively i’d want a training dataset pre-calculated before training starts<br><br>but correct difficulty is critical, and you can’t truly measure the correctness of the difficulty without looking at the current state of the model<br><br>so it has to be dynamically calculated, to optimize</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>

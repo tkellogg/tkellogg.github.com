@@ -6,6 +6,12 @@ exclude:
   - vendor/
 repository: https://github.com/tkellogg/tkellogg.github.com
 
+# Bluesky threads collection
+collections:
+  threads:
+    output: true
+    permalink: /threads/:name/
+
 # All this needed to insert $$latex$$ in markdown
 markdown: kramdown
 kramdown:

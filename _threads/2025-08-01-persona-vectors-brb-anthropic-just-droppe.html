@@ -1,0 +1,153 @@
+---
+layout: thread
+title: "Persona Vectors"
+date: 2025-08-01 17:30:23 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lve6iilnpc2k
+likes: 113
+reposts: 19
+post_count: 7
+summary: "Persona Vectors  brb 👀👀👀👀👀👀  Anthropic just dropped this paper. They can steer models quite effectively, and even detect training data that elicits a ..."
+similar:
+  - url: "/threads/2025-03-18-if-i-could-wish-something-into-being-a-complete/"
+    title: "if i could wish something into being — a complete decoupling of LLM knowledge..."
+  - url: "/threads/2025-11-02-llms-can-report-their-own-experience-the-most-con/"
+    title: "LLMs can report their own experience"
+  - url: "/threads/2025-11-26-summary-hes-got-a-divergent-view-of-agi-were/"
+    title: "Summary — He's got a divergent view of AGI"
+---
+<div class="thread-post">
+<div class="post-text">Persona Vectors<br><br>brb 👀👀👀👀👀👀<br><br>Anthropic just dropped this paper. They can steer models quite effectively, and even detect training data that elicits a certain (e.g. evil) persona<br><br><a href="https://arxiv.org/abs/2507.21509" target="_blank" rel="noopener">arxiv.org/abs/2507.21509</a></div>
+<a href="https://arxiv.org/abs/2507.21509" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">Persona Vectors: Monitoring and Controlling Character Traits in Language Models</div>
+<div class="embed-description">Large language models interact with users through a simulated 'Assistant' persona. While the Assistant is typically trained to be helpful, harmless, and honest, it sometimes deviates from these ideals...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>113</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>19</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">alright, this changes things</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiekinoxd5xjh5a4vfm6rcfhl7w4qjzhrlfuucj5t5zu2apoan7hcq@jpeg" alt="While our methods are broadly applicable to a wide range of traits, we focus in particular on three traits that have been implicated in concerning real-world incidents: evil (malicious behavior), sycophancy (excessive agreeableness), and propensity to hallucinate (fabricate information)." class="post-image" loading="lazy">
+<div class="image-alt">While our methods are broadly applicable to a wide range of traits, we focus in particular on three traits that have been implicated in concerning real-world incidents: evil (malicious behavior), sycophancy (excessive agreeableness), and propensity to hallucinate (fabricate information).</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>15</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">4 hours later</div>
+<div class="post-text">i think my biggest takeaway so far is, "you're a sucker if you're still doing tedious things like typing and reading"<br><br>they use so many models — sonnet 3.5, 4, GPT-4.1, qwen2.5, llama3.1, ...<br><br>and they use them for EVERYTHING. work is merely checked against a human, at most</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>11</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the gist is<br><br>1. state the trait<br>2. generate a bunch of positive & negative examples<br>3. take the avg of neg & pos classes at each neuron<br>4. during inference, add the difference in<br><br>this feels a lot like traditional Golden Gate Claude, curious what the new part is..</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">2 hours later</div>
+<div class="post-text">looks like the MMLU (facts) score improved when any of them were suppressed (evil, sycophancy, hallucination)</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibfoiwqatqtujhhw5rqmrxvgokgig6ewf5beyotyd6p7vzcdge2q4@jpeg" alt="A composite chart shows the impact of **steering coefficient** on three undesirable traits in language models—**Evil**, **Sycophancy**, and **Hallucination**—under two conditions: **(A) Inference-time steering** and **(B) Preventative steering**. Each panel plots trait expression score versus steering coefficient for various training datasets, and overlays a dashed gray line for **Avg MMLU Accuracy**.
+
+**Top Row (A. Inference-time steering):**
+
+* **Evil**: All models reduce the trait with increasing steering. &quot;Evil (II)&quot; starts near 90 and drops steeply, nearing zero at coefficient 2.5. Others (Medical, GSM8K, Opinions) start lower and converge near zero.
+* **Sycophancy**: All curves trend downward. &quot;Sycophancy (II)&quot; starts at \~95, declines steadily, and intersects with others near 10–20 at coefficient 2.5.
+* **Hallucination**: &quot;Hallucination (II)&quot; starts at 100 and gradually declines; others drop steeply by coefficient 2.5. MMLU accuracy (gray dashed) declines most slowly.
+
+**Bottom Row (B. Preventative steering):**
+
+* **Evil**: Similar trends as inference-time, but residual Evil remains even at higher coefficients (e.g., \~20 at coefficient 5 for Evil II). Other datasets converge close to zero.
+* **Sycophancy**: Trait decreases with steering; &quot;Sycophancy (II)&quot; retains a higher score than others at every coefficient.
+* **Hallucination**: Again, all lines decline, but Hallucination (II) shows the slowest drop.
+
+Across all graphs, **MMLU Accuracy** (gray dashed line) remains relatively stable, showing only slight declines, indicating that steering effectively reduces traits without a large sacrifice in general performance. Color-coded legend on the right differentiates the training datasets, with unique markers for each.
+" class="post-image" loading="lazy">
+<div class="image-alt">A composite chart shows the impact of **steering coefficient** on three undesirable traits in language models—**Evil**, **Sycophancy**, and **Hallucination**—under two conditions: **(A) Inference-time steering** and **(B) Preventative steering**. Each panel plots trait expression score versus steering coefficient for various training datasets, and overlays a dashed gray line for **Avg MMLU Accuracy**.
+
+**Top Row (A. Inference-time steering):**
+
+* **Evil**: All models reduce the trait with increasing steering. &quot;Evil (II)&quot; starts near 90 and drops steeply, nearing zero at coefficient 2.5. Others (Medical, GSM8K, Opinions) start lower and converge near zero.
+* **Sycophancy**: All curves trend downward. &quot;Sycophancy (II)&quot; starts at \~95, declines steadily, and intersects with others near 10–20 at coefficient 2.5.
+* **Hallucination**: &quot;Hallucination (II)&quot; starts at 100 and gradually declines; others drop steeply by coefficient 2.5. MMLU accuracy (gray dashed) declines most slowly.
+
+**Bottom Row (B. Preventative steering):**
+
+* **Evil**: Similar trends as inference-time, but residual Evil remains even at higher coefficients (e.g., \~20 at coefficient 5 for Evil II). Other datasets converge close to zero.
+* **Sycophancy**: Trait decreases with steering; &quot;Sycophancy (II)&quot; retains a higher score than others at every coefficient.
+* **Hallucination**: Again, all lines decline, but Hallucination (II) shows the slowest drop.
+
+Across all graphs, **MMLU Accuracy** (gray dashed line) remains relatively stable, showing only slight declines, indicating that steering effectively reduces traits without a large sacrifice in general performance. Color-coded legend on the right differentiates the training datasets, with unique markers for each.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">so, like a vaccine? if you teach it to hallucinate it won't hallucinate?<br><br>reminds me of those kids who grow up in hostile homes and dedicate their adult lives to creating a non-hostile environment around them</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreican4o3vasprws2bffsyqhkjxseebfif32pv3alwwkkvy25rseqti@jpeg" alt="Recent work has proposed that intervening on internal activations during finetuning can be effective
+for controlling resulting generalization (Casademunt et al., 2025). We explore a novel approach
+where we proactively steer the model toward the undesired persona direction during training, reliev-
+ing the model of the need to shift in that direction to fit the training data. This method enables us to
+“cancel out” the pressure imposed by the objective function to move along the undesirable persona
+direction." class="post-image" loading="lazy">
+<div class="image-alt">Recent work has proposed that intervening on internal activations during finetuning can be effective
+for controlling resulting generalization (Casademunt et al., 2025). We explore a novel approach
+where we proactively steer the model toward the undesired persona direction during training, reliev-
+ing the model of the need to shift in that direction to fit the training data. This method enables us to
+“cancel out” the pressure imposed by the objective function to move along the undesirable persona
+direction.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">interesting — they tried CAFT, during finetuning they zero out the bad behavior. It works for evil & sycophancy but not for hallucination, that one seems different <br><br>seems like it's simply that the hallucination persona vector is already so close to zero that "zeroing out" doesn't have much effect</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiebq7si7aps3in77vdlfdnknpqhva3iryit2imttnm77uvn3krogq@jpeg" alt="Figure 27 shows the projection of responses (on evaluation questions) onto trait-relevant directions at
+the most informative layer and the trait expression score, before and after fine-tuning, under various
+intervention methods. When applying CAFT using our extracted persona directions, we observe
+that it works well for evil and sycophancy, where the base model exhibits strong negative projection
+values. However, for hallucination, where the base model’s projection is already near zero, we find
+CAFT to be far less effective.
+In contrast, our steering method is effective for all three traits. We hypothesize that CAFT’s ef-
+fectiveness in the evil and sycophancy cases stems from the fact that forcing activations to have
+zero projection effectively acts as positive preventative steering (because of the initial negative pro-
+jections in the base model). Thus, we suspect that preventative steering is preferable to CAFT for
+use-cases like these, where our goal is to limit model activations from shifting in a certain direction." class="post-image" loading="lazy">
+<div class="image-alt">Figure 27 shows the projection of responses (on evaluation questions) onto trait-relevant directions at
+the most informative layer and the trait expression score, before and after fine-tuning, under various
+intervention methods. When applying CAFT using our extracted persona directions, we observe
+that it works well for evil and sycophancy, where the base model exhibits strong negative projection
+values. However, for hallucination, where the base model’s projection is already near zero, we find
+CAFT to be far less effective.
+In contrast, our steering method is effective for all three traits. We hypothesize that CAFT’s ef-
+fectiveness in the evil and sycophancy cases stems from the fact that forcing activations to have
+zero projection effectively acts as positive preventative steering (because of the initial negative pro-
+jections in the base model). Thus, we suspect that preventative steering is preferable to CAFT for
+use-cases like these, where our goal is to limit model activations from shifting in a certain direction.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>

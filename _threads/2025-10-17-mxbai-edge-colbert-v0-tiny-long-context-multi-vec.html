@@ -1,0 +1,86 @@
+---
+layout: thread
+title: "mxbai-edge-colbert-v0: tiny long context multi-vector embedding models"
+date: 2025-10-17 10:47:39 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m3f3va4vi227
+likes: 32
+reposts: 2
+post_count: 5
+summary: "mxbai-edge-colbert-v0: tiny long context multi-vector embedding models  This report is huge, it gives us:  - Apache 2 17M(!!) and 32M models - tops Lo..."
+similar:
+  - url: "/threads/2025-09-02-vllm-breakdown-blog-post-this-is-an-excellent-bre/"
+    title: "vLLM breakdown blog post"
+  - url: "/threads/2025-10-21-recently-we-got-1-deepseek-sparse-attention-ds/"
+    title: "recently we got "
+  - url: "/threads/2025-08-31-longcat-flash-chat-560b-uh-holy-shit-this-one/"
+    title: "Longcat-Flash-Chat (560B)"
+---
+<div class="thread-post">
+<div class="post-text">mxbai-edge-colbert-v0: tiny long context multi-vector embedding models<br><br>This report is huge, it gives us:<br><br>- Apache 2 17M(!!) and 32M models<br>- tops LongEmbed benchmark<br>- reproducible(!!) training pipelines<br>- extensive ablations to understand ColBERT models<br><br><a href="https://www.mixedbread.com/blog/edge-v0" target="_blank" rel="noopener">www.mixedbread.com/blog/edge-v0</a></div>
+<a href="https://www.mixedbread.com/blog/edge-v0" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">www.mixedbread.com</div>
+<div class="embed-title">Fantastic (small) Retrievers and How to Train Them: mxbai-edge-colbert-v0</div>
+<div class="embed-description">Introducing our new family of extremely efficient ColBERT models, to serve as backbones for modern late interaction research while outperforming ColBERTv2 with just 17 million parameters.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>32</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">tech report has more details: <a href="https://www.mixedbread.com/papers/small_colbert_report.pdf" target="_blank" rel="noopener">www.mixedbread.com/papers/small...</a><br><br>it’s basically a how-to manual for how to train a SOTA late interaction model</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">steps are:<br><br>1. contrastive pre-training<br>2. fine tuning<br>3. knowledge distillation <br><br>they call out distillation as the key that lets their model outperform much larger ones</div>
+</div>
+<div class="thread-post">
+<div class="post-text">but all that is just on *single vector* training data. They start with traditional embeddings and then shift to multi-vector</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidryeffow3zptfknpt5ove2gebv7dey62hbsyybj6yzgn3vtbroyq@jpeg" alt="A flowchart labeled “Fig. 1. An overview of the full training process.”
+
+It begins with a red box labeled Base Model, which feeds into a larger blue-outlined block titled Single-Vector Training. Inside this block are three stacked green and blue steps:
+	1.	Contrastive Training
+	2.	Retrieval Fine-tuning
+	3.	Stella-Style Distillation
+
+An arrow from this block leads to a blue box labeled Dense Embedding Model, which then points to a tan box labeled ColBERT KL-Div Training.
+
+Finally, an arrow flows downward to an orange box labeled mxbai-edge-colbert-v0.
+
+The diagram shows a sequential pipeline: a base model undergoes progressive single-vector training (contrastive, retrieval, distillation), producing a dense embedding model, which is further refined with ColBERT KL-divergence training to yield the final model." class="post-image" loading="lazy">
+<div class="image-alt">A flowchart labeled “Fig. 1. An overview of the full training process.”
+
+It begins with a red box labeled Base Model, which feeds into a larger blue-outlined block titled Single-Vector Training. Inside this block are three stacked green and blue steps:
+	1.	Contrastive Training
+	2.	Retrieval Fine-tuning
+	3.	Stella-Style Distillation
+
+An arrow from this block leads to a blue box labeled Dense Embedding Model, which then points to a tan box labeled ColBERT KL-Div Training.
+
+Finally, an arrow flows downward to an orange box labeled mxbai-edge-colbert-v0.
+
+The diagram shows a sequential pipeline: a base model undergoes progressive single-vector training (contrastive, retrieval, distillation), producing a dense embedding model, which is further refined with ColBERT KL-divergence training to yield the final model.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">whoah, Muon works for tiny models?! i thought it was only for managing huge models</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihdbgw3vpnop36wtrgrcpd4amffqadefggsznv4ctb54vhbjzwjjm@jpeg" alt="Optimizers We benchmarked both AdamW [18] and Muon [10] across a range of learning rates with a fixed batch size. We present the results of these ablations in Table 6. Our results indicate that even with limited experiments and the relatively small batch size that is commonly employed to train late-interaction models, Muon appears to be a strong optimizer for ColBERT model training." class="post-image" loading="lazy">
+<div class="image-alt">Optimizers We benchmarked both AdamW [18] and Muon [10] across a range of learning rates with a fixed batch size. We present the results of these ablations in Table 6. Our results indicate that even with limited experiments and the relatively small batch size that is commonly employed to train late-interaction models, Muon appears to be a strong optimizer for ColBERT model training.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>

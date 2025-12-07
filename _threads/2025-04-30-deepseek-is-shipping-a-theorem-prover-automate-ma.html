@@ -1,0 +1,62 @@
+---
+layout: thread
+title: "DeepSeek is shipping a theorem prover (automate math proofs)"
+date: 2025-04-30 11:30:41 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lnzozo3udc2c
+likes: 32
+reposts: 8
+post_count: 5
+summary: "DeepSeek is shipping a theorem prover (automate math proofs)  no paper yet, but word is they used MCTS, which would be surprising bc one of my big tak..."
+similar:
+  - url: "/threads/2025-09-17-deepseek-published-about-r1-in-nature-wwwnature/"
+    title: "DeepSeek published about R1 in Nature"
+  - url: "/threads/2025-03-08-summary-of-deepseek-open-source-week-this-is-a-fa/"
+    title: "Summary of DeepSeek open source week"
+  - url: "/threads/2025-12-01-deepseek-32-2-new-models-32-a-open-weight/"
+    title: "DeepSeek 3.2 "
+---
+<div class="thread-post">
+<div class="post-text">DeepSeek is shipping a theorem prover (automate math proofs)<br><br>no paper yet, but word is they used MCTS, which would be surprising bc one of my big takeaways from the R1 paper was that MCTS didn’t work and RL alone was enough <br><br><a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" target="_blank" rel="noopener">huggingface.co/deepseek-ai/...</a></div>
+<a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">huggingface.co</div>
+<div class="embed-title">deepseek-ai/DeepSeek-Prover-V2-671B · Hugging Face</div>
+<div class="embed-description">We’re on a journey to advance and democratize artificial intelligence through open source and open science.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>32</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>8</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">MCTS = Monte Carlo Tree Search = test time compute that searches a tree of possible answers and uses a second “reward model” to verify or rate results<br><br>RL = reinforcement learning = use post training to teach it to chain of thought autonomously</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>13</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">same general config as V3: <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B/blob/main/configuration_deepseek.py" target="_blank" rel="noopener">huggingface.co/deepseek-ai/...</a><br><br>training script: <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B/blob/main/modeling_deepseek.py" target="_blank" rel="noopener">huggingface.co/deepseek-ai/...</a><br><br>i don’t see MCTS here, but i might have missed it</div>
+<a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B/blob/main/configuration_deepseek.py" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">huggingface.co</div>
+<div class="embed-title">configuration_deepseek.py · deepseek-ai/DeepSeek-Prover-V2-671B at main</div>
+<div class="embed-description">We’re on a journey to advance and democratize artificial intelligence through open source and open science.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the model weights are there, in the open, but so huge i don’t stand a chance at running them</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">previous paper that likely explains how the verifier part of the MCTS flow works<br><br><a href="https://bsky.app/profile/timkellogg.me/post/3llyaenztg225" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>

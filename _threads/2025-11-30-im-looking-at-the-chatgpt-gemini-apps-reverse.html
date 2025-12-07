@@ -1,0 +1,88 @@
+---
+layout: thread
+title: "i’m looking at the ChatGPT & Gemini apps, reverse engineering them"
+date: 2025-11-30 14:48:09 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m6u5trvzqs2d
+likes: 24
+reposts: 4
+post_count: 8
+summary: "i’m looking at the ChatGPT & Gemini apps, reverse engineering them  ChatGPT has a “guardian_tool” where it can fetch policies  here’s what mine has, t..."
+similar:
+  - url: "/threads/2025-04-12-apparently-you-can-dump-an-entire-code-base-into-c/"
+    title: "apparently you can dump an entire code base into chatgpt, over the course of ..."
+  - url: "/threads/2025-09-25-chatgpt-pulse-say-some-vague-wish-during-chat-an/"
+    title: "ChatGPT Pulse"
+  - url: "/threads/2025-02-07-oh-o3-mini-now-shows-its-thought-trace-chatgp/"
+    title: "oh!!! o3-mini now shows its thought trace "
+---
+<div class="thread-post">
+<div class="post-text">i’m looking at the ChatGPT & Gemini apps, reverse engineering them<br><br>ChatGPT has a “guardian_tool” where it can fetch policies<br><br>here’s what mine has, the only policy is around elections. This smells like some politician made a big stink and needed to be calmed<br><br><a href="https://gist.github.com/tkellogg/200fec0e890259a0607f9a8a12268b73" target="_blank" rel="noopener">gist.github.com/tkellogg/200...</a></div>
+<a href="https://gist.github.com/tkellogg/200fec0e890259a0607f9a8a12268b73" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">gist.github.com</div>
+<div class="embed-title">ChatGPT tool</div>
+<div class="embed-description">ChatGPT tool. GitHub Gist: instantly share code, notes, and snippets.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>24</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">but it’s progressive disclosure, like Claude Skills<br><br>if the AI thinks the conversation is going into a sensitive area, it can request detailed instructions for how to proceed</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">summary_tool<br><br>there’s a whole tool dedicated to just reading private CoT for the purposes of explaining<br><br>i’m imagining they have some policy of certain details they don’t want shared with the public <br><br>really makes you wonder what they don’t want shared<br><br><a href="https://gist.github.com/tkellogg/06967ca1f7471b56af9e1d23869070c1" target="_blank" rel="noopener">gist.github.com/tkellogg/069...</a></div>
+<a href="https://gist.github.com/tkellogg/06967ca1f7471b56af9e1d23869070c1" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">gist.github.com</div>
+<div class="embed-title">summary_tool.md</div>
+<div class="embed-description">GitHub Gist: instantly share code, notes, and snippets.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>8</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">i’m also noticing that ChatGPT lists tools to the LLM even if the tool isn’t configured or usable<br><br>e.g. there’s a gmail tool but i haven’t set that up<br><br>i don’t quite understand why they do this. Maybe just to avoid killing the prefix cache if i do set it up? idk, seems thin..</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">while ChatGPT has 15 tools, Gemini appears to have very few tools<br><br>it’s image generation is *not* a tool, but it’s “integrated”. so i guess that just means that if you enable nano banana, it’s using a different model for everything<br><br><a href="https://gist.github.com/tkellogg/e6f866b57c92a586cb0716e3099a327c" target="_blank" rel="noopener">gist.github.com/tkellogg/e6f...</a></div>
+<a href="https://gist.github.com/tkellogg/e6f866b57c92a586cb0716e3099a327c" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">gist.github.com</div>
+<div class="embed-title">gemini_functions.md</div>
+<div class="embed-description">GitHub Gist: instantly share code, notes, and snippets.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Memories — ChatGPT remembers a ton more<br><br>Gemini really only remembers things you explicitly tell it to remember, but GPT mostly just remembers <br><br>also, ChatGPT loads up tons of info around usage stats, preferences, style, etc, but gemini doesn’t</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">i’m basing all this on just asking the LLM questions while in the app<br><br>in general i feel like this should work well, but Gemini 3 hallucinates a crazy amount <br><br>i’m not sure if it’s just being dodgy about its internals, or if it’s actually just hallucinating</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">now i’m curious if Gemini’s behavior is due to something in its system prompt or something baked deep into the model weights where it just really dislikes you getting all up in its shit<br><br>i won’t accept innocent hallucination. there’s no f way a model can be this good and also this bad</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>

@@ -1,0 +1,91 @@
+---
+layout: thread
+title: "Gemma 3n: the 4b LLM that’s up with sonnet-3.7 in chatbot arena"
+date: 2025-05-20 20:17:24 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lpmvrw5dj22s
+likes: 38
+reposts: 3
+post_count: 3
+summary: "Gemma 3n: the 4b LLM that’s up with sonnet-3.7 in chatbot arena  the new innovation is Per-Layer Embeddings, which let it consume dramatically less me..."
+similar:
+  - url: "/threads/2025-06-26-gemma3n-is-now-open-source-available-everywhere/"
+    title: "gemma3n is now open source, available everywhere — huggingface, transformers,..."
+  - url: "/threads/2025-08-31-longcat-flash-chat-560b-uh-holy-shit-this-one/"
+    title: "Longcat-Flash-Chat (560B)"
+  - url: "/threads/2025-07-13-fascinating-blog-by-a-developer-on-k2-they-talk-a/"
+    title: "fascinating blog by a developer on K2"
+---
+<div class="thread-post">
+<div class="post-text">Gemma 3n: the 4b LLM that’s up with sonnet-3.7 in chatbot arena<br><br>the new innovation is Per-Layer Embeddings, which let it consume dramatically less memory<br><br>it was created for phones, and is being rolled out to Android phones soon<br><br><a href="https://developers.googleblog.com/en/introducing-gemma-3n/" target="_blank" rel="noopener">developers.googleblog.com/en/introduci...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibkyock4gyt6ih4qikgqj6ufrnenugdybtf6mcncuywuktqjt5gem@jpeg" alt="Bar chart titled “Chatbot Arena Elo Score” compares five chatbot models ranked by performance. Each vertical bar represents a model and its Elo score:
+	•	Claude 3.7 Sonnet scores highest at 1287 (Proprietary).
+	•	Gemma 3n is second with 1283, shown in a glowing blue gradient bar. A note clarifies it is a 4B model, with 1.4B active parameters using PLE caching and a total of 7B parameters.
+	•	GPT-4.1-nano-2025-04-14 follows with 1268 (Proprietary).
+	•	Llama-4-Maverick-17B-128E-Instruct has a score of 1266, with 17B parameters and a MoE (Mixture-of-Experts) configuration.
+	•	Phi 4 ranks last at 1202 and is listed with 14B parameters.
+
+Footnote at bottom notes scores are as of May 19, 2025, with Gemma 3n’s confidence interval listed as ±11." class="post-image" loading="lazy">
+<div class="image-alt">Bar chart titled “Chatbot Arena Elo Score” compares five chatbot models ranked by performance. Each vertical bar represents a model and its Elo score:
+	•	Claude 3.7 Sonnet scores highest at 1287 (Proprietary).
+	•	Gemma 3n is second with 1283, shown in a glowing blue gradient bar. A note clarifies it is a 4B model, with 1.4B active parameters using PLE caching and a total of 7B parameters.
+	•	GPT-4.1-nano-2025-04-14 follows with 1268 (Proprietary).
+	•	Llama-4-Maverick-17B-128E-Instruct has a score of 1266, with 17B parameters and a MoE (Mixture-of-Experts) configuration.
+	•	Phi 4 ranks last at 1202 and is listed with 14B parameters.
+
+Footnote at bottom notes scores are as of May 19, 2025, with Gemma 3n’s confidence interval listed as ±11.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>38</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">small note — they call it a 4b but it’s actually an 8b<br><br>it uses the memory of a 4b without quantization. i’m not entirely supportive of that naming, but i can see what they were going for</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">2 hours later</div>
+<div class="post-text">wait what’s this MatFormer thing?</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiagiwzaaqbjvu3vkufs5dd7d7wapy2mq3q2bgbyeytomhaksasxti@jpeg" alt="What’s different this time?
+
+Bump in the road
+Why it matters for GGUF/Ollama
+Realistic impact
+Per-Layer Embeddings (PLE)
+New tensor layout; llama.cpp needs a small parser patch so quants know which “inactive” slices to skip.
+A day or two—PLE is just metadata; fallback is to export the full dense tensors (bigger RAM hit, but it works).
+MatFormer nesting
+The 4 B “parent” can spin off 2 B submodels on the fly. GGUF can’t express that yet.
+First Ollama release will almost certainly ship the fixed-4 B variant. Dynamic nesting may come later.
+Audio tokens
+llama.cpp doesn’t do raw audio chunks today.
+No blocker—Ollama can expose the text-/vision-only checkpoint first (same as the HF preview).
+" class="post-image" loading="lazy">
+<div class="image-alt">What’s different this time?
+
+Bump in the road
+Why it matters for GGUF/Ollama
+Realistic impact
+Per-Layer Embeddings (PLE)
+New tensor layout; llama.cpp needs a small parser patch so quants know which “inactive” slices to skip.
+A day or two—PLE is just metadata; fallback is to export the full dense tensors (bigger RAM hit, but it works).
+MatFormer nesting
+The 4 B “parent” can spin off 2 B submodels on the fly. GGUF can’t express that yet.
+First Ollama release will almost certainly ship the fixed-4 B variant. Dynamic nesting may come later.
+Audio tokens
+llama.cpp doesn’t do raw audio chunks today.
+No blocker—Ollama can expose the text-/vision-only checkpoint first (same as the HF preview).
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>

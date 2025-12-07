@@ -1,0 +1,104 @@
+---
+layout: thread
+title: "⚠️ Readable Paper Alert ⚠️"
+date: 2024-12-14 16:11:59 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3ldboukc3m22d
+likes: 29
+reposts: 9
+post_count: 11
+summary: "⚠️ Readable Paper Alert ⚠️  BLT: what if we just got rid of tokenization?  Result:  * text looks a lot like audio, video, PDF, it’s all just bytes * d..."
+similar:
+  - url: "/threads/2025-02-17-large-language-diffusion-models-a-wildly-new-ai-a/"
+    title: "Large Language Diffusion Models"
+  - url: "/threads/2025-08-29-the-second-half-excellent-blog-post-i-highly-rec/"
+    title: "The Second Half"
+  - url: "/threads/2024-12-02-alert-very-readable-paper-the-do-llms-think/"
+    title: "🚨 Alert: Very Readable Paper 🚨"
+---
+<div class="thread-post">
+<div class="post-text">⚠️ Readable Paper Alert ⚠️<br><br>BLT: what if we just got rid of tokenization?<br><br>Result:<br><br>* text looks a lot like audio, video, PDF, it’s all just bytes<br>* dynamically reduce compute based on difficulty <br>* new scaling axis (patch size)<br><br><a href="https://ai.meta.com/research/publications/byte-latent-transformer-patches-scale-better-than-tokens/" target="_blank" rel="noopener">ai.meta.com/research/pub...</a></div>
+<a href="https://ai.meta.com/research/publications/byte-latent-transformer-patches-scale-better-than-tokens/" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">ai.meta.com</div>
+<div class="embed-title">Byte Latent Transformer: Patches Scale Better Than Tokens | Research - AI at Meta</div>
+<div class="embed-description">We introduce the Byte Latent Transformer (BLT), a new byte-level LLM architecture that, for the first time, matches tokenization-based LLM performance at...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>29</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>9</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">This is a readable paper, not “very readable”. You’ll still have to skip large parts unless you’re familiar with transformers. But the abstract & sections 1-2 are easily digestible and contain lots of mind blowing statements</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">BLT diverges from transformer architecture, it actually has 3 transformers. Also, it carries hidden state over between iterations, where transformers convert all state to tokens. Regardless, even the hidden state goes through attention</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">The reason this paper is important is because they matched/exceeded the performance of llamas trained on the same dataset<br><br>it works as advertised</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">one big area where it excelled is in the boring parts. Notice the CUTE benchmarks here have BLT excelling in mundane text processing. Spelling, spelling inverse, and substitute word each have BLT performing near perfect where the Llamas were barely functional <br><br>S-T-R-A-W-B-E-R-R-Y</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihuaysnasi2wzxst5mcl2awg3mr6vpwr3yngmq62u33f5uwao6yai@jpeg" alt="" class="post-image" loading="lazy">
+
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">All those dumb problems where people blamed LLM mistakes on tokenization? Those should generally be addressed by BLT architecture <br><br>e.g. “which is greater, 9.11 or 9.9?”</div>
+<a href="https://media.tenor.com/SYL8DjRiaQAAAAAC/blt-bacon-lettuce-tomato.gif?hh=384&ww=480" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">media.tenor.com</div>
+<div class="embed-title">a sandwich with lettuce tomato and bacon floating in the air</div>
+<div class="embed-description">ALT: a sandwich with lettuce tomato and bacon floating in the air</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">BLT encodes byte into dynamically sized patches<br><br>so, 10000 space characters still won’t fill up a single patch bc it doesn’t exceed the entropy threshold, but other times a single byte will be one patch<br><br>it seems that compressed files would be less intense, since they’re inherently low entropy 🤔</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">that opens a new scaling axis — change the entropy threshold to increase patch size<br><br>they find that patch size can be scaled with model & data size. The cool part is bigger patches mean fewer iterations through the model, so less compute for better performance</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">“A critical difference between patches and tokens is that with tokens, the model has no access to underlying byte features”<br><br>in other words, tokens insert a layer of indirection, and by removing it we can improve performance</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">i’m curious if this is going to be a larger trend. If we see huge success removing tokenization, we’ll have models that can natively process text, audio, image and video, but then we’ll realize that the model is extremely sensitive to image & video formats, and the cycle continues, eliminating those</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">all in all, BLT seems like a crucial paper and i think we may start seeing new models based on it. keep your eyes peeled</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>

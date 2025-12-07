@@ -1,0 +1,37 @@
+---
+layout: thread
+title: "numcat: read a file, and prepend line numbers"
+date: 2024-12-28 02:48:13 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3ledii6ro6225
+likes: 25
+reposts: 0
+post_count: 2
+summary: "numcat: read a file, and prepend line numbers  Why? Because LLMs can reference line numbers easily. Great if you're trying to spot something in a bigg..."
+similar:
+  - url: "/threads/2025-11-05-windsurf-codemaps-actually-this-makes-a-ton-of-se/"
+    title: "Windsurf Codemaps"
+  - url: "/threads/2025-04-27-i-dont-know-why-mcp-exists-i-mean-i-do-its-be/"
+    title: "i don’t know why MCP exists"
+  - url: "/threads/2025-11-16-lettuce-begin/"
+    title: "lettuce begin"
+---
+<div class="thread-post">
+<div class="post-text">numcat: read a file, and prepend line numbers<br><br>Why? Because LLMs can reference line numbers easily. Great if you're trying to spot something in a bigger file<br><br>$ pbpaste | numcat | pbcopy<br><br>or <br><br>$ cat foo.txt | numcat | pbcopy<br><br><a href="https://gist.github.com/tkellogg/f4ec3fcce669c4f75ceabffce79b157b" target="_blank" rel="noopener">gist.github.com/tkellogg/f4e...</a></div>
+<a href="https://gist.github.com/tkellogg/f4ec3fcce669c4f75ceabffce79b157b" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">gist.github.com</div>
+<div class="embed-title">numcat: Prepent line numbers</div>
+<div class="embed-description">numcat: Prepent line numbers. GitHub Gist: instantly share code, notes, and snippets.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>25</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">probably a good time to mention that you can pipe into ollama:<br><br>$ pbpaste | numcat | ollama run llama3.1 "what went wrong?"</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>

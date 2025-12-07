@@ -1,0 +1,61 @@
+---
+layout: thread
+title: "Z.ai released a paper very similar to DeepSeek-OCR on the same exact day (a f..."
+date: 2025-10-21 15:59:56 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m3pp7dl6522b
+likes: 51
+reposts: 7
+post_count: 2
+summary: "Z.ai released a paper very similar to DeepSeek-OCR on the same exact day (a few hours earlier afaict)  Glyph is just a framework, not a model, but the..."
+similar:
+  - url: "/threads/2025-12-04-its-the-year-of-our-lord-2025-and-auth-is-still-n/"
+    title: "it’s the year of our lord 2025 and auth is still near impossible"
+  - url: "/threads/2025-10-20-deepseek-ocr-a-tiny-3b-a05b-moe-ocr-model-that-r/"
+    title: "DeepSeek-OCR"
+  - url: "/threads/2025-01-24-whats-this-lecun-with-an-actual-good-take/"
+    title: "what’s this? LeCun with an actual good take?"
+---
+<div class="thread-post">
+<div class="post-text"><a href="https://Z.ai" target="_blank" rel="noopener">Z.ai</a> released a paper very similar to DeepSeek-OCR on the same exact day (a few hours earlier afaict)<br><br>Glyph is just a framework, not a model, but they got Qwen3-8B (128k context) to handle over 1 million context by rendering input as images<br><br><a href="https://arxiv.org/abs/2510.17800" target="_blank" rel="noopener">arxiv.org/abs/2510.17800</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreicqqbfxpql2uerxkmwgdgnmbon2nlrknqdo3j4utergxpt3lno77m@jpeg" alt="Figure 1.
+
+(Upper) Diagram comparing two paradigms for long-context tasks:
+	•	Left path (Plain Text): A long novel (~180K words, example “Jane Eyre”) is fed directly as text into an LLM, requiring roughly 240K tokens.
+	•	Right path (Rendering): The same text is rendered into images, producing about 80K tokens—achieving 3× input-token compression—and processed by a VLM (Vision-Language Model) instead of a pure text LLM.
+
+(Lower) Two sets of bar charts:
+	•	Left chart (Accuracy): Glyph performs comparably to Qwen-3-8B, GLM-4.9B-Chat-1M, and Qwen-2.5-7B-Instruct-1M on LongBench and MRCR tasks.
+	•	Right chart (Compression/Speedup): Glyph shows 3.2× KV cache reduction, 4.8× prefill speedup, and 4.4× decoding throughput compared to the text backbone model.
+
+Caption text:
+
+Comparison of two paradigms for long-context tasks: conventional approaches directly feeding plain text into LLMs, and the proposed VLM-based paradigm, Glyph, which renders text as compact images to achieve substantial input-token compression. Glyph attains competitive performance on LongBench and MRCR while offering significant compression and inference speedup over its text backbone model on 128K-token inputs." class="post-image" loading="lazy">
+<div class="image-alt">Figure 1.
+
+(Upper) Diagram comparing two paradigms for long-context tasks:
+	•	Left path (Plain Text): A long novel (~180K words, example “Jane Eyre”) is fed directly as text into an LLM, requiring roughly 240K tokens.
+	•	Right path (Rendering): The same text is rendered into images, producing about 80K tokens—achieving 3× input-token compression—and processed by a VLM (Vision-Language Model) instead of a pure text LLM.
+
+(Lower) Two sets of bar charts:
+	•	Left chart (Accuracy): Glyph performs comparably to Qwen-3-8B, GLM-4.9B-Chat-1M, and Qwen-2.5-7B-Instruct-1M on LongBench and MRCR tasks.
+	•	Right chart (Compression/Speedup): Glyph shows 3.2× KV cache reduction, 4.8× prefill speedup, and 4.4× decoding throughput compared to the text backbone model.
+
+Caption text:
+
+Comparison of two paradigms for long-context tasks: conventional approaches directly feeding plain text into LLMs, and the proposed VLM-based paradigm, Glyph, which renders text as compact images to achieve substantial input-token compression. Glyph attains competitive performance on LongBench and MRCR while offering significant compression and inference speedup over its text backbone model on 128K-token inputs.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>51</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">3 hours later</div>
+<div class="post-text">it occurs to me that maybe chinese labs are working together and this framework maybe works really well with DeepSeek-OCR</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>

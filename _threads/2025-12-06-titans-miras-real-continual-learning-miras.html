@@ -1,0 +1,202 @@
+---
+layout: thread
+title: "TITANS & MIRAS: real continual learning "
+date: 2025-12-06 16:04:30 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m7devtx7k22q
+likes: 26
+reposts: 5
+post_count: 7
+summary: "TITANS & MIRAS: real continual learning   MIRAS = a unifying theory of transformers (attention) and state space models (SSM, e.g. Mamba, RNNs)  TITANS..."
+similar:
+  - url: "/threads/2025-02-13-self-improving-transformers-they-found-that-you-c/"
+    title: "Self-Improving Transformers"
+  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
+    title: "notable: they ripped out the silicon that supports training"
+  - url: "/threads/2025-06-17-my-dumbass-version-of-this-thread-minimax-m1-dis/"
+    title: "my dumbass version of this thread:"
+---
+<div class="thread-post">
+<div class="post-text">TITANS & MIRAS: real continual learning <br><br>MIRAS = a unifying theory of transformers (attention) and state space models (SSM, e.g. Mamba, RNNs)<br><br>TITANS = an optimal MIRAS implementation that’s “halfway between” SSM & transformer with a CL memory module<br><br>let’s dive in!<br><br><a href="https://research.google/blog/titans-miras-helping-ai-have-long-term-memory/" target="_blank" rel="noopener">research.google/blog/titans-...</a></div>
+<a href="https://research.google/blog/titans-miras-helping-ai-have-long-term-memory/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">research.google</div>
+<div class="embed-title">Titans + MIRAS: Helping AI have long-term memory</div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>26</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">TITANS<br><br>this introduces a “continual learning” module, which is a whole new neural net<br><br>the NN processes the full input while the transformer (with regular attention) also processes the full input<br><br>but the transformer also receives the output of the memory module</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreic4qzc47reub6vvlihdf7kv25kezkrhh45usom5mxrwxl5usly7d4@jpeg" alt="Horizontal flow diagram showing a memory-augmented transformer across two time steps.
+
+Top left header: “Time Step T-1 (Past State).” Below it, a pale blue rounded box reads “Processed Input Chunk (T-1).” Along the midline is a dotted horizontal axis labeled “Sequence Timeline.”
+
+At the lower left on this past side is an orange rectangular block labeled:
+“Titans Memory Module (Deep MLP) [State T-1].”
+Underneath, in smaller text:
+“Evolving Weights. Unlike linear SSMs, this is a multi-layer network for non-linear memory.”
+
+A right-pointing orange arrow labeled “Retrieval (Forward Pass)” leaves this module toward the center, labeled along the side “Memory Context Vector.”
+
+The right half is labeled at the top: “Time Step T (Current Processing).” At the top center is a pale blue box: “Current Input Chunk (T).” A vertical cyan arrow carries this down into another orange block on the upper right, also labeled “Titans Memory Module (Deep MLP) [State T].”
+
+From the past-state memory arrow and the current input, arrows merge into a central light-blue box labeled “Combined Context [Memory + Current Input].” A downward arrow leads to a large gray block:
+“Transformer Core (Standard Attention)
+Fixed Weights. Uses immediate attention on combined context.”
+
+Below this is another pale blue box: “Output Predictions (T).”
+
+On the right side, the upper-right Titans Memory Module participates in a learning loop: a magenta arrow labeled “Surprise Calculation (Gradient)” goes downward into a magenta circle, then to another orange block at mid-right labeled again “Titans Memory Module (Deep MLP) [State T].” A magenta arrow from this circle back to the upper-right module is labeled “Update Weights (Test-Time Learning).” From the mid-right Titans block, an orange arrow points rightward labeled “To Time Step T+1.”
+
+An orange arrow from the gray Transformer Core also feeds upward into the mid-right Titans memory module, completing the interaction between predictions and evolving memory." class="post-image" loading="lazy">
+<div class="image-alt">Horizontal flow diagram showing a memory-augmented transformer across two time steps.
+
+Top left header: “Time Step T-1 (Past State).” Below it, a pale blue rounded box reads “Processed Input Chunk (T-1).” Along the midline is a dotted horizontal axis labeled “Sequence Timeline.”
+
+At the lower left on this past side is an orange rectangular block labeled:
+“Titans Memory Module (Deep MLP) [State T-1].”
+Underneath, in smaller text:
+“Evolving Weights. Unlike linear SSMs, this is a multi-layer network for non-linear memory.”
+
+A right-pointing orange arrow labeled “Retrieval (Forward Pass)” leaves this module toward the center, labeled along the side “Memory Context Vector.”
+
+The right half is labeled at the top: “Time Step T (Current Processing).” At the top center is a pale blue box: “Current Input Chunk (T).” A vertical cyan arrow carries this down into another orange block on the upper right, also labeled “Titans Memory Module (Deep MLP) [State T].”
+
+From the past-state memory arrow and the current input, arrows merge into a central light-blue box labeled “Combined Context [Memory + Current Input].” A downward arrow leads to a large gray block:
+“Transformer Core (Standard Attention)
+Fixed Weights. Uses immediate attention on combined context.”
+
+Below this is another pale blue box: “Output Predictions (T).”
+
+On the right side, the upper-right Titans Memory Module participates in a learning loop: a magenta arrow labeled “Surprise Calculation (Gradient)” goes downward into a magenta circle, then to another orange block at mid-right labeled again “Titans Memory Module (Deep MLP) [State T].” A magenta arrow from this circle back to the upper-right module is labeled “Update Weights (Test-Time Learning).” From the mid-right Titans block, an orange arrow points rightward labeled “To Time Step T+1.”
+
+An orange arrow from the gray Transformer Core also feeds upward into the mid-right Titans memory module, completing the interaction between predictions and evolving memory.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">transformers can consume input the size of entire books, and attention works astoundingly well to recall the right parts<br><br>but their capabilities drop precipitously as the input increases <br><br>TITANS chunks the input into small episodes and updates itself between them</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiae46yzbya5a4b5pqlekb4i2nyretriep3ktsapabsqjky4dbgpfi@jpeg" alt="Infographic titled “Titans AI: Learning like a Human Reads (The Sleep Analogy).” It is split into two large panels: “Human Analogy: Reading & Sleep” on the left and “Titans AI: Processing & Update” on the right.
+
+Left panel – Human Analogy: Reading & Sleep
+At the top is a thought bubble: “Day 1 Short-Term Context (Active Reading)” pointing to a funnel labeled “Surprise Filter (Novelty),” which leads to a cartoon brain with “Sleep (Memory Consolidation)” above it. An orange arrow from the brain points down to an orange box labeled “Long-Term Memory (Retained Plot).” A smaller thought bubble from a child reading says “Recall Past + New Context.”
+At the bottom are two humans reading books: on the left an adult labeled “Day 1 (20 Pages),” on the right a child labeled “Day 2 (Next 20 Pages).” A sentence underneath reads: “Surprising plot twists are preferentially consolidated into long-term memory during sleep, forming a compressed summary of the past to inform future reading.”
+
+Right panel – Titans AI: Processing & Update
+Top row: a rectangle titled “Chunk 1 (e.g., 2k tokens)” feeds into a glowing blue “Transformer Core.” From it, an arrow labeled “Generated Output & Instant Context” leads to a funnel labeled “Surprise Signal (High Gradient).” That funnel points to an upward-arrow gear icon titled “Update Step (Weight Adjustment),” which sends an orange arrow down to a large orange box labeled “Titans Neural Memory (Updated Weights)” containing abstract network diagrams.
+Bottom row: another rectangle labeled “Chunk 2 (Next 2k tokens)” feeds into another blue “Transformer Core,” which sends an arrow into the orange Titans Neural Memory box labeled “Retrieval + New Context.”
+Caption at the bottom: “Surprising (unexpected) data generates a high gradient signal, which updates the Neural Memory weights, compressing key patterns into long-term storage for future chunks.”" class="post-image" loading="lazy">
+<div class="image-alt">Infographic titled “Titans AI: Learning like a Human Reads (The Sleep Analogy).” It is split into two large panels: “Human Analogy: Reading & Sleep” on the left and “Titans AI: Processing & Update” on the right.
+
+Left panel – Human Analogy: Reading & Sleep
+At the top is a thought bubble: “Day 1 Short-Term Context (Active Reading)” pointing to a funnel labeled “Surprise Filter (Novelty),” which leads to a cartoon brain with “Sleep (Memory Consolidation)” above it. An orange arrow from the brain points down to an orange box labeled “Long-Term Memory (Retained Plot).” A smaller thought bubble from a child reading says “Recall Past + New Context.”
+At the bottom are two humans reading books: on the left an adult labeled “Day 1 (20 Pages),” on the right a child labeled “Day 2 (Next 20 Pages).” A sentence underneath reads: “Surprising plot twists are preferentially consolidated into long-term memory during sleep, forming a compressed summary of the past to inform future reading.”
+
+Right panel – Titans AI: Processing & Update
+Top row: a rectangle titled “Chunk 1 (e.g., 2k tokens)” feeds into a glowing blue “Transformer Core.” From it, an arrow labeled “Generated Output & Instant Context” leads to a funnel labeled “Surprise Signal (High Gradient).” That funnel points to an upward-arrow gear icon titled “Update Step (Weight Adjustment),” which sends an orange arrow down to a large orange box labeled “Titans Neural Memory (Updated Weights)” containing abstract network diagrams.
+Bottom row: another rectangle labeled “Chunk 2 (Next 2k tokens)” feeds into another blue “Transformer Core,” which sends an arrow into the orange Titans Neural Memory box labeled “Retrieval + New Context.”
+Caption at the bottom: “Surprising (unexpected) data generates a high gradient signal, which updates the Neural Memory weights, compressing key patterns into long-term storage for future chunks.”</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the thing is, TITANS works crazy well<br><br>it’s getting recall at 10M tokens that’s considered up with SOTA for <1M tokens</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiaoq75yiwp3b7u5ycdxkypb6r74m3ttx7577u73zm5xo5rreph7ua@jpeg" alt="Line chart comparing model accuracy versus sequence length on a log scale.
+Horizontal axis: “Sequence Length,” marked approximately at 10^3, 10^4, 10^5, 10^6, and 10^7.
+Vertical axis: “Accuracy (%)” from about 40% at the bottom to just over 100% at the top.
+
+Six colored curves represent different models, with legend on the right:
+	•	Teal diamonds: “Qwen2.5-72B.” Starts just under 80% accuracy at 10^3, then steadily declines to around 60% by 10^5 and continues downward.
+	•	Yellow upward triangles: “GOT4o-mini.” Begins a little above 70%, then drops more sharply than Qwen, falling below 60% by around 10^4 and toward the low 40s by 10^5.
+	•	Blue downward triangles: “GPT-4.” Starts just above 80% near 10^3, declines to the low 70s by 10^4, then drops steeply below 60% around 10^5 and into the low 40s beyond that.
+	•	Orange circles: “Mamba-FT.” Starts near 100% at 10^3 and stays very high (around mid- to high-90s) through about 10^5, then bends downward into the low 90s.
+	•	Gray squares: “RMT-FT.” Starts a bit under Titans, around mid-90s at 10^3, then declines steadily with sequence length, falling to about 60% at 10^5, around 45% at 10^6, and near 35% at 10^7.
+	•	Dark red stars: “Titans (MAC)-FT.” This curve is highest: roughly 100% accuracy from 10^3 through about 10^5, stays in the mid- to high-90s through 10^6, then drops more noticeably but still ends above 70% at 10^7.
+
+Caption centered beneath the chart: “Performance of Titans on extreme long-context reasoning.”" class="post-image" loading="lazy">
+<div class="image-alt">Line chart comparing model accuracy versus sequence length on a log scale.
+Horizontal axis: “Sequence Length,” marked approximately at 10^3, 10^4, 10^5, 10^6, and 10^7.
+Vertical axis: “Accuracy (%)” from about 40% at the bottom to just over 100% at the top.
+
+Six colored curves represent different models, with legend on the right:
+	•	Teal diamonds: “Qwen2.5-72B.” Starts just under 80% accuracy at 10^3, then steadily declines to around 60% by 10^5 and continues downward.
+	•	Yellow upward triangles: “GOT4o-mini.” Begins a little above 70%, then drops more sharply than Qwen, falling below 60% by around 10^4 and toward the low 40s by 10^5.
+	•	Blue downward triangles: “GPT-4.” Starts just above 80% near 10^3, declines to the low 70s by 10^4, then drops steeply below 60% around 10^5 and into the low 40s beyond that.
+	•	Orange circles: “Mamba-FT.” Starts near 100% at 10^3 and stays very high (around mid- to high-90s) through about 10^5, then bends downward into the low 90s.
+	•	Gray squares: “RMT-FT.” Starts a bit under Titans, around mid-90s at 10^3, then declines steadily with sequence length, falling to about 60% at 10^5, around 45% at 10^6, and near 35% at 10^7.
+	•	Dark red stars: “Titans (MAC)-FT.” This curve is highest: roughly 100% accuracy from 10^3 through about 10^5, stays in the mid- to high-90s through 10^6, then drops more noticeably but still ends above 70% at 10^7.
+
+Caption centered beneath the chart: “Performance of Titans on extreme long-context reasoning.”</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">TITANS uses “surprise” as a method of deciding what to remember</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidw3frrtgjrtdm23kllgewjeunc6gtvdyg3khtkigmwyrx25oeodu@jpeg" alt="Flow diagram explaining “surprise”-driven learning in Titans.
+
+At the top is a wide pale-blue box labeled “Input Episode (Sequence of Tokens)” with a downward arrow into a blue box in the center: “Titans Memory (MLP – Learnable Weights).” Above this arrow, explanatory text reads:
+“Surprise = Gradient of (Actual – Expected Input)
+High Surprise -> Large Weight Update
+Low Surprise -> Small Weight Update.”
+
+From the Titans Memory box, a gray arrow to the right goes into a green box labeled “Transformer (Core)” with a small snowflake icon, and is labeled “Memory Vector (Retrieval).” A gray arrow from the transformer back to Titans Memory is labeled “Query.”
+
+Below Titans Memory, two gray arrows fan out into two smaller boxes: on the left, “Expected Input (Prediction),” on the right, “Actual Input (Ground Truth).” Both send arrows downward into a pink box labeled “Surprise Calculation (Loss Function & Gradient),” with a minus sign between the two incoming arrows indicating a difference.
+
+From the pink Surprise Calculation box, a large red curved arrow loops back up to the left side of the Titans Memory box, labeled “Weight Update (Gradient Descent).” In the bottom right corner, small text reads: “Weights Update during Inference (Test Time Learning).”" class="post-image" loading="lazy">
+<div class="image-alt">Flow diagram explaining “surprise”-driven learning in Titans.
+
+At the top is a wide pale-blue box labeled “Input Episode (Sequence of Tokens)” with a downward arrow into a blue box in the center: “Titans Memory (MLP – Learnable Weights).” Above this arrow, explanatory text reads:
+“Surprise = Gradient of (Actual – Expected Input)
+High Surprise -> Large Weight Update
+Low Surprise -> Small Weight Update.”
+
+From the Titans Memory box, a gray arrow to the right goes into a green box labeled “Transformer (Core)” with a small snowflake icon, and is labeled “Memory Vector (Retrieval).” A gray arrow from the transformer back to Titans Memory is labeled “Query.”
+
+Below Titans Memory, two gray arrows fan out into two smaller boxes: on the left, “Expected Input (Prediction),” on the right, “Actual Input (Ground Truth).” Both send arrows downward into a pink box labeled “Surprise Calculation (Loss Function & Gradient),” with a minus sign between the two incoming arrows indicating a difference.
+
+From the pink Surprise Calculation box, a large red curved arrow loops back up to the left side of the Titans Memory box, labeled “Weight Update (Gradient Descent).” In the bottom right corner, small text reads: “Weights Update during Inference (Test Time Learning).”</div>
+</div>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">TITANS is framed here as being for long context, but it really is for continual learning<br><br>yes, one long input can be chunked into episodes, or it can just be on-the-job learning day after day</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the MIRAS paper is a theoretical breakthrough. Anything with these 4 things fits<br><br>1. updatable memory<br>2. attention bias<br>3. retention gate<br>4. memory algorithm <br><br>they show how both transformers & SSMs implement this framework, and it helped them discover a more optimal TITANS<br><br><a href="https://arxiv.org/abs/2504.13173" target="_blank" rel="noopener">arxiv.org/abs/2504.13173</a></div>
+<a href="https://arxiv.org/abs/2504.13173" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">It's All Connected: A Journey Through Test-Time Memorization, Attentional Bias, Retention, and Online Optimization</div>
+<div class="embed-description">Designing efficient and effective architectural backbones has been in the core of research efforts to enhance the capability of foundation models. Inspired by the human cognitive phenomenon of attenti...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>

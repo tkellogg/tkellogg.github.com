@@ -1,0 +1,277 @@
+---
+layout: thread
+title: "Why do LLMs fail at long horizon tasks?"
+date: 2025-09-14 12:14:32 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lysbe7syzc2w
+likes: 52
+reposts: 5
+post_count: 6
+summary: "Why do LLMs fail at long horizon tasks?  Because errors in execution, not planning  i.e. an error made early on conditions the LLM into a bad state la..."
+similar:
+  - url: "/threads/2025-08-23-as-llms-improve-people-adapt-their-prompts-a-stu/"
+    title: "As LLMs Improve, People Adapt Their Prompts"
+  - url: "/threads/2025-06-10-when-two-llms-debate-both-think-theyll-win-abso/"
+    title: "When two LLMs debate, both think they’ll win"
+  - url: "/threads/2025-09-10-llms-are-deterministic-no-theyre-not-well/"
+    title: "“LLMs are deterministic!”"
+---
+<div class="thread-post">
+<div class="post-text">Why do LLMs fail at long horizon tasks?<br><br>Because errors in execution, not planning<br><br>i.e. an error made early on conditions the LLM into a bad state later. Newer agentic LLMs deal with early errors better<br><br><a href="https://arxiv.org/abs/2509.09677" target="_blank" rel="noopener">arxiv.org/abs/2509.09677</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiclizjokhs2my4etkclik6df7zngqiu7tpsuuq4cfihifjvct4sgq@jpeg" alt="The image is a diagram explaining how models self-condition on their errors and progressively take worse steps.
+
+⸻
+
+Title:
+
+Models Self-Condition On Their Errors, Taking Worse Steps
+
+⸻
+
+Top Graph:
+	•	Y-axis: Step Accuracy
+	•	X-axis: Task Length
+	•	Green line (Expected): A flat line showing that accuracy should remain steady over task length.
+	•	Red line (Observed): Starts near the green line but declines steadily downward as task length increases, showing reduced accuracy.
+
+⸻
+
+Bottom Left (Correct Execution):
+	•	Execution History: A sequence of green checkmarks.
+	•	Instruction: “Add 56 and -92” inside a blue speech bubble.
+	•	Robot icon: Wearing sunglasses and smiling (indicating success).
+	•	Output: Green box with calculation 56 + -92 = -36 and a green checkmark.
+
+⸻
+
+Bottom Right (Error Propagation):
+	•	Execution History: A sequence of mostly red X marks, with one green check.
+	•	Instruction: “Add 56 and -92” inside a blue speech bubble.
+	•	Robot icon: Dizzy-faced with spirals in its eyes (indicating confusion or error).
+	•	Output: Pink box with incorrect calculation 56 + -92 = -24 and a red X.
+
+⸻
+
+The diagram highlights how execution history impacts accuracy: correct histories support good outcomes, while errors accumulate and lead to worse steps over time." class="post-image" loading="lazy">
+<div class="image-alt">The image is a diagram explaining how models self-condition on their errors and progressively take worse steps.
+
+⸻
+
+Title:
+
+Models Self-Condition On Their Errors, Taking Worse Steps
+
+⸻
+
+Top Graph:
+	•	Y-axis: Step Accuracy
+	•	X-axis: Task Length
+	•	Green line (Expected): A flat line showing that accuracy should remain steady over task length.
+	•	Red line (Observed): Starts near the green line but declines steadily downward as task length increases, showing reduced accuracy.
+
+⸻
+
+Bottom Left (Correct Execution):
+	•	Execution History: A sequence of green checkmarks.
+	•	Instruction: “Add 56 and -92” inside a blue speech bubble.
+	•	Robot icon: Wearing sunglasses and smiling (indicating success).
+	•	Output: Green box with calculation 56 + -92 = -36 and a green checkmark.
+
+⸻
+
+Bottom Right (Error Propagation):
+	•	Execution History: A sequence of mostly red X marks, with one green check.
+	•	Instruction: “Add 56 and -92” inside a blue speech bubble.
+	•	Robot icon: Dizzy-faced with spirals in its eyes (indicating confusion or error).
+	•	Output: Pink box with incorrect calculation 56 + -92 = -24 and a red X.
+
+⸻
+
+The diagram highlights how execution history impacts accuracy: correct histories support good outcomes, while errors accumulate and lead to worse steps over time.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>52</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">hypothesis: we’re confusing planning & execution <br><br>experiment: separate them by providing the plan <br><br>result:<br>- GPT-5 runs for 1000+ steps<br>- Sonnet 4: 432<br>- Grok 4: 384<br>- Gemini 2.5 Pro: 120<br>- R1: 120</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Why does it feel like we’re hitting a wall with LLMs?<br><br>Because we’re looking at the wrong metrics<br><br>If you look only at single step accuracy, we indeed have hit a wall (even regressed in some areas)<br><br>But if you look at long horizon tasks (the stuff that matters imo), we’re just getting started</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreieswv4ahefcs6r3yb3zfyrp3upli7gvbi3aoy46swonsiq42mdhee@jpeg" alt="The image is a two-panel chart illustrating how diminishing gains on single-step accuracy can translate into exponential gains over long task horizons.
+
+⸻
+
+Title (top, bold text):
+
+Diminishing Gains On A Single Step Can Lead To Exponential Gains Over Long Horizon
+
+⸻
+
+Left Panel:
+	•	X-axis: Model Release Date
+	•	Y-axis: Step Accuracy
+	•	Curve: Red curve starting near 0.92 accuracy, rising steeply, then flattening near 1.00.
+	•	Points: Four colored circular markers (pink, yellow, green, blue) placed along the curve to show progress across models.
+
+⸻
+
+Right Panel:
+	•	X-axis: Model Release Date
+	•	Y-axis: Task Length (0 to 20k)
+	•	Curve: Blue curve starting near zero, remaining low, then shooting upward exponentially.
+	•	Points: Same four colored circular markers (pink, yellow, green, blue) mapped correspondingly from the left chart, showing how small step accuracy improvements allow much longer task lengths.
+
+⸻
+
+Bottom caption:
+
+“assuming step accuracy is constant across all steps of the task”
+
+⸻
+
+The diagram demonstrates that even small improvements in per-step accuracy (left chart) yield disproportionately large benefits in handling longer tasks (right chart)." class="post-image" loading="lazy">
+<div class="image-alt">The image is a two-panel chart illustrating how diminishing gains on single-step accuracy can translate into exponential gains over long task horizons.
+
+⸻
+
+Title (top, bold text):
+
+Diminishing Gains On A Single Step Can Lead To Exponential Gains Over Long Horizon
+
+⸻
+
+Left Panel:
+	•	X-axis: Model Release Date
+	•	Y-axis: Step Accuracy
+	•	Curve: Red curve starting near 0.92 accuracy, rising steeply, then flattening near 1.00.
+	•	Points: Four colored circular markers (pink, yellow, green, blue) placed along the curve to show progress across models.
+
+⸻
+
+Right Panel:
+	•	X-axis: Model Release Date
+	•	Y-axis: Task Length (0 to 20k)
+	•	Curve: Blue curve starting near zero, remaining low, then shooting upward exponentially.
+	•	Points: Same four colored circular markers (pink, yellow, green, blue) mapped correspondingly from the left chart, showing how small step accuracy improvements allow much longer task lengths.
+
+⸻
+
+Bottom caption:
+
+“assuming step accuracy is constant across all steps of the task”
+
+⸻
+
+The diagram demonstrates that even small improvements in per-step accuracy (left chart) yield disproportionately large benefits in handling longer tasks (right chart).</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">cheers to open source AI releasing tons of model sizes so we can observe stuff like this</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibv6pztxbbonj552dveyxcia7htc5tjdhc6cqoqutd2anwxzyzv34@jpeg" alt="The image is a chart showing how scaling model size enables execution of longer tasks.
+
+⸻
+
+Title (top, bold text):
+
+Scaling Model Size Enables Execution of Longer Tasks
+
+⸻
+
+Chart:
+	•	X-axis: Model Size (Billion Parameters)
+	•	Y-axis: Task Length (0 to 12)
+	•	Two model families are plotted:
+	•	Qwen3 (blue line with circular markers)
+	•	Gemma3 (red line with circular markers)
+	•	Both curves show a positive trend: as model size increases, the task length increases.
+	•	Qwen3 consistently reaches slightly higher task lengths than Gemma3 at the same size.
+	•	Example: At ~32B parameters, Qwen3 achieves ~12 task length, while Gemma3 achieves ~9.
+
+⸻
+
+Legend:
+	•	Blue dots/line: Qwen3
+	•	Red dots/line: Gemma3
+
+⸻
+
+The plot emphasizes that larger models can sustain longer reasoning or execution chains, with Qwen3 showing stronger scaling than Gemma3." class="post-image" loading="lazy">
+<div class="image-alt">The image is a chart showing how scaling model size enables execution of longer tasks.
+
+⸻
+
+Title (top, bold text):
+
+Scaling Model Size Enables Execution of Longer Tasks
+
+⸻
+
+Chart:
+	•	X-axis: Model Size (Billion Parameters)
+	•	Y-axis: Task Length (0 to 12)
+	•	Two model families are plotted:
+	•	Qwen3 (blue line with circular markers)
+	•	Gemma3 (red line with circular markers)
+	•	Both curves show a positive trend: as model size increases, the task length increases.
+	•	Qwen3 consistently reaches slightly higher task lengths than Gemma3 at the same size.
+	•	Example: At ~32B parameters, Qwen3 achieves ~12 task length, while Gemma3 achieves ~9.
+
+⸻
+
+Legend:
+	•	Blue dots/line: Qwen3
+	•	Red dots/line: Gemma3
+
+⸻
+
+The plot emphasizes that larger models can sustain longer reasoning or execution chains, with Qwen3 showing stronger scaling than Gemma3.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Reasoning models do better<br><br>this makes sense to me. Reasoning models have been known to correct or look past mistakes<br><br>GPT-5 is naturally going to knock this out of the park because they really doubled down on test-time compute<br><br>my post from July:<br><br><a href="https://timkellogg.me/blog/2025/07/19/olympiad" target="_blank" rel="noopener">timkellogg.me/blog/2025/07...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreifi56giifmybzehbo3oyzspcnhggpb3xrnl3leh6p22sclffatqgi@jpeg" alt="The Impact of Thinking. We find recent thinking models are not affected by prior mistakes, fixing self-conditioning. Further, sequential test time compute greatly improves the length of task a model can complete in a single turn. Where without CoT, frontier LLMs like DeepSeek-V3 fail at performing even two steps of execution, its thinking version R1 can execute 200, highlighting the importance of reasoning before acting (Yao et al., 2023). We benchmark frontier thinking models, and find GPT-5 thinking (codename &quot;Horizon&quot; can execute over
+1000 steps, far ahead of the next best competitor,
+Claude-4-Sonnet at 432." class="post-image" loading="lazy">
+<div class="image-alt">The Impact of Thinking. We find recent thinking models are not affected by prior mistakes, fixing self-conditioning. Further, sequential test time compute greatly improves the length of task a model can complete in a single turn. Where without CoT, frontier LLMs like DeepSeek-V3 fail at performing even two steps of execution, its thinking version R1 can execute 200, highlighting the importance of reasoning before acting (Yao et al., 2023). We benchmark frontier thinking models, and find GPT-5 thinking (codename &quot;Horizon&quot; can execute over
+1000 steps, far ahead of the next best competitor,
+Claude-4-Sonnet at 432.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">curiously, i’ve wondered in the past if text diffusion models similarly also look past mistakes since they don’t generate autoregressively<br><br>i’d love to see how a diffusion model does on this benchmark <br><br><a href="https://timkellogg.me/blog/2025/02/17/diffusion" target="_blank" rel="noopener">timkellogg.me/blog/2025/02...</a></div>
+<a href="https://timkellogg.me/blog/2025/02/17/diffusion" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">timkellogg.me</div>
+<div class="embed-title">LLaDA: LLMs That Don't Gaslight You</div>
+<div class="embed-description">A new language model uses diffusion instead of next-token prediction. That means the text it can back out of a hallucination before it commits. This is a big win for areas like law & contracts, where ...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>

@@ -1,0 +1,99 @@
+---
+layout: thread
+title: "Is 32B-4bit equal to 16B-8bit? Depends on the task"
+date: 2025-10-15 11:10:41 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m3a4alghus2q
+likes: 31
+reposts: 8
+post_count: 3
+summary: "Is 32B-4bit equal to 16B-8bit? Depends on the task  * math: precision matters * knowledge: effective param count is more important  * 4B-8bit threshol..."
+similar:
+  - url: "/threads/2025-04-29-i-cant-get-over-this-qwen3-32b-dense-is-only-s/"
+    title: "i can’t get over this — qwen3 32B dense is only *slightly* better than 30B-A3B"
+  - url: "/threads/2025-02-03-s1-simple-inference-time-scaling-this-is-a-simpl/"
+    title: "s1: Simple inference-time scaling"
+  - url: "/threads/2025-09-11-qwen3-next-80b-a3b-base-instruct-thinking-pe/"
+    title: "Qwen3-Next-80B-A3B Base, Instruct & Thinking"
+---
+<div class="thread-post">
+<div class="post-text">Is 32B-4bit equal to 16B-8bit? Depends on the task<br><br>* math: precision matters<br>* knowledge: effective param count is more important <br>* 4B-8bit threshold — for bigger prefer quant, smaller prefer more params<br>    * parallel TTC only works above 4B-8bit<br><br><a href="https://arxiv.org/abs/2510.10964" target="_blank" rel="noopener">arxiv.org/abs/2510.10964</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiatqdqcrxckrhsruoka6llaggjdsr3cpgspql5lnn7kttwrx3q7ga@jpeg" alt="A scatter plot titled “AIME25 — Total Memory vs. Accuracy (Qwen3)” compares model accuracy (%) against total memory usage (weights + KV cache, in GB) for various Qwen3 model sizes and quantization levels.
+
+Axes:
+	•	X-axis: Total Memory (Weight + KV Cache) [GB] (log scale, ranging roughly from 1 to 100)
+	•	Y-axis: Accuracy (%), ranging from 0 to 75
+
+Legend:
+	•	Colors: model sizes —
+	•	0.6B (yellow)
+	•	1.7B (orange)
+	•	4B (salmon)
+	•	8B (pink)
+	•	14B (purple)
+	•	32B (blue)
+	•	Shapes: precision levels —
+	•	Circle: 16-bit
+	•	Triangle: 8-bit
+	•	Square: 4-bit
+	•	Marker size: context length —
+	•	Small: 2k tokens
+	•	Large: 30k tokens
+
+Main trend:
+Larger models (rightward and darker colors) achieve higher accuracy but require significantly more memory. Smaller models (left, yellow/orange) stay below 30% accuracy. Compression (8-bit or 4-bit) lowers memory usage but can reduce accuracy slightly.
+
+Inset zoom (upper center):
+A close-up box highlights the 8B (8-bit) and 14B (4-bit) models showing their proximity in accuracy despite differing memory footprints.
+
+Overall, the chart demonstrates scaling behavior for Qwen3 models—accuracy grows with total memory and model size, with diminishing returns beyond the 14B range." class="post-image" loading="lazy">
+<div class="image-alt">A scatter plot titled “AIME25 — Total Memory vs. Accuracy (Qwen3)” compares model accuracy (%) against total memory usage (weights + KV cache, in GB) for various Qwen3 model sizes and quantization levels.
+
+Axes:
+	•	X-axis: Total Memory (Weight + KV Cache) [GB] (log scale, ranging roughly from 1 to 100)
+	•	Y-axis: Accuracy (%), ranging from 0 to 75
+
+Legend:
+	•	Colors: model sizes —
+	•	0.6B (yellow)
+	•	1.7B (orange)
+	•	4B (salmon)
+	•	8B (pink)
+	•	14B (purple)
+	•	32B (blue)
+	•	Shapes: precision levels —
+	•	Circle: 16-bit
+	•	Triangle: 8-bit
+	•	Square: 4-bit
+	•	Marker size: context length —
+	•	Small: 2k tokens
+	•	Large: 30k tokens
+
+Main trend:
+Larger models (rightward and darker colors) achieve higher accuracy but require significantly more memory. Smaller models (left, yellow/orange) stay below 30% accuracy. Compression (8-bit or 4-bit) lowers memory usage but can reduce accuracy slightly.
+
+Inset zoom (upper center):
+A close-up box highlights the 8B (8-bit) and 14B (4-bit) models showing their proximity in accuracy despite differing memory footprints.
+
+Overall, the chart demonstrates scaling behavior for Qwen3 models—accuracy grows with total memory and model size, with diminishing returns beyond the 14B range.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>31</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>8</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">The study is compelling because of how thorough they were<br><br>1700 experiments varying<br>* model size (0.6B-32B)<br>* weight precision (4-bit, 8, 16)<br>* serial TTC budget (2k tokens -> 30k)<br>* parallel TTC (maj@k, up to k=16)<br>KV cache compression (eviction, quantization, StreamingLLM, HQQ)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">all experiments were with Qwen3 family<br><br>Qwen remains the absolute biggest help for science. Is anyone else producing a huge number of model sizes?</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>

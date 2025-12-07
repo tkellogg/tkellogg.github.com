@@ -1,0 +1,80 @@
+---
+layout: thread
+title: "Limits of vector search"
+date: 2025-08-31 11:06:59 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lxox2kbtcs2c
+likes: 81
+reposts: 23
+post_count: 6
+summary: "Limits of vector search  a new GDM paper shows that embeddings can’t represent combinations of concepts well  e.g. Dave likes blue trucks AND Ford tru..."
+similar:
+  - url: "/threads/2025-10-28-your-embeddings-are-not-safe-every-prompt-direct/"
+    title: "your embeddings are not safe!"
+  - url: "/threads/2025-03-18-if-i-could-wish-something-into-being-a-complete/"
+    title: "if i could wish something into being — a complete decoupling of LLM knowledge..."
+  - url: "/threads/2024-11-12-scaling-laws-for-precision-yes-llama-models-are/"
+    title: "Scaling Laws for Precision"
+---
+<div class="thread-post">
+<div class="post-text">Limits of vector search<br><br>a new GDM paper shows that embeddings can’t represent combinations of concepts well<br><br>e.g. Dave likes blue trucks AND Ford trucks<br><br>even k=2 sub-predicates make SOTA embedding models fall apart<br><br><a href="https://www.alphaxiv.org/pdf/2508.21038" target="_blank" rel="noopener">www.alphaxiv.org/pdf/2508.21038</a></div>
+<a href="https://www.alphaxiv.org/pdf/2508.21038" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">www.alphaxiv.org</div>
+<div class="embed-title">On the Theoretical Limitations of Embedding-Based Retrieval | alphaXiv</div>
+<div class="embed-description">View recent discussion. Abstract: Vector embeddings have been tasked with an ever-increasing set of retrieval tasks over the years, with a nascent rise in using them for reasoning, instruction-followi...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>81</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>23</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">btw even adding a reranker won’t help if you’ve already dropped the relevant results in the first stage embedding retrieval <br><br>agentic search DOES work, but now you’re relying on an expensive LLM to resolve simple boolean logic</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">multi-vector (late interaction) search like ColBERT also works, because it handles the predicate logic in cheaper latent space, but storage costs are a lot higher because, well it’s multi-vector <br><br>(fwiw Qdrant and a few other vector DBs support multi-vectors)<br><br><a href="https://huggingface.co/jinaai/jina-colbert-v2" target="_blank" rel="noopener">huggingface.co/jinaai/jina-...</a></div>
+<a href="https://huggingface.co/jinaai/jina-colbert-v2" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">huggingface.co</div>
+<div class="embed-title">jinaai/jina-colbert-v2 · Hugging Face</div>
+<div class="embed-description">We’re on a journey to advance and democratize artificial intelligence through open source and open science.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">you really need to capture the query and decompose it into multiple sub queries <br><br>e.g. maybe get a 1B-3B LLM to rewrite the query into a DSL (e.g. a JSON breakdown of the various components and concepts in the query)<br><br>and then push that logic into the database engine itself</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">alternatively, sparse approaches like SPLADE do this in latent space but use inverted indices (regular full text search, exact matches)<br><br><a href="https://arxiv.org/abs/2107.05720?utm_source=chatgpt.com" target="_blank" rel="noopener">arxiv.org/abs/2107.057...</a></div>
+<a href="https://arxiv.org/abs/2107.05720?utm_source=chatgpt.com" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking</div>
+<div class="embed-description">In neural Information Retrieval, ongoing research is directed towards improving the first retriever in ranking pipelines. Learning dense embeddings to conduct retrieval using efficient approximate nea...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">imo if search is done perfectly, you effectively drive your LLM context to infinity<br><br>but it’s very much not a solved problem<br><br>to illustrate how underdeveloped this space is — research from 5 years ago still seems like the best ideas (contrast that to LLMs)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>10</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>

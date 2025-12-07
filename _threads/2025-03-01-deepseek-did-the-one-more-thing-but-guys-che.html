@@ -1,0 +1,95 @@
+---
+layout: thread
+title: "DeepSeek did the “one more thing” 🙄"
+date: 2025-03-01 21:16:42 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3ljdtscsjwk27
+likes: 24
+reposts: 3
+post_count: 2
+summary: "DeepSeek did the “one more thing” 🙄  but guys, check this out, they go into detail on how they run inference on V3/R1, how they partition the experts ..."
+similar:
+  - url: "/threads/2025-09-17-deepseek-published-about-r1-in-nature-wwwnature/"
+    title: "DeepSeek published about R1 in Nature"
+  - url: "/threads/2025-11-27-deepseek-math-v2-self-verification-fascinating/"
+    title: "DeepSeek-Math-V2: self-verification "
+  - url: "/threads/2025-03-08-summary-of-deepseek-open-source-week-this-is-a-fa/"
+    title: "Summary of DeepSeek open source week"
+---
+<div class="thread-post">
+<div class="post-text">DeepSeek did the “one more thing” 🙄<br><br>but guys, check this out, they go into detail on how they run inference on V3/R1, how they partition the experts across lots of nodes and pipeline attention and.. <br><br>just read this 🤯<br><br><a href="https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md" target="_blank" rel="noopener">github.com/deepseek-ai/...</a></div>
+<a href="https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">github.com</div>
+<div class="embed-title"></div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>24</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">who even thinks of this stuff 🤯</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreie24evw6wtelmentexzf67vpqeafzzp5qbi55g3lhbwnu2kc7fhgy@jpeg" alt="
+The image contains a technical explanation and a diagram illustrating a dual-batch overlap strategy used to reduce communication overhead in large-scale cross-node expert parallelism (EP). The text at the top describes how splitting a batch of requests into two microbatches allows them to execute alternately. This helps hide communication costs by overlapping them with the computation of the other microbatch.
+
+Diagram Breakdown:
+	•	The diagram is divided into two sections:
+	•	Top section: Computation (108 SMs)
+	•	Bottom section: Communication (24 SMs)
+	•	Two microbatches (0 and 1) are represented in different colors:
+	•	Microbatch 0 is in yellow.
+	•	Microbatch 1 is in green.
+	•	The computation layer (top section) consists of:
+	•	ATTN (Attention, used for MLA and MoE routing gate)
+	•	SHARED (Shared experts)
+	•	MLP (Multi-layer perceptron)
+	•	The communication layer (bottom section) consists of:
+	•	COMBINE
+	•	DISPATCH
+	•	Execution alternates between microbatches:
+	•	When microbatch 0 is performing ATTN computation, microbatch 1 is in the COMBINE communication stage.
+	•	When microbatch 1 is computing MLP, microbatch 0 is handling DISPATCH communication.
+	•	The cycle repeats, ensuring that communication costs are hidden behind computation.
+
+Key Labels & Definitions:
+	•	ATTN: MLA and Mixture of Experts (MoE) routing gate.
+	•	SHARED: Shared experts used across the batches.
+
+This technique helps increase throughput and reduce latency in large-scale distributed AI models by optimizing communication and computation scheduling." class="post-image" loading="lazy">
+<div class="image-alt">
+The image contains a technical explanation and a diagram illustrating a dual-batch overlap strategy used to reduce communication overhead in large-scale cross-node expert parallelism (EP). The text at the top describes how splitting a batch of requests into two microbatches allows them to execute alternately. This helps hide communication costs by overlapping them with the computation of the other microbatch.
+
+Diagram Breakdown:
+	•	The diagram is divided into two sections:
+	•	Top section: Computation (108 SMs)
+	•	Bottom section: Communication (24 SMs)
+	•	Two microbatches (0 and 1) are represented in different colors:
+	•	Microbatch 0 is in yellow.
+	•	Microbatch 1 is in green.
+	•	The computation layer (top section) consists of:
+	•	ATTN (Attention, used for MLA and MoE routing gate)
+	•	SHARED (Shared experts)
+	•	MLP (Multi-layer perceptron)
+	•	The communication layer (bottom section) consists of:
+	•	COMBINE
+	•	DISPATCH
+	•	Execution alternates between microbatches:
+	•	When microbatch 0 is performing ATTN computation, microbatch 1 is in the COMBINE communication stage.
+	•	When microbatch 1 is computing MLP, microbatch 0 is handling DISPATCH communication.
+	•	The cycle repeats, ensuring that communication costs are hidden behind computation.
+
+Key Labels & Definitions:
+	•	ATTN: MLA and Mixture of Experts (MoE) routing gate.
+	•	SHARED: Shared experts used across the batches.
+
+This technique helps increase throughput and reduce latency in large-scale distributed AI models by optimizing communication and computation scheduling.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>8</span>
+</div>
+</div>

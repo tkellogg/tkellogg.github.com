@@ -1,0 +1,114 @@
+---
+layout: thread
+title: "Kimi K2 paper is out!"
+date: 2025-07-21 23:14:15 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3luj4laxhjs2d
+likes: 49
+reposts: 12
+post_count: 3
+summary: "Kimi K2 paper is out!  lessons:  1. they explicitly suppressed long CoT 2. more MoE experts > more attention 3. 20k MCP tools (17k synthetic) 4. agent..."
+similar:
+  - url: "/threads/2025-07-11-its-new-entrant-week-today-kimi-k2-an-open-wei/"
+    title: "it’s new entrant week! today? Kimi-K2"
+  - url: "/threads/2025-11-06-kimi-k2-thinking-a-new-leader-moonshotaigithub/"
+    title: "Kimi K2-Thinking"
+  - url: "/threads/2025-10-30-kimi-linear-more-efficient-attention-new-moonsh/"
+    title: "Kimi-Linear: more efficient attention "
+---
+<div class="thread-post">
+<div class="post-text">Kimi K2 paper is out!<br><br>lessons:<br><br>1. they explicitly suppressed long CoT<br>2. more MoE experts > more attention<br>3. 20k MCP tools (17k synthetic)<br>4. agents all the way down<br><br><a href="https://github.com/MoonshotAI/Kimi-K2/blob/main/tech_report.pdf" target="_blank" rel="noopener">github.com/MoonshotAI/K...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiaqnn74k3gvprqtzxwbk7zbtf4vu2qtljfhmejzgbecjiab2epupi@jpeg" alt="A line plot shows validation loss versus training tokens for models trained with different numbers of attention heads and floating point operations (FLOPs). Two types of models are compared:
+	•	Solid lines with square markers: models where the number of attention heads equals the number of layers.
+	•	Dotted lines with circle markers: counterparts with doubled attention heads.
+
+Each color represents a different total FLOPs budget:
+	•	Blue: 1.2e+20 FLOPs
+	•	Purple: 2.2e+20 FLOPs
+	•	Green: 4.5e+20 FLOPs
+	•	Orange: 5.4e+20 FLOPs
+	•	Red: 9.0e+20 FLOPs
+
+Across all compute budgets, models with doubled attention heads consistently achieve lower validation loss, reducing it by approximately 0.5% to 1.2%. This advantage is visually shown by the dotted lines dipping below the corresponding solid lines of the same color." class="post-image" loading="lazy">
+<div class="image-alt">A line plot shows validation loss versus training tokens for models trained with different numbers of attention heads and floating point operations (FLOPs). Two types of models are compared:
+	•	Solid lines with square markers: models where the number of attention heads equals the number of layers.
+	•	Dotted lines with circle markers: counterparts with doubled attention heads.
+
+Each color represents a different total FLOPs budget:
+	•	Blue: 1.2e+20 FLOPs
+	•	Purple: 2.2e+20 FLOPs
+	•	Green: 4.5e+20 FLOPs
+	•	Orange: 5.4e+20 FLOPs
+	•	Red: 9.0e+20 FLOPs
+
+Across all compute budgets, models with doubled attention heads consistently achieve lower validation loss, reducing it by approximately 0.5% to 1.2%. This advantage is visually shown by the dotted lines dipping below the corresponding solid lines of the same color.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>49</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>12</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">this part feels incredibly consequential<br><br>first there's the visual of MCP tool generation. but also, it's agents all the way down<br><br>agents to generate tools, agents to simulate humans, agents to judge/score.. all to make a model that can be used as an agent</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibauhiqdy5blvzi64cxksohg6jkev4he5tnsgtnpd5kz6k3ecpe3y@jpeg" alt="A figure with two main sections illustrates tool synthesis and embedding analysis:
+
+**Top section (Figure 8: Data synthesis pipeline for tool use)**
+
+* *(a) Synthesizing tool specs, agents and tasks*:
+
+  * Begins with &quot;MCP tools&quot; and &quot;Applications&quot; feeding into a “Tool Repository” that stores both “real-world tool specs” and “synthesized tool specs.”
+  * “Domains” also feed into this repository.
+  * This flows into “Agents,” which are used to generate “Tasks with rubrics.”
+
+* *(b) Generating agent trajectories*:
+
+  * A “User Agent” interacts with an “Agent,” which observes and calls a “Tool Simulator.”
+  * This produces “trajectories” that go to a “Judge Agent” for filtering based on rubrics and tasks, producing “Filtered Data.”
+
+**Bottom section (Figure 9: t-SNE visualizations of tool embeddings)**
+
+* *(a)* Left: A t-SNE scatterplot showing real MCP tools, colored by their original source categories. Clusters appear organic and mixed in structure, with categories like “databases,” “cloud,” and “nlp.”
+
+* *(b)* Right: A t-SNE scatterplot showing synthetic tools, colored by pre-defined domain categories. Clusters are more compact and structured, suggesting deliberate coverage of functional areas like “enterprise,” “science,” and “security.”
+
+Together, these diagrams describe a system that synthesizes tool specs and uses agents to explore them, producing diverse trajectories. The embeddings visualization confirms good category coverage by both real and synthetic tools.
+" class="post-image" loading="lazy">
+<div class="image-alt">A figure with two main sections illustrates tool synthesis and embedding analysis:
+
+**Top section (Figure 8: Data synthesis pipeline for tool use)**
+
+* *(a) Synthesizing tool specs, agents and tasks*:
+
+  * Begins with &quot;MCP tools&quot; and &quot;Applications&quot; feeding into a “Tool Repository” that stores both “real-world tool specs” and “synthesized tool specs.”
+  * “Domains” also feed into this repository.
+  * This flows into “Agents,” which are used to generate “Tasks with rubrics.”
+
+* *(b) Generating agent trajectories*:
+
+  * A “User Agent” interacts with an “Agent,” which observes and calls a “Tool Simulator.”
+  * This produces “trajectories” that go to a “Judge Agent” for filtering based on rubrics and tasks, producing “Filtered Data.”
+
+**Bottom section (Figure 9: t-SNE visualizations of tool embeddings)**
+
+* *(a)* Left: A t-SNE scatterplot showing real MCP tools, colored by their original source categories. Clusters appear organic and mixed in structure, with categories like “databases,” “cloud,” and “nlp.”
+
+* *(b)* Right: A t-SNE scatterplot showing synthetic tools, colored by pre-defined domain categories. Clusters are more compact and structured, suggesting deliberate coverage of functional areas like “enterprise,” “science,” and “security.”
+
+Together, these diagrams describe a system that synthesizes tool specs and uses agents to explore them, producing diverse trajectories. The embeddings visualization confirms good category coverage by both real and synthetic tools.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>9</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">great deep dive! <a href="https://bsky.app/profile/timfduffy.com/post/3luj2gkhnps2q" target="_blank" rel="noopener">bsky.app/profile/timf...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>

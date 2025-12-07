@@ -1,0 +1,73 @@
+---
+layout: thread
+title: "“LLMs are deterministic!”"
+date: 2025-09-10 18:53:59 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lyivssgnpk2n
+likes: 47
+reposts: 2
+post_count: 4
+summary: "“LLMs are deterministic!”  no they’re not  “well, if you set temperature = 0”  still no  “and remove floating point calculations?”  keep going  “and o..."
+similar:
+  - url: "/threads/2025-06-28-llms-will-never-be-able-to-reason-because-reason/"
+    title: "“LLMs will NEVER be able to reason, because reasoning must be consistent but ..."
+  - url: "/threads/2025-06-10-when-two-llms-debate-both-think-theyll-win-abso/"
+    title: "When two LLMs debate, both think they’ll win"
+  - url: "/threads/2025-09-14-why-do-llms-fail-at-long-horizon-tasks-because-e/"
+    title: "Why do LLMs fail at long horizon tasks?"
+---
+<div class="thread-post">
+<div class="post-text">“LLMs are deterministic!”<br><br>no they’re not<br><br>“well, if you set temperature = 0”<br><br>still no<br><br>“and remove floating point calculations?”<br><br>keep going<br><br>“and only serve one query at a time?”<br><br>you’re so close</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>47</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Thinking Machines wrote a superb blog post on determinism in LLMs and it is fascinating (if you like computer architecture otherwise you’re going to tear your hair out)<br><br>spoiler: did you know GPUs have instructions that aren’t deterministic?<br><br><a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/" target="_blank" rel="noopener">thinkingmachines.ai/blog/defeati...</a></div>
+<a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">thinkingmachines.ai</div>
+<div class="embed-title">Defeating Nondeterminism in LLM Inference</div>
+<div class="embed-description">Reproducibility is a bedrock of scientific progress. However, it’s remarkably difficult to get reproducible results out of large language models.
+For example, you might observe that asking ChatGPT the...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>67</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>15</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">while you’re at it, Groq (not Grok) does fast inference by removing all non-determinism, ALL THE WAY DOWN<br><br>it’s a cool trade-off. they basically turn hardware into a compiler problem <br><br><a href="https://blog.codingconfessions.com/p/groq-lpu-design" target="_blank" rel="noopener">blog.codingconfessions.com/p/groq-lpu-d...</a></div>
+<a href="https://blog.codingconfessions.com/p/groq-lpu-design" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">blog.codingconfessions.com</div>
+<div class="embed-title">The Architecture of Groq's LPU</div>
+<div class="embed-description">What powers the ground breaking performance of Groq's Langauge Processing Unit?</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>19</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">4 hours later</div>
+<div class="post-text">strong “buckle up!” vibes</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreif3elpxdldg3t44tijrwaw4pqaz33juma32xf2ghwm4ijetzxk2ka@jpeg" alt="Batch Invariance and &quot;Determinism&quot;
+To explain batch invariance, let's simplify the system and look solely at matmuls.
+You can assume that all matmul implementations are &quot;run-to-run deterministic.&quot;* However, they are not
+4 This is not totally true, but most common matmul implementations do have this property.
+&quot;batch-invariant.&quot; In other words, when the batch size changes, each element in the batch can get different results." class="post-image" loading="lazy">
+<div class="image-alt">Batch Invariance and &quot;Determinism&quot;
+To explain batch invariance, let's simplify the system and look solely at matmuls.
+You can assume that all matmul implementations are &quot;run-to-run deterministic.&quot;* However, they are not
+4 This is not totally true, but most common matmul implementations do have this property.
+&quot;batch-invariant.&quot; In other words, when the batch size changes, each element in the batch can get different results.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>

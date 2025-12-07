@@ -1,0 +1,16 @@
+---
+layout: null
+---
+[
+{% for thread in site.threads %}
+  {
+    "id": "{{ thread.url | slugify }}",
+    "url": "{{ thread.url }}",
+    "title": {{ thread.title | jsonify }},
+    "date": "{{ thread.date | date: '%Y-%m-%d' }}",
+    "content": {{ thread.content | strip_html | strip_newlines | jsonify }},
+    "summary": {{ thread.summary | jsonify }},
+    "likes": {{ thread.likes | default: 0 }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

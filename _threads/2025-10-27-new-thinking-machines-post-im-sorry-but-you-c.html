@@ -1,0 +1,116 @@
+---
+layout: thread
+title: "🚨New Thinking Machines post🚨"
+date: 2025-10-27 21:47:38 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m47fglnurk2z
+likes: 55
+reposts: 7
+post_count: 6
+summary: "🚨New Thinking Machines post🚨  i’m sorry, but you can’t skip TM blog posts, those are the rules   this one is a phenomenal description of the strengths..."
+similar:
+  - url: "/threads/2025-01-26-a-researcher-on-x-explains-why-rl-alone-didnt-wor/"
+    title: "a researcher on X explains why RL alone didn’t work before "
+  - url: "/threads/2025-11-06-closed-source-now-lags-open/"
+    title: "closed source now lags open"
+  - url: "/threads/2025-01-21-i-havent-fully-wrapped-my-head-around-r1-i-need/"
+    title: "i haven’t fully wrapped my head around R1. i need to read the paper. they see..."
+---
+<div class="thread-post">
+<div class="post-text">🚨New Thinking Machines post🚨<br><br>i’m sorry, but you can’t skip TM blog posts, those are the rules <br><br>this one is a phenomenal description of the strengths & weaknesses of RL vs SFT (supervised fine tuning)<br><br><a href="https://thinkingmachines.ai/blog/on-policy-distillation/" target="_blank" rel="noopener">thinkingmachines.ai/blog/on-poli...</a></div>
+<a href="https://thinkingmachines.ai/blog/on-policy-distillation/" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">thinkingmachines.ai</div>
+<div class="embed-title">On-Policy Distillation</div>
+<div class="embed-description">On-policy, dense supervision is a useful tool for distillation</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>55</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">great analogy — chess<br><br>RL is like learning chess without any coaching<br><br>SFT is like only watching a grandmaster. You’re supposed to learn from game states that a novice will never see!<br><br>if only there was a compromise..<br><br>(btw when we say “RL has sparse rewards”, that’s what we mean)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>10</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">it’s called on-policy distillation<br><br>e.g. in chess, the instructor would rate all your moves on a scale from “blunder” to “brilliant”<br><br>so now, you can lose a match and still learn A LOT<br><br>dense rewards</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">in LLM training, the student (model being trained) generates tokens (e.g. a RL task) and the teacher model rates every token in the sequence</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreieqbuos7ndy2dpkz3eorrr6uvq7hnq5dqrkl5vz2vi733ghuesvbe@jpeg" alt="A horizontal sequence of rounded rectangular tokens, shaded from deep red to near white, with gray italic labels: “student trajectory” above and “teacher’s conditional per-token probability” below (spanning brace). The tokens read:
+
+“5  +  2  is  7  ,  and  7  ×  3  is  21  .”
+
+Beneath each token is a percentage (in red/black):
+
+5 — 40%
+	•	— 80%
+2 — 5%
+is — 15%
+7 — 99%
+, — 99%
+and — 40%
+7 — 80%
+× — 90%
+3 — 99%
+is — 70%
+21 — 99%
+. — 99%
+
+Color intensity corresponds to the shown probabilities (low percentages in darker red, high percentages pale/white)." class="post-image" loading="lazy">
+<div class="image-alt">A horizontal sequence of rounded rectangular tokens, shaded from deep red to near white, with gray italic labels: “student trajectory” above and “teacher’s conditional per-token probability” below (spanning brace). The tokens read:
+
+“5  +  2  is  7  ,  and  7  ×  3  is  21  .”
+
+Beneath each token is a percentage (in red/black):
+
+5 — 40%
+	•	— 80%
+2 — 5%
+is — 15%
+7 — 99%
+, — 99%
+and — 40%
+7 — 80%
+× — 90%
+3 — 99%
+is — 70%
+21 — 99%
+. — 99%
+
+Color intensity corresponds to the shown probabilities (low percentages in darker red, high percentages pale/white).</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">how does this work? <br><br>if you’ve seen speculative decoding then you’re there already<br><br>in both cases, the “draft” model is the cheap small one. in SD it’s just used to fallback to the big model, but in on-policy distillation the larger teacher is used to update weights<br><br><a href="https://research.google/blog/looking-back-at-speculative-decoding/" target="_blank" rel="noopener">research.google/blog/looking...</a></div>
+<a href="https://research.google/blog/looking-back-at-speculative-decoding/" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">research.google</div>
+<div class="embed-title">Looking back at speculative decoding</div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">20 hours later</div>
+<div class="post-text">Great discussion here <br><br><a href="https://bsky.app/profile/societyoftrees.bsky.social/post/3m4blbrq6222w" target="_blank" rel="noopener">bsky.app/profile/soci...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>

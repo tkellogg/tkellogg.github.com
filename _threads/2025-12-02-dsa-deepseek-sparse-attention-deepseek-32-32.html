@@ -1,0 +1,194 @@
+---
+layout: thread
+title: "DSA: DeepSeek Sparse Attention"
+date: 2025-12-02 12:58:23 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m6yyndzd5s2q
+likes: 69
+reposts: 12
+post_count: 3
+summary: "DSA: DeepSeek Sparse Attention  DeepSeek 3.2 & 3.2-Speciale are ridiculously cheap because of DSA  LLMs aren’t quadratic anymore  They trained an addi..."
+similar:
+  - url: "/threads/2025-10-21-recently-we-got-1-deepseek-sparse-attention-ds/"
+    title: "recently we got "
+  - url: "/threads/2025-11-27-deepseek-math-v2-self-verification-fascinating/"
+    title: "DeepSeek-Math-V2: self-verification "
+  - url: "/threads/2025-10-06-i-feel-like-dspy-is-beginning-to-occupy-the-haskel/"
+    title: "i feel like DSPy is beginning to occupy the Haskell tier"
+---
+<div class="thread-post">
+<div class="post-text">DSA: DeepSeek Sparse Attention<br><br>DeepSeek 3.2 & 3.2-Speciale are ridiculously cheap because of DSA<br><br>LLMs aren’t quadratic anymore<br><br>They trained an additional “model” that does acts as a “pre-attention”, selecting only the portions that are probably relevant</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreifxoo2wnc55chavofcyhgeykgqx4myn7bedcvjirsyltbgeemcfb4@jpeg" alt="A side-by-side comparison diagram explaining Regular Dense Attention versus DSA (Dynamic Sparse Attention) in transformer models.
+
+⸻
+
+Left Panel: Regular Dense Attention
+
+A box labeled Dense Attention Mechanism (All-to-All) shows every input token connected to every other token with red lines.
+	•	Center text: “Quadratic Complexity O(L²)”
+	•	Caption: “Every token attends to every other token. High compute cost, scales poorly with sequence length.”
+	•	A red bar at the bottom reads: “HIGH COST, THOROUGH.”
+
+⸻
+
+Right Panel: DSA (Dynamic Sparse Attention)
+
+Parallel layout, but the attention box shows only a few green connections. A Selector/Indexer module sits between input and attention.
+	•	It selects k relevant tokens from the full sequence.
+	•	Center text inside attention box: “Near-Linear Complexity O(L·k, k << L)”
+	•	Caption: “Tokens only attend to top-k most relevant tokens. Reduced compute cost, scales efficiently.”
+	•	A green bar at the bottom reads: “LOW COST, EFFICIENT, REQUIRES ADAPTATION.”
+
+⸻
+
+Overall, the infographic contrasts dense all-to-all computation with selective sparse attention, highlighting the computational savings of dynamic sparsity." class="post-image" loading="lazy">
+<div class="image-alt">A side-by-side comparison diagram explaining Regular Dense Attention versus DSA (Dynamic Sparse Attention) in transformer models.
+
+⸻
+
+Left Panel: Regular Dense Attention
+
+A box labeled Dense Attention Mechanism (All-to-All) shows every input token connected to every other token with red lines.
+	•	Center text: “Quadratic Complexity O(L²)”
+	•	Caption: “Every token attends to every other token. High compute cost, scales poorly with sequence length.”
+	•	A red bar at the bottom reads: “HIGH COST, THOROUGH.”
+
+⸻
+
+Right Panel: DSA (Dynamic Sparse Attention)
+
+Parallel layout, but the attention box shows only a few green connections. A Selector/Indexer module sits between input and attention.
+	•	It selects k relevant tokens from the full sequence.
+	•	Center text inside attention box: “Near-Linear Complexity O(L·k, k << L)”
+	•	Caption: “Tokens only attend to top-k most relevant tokens. Reduced compute cost, scales efficiently.”
+	•	A green bar at the bottom reads: “LOW COST, EFFICIENT, REQUIRES ADAPTATION.”
+
+⸻
+
+Overall, the infographic contrasts dense all-to-all computation with selective sparse attention, highlighting the computational savings of dynamic sparsity.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>69</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>12</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">The Lightning Indexer is added after pretraining, is trained in a separate phase and then together with the model<br><br>it learns to select which tokens are important and ignore everything else<br><br>forgetting = intelligence</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiel3ofnrhrjkv5xooaszorxwrqd7fo4e3gax6bh6hvdocd6xxgtxq@jpeg" alt="A multi-stage infographic illustrating the full training and deployment lifecycle of DeepSeek-V3.2, moving from dense attention to Dynamic Sparse Attention (DSA).
+
+⸻
+
+Stage 1 – Pre-Training
+
+A dense-attention LLM is trained on a massive text corpus.
+	•	Complexity shown as O(L²).
+	•	The model learns general language patterns via full, quadratic-cost attention.
+
+⸻
+
+Stage 2 – Phase 1: Dense Warm-up (DSA Initialization)
+
+The main model is frozen, acting as a “teacher.”
+A trainable Lightning Indexer learns to mimic dense attention’s patterns:
+	•	Dense teacher produces attention scores.
+	•	Indexer learns to select the top-k relevant tokens.
+Only the indexer is trained here.
+
+⸻
+
+Stage 3 – Phase 2: Sparse Training (DSA Adaptation)
+
+The main model is unfrozen and switched to sparse attention powered by DSA.
+	•	Both the Lightning Indexer and the model are trainable.
+	•	Training continues for trillions of tokens to adapt the model to sparse attention.
+	•	The Indexer’s selection patterns continue to refine.
+
+⸻
+
+Stage 4 – Post-Training (Alignment & Refinement)
+
+The resulting DSA-adapted model undergoes:
+	•	Supervised Fine-Tuning (SFT) on curated human datasets.
+	•	RLHF (reinforcement learning from human feedback).
+
+The goal: align the sparse-trained model with human preferences without losing DSA efficiency.
+
+⸻
+
+Stage 5 – Inference (Deployment)
+
+A user prompt enters the Deployed DSA Model.
+	•	Sparse attention runs with near-linear complexity O(L·k).
+	•	The model rapidly selects and attends only to relevant tokens.
+	•	Shown benefits: fast inference, low cost, and scalability to long contexts.
+
+⸻
+
+The diagram conveys how DeepSeek-V3.2 transitions from expensive dense training to efficient sparse inference while preserving model quality." class="post-image" loading="lazy">
+<div class="image-alt">A multi-stage infographic illustrating the full training and deployment lifecycle of DeepSeek-V3.2, moving from dense attention to Dynamic Sparse Attention (DSA).
+
+⸻
+
+Stage 1 – Pre-Training
+
+A dense-attention LLM is trained on a massive text corpus.
+	•	Complexity shown as O(L²).
+	•	The model learns general language patterns via full, quadratic-cost attention.
+
+⸻
+
+Stage 2 – Phase 1: Dense Warm-up (DSA Initialization)
+
+The main model is frozen, acting as a “teacher.”
+A trainable Lightning Indexer learns to mimic dense attention’s patterns:
+	•	Dense teacher produces attention scores.
+	•	Indexer learns to select the top-k relevant tokens.
+Only the indexer is trained here.
+
+⸻
+
+Stage 3 – Phase 2: Sparse Training (DSA Adaptation)
+
+The main model is unfrozen and switched to sparse attention powered by DSA.
+	•	Both the Lightning Indexer and the model are trainable.
+	•	Training continues for trillions of tokens to adapt the model to sparse attention.
+	•	The Indexer’s selection patterns continue to refine.
+
+⸻
+
+Stage 4 – Post-Training (Alignment & Refinement)
+
+The resulting DSA-adapted model undergoes:
+	•	Supervised Fine-Tuning (SFT) on curated human datasets.
+	•	RLHF (reinforcement learning from human feedback).
+
+The goal: align the sparse-trained model with human preferences without losing DSA efficiency.
+
+⸻
+
+Stage 5 – Inference (Deployment)
+
+A user prompt enters the Deployed DSA Model.
+	•	Sparse attention runs with near-linear complexity O(L·k).
+	•	The model rapidly selects and attends only to relevant tokens.
+	•	Shown benefits: fast inference, low cost, and scalability to long contexts.
+
+⸻
+
+The diagram conveys how DeepSeek-V3.2 transitions from expensive dense training to efficient sparse inference while preserving model quality.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>16</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">They used the performance of 3.2 as a validation that linear attention actually does work (historically it made the model dumb)<br><br>Both of these tech reports explain DSA<br><br>3.2-Exp: <a href="https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/DeepSeek_V3_2.pdf" target="_blank" rel="noopener">github.com/deepseek-ai/...</a><br><br>3.2: <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.2/blob/main/assets/paper.pdf" target="_blank" rel="noopener">huggingface.co/deepseek-ai/...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>

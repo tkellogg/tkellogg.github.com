@@ -1,0 +1,73 @@
+---
+layout: thread
+title: "i think this is the crux of DeepSeek-OCR"
+date: 2025-10-20 12:28:16 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m3msvw6jzc2t
+likes: 34
+reposts: 0
+post_count: 4
+summary: "i think this is the crux of DeepSeek-OCR  1. (text) context gets longer as you add words 2. long context is quadratic 3. you can fit lots of words in ..."
+similar:
+  - url: "/threads/2025-10-21-everyone-including-karpathy-is-explaining-deepse/"
+    title: "everyone, including Karpathy, is explaining DeepSeek-OCR as a victory of pixe..."
+  - url: "/threads/2025-10-20-deepseek-ocr-a-tiny-3b-a05b-moe-ocr-model-that-r/"
+    title: "DeepSeek-OCR"
+  - url: "/threads/2025-11-16-codex-truncated-tool-calls-apparently-its-becaus/"
+    title: "codex truncated tool calls"
+---
+<div class="thread-post">
+<div class="post-text">i think this is the crux of DeepSeek-OCR<br><br>1. (text) context gets longer as you add words<br>2. long context is quadratic<br>3. you can fit lots of words in an image<br>4. if you use encoder-decoder architecture, your tokens encode a ton of information</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>34</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">for review — transformers can be encoder-only (often used with embedding models), decoder-only (what LLMs have been for years) or encoder-decoder (both)<br><br>we haven't really touched encoder-decoder in a while, for the most part</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the only other lab i can think of is twelve labs, they use an encoder-only to produce video embeddings and then a decoder-only for reasoning<br><br>the encoder-decoder is interesting bc the encoder results can be cached in a vector DB (they're embeddings)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">as i understand it, a reasoning model doesn't go back through the encoder (at least, that's not how twelve does it)<br><br>so you're super heavy, high compression, encoder model is only run once to fully compress the input</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibpsu655fkahlp4wadl63qcglxqd2nwof3fqfwtqdyngy2yyti76a@jpeg" alt="A vertical flowchart on a dark background depicts a multimodal model pipeline.
+
+From top to bottom, the labeled boxes read:
+
+* **images** → input data
+* **encoder** → processes images into
+* **embeddings** → compact representations
+* **decoder** → generates outputs
+
+From the **decoder**, two arrows branch out:
+
+1. one leads to **output text** (the final generated response)
+2. another loops downward to **thinking**, which then feeds back into the **decoder**, showing an internal reasoning or iterative refinement cycle before producing text output.
+" class="post-image" loading="lazy">
+<div class="image-alt">A vertical flowchart on a dark background depicts a multimodal model pipeline.
+
+From top to bottom, the labeled boxes read:
+
+* **images** → input data
+* **encoder** → processes images into
+* **embeddings** → compact representations
+* **decoder** → generates outputs
+
+From the **decoder**, two arrows branch out:
+
+1. one leads to **output text** (the final generated response)
+2. another loops downward to **thinking**, which then feeds back into the **decoder**, showing an internal reasoning or iterative refinement cycle before producing text output.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>

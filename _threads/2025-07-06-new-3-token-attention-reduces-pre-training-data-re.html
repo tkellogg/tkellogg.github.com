@@ -1,0 +1,55 @@
+---
+layout: thread
+title: "new 3-token attention reduces pre-training data requirements"
+date: 2025-07-06 12:37:24 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3ltcbynukv22b
+likes: 29
+reposts: 2
+post_count: 3
+summary: "new 3-token attention reduces pre-training data requirements  the pre-training scaling laws dictated that you have to scale up model size, data and co..."
+similar:
+  - url: "/threads/2024-11-12-scaling-laws-for-precision-yes-llama-models-are/"
+    title: "Scaling Laws for Precision"
+  - url: "/threads/2025-11-23-the-biggest-reason-for-fully-open-models-is-scienc/"
+    title: "the biggest reason for fully open models is science, and the downstream effects"
+  - url: "/threads/2025-02-03-s1-simple-inference-time-scaling-this-is-a-simpl/"
+    title: "s1: Simple inference-time scaling"
+---
+<div class="thread-post">
+<div class="post-text">new 3-token attention reduces pre-training data requirements<br><br>the pre-training scaling laws dictated that you have to scale up model size, data and compute in tandem. But this new method means you can double the model size without doubling the data<br><br><a href="https://arxiv.org/abs/2507.02754" target="_blank" rel="noopener">arxiv.org/abs/2507.02754</a></div>
+<a href="https://arxiv.org/abs/2507.02754" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">Fast and Simplex: 2-Simplicial Attention in Triton</div>
+<div class="embed-description">Recent work has shown that training loss scales as a power law with both model size and the number of tokens, and that achieving compute-optimal models requires scaling model size and token count toge...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>29</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">in traditional attention, every token is compared to every other token <br><br>in this new 2-simplicial attention, it’s a 3-way comparison<br><br>the net effect is it does more work in one attention layer<br><br>“token j is a function name and token k is an opening parenthesis” can be discovered in a single layer</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibh7fnsmwqhxdy73ep24erym76qbd2mzcz3fl4abksugprzp5mhr4@jpeg" alt="4 The 2-simplicial Transformer
+((a)) 1-simplex between two nodes i, j — a straight line between two points
+((b)) 2-simplex between three nodes i, j, k — a triangle between three points
+Figure 1: Geometry of dot product attention and 2-simplical attention." class="post-image" loading="lazy">
+<div class="image-alt">4 The 2-simplicial Transformer
+((a)) 1-simplex between two nodes i, j — a straight line between two points
+((b)) 2-simplex between three nodes i, j, k — a triangle between three points
+Figure 1: Geometry of dot product attention and 2-simplical attention.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">does this make attention require more GPU time?<br><br>it would, but no, the paper also ships with a new Triton kernel with some windowing tricks that bring it back to status quo amount of compute (in terms of algorithmic complexity)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>

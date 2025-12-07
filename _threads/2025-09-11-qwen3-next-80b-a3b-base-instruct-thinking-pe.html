@@ -1,0 +1,201 @@
+---
+layout: thread
+title: "Qwen3-Next-80B-A3B Base, Instruct & Thinking"
+date: 2025-09-11 20:37:13 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lylm2dhfhk2a
+likes: 26
+reposts: 3
+post_count: 3
+summary: "Qwen3-Next-80B-A3B Base, Instruct & Thinking  - performs similar to Qwen3-235B-A22B - 10% the training cost of Qwen3-32B - 10x throughput of -32B - ou..."
+similar:
+  - url: "/threads/2025-08-06-qwen3-4b-instruct-thinking-uuuh-guys-this-isn/"
+    title: "Qwen3-4B Instruct & Thinking"
+  - url: "/threads/2025-07-29-yesssss-a-small-update-to-qwen3-30b-a3b-this-has/"
+    title: "yesssss! a small update to Qwen3-30B-A3B"
+  - url: "/threads/2025-04-29-i-cant-get-over-this-qwen3-32b-dense-is-only-s/"
+    title: "i can’t get over this — qwen3 32B dense is only *slightly* better than 30B-A3B"
+---
+<div class="thread-post">
+<div class="post-text">Qwen3-Next-80B-A3B Base, Instruct & Thinking<br><br>- performs similar to Qwen3-235B-A22B<br>- 10% the training cost of Qwen3-32B<br>- 10x throughput of -32B<br>- outperforms Gemini-2.5-flash on some benchmarks <br>- native MTP for speculative decoding<br><br><a href="https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list" target="_blank" rel="noopener">qwen.ai/blog?id=4074...</a></div>
+<div class="post-images multiple">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibg6uqc44sqngxml7poehf2hg3fy2t6254rq7z6y6ygjavddavjl4@jpeg" alt="The image compares Qwen3 model variants in terms of MMLU accuracy, training cost, and throughput performance.
+
+Left Panel (Scatter Plot):
+	•	Y-axis: MMLU Accuracy (ranging from 80 to 85).
+	•	X-axis: Training Cost (normalized, with Qwen3-32B at 100%).
+	•	Models plotted:
+	•	Qwen3-30B-A3B → 81.38 accuracy, 12.3% cost.
+	•	Qwen3-32B → 83.61 accuracy, 100% cost.
+	•	Qwen3-Next-80B-A3B → 84.72 accuracy, 9.3% cost.
+	•	Arrows highlight:
+	•	Better Performance (green arrow) going from Qwen3-30B-A3B to Qwen3-Next-80B-A3B.
+	•	10.7× Acceleration (purple arrow) going from Qwen3-32B to Qwen3-Next-80B-A3B.
+
+Right Panel (Bar Charts):
+	•	Prefill Throughput (32K):
+	•	Qwen3-32B → baseline (×1.0).
+	•	Qwen3-30B-A3B → ×5.2.
+	•	Qwen3-Next-80B-A3B → ×10.6.
+	•	Decode Throughput (32K):
+	•	Qwen3-32B → baseline (×1.0).
+	•	Qwen3-30B-A3B → ×3.5.
+	•	Qwen3-Next-80B-A3B → ×10.0.
+
+This visualization highlights that Qwen3-Next-80B-A3B achieves the best MMLU accuracy (84.72), with dramatically lower training cost (only 9.3%) and far higher throughput efficiency (10× or more) compared to Qwen3-32B.
+" class="post-image" loading="lazy">
+<div class="image-alt">The image compares Qwen3 model variants in terms of MMLU accuracy, training cost, and throughput performance.
+
+Left Panel (Scatter Plot):
+	•	Y-axis: MMLU Accuracy (ranging from 80 to 85).
+	•	X-axis: Training Cost (normalized, with Qwen3-32B at 100%).
+	•	Models plotted:
+	•	Qwen3-30B-A3B → 81.38 accuracy, 12.3% cost.
+	•	Qwen3-32B → 83.61 accuracy, 100% cost.
+	•	Qwen3-Next-80B-A3B → 84.72 accuracy, 9.3% cost.
+	•	Arrows highlight:
+	•	Better Performance (green arrow) going from Qwen3-30B-A3B to Qwen3-Next-80B-A3B.
+	•	10.7× Acceleration (purple arrow) going from Qwen3-32B to Qwen3-Next-80B-A3B.
+
+Right Panel (Bar Charts):
+	•	Prefill Throughput (32K):
+	•	Qwen3-32B → baseline (×1.0).
+	•	Qwen3-30B-A3B → ×5.2.
+	•	Qwen3-Next-80B-A3B → ×10.6.
+	•	Decode Throughput (32K):
+	•	Qwen3-32B → baseline (×1.0).
+	•	Qwen3-30B-A3B → ×3.5.
+	•	Qwen3-Next-80B-A3B → ×10.0.
+
+This visualization highlights that Qwen3-Next-80B-A3B achieves the best MMLU accuracy (84.72), with dramatically lower training cost (only 9.3%) and far higher throughput efficiency (10× or more) compared to Qwen3-32B.
+</div>
+</div>
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreid6fyr32rpt4mj7hhzsbfugp7jhnvtpyvou7sq2cfto2ihi25tuxi@jpeg" alt="This bar chart compares Qwen3-Next-80B-A3B-Thinking, Gemini-2.5-Flash-Thinking, Qwen3-32B-Thinking, and Qwen3-30B-A3B-Thinking2507 across five benchmarks.
+
+Benchmarks & Scores:
+	1.	SuperGPQA
+	•	Qwen3-Next-80B-A3B-Thinking: 60.8
+	•	Gemini-2.5-Flash-Thinking: 57.8
+	•	Qwen3-32B-Thinking: 54.1
+	•	Qwen3-30B-A3B-Thinking2507: 56.8
+	2.	AIME25
+	•	Qwen3-Next-80B-A3B-Thinking: 87.8
+	•	Gemini-2.5-Flash-Thinking: 72.0
+	•	Qwen3-32B-Thinking: 72.9
+	•	Qwen3-30B-A3B-Thinking2507: 85.0
+	3.	LiveCodeBench v6 (25.02–25.05)
+	•	Qwen3-Next-80B-A3B-Thinking: 68.7
+	•	Gemini-2.5-Flash-Thinking: 61.2
+	•	Qwen3-32B-Thinking: 60.6
+	•	Qwen3-30B-A3B-Thinking2507: 66.0
+	4.	Arena-Hard v2
+	•	Qwen3-Next-80B-A3B-Thinking: 62.3
+	•	Gemini-2.5-Flash-Thinking: 56.7
+	•	Qwen3-32B-Thinking: 48.4
+	•	Qwen3-30B-A3B-Thinking2507: 56.0
+	5.	LiveBench (20241125)
+	•	Qwen3-Next-80B-A3B-Thinking: 76.6
+	•	Gemini-2.5-Flash-Thinking: 74.3
+	•	Qwen3-32B-Thinking: 74.9
+	•	Qwen3-30B-A3B-Thinking2507: 76.8
+
+Key Takeaways:
+	•	Qwen3-Next-80B-A3B-Thinking leads in SuperGPQA, AIME25, LiveCodeBench v6, and Arena-Hard v2.
+	•	On LiveBench (20241125), Qwen3-30B-A3B-Thinking2507 slightly edges out with 76.8 vs. 76.6.
+	•	Gemini-2.5-Flash-Thinking is consistently competitive but lags behind the Qwen3-Next model.
+" class="post-image" loading="lazy">
+<div class="image-alt">This bar chart compares Qwen3-Next-80B-A3B-Thinking, Gemini-2.5-Flash-Thinking, Qwen3-32B-Thinking, and Qwen3-30B-A3B-Thinking2507 across five benchmarks.
+
+Benchmarks & Scores:
+	1.	SuperGPQA
+	•	Qwen3-Next-80B-A3B-Thinking: 60.8
+	•	Gemini-2.5-Flash-Thinking: 57.8
+	•	Qwen3-32B-Thinking: 54.1
+	•	Qwen3-30B-A3B-Thinking2507: 56.8
+	2.	AIME25
+	•	Qwen3-Next-80B-A3B-Thinking: 87.8
+	•	Gemini-2.5-Flash-Thinking: 72.0
+	•	Qwen3-32B-Thinking: 72.9
+	•	Qwen3-30B-A3B-Thinking2507: 85.0
+	3.	LiveCodeBench v6 (25.02–25.05)
+	•	Qwen3-Next-80B-A3B-Thinking: 68.7
+	•	Gemini-2.5-Flash-Thinking: 61.2
+	•	Qwen3-32B-Thinking: 60.6
+	•	Qwen3-30B-A3B-Thinking2507: 66.0
+	4.	Arena-Hard v2
+	•	Qwen3-Next-80B-A3B-Thinking: 62.3
+	•	Gemini-2.5-Flash-Thinking: 56.7
+	•	Qwen3-32B-Thinking: 48.4
+	•	Qwen3-30B-A3B-Thinking2507: 56.0
+	5.	LiveBench (20241125)
+	•	Qwen3-Next-80B-A3B-Thinking: 76.6
+	•	Gemini-2.5-Flash-Thinking: 74.3
+	•	Qwen3-32B-Thinking: 74.9
+	•	Qwen3-30B-A3B-Thinking2507: 76.8
+
+Key Takeaways:
+	•	Qwen3-Next-80B-A3B-Thinking leads in SuperGPQA, AIME25, LiveCodeBench v6, and Arena-Hard v2.
+	•	On LiveBench (20241125), Qwen3-30B-A3B-Thinking2507 slightly edges out with 76.8 vs. 76.6.
+	•	Gemini-2.5-Flash-Thinking is consistently competitive but lags behind the Qwen3-Next model.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>26</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">this really is a big deal. in agent workloads, the context jumps up fast. this architecture was designed from the ground up for that scenario</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibbgojjultzh6ql2gjzlycowepbrsokljkyunbvii7bpakf3frqvq@jpeg" alt="This line graph compares Prefill Throughput vs Sequence Length (Normalized) for three Qwen3 models: Qwen3-32B (gray dashed line with circles), Qwen3-30B-A3B (green dashed line with circles), and Qwen3-Next-80B-A3B (purple solid line with stars).
+
+Axes:
+	•	X-axis (horizontal): Sequence length from 4K to 128K.
+	•	Y-axis (vertical): Normalized prefill throughput (relative to Qwen3-32B, which is fixed at ~1.0).
+
+Trends:
+	1.	Qwen3-32B (gray line): Flat line at ~1.0 across all sequence lengths (baseline).
+	2.	Qwen3-30B-A3B (green line): Starts at ~6.5 (4K), then gradually declines to ~4.5 by 128K.
+	3.	Qwen3-Next-80B-A3B (purple line): Starts at ~6.8 (4K), steadily rises with sequence length, reaching ~15.5 at 128K.
+
+Key Takeaways:
+	•	Qwen3-Next-80B-A3B demonstrates scaling efficiency, improving throughput as sequence length increases.
+	•	Qwen3-30B-A3B loses throughput efficiency with longer sequences.
+	•	Qwen3-32B serves as a constant baseline (1.0).
+
+👉 This strongly reinforces the earlier results: Qwen3-Next-80B-A3B is not only faster but also scales better at longer sequence lengths, making it superior for long-context tasks.
+" class="post-image" loading="lazy">
+<div class="image-alt">This line graph compares Prefill Throughput vs Sequence Length (Normalized) for three Qwen3 models: Qwen3-32B (gray dashed line with circles), Qwen3-30B-A3B (green dashed line with circles), and Qwen3-Next-80B-A3B (purple solid line with stars).
+
+Axes:
+	•	X-axis (horizontal): Sequence length from 4K to 128K.
+	•	Y-axis (vertical): Normalized prefill throughput (relative to Qwen3-32B, which is fixed at ~1.0).
+
+Trends:
+	1.	Qwen3-32B (gray line): Flat line at ~1.0 across all sequence lengths (baseline).
+	2.	Qwen3-30B-A3B (green line): Starts at ~6.5 (4K), then gradually declines to ~4.5 by 128K.
+	3.	Qwen3-Next-80B-A3B (purple line): Starts at ~6.8 (4K), steadily rises with sequence length, reaching ~15.5 at 128K.
+
+Key Takeaways:
+	•	Qwen3-Next-80B-A3B demonstrates scaling efficiency, improving throughput as sequence length increases.
+	•	Qwen3-30B-A3B loses throughput efficiency with longer sequences.
+	•	Qwen3-32B serves as a constant baseline (1.0).
+
+👉 This strongly reinforces the earlier results: Qwen3-Next-80B-A3B is not only faster but also scales better at longer sequence lengths, making it superior for long-context tasks.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">1 hour later</div>
+<div class="post-text">hmm ngl i don’t like this Qwen either. it’s got a similar vibe that i just do not like <br><br><a href="https://bsky.app/profile/timkellogg.me/post/3ly4joakoz22k" target="_blank" rel="noopener">bsky.app/profile/timk...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>

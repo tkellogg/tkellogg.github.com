@@ -1,0 +1,322 @@
+---
+layout: default
+title: Threads
+---
+<div class="threads-page">
+    <header class="threads-header">
+        <div class="threads-branding">
+            <svg class="bluesky-logo-large" viewBox="0 0 568 501" xmlns="http://www.w3.org/2000/svg">
+                <path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873C309.719 181.681 379.759 82.5526 444.879 33.6637C491.866 -1.61183 568 -28.9064 568 57.9464C568 75.2916 558.055 203.659 552.222 224.501C531.947 296.954 458.067 315.434 392.347 304.249C507.222 323.8 536.444 388.56 473.333 453.32C353.473 576.312 301.061 422.461 287.631 383.039C285.169 375.015 284.017 372.542 284 376.652C283.983 372.542 282.831 375.015 280.369 383.039C266.939 422.461 214.527 576.312 94.6667 453.32C31.5556 388.56 60.7778 323.8 175.653 304.249C109.933 315.434 36.0535 296.954 15.7778 224.501C9.94525 203.659 0 75.2916 0 57.9464C0 -28.9064 76.1345 -1.61183 123.121 33.6637Z" fill="#1185fe"/>
+            </svg>
+            <div>
+                <h1>Threads</h1>
+                <p class="threads-subtitle">Archived from <a href="https://bsky.app/profile/timkellogg.me" target="_blank" rel="noopener">@timkellogg.me</a> on Bluesky</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search threads..." autocomplete="off">
+        <div id="search-results" class="search-results" style="display: none;"></div>
+    </div>
+
+    <div id="threads-list" class="threads-list">
+        {% assign sorted_threads = site.threads | sort: 'date' | reverse %}
+        {% for thread in sorted_threads %}
+        <article class="thread-card" data-url="{{ thread.url }}">
+            <a href="{{ thread.url }}" class="thread-link">
+                <time class="thread-card-date">{{ thread.date | date: "%B %d, %Y" }}</time>
+                <h2 class="thread-card-title">{{ thread.title }}</h2>
+                {% if thread.summary %}
+                <p class="thread-card-summary">{{ thread.summary }}</p>
+                {% endif %}
+                <div class="thread-card-meta">
+                    {% if thread.likes %}<span class="meta-item">{{ thread.likes }} likes</span>{% endif %}
+                    {% if thread.post_count %}<span class="meta-item">{{ thread.post_count }} posts</span>{% endif %}
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+
+        {% if site.threads.size == 0 %}
+        <p class="no-threads">No threads archived yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.threads-page {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.threads-header {
+    margin-bottom: 1.5rem;
+}
+
+.threads-branding {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.bluesky-logo-large {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.threads-branding h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #333;
+}
+
+.threads-subtitle {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.threads-subtitle a {
+    color: #1185fe;
+    text-decoration: none;
+}
+
+.threads-subtitle a:hover {
+    text-decoration: underline;
+}
+
+/* Search */
+.search-container {
+    margin-bottom: 1.5rem;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #1185fe;
+    box-shadow: 0 0 0 3px rgba(17, 133, 254, 0.1);
+}
+
+#search-input::placeholder {
+    color: #999;
+}
+
+.search-results {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.no-results {
+    padding: 0.5rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Threads list */
+.threads-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.thread-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.thread-card.hidden {
+    display: none;
+}
+
+.thread-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+.thread-link {
+    display: block;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.thread-card-date {
+    font-size: 0.8rem;
+    color: #666;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+}
+
+.thread-card-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+.thread-card-summary {
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.thread-card-meta {
+    display: flex;
+    gap: 1rem;
+}
+
+.meta-item {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.no-threads {
+    text-align: center;
+    color: #666;
+    padding: 3rem 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .threads-branding {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .bluesky-logo-large {
+        margin-bottom: 0.5rem;
+    }
+}
+</style>
+
+<script src="/js/lunr.min.js"></script>
+<script>
+(function() {
+    var searchInput = document.getElementById('search-input');
+    var searchResults = document.getElementById('search-results');
+    var threadsList = document.getElementById('threads-list');
+    var threadCards = document.querySelectorAll('.thread-card');
+    var idx = null;
+    var documents = {};
+
+    // Load search data and build index
+    fetch('/threads/search-data.json')
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+            // Store documents for lookup
+            data.forEach(function(doc) {
+                documents[doc.id] = doc;
+            });
+
+            // Build Lunr index
+            idx = lunr(function() {
+                this.ref('id');
+                this.field('title', { boost: 10 });
+                this.field('summary', { boost: 5 });
+                this.field('content');
+
+                data.forEach(function(doc) {
+                    this.add(doc);
+                }, this);
+            });
+        })
+        .catch(function(err) {
+            console.error('Failed to load search data:', err);
+        });
+
+    // Debounce helper
+    function debounce(func, wait) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                func.apply(context, args);
+            }, wait);
+        };
+    }
+
+    // Search handler
+    var handleSearch = debounce(function() {
+        var query = searchInput.value.trim();
+
+        if (!query) {
+            // Show all threads
+            threadCards.forEach(function(card) {
+                card.classList.remove('hidden');
+            });
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        if (!idx) {
+            searchResults.innerHTML = '<div class="no-results">Loading search index...</div>';
+            searchResults.style.display = 'block';
+            return;
+        }
+
+        try {
+            var results = idx.search(query + '*'); // Wildcard for partial matches
+
+            if (results.length === 0) {
+                // Try fuzzy search
+                results = idx.search(query + '~1');
+            }
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No threads found</div>';
+                searchResults.style.display = 'block';
+                // Hide all cards
+                threadCards.forEach(function(card) {
+                    card.classList.add('hidden');
+                });
+            } else {
+                searchResults.style.display = 'none';
+                var matchedUrls = results.map(function(r) {
+                    return documents[r.ref].url;
+                });
+
+                // Show/hide cards based on results
+                threadCards.forEach(function(card) {
+                    var url = card.getAttribute('data-url');
+                    if (matchedUrls.includes(url)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+        } catch (e) {
+            console.error('Search error:', e);
+            searchResults.innerHTML = '<div class="no-results">Search error</div>';
+            searchResults.style.display = 'block';
+        }
+    }, 200);
+
+    searchInput.addEventListener('input', handleSearch);
+})();
+</script>

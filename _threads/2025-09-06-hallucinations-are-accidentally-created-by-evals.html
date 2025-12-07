@@ -1,0 +1,71 @@
+---
+layout: thread
+title: "Hallucinations are accidentally created by evals"
+date: 2025-09-06 16:25:29 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3ly6lnlkyik2r
+likes: 65
+reposts: 7
+post_count: 2
+summary: "Hallucinations are accidentally created by evals  They come from post-training. Reasoning models hallucinate more because we do more rigorous post-tra..."
+similar:
+  - url: "/threads/2025-11-02-llms-can-report-their-own-experience-the-most-con/"
+    title: "LLMs can report their own experience"
+  - url: "/threads/2025-06-08-this-fits-my-mental-model-llms-do-learn-proced/"
+    title: "this fits my mental model — LLMs *do* learn procedures. But it’s the same mec..."
+  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
+    title: "notable: they ripped out the silicon that supports training"
+---
+<div class="thread-post">
+<div class="post-text">Hallucinations are accidentally created by evals<br><br>They come from post-training. Reasoning models hallucinate more because we do more rigorous post-training on them<br><br>The problem is we reward them for being confident<br><br><a href="https://cdn.openai.com/pdf/d04913be-3f6f-4d2b-b283-ff432ef4aaa5/why-language-models-hallucinate.pdf" target="_blank" rel="noopener">cdn.openai.com/pdf/d04913be...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreieedsdx2iwokfyddp2ekovye4tf3xm35os7nv5fiduvfc6ix3sype@jpeg" alt="highlighted text: language models are optimized to be good test-takers, and guessing when uncertain improves test performance
+
+full text: 
+
+Like students facing hard exam questions, large language models sometimes guess when
+uncertain, producing plausible yet incorrect statements instead of admitting uncertainty. Such
+“hallucinations” persist even in state-of-the-art systems and undermine trust. We argue that
+language models hallucinate because the training and evaluation procedures reward guessing over
+acknowledging uncertainty, and we analyze the statistical causes of hallucinations in the modern
+training pipeline. Hallucinations need not be mysterious—they originate simply as errors in binary
+classification. If incorrect statements cannot be distinguished from facts, then hallucinations
+in pretrained language models will arise through natural statistical pressures. We then argue
+that hallucinations persist due to the way most evaluations are graded—language models are
+optimized to be good test-takers, and guessing when uncertain improves test performance. This
+“epidemic” of penalizing uncertain responses can only be addressed through a socio-technical
+mitigation: modifying the scoring of existing benchmarks that are misaligned but dominate
+leaderboards, rather than introducing additional hallucination evaluations. This change may
+steer the field toward more trustworthy AI systems" class="post-image" loading="lazy">
+<div class="image-alt">highlighted text: language models are optimized to be good test-takers, and guessing when uncertain improves test performance
+
+full text: 
+
+Like students facing hard exam questions, large language models sometimes guess when
+uncertain, producing plausible yet incorrect statements instead of admitting uncertainty. Such
+“hallucinations” persist even in state-of-the-art systems and undermine trust. We argue that
+language models hallucinate because the training and evaluation procedures reward guessing over
+acknowledging uncertainty, and we analyze the statistical causes of hallucinations in the modern
+training pipeline. Hallucinations need not be mysterious—they originate simply as errors in binary
+classification. If incorrect statements cannot be distinguished from facts, then hallucinations
+in pretrained language models will arise through natural statistical pressures. We then argue
+that hallucinations persist due to the way most evaluations are graded—language models are
+optimized to be good test-takers, and guessing when uncertain improves test performance. This
+“epidemic” of penalizing uncertain responses can only be addressed through a socio-technical
+mitigation: modifying the scoring of existing benchmarks that are misaligned but dominate
+leaderboards, rather than introducing additional hallucination evaluations. This change may
+steer the field toward more trustworthy AI systems</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>65</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">e.g. MMLU tests knowledge, it's one of the core benchmarks that people care about<br><br>if it says "idk", it's score goes down<br><br>if it confidently guesses regardless of it's own confidence, it's score goes up (and so do hallucinations)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>21</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>

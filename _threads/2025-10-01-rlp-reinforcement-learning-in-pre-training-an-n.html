@@ -1,0 +1,164 @@
+---
+layout: thread
+title: "RLP: Reinforcement Learning in Pre-Training "
+date: 2025-10-01 12:02:18 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m24ylyunw22e
+likes: 29
+reposts: 3
+post_count: 3
+summary: "RLP: Reinforcement Learning in Pre-Training   an NVIDIA paper explores using dense verifier-free RL in pretraining  this feels significant. Everything..."
+similar:
+  - url: "/threads/2025-09-05-skills-are-learned-through-rl-pre-training-ind/"
+    title: "Skills are learned through RL!"
+  - url: "/threads/2025-04-27-r1-chimera-a-model-merge-of-the-routed-experts-of/"
+    title: "R1 Chimera: a model merge of the routed experts of DeepSeek R1 and V3"
+  - url: "/threads/2025-09-17-deepseek-published-about-r1-in-nature-wwwnature/"
+    title: "DeepSeek published about R1 in Nature"
+---
+<div class="thread-post">
+<div class="post-text">RLP: Reinforcement Learning in Pre-Training <br><br>an NVIDIA paper explores using dense verifier-free RL in pretraining<br><br>this feels significant. Everything else I’ve been seeing is moving the other direction, do more in pre-training<br><br>dense rewards changes things<br><br><a href="https://research.nvidia.com/labs/adlr/RLP/" target="_blank" rel="noopener">research.nvidia.com/labs/adlr/RLP/</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreib4zpp66cdmtzqscxs6ksb64yjzzhuabvmcebbu42ci4tjfdahy2q@jpeg" alt="The image is a diagram and explanation titled “How does RLP work?”
+
+It is split into three main sections:
+
+⸻
+
+Left: Overview of RLP (diagram inside a dashed box)
+	•	Input text fragment x_{<t} goes into two paths:
+	1.	No-Think baseline (blue box), which provides a reference baseline distribution p_{EMA}(\cdot | x_{<t}).
+	2.	Thought Policy (yellow box), which generates a chain-of-thought trace (z_1, \ldots, z_G) and the next token.
+	•	The outputs are compared: the model prediction conditioned on the chain-of-thought (p_\theta(\cdot | x_{<t}, z_t)) versus the no-think baseline.
+	•	This yields Information Gain Reward, a dense non-binary reward (r_1, \ldots, r_G).
+
+At the bottom, a label says: “CoT trace + next token.”
+
+⸻
+
+Middle: Next Token Prediction
+
+A blue box with a plain model output:
+
+“Photosynthesis is the process plants, algae, and some bacteria use to make their own food using sunlight”
+Here, “sunlight” is in bold red.
+
+A simple diagram of a plant, sun, and arrows illustrates photosynthesis.
+
+⸻
+
+Right: RLP
+
+A green box showing the model with explicit chain-of-thought reasoning:
+
+“Photosynthesis is the process plants, algae, and some bacteria use to make their own food using”
+ The sentence describes how plants, algae, and bacteria make food. Common knowledge says this process relies on energy from the sun. So the next token is most likely “sunlight.” 
+sunlight
+
+This highlights that with RLP, the model generates internal reasoning (in red) before predicting the next token.
+
+⸻
+
+Bottom Caption
+
+Figure 2: Visualization of the RLP framework.
+A chain-of-thought is sampled before next-token prediction. Rewards are computed by contrasting the predictor conditioned on the CoT with a No-think EMA baseline, yielding a verifier-free, dense signal." class="post-image" loading="lazy">
+<div class="image-alt">The image is a diagram and explanation titled “How does RLP work?”
+
+It is split into three main sections:
+
+⸻
+
+Left: Overview of RLP (diagram inside a dashed box)
+	•	Input text fragment x_{<t} goes into two paths:
+	1.	No-Think baseline (blue box), which provides a reference baseline distribution p_{EMA}(\cdot | x_{<t}).
+	2.	Thought Policy (yellow box), which generates a chain-of-thought trace (z_1, \ldots, z_G) and the next token.
+	•	The outputs are compared: the model prediction conditioned on the chain-of-thought (p_\theta(\cdot | x_{<t}, z_t)) versus the no-think baseline.
+	•	This yields Information Gain Reward, a dense non-binary reward (r_1, \ldots, r_G).
+
+At the bottom, a label says: “CoT trace + next token.”
+
+⸻
+
+Middle: Next Token Prediction
+
+A blue box with a plain model output:
+
+“Photosynthesis is the process plants, algae, and some bacteria use to make their own food using sunlight”
+Here, “sunlight” is in bold red.
+
+A simple diagram of a plant, sun, and arrows illustrates photosynthesis.
+
+⸻
+
+Right: RLP
+
+A green box showing the model with explicit chain-of-thought reasoning:
+
+“Photosynthesis is the process plants, algae, and some bacteria use to make their own food using”
+ The sentence describes how plants, algae, and bacteria make food. Common knowledge says this process relies on energy from the sun. So the next token is most likely “sunlight.” 
+sunlight
+
+This highlights that with RLP, the model generates internal reasoning (in red) before predicting the next token.
+
+⸻
+
+Bottom Caption
+
+Figure 2: Visualization of the RLP framework.
+A chain-of-thought is sampled before next-token prediction. Rewards are computed by contrasting the predictor conditioned on the CoT with a No-think EMA baseline, yielding a verifier-free, dense signal.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>29</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">it works too. look at this<br><br>isolated impact of RTP<br><br>it also seems to hold and maybe even improve with increased model size</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreih77ppfbjuifcqjdqi4jgmdgn6t2ottccqnmrqqptqjejtpo4775q@jpeg" alt="The bar chart compares average accuracies between two setups: Base (light blue) and Base+RLP (dark green).
+	•	Math:
+	•	Base: 61
+	•	Base+RLP: 65
+	•	Science:
+	•	Base: 35
+	•	Base+RLP: 57
+	•	Science Pass@1[4]:
+	•	Base: 33
+	•	Base+RLP: 61
+	•	Overall:
+	•	Base: 47
+	•	Base+RLP: 63
+
+Observation:
+Across all categories (Math, Science, Science Pass@1[4], Overall), applying RLP significantly improves accuracy. The largest gain appears in Science Pass@1[4], jumping from 33 to 61. The smallest but still positive gain is in Math, from 61 to 65." class="post-image" loading="lazy">
+<div class="image-alt">The bar chart compares average accuracies between two setups: Base (light blue) and Base+RLP (dark green).
+	•	Math:
+	•	Base: 61
+	•	Base+RLP: 65
+	•	Science:
+	•	Base: 35
+	•	Base+RLP: 57
+	•	Science Pass@1[4]:
+	•	Base: 33
+	•	Base+RLP: 61
+	•	Overall:
+	•	Base: 47
+	•	Base+RLP: 63
+
+Observation:
+Across all categories (Math, Science, Science Pass@1[4], Overall), applying RLP significantly improves accuracy. The largest gain appears in Science Pass@1[4], jumping from 33 to 61. The smallest but still positive gain is in Math, from 61 to 65.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">how it works?<br><br>it’s still next token prediction, but it’s allowed to break out of response-mode into thinking mode, just for a single token<br><br>dense rewards — again, still next token prediction, but it can get extra reward for CoT tokens that yield better predictive power</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>

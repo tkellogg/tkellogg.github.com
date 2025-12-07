@@ -1,0 +1,70 @@
+---
+layout: thread
+title: "Gemini 2.5 tech report is out!"
+date: 2025-06-17 19:04:38 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lrt6rm5c4s2z
+likes: 23
+reposts: 4
+post_count: 6
+summary: "Gemini 2.5 tech report is out!  the tech report goes into great detail on the training of gemini, i’ll do my take later when i have time  they also an..."
+similar:
+  - url: "/threads/2025-05-20-oh-wow-gemini-is-doing-is-doing-a-text-diffusion/"
+    title: "oh wow, Gemini is doing is doing a text diffusion model"
+  - url: "/threads/2025-11-19-evidence-that-gemini-3-is-very-large-1-the-qt-2/"
+    title: "Evidence that Gemini 3 is very large:"
+  - url: "/threads/2025-11-18-gemini-3-model-card-leaked-the-url-is-taken-down/"
+    title: "Gemini 3 model card leaked"
+---
+<div class="thread-post">
+<div class="post-text">Gemini 2.5 tech report is out!<br><br>the tech report goes into great detail on the training of gemini, i’ll do my take later when i have time<br><br>they also announced gemini-2.5-flash-lite, which they note is not the same as gemini-2.5-torch<br><br><a href="https://blog.google/products/gemini/gemini-2-5-model-family-expands/" target="_blank" rel="noopener">blog.google/products/gem...</a></div>
+<a href="https://blog.google/products/gemini/gemini-2-5-model-family-expands/" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">blog.google</div>
+<div class="embed-title">We’re expanding our Gemini 2.5 family of models</div>
+<div class="embed-description">Gemini 2.5 Flash and Pro are now generally available, and we’re introducing 2.5 Flash-Lite, our most cost-efficient and fastest 2.5 model yet.</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>23</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">6 hours later</div>
+<div class="post-text">overall impression: The infrastructure <br><br>one big reason you should pay attention to Google: TPUv5 delivers 2x compute per Watt than v4<br><br>but also, they tweaked some algorithms to get rid of the I/O bottleneck, so their training run was 93% efficient (incredible!)</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">these TPUs are worth paying attention to because the chip design is done mostly by AI<br><br>as each successive generation of chip is produced, it produces new stronger models that in turn produce dramatically more capable hardware<br><br>hard to understate why that’s important <br><br><a href="https://research.google/blog/chip-design-with-deep-reinforcement-learning/?m=1" target="_blank" rel="noopener">research.google/blog/chip-de...</a></div>
+<a href="https://research.google/blog/chip-design-with-deep-reinforcement-learning/?m=1" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">research.google</div>
+<div class="embed-title">Chip Design with Deep Reinforcement Learning</div>
+<div class="embed-description">Posted by Anna Goldie, Senior Software Engineer and Azalia Mirhoseini, Senior Research Scientist, Google Research, Brain Team  
+Update, June 9, 202...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">k-sparse logits: a multi-pronged optimization <br><br>the gist: they store a lot less data (sparse logits) when storing distillation data<br><br>that means the distillation data is small enough that they’re no longer I/O bound, the network transfer of the data is faster than the training compute</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">hierarchical checkpoints <br><br>this is cool — pro, flash & lite are kinda the same model but with some experts removed <br><br>- attention blocks: identical<br>- experts: remove like 50% + short distill<br><br>they don’t re-do pre & post training, they just do light distilling to sooth the shock of removing experts</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">flash-lite (i’m calling it torch) is just an 8-bit quant of flash. less memory, less transistors required for compute = lighter model</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>

@@ -1,0 +1,62 @@
+---
+layout: thread
+title: "New MCP Spec Just Dropped"
+date: 2025-06-19 11:56:56 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lrxhsnsnt22n
+likes: 28
+reposts: 1
+post_count: 5
+summary: "New MCP Spec Just Dropped  The big new features: elicitation, structured tool outputs, and auth is finally fixed for real  let’s dive into elicitation..."
+similar:
+  - url: "/threads/2025-05-31-mcp-is-a-lot-deeper-than-just-tools-we-havent-sc/"
+    title: "MCP is a lot deeper than just tools. We haven't scratched the surface on what..."
+  - url: "/threads/2025-11-01-mcp-servers-arent-that-useful-for-coding-agents/"
+    title: "MCP servers aren’t that useful for coding agents, imo"
+  - url: "/threads/2025-04-27-i-dont-know-why-mcp-exists-i-mean-i-do-its-be/"
+    title: "i don’t know why MCP exists"
+---
+<div class="thread-post">
+<div class="post-text">New MCP Spec Just Dropped<br><br>The big new features: elicitation, structured tool outputs, and auth is finally fixed for real<br><br>let’s dive into elicitation!<br><br><a href="https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation" target="_blank" rel="noopener">modelcontextprotocol.io/specificatio...</a></div>
+<a href="https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">modelcontextprotocol.io</div>
+<div class="embed-title">Elicitation - Model Context Protocol</div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>28</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">elicitation gives the server a way to ask the client a question<br><br>the most basic example is, e.g. Cursor asking if you want to *Accept* or *Reject* code changes<br><br>an elicitation response has a top-level “action” property that can be “accept”, “reject”, or “cancel”</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the server can also supply a simplified JSONSchema that describes structured data<br><br>so the server can ask the user specific questions, like “what’s your name?”, “what is your SSN?”, or “what is your bank account number?”<br><br>very useful things to paste into an AI!</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">with this feature, MCP is dramatically cutting into A2A’s use case<br><br>i frequently differentiate “tool that uses an LLM” from “an agent” by saying that an agent can have unstructured dialog with the client<br><br>with this, the only unsupported interaction is the “oh wait, i just thought of something”</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">but also, supporting user interaction is hard<br><br>people get distracted, meaning that your server might be left hanging for days waiting for a user to get back<br><br>now you have to manage state carefully!<br><br>i wrote about managing this state in A2A, and the same applies here<br><br><a href="https://timkellogg.me/blog/2025/06/14/a2a" target="_blank" rel="noopener">timkellogg.me/blog/2025/06...</a></div>
+<a href="https://timkellogg.me/blog/2025/06/14/a2a" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">timkellogg.me</div>
+<div class="embed-title">A2A Is For UI</div>
+<div class="embed-description"></div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>

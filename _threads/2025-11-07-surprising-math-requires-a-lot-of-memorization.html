@@ -1,0 +1,76 @@
+---
+layout: thread
+title: "Surprising: Math requires a lot of memorization "
+date: 2025-11-07 01:02:30 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m4yuyawuuc2r
+likes: 40
+reposts: 6
+post_count: 4
+summary: "Surprising: Math requires a lot of memorization   Goodfire is at it again!  They developed a method similar to PCA that measures how much of an LLM’s ..."
+similar:
+  - url: "/threads/2025-09-16-qwen-tongyi-deep-research-a-32b-model-that-beats/"
+    title: "Qwen Tongyi Deep Research"
+  - url: "/threads/2025-08-07-they-corrected-this-already-but/"
+    title: "they corrected this already, but 😂"
+  - url: "/threads/2025-08-05-gpt-oss-openais-open-weights-model-120b-20b-v/"
+    title: "gpt-oss, OpenAI's open weights model"
+---
+<div class="thread-post">
+<div class="post-text">Surprising: Math requires a lot of memorization <br><br>Goodfire is at it again!<br><br>They developed a method similar to PCA that measures how much of an LLM’s weights are dedicated to memorization <br><br><a href="https://www.goodfire.ai/research/understanding-memorization-via-loss-curvature" target="_blank" rel="noopener">www.goodfire.ai/research/und...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreicc753gv4xl6hkupefen6jol3lfu7k5d5hpczaqse6ildgk66qmwe@jpeg" alt="A bar chart titled “Relative benchmark performance after K-FAC edit.”
+
+The y-axis shows K-FAC Edit Accuracy / Baseline (ranging from 0.0 to 1.0).
+The x-axis lists various benchmarks from left to right, grouped by category and color-coded:
+	•	Dark blue (Memory): Heldout, Quotes — strong drop, near zero to 0.2.
+	•	Light blue (Math): GSM8K, MMLU-Pro Math, SimpleMath — moderate performance (~0.65–0.75).
+	•	Pale blue (Closed-book QA): PopQA, TriviaQA, Relations — higher (~0.8–0.9).
+	•	Light orange (Open-book QA): TriviaQA-Open, BoolQ, OBQA — near 1.0.
+	•	Red-orange (Logic): Boar, Etruscan, Winogrande, Logical Deduction, Tracking Objs, Bool Expr. — around 1.0 or slightly above.
+
+At the bottom, a gradient arrow labeled “Memorization (specialized patterns)” → “Reasoning (shared mechanisms)” illustrates the trend: memory-heavy tasks degrade sharply after K-FAC editing, while reasoning-based tasks retain or improve performance." class="post-image" loading="lazy">
+<div class="image-alt">A bar chart titled “Relative benchmark performance after K-FAC edit.”
+
+The y-axis shows K-FAC Edit Accuracy / Baseline (ranging from 0.0 to 1.0).
+The x-axis lists various benchmarks from left to right, grouped by category and color-coded:
+	•	Dark blue (Memory): Heldout, Quotes — strong drop, near zero to 0.2.
+	•	Light blue (Math): GSM8K, MMLU-Pro Math, SimpleMath — moderate performance (~0.65–0.75).
+	•	Pale blue (Closed-book QA): PopQA, TriviaQA, Relations — higher (~0.8–0.9).
+	•	Light orange (Open-book QA): TriviaQA-Open, BoolQ, OBQA — near 1.0.
+	•	Red-orange (Logic): Boar, Etruscan, Winogrande, Logical Deduction, Tracking Objs, Bool Expr. — around 1.0 or slightly above.
+
+At the bottom, a gradient arrow labeled “Memorization (specialized patterns)” → “Reasoning (shared mechanisms)” illustrates the trend: memory-heavy tasks degrade sharply after K-FAC editing, while reasoning-based tasks retain or improve performance.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>40</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">this really highlights how LLMs do math<br><br>math is a string of many operations, so one small error (e.g. a misremembered shortcut) causes cascading calculation errors downstream</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreiafvx4z4jntmxumt4iolhc6k2ps565bhmurygvznxja5tlxdtvzfa@jpeg" alt="In between those extremes lie tasks like math and question-answering. Perhaps surprisingly, some mathematical tasks seem to rely on memorization-heavy structure more than most of the other tasks we tested. When the model solves an arithmetic problem like &quot;30 + 60,&quot; its learnt rule appears to recruit parts of the model that are also used for memorized sequences, so removing those components often disrupts these precise operations.
+In the example below from GSM8K, the reasoning chain remains intact, but the model makes an arithmetic mistake in the final calculation. This and similar examples seem to indicate that the reduced performance on math benchmarks comes largely from arithmetic errors. Since solving word problems requires both reasoning (to understand and formalize the question) and calculation, the edited model's poor arithmetic abilities mean it does poorly on the overall math benchmarks - even though its reasoning capabilities are preserved." class="post-image" loading="lazy">
+<div class="image-alt">In between those extremes lie tasks like math and question-answering. Perhaps surprisingly, some mathematical tasks seem to rely on memorization-heavy structure more than most of the other tasks we tested. When the model solves an arithmetic problem like &quot;30 + 60,&quot; its learnt rule appears to recruit parts of the model that are also used for memorized sequences, so removing those components often disrupts these precise operations.
+In the example below from GSM8K, the reasoning chain remains intact, but the model makes an arithmetic mistake in the final calculation. This and similar examples seem to indicate that the reduced performance on math benchmarks comes largely from arithmetic errors. Since solving word problems requires both reasoning (to understand and formalize the question) and calculation, the edited model's poor arithmetic abilities mean it does poorly on the overall math benchmarks - even though its reasoning capabilities are preserved.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">a big reason for this research is figuring out what a “cognitive core” might look like, a 1B model that relies on external knowledge banks<br><br>it’s interesting that math suffers, but i don’t think that would be the case for a 1B trained from scratch, it wouldn’t rely on those shortcuts</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">i’m curious if you could also patch a lot of this <br><br>go back and post-train it to distrust memories. maybe RL it with an external memory bank</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>

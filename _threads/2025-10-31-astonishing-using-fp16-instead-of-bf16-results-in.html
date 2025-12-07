@@ -1,0 +1,93 @@
+---
+layout: thread
+title: "astonishing: using fp16 instead of bf16 results in more stable training runs ..."
+date: 2025-10-31 18:53:42 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m4j5lagscc2k
+likes: 38
+reposts: 1
+post_count: 4
+summary: "astonishing: using fp16 instead of bf16 results in more stable training runs as well as a smaller performance gap between training & inference   this ..."
+similar:
+  - url: "/threads/2025-11-04-consistency-training-new-gdm-research-notes-that/"
+    title: "Consistency Training"
+  - url: "/threads/2025-11-07-notable-they-ripped-out-the-silicon-that-supports/"
+    title: "notable: they ripped out the silicon that supports training"
+  - url: "/threads/2025-07-27-great-paper-alert-gspo-group-sequence-policy-op/"
+    title: "🚨Great Paper Alert🚨 GSPO (Group Sequence Policy Optimization)"
+---
+<div class="thread-post">
+<div class="post-text">astonishing: using fp16 instead of bf16 results in more stable training runs as well as a smaller performance gap between training & inference <br><br>this is critical for RL, which is mostly inference and very sensitive to reproducible results</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreifoaijohps57cgleb4y6r3kbarty5m4ns4zi7w555ldxdfopohf2u@jpeg" alt="A 3×4 grid of line charts comparing BF16 (blue) and FP16 (green) across various training setups.
+Each subplot shows Training Steps (x-axis) vs. a performance metric (y-axis, 0.0–1.0).
+
+Top row:
+(a) Sanity GRPO – FP16 consistently outperforms BF16; smooth upward trend to ~0.95.
+(b) Sanity GRPO-Token-TIS – similar behavior; FP16 steadier and higher.
+(c) Sanity GRPO-Seq-MIS – FP16 reaches ~0.95; BF16 lags below 0.85.
+(d) Sanity GSPO – FP16 again higher and smoother; BF16 converges slower.
+
+Middle row:
+(e) Sanity PG-Seq-IS and (f) Sanity PG-Seq-MIS – both show FP16 > BF16; FP16 reaches near 1.0.
+(g) OctoThinker GRPO – FP16 stable near 1.0; BF16 spikes early, then collapses.
+(h) Lora GRPO-Token-TIS – FP16 stable around 0.8; BF16 fluctuates sharply and drops after ~800 steps.
+
+Bottom row:
+(i) MoE GRPO-Seq-MIS, (j) MoE GRPO-Token-TIS, and (k) MoE PG-Seq-TIS – both precisions close; FP16 slightly faster early on.
+(l) Dense-14B DAPO – both curves rise smoothly; FP16 maintains a small advantage.
+
+In nearly all cases, FP16 (green) trains more stably and converges to higher performance than BF16 (blue)." class="post-image" loading="lazy">
+<div class="image-alt">A 3×4 grid of line charts comparing BF16 (blue) and FP16 (green) across various training setups.
+Each subplot shows Training Steps (x-axis) vs. a performance metric (y-axis, 0.0–1.0).
+
+Top row:
+(a) Sanity GRPO – FP16 consistently outperforms BF16; smooth upward trend to ~0.95.
+(b) Sanity GRPO-Token-TIS – similar behavior; FP16 steadier and higher.
+(c) Sanity GRPO-Seq-MIS – FP16 reaches ~0.95; BF16 lags below 0.85.
+(d) Sanity GSPO – FP16 again higher and smoother; BF16 converges slower.
+
+Middle row:
+(e) Sanity PG-Seq-IS and (f) Sanity PG-Seq-MIS – both show FP16 > BF16; FP16 reaches near 1.0.
+(g) OctoThinker GRPO – FP16 stable near 1.0; BF16 spikes early, then collapses.
+(h) Lora GRPO-Token-TIS – FP16 stable around 0.8; BF16 fluctuates sharply and drops after ~800 steps.
+
+Bottom row:
+(i) MoE GRPO-Seq-MIS, (j) MoE GRPO-Token-TIS, and (k) MoE PG-Seq-TIS – both precisions close; FP16 slightly faster early on.
+(l) Dense-14B DAPO – both curves rise smoothly; FP16 maintains a small advantage.
+
+In nearly all cases, FP16 (green) trains more stably and converges to higher performance than BF16 (blue).</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>38</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">fyi<br><br>bf16: 16-bit brain float, i.e. Google Brain. Preceded (initiated) fp16 but is widely implemented in hardware. Very popular.<br><br>fp16: 16-bit IEEE standard, uses smaller dynamic range and dedicates more bits to precision</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>12</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">link <a href="https://arxiv.org/abs/2510.26788" target="_blank" rel="noopener">arxiv.org/abs/2510.26788</a></div>
+<a href="https://arxiv.org/abs/2510.26788" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">Defeating the Training-Inference Mismatch via FP16</div>
+<div class="embed-description">Reinforcement learning (RL) fine-tuning of large language models (LLMs) often suffers from instability due to the numerical mismatch between the training and inference policies. While prior work has a...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">3 hours later</div>
+<div class="post-text">in case it’s still not clear <a href="https://bsky.app/profile/dorialexander.bsky.social/post/3m4jigtyrnc2v" target="_blank" rel="noopener">bsky.app/profile/dori...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>9</span>
+</div>
+</div>

@@ -1,0 +1,112 @@
+---
+layout: thread
+title: "DeepSeek-Math-V2: self-verification "
+date: 2025-11-27 14:19:40 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m6mku4ceqk2h
+likes: 33
+reposts: 0
+post_count: 4
+summary: "DeepSeek-Math-V2: self-verification   Fascinating paper that explores how to RL but focused on process over outcome  It’s sort of similar to a GAN, bu..."
+similar:
+  - url: "/threads/2025-03-01-deepseek-did-the-one-more-thing-but-guys-che/"
+    title: "DeepSeek did the “one more thing” 🙄"
+  - url: "/threads/2025-12-01-deepseek-32-2-new-models-32-a-open-weight/"
+    title: "DeepSeek 3.2 "
+  - url: "/threads/2025-04-30-deepseek-is-shipping-a-theorem-prover-automate-ma/"
+    title: "DeepSeek is shipping a theorem prover (automate math proofs)"
+---
+<div class="thread-post">
+<div class="post-text">DeepSeek-Math-V2: self-verification <br><br>Fascinating paper that explores how to RL but focused on process over outcome<br><br>It’s sort of similar to a GAN, but with loops for each the generator & verifier as well as an outer loop<br><br><a href="https://github.com/deepseek-ai/DeepSeek-Math-V2/blob/main/DeepSeekMath_V2.pdf" target="_blank" rel="noopener">github.com/deepseek-ai/...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreicbkncjbhkdpq4664k7mglkgpybsosbdwapz25r67sj5yocwbhgey@jpeg" alt="Thanks — here’s a clean, accurate description of the image without over-interpreting anything or attributing identities:
+
+⸻
+
+This illustration shows a closed-loop AI training and verification system, centered around a glowing cube labeled Unified Self-Verification Model. Multiple subsystems connect to it with curved arrows, creating a multi-stage pipeline.
+
+Top-left
+
+A small panel labeled “COLD START” shows silhouettes of human experts handing documents to a robot. A label reads “EXPERT DATA”. The robot is marked “INITIAL VERIFIER.”
+
+Left side
+
+A machine labeled “GENERATOR” emits data toward the central model via blue arrows. Nearby is a panel titled “AUTO-LABELING VIA SCALED COMPUTE” showing branching lines of generated labels flowing into the loop.
+
+Top-center
+
+A blocky structure marked “META-VERIFIER (STATIC)” sends a bright golden beam into the central model.
+
+Right side
+
+A cube-like “VERIFIER” module receives outputs from the central model and displays mixed “pass/fail” icons and red flags. It feeds its evaluations back into the central loop.
+
+Bottom
+
+A golden arrow flows into a container titled “GOLDEN DATASET,” which represents validated high-quality data feeding back into earlier steps of the pipeline.
+
+Overall
+
+Blue arrows represent generation and verification flows; golden arrows represent validated or high-confidence data circulating back into the system. Circuit-pattern artwork forms the background.
+
+⸻
+
+If you want, I can also explain what conceptual training architecture this resembles (e.g., iterative self-verification, multi-stage verifier stacks, or how it relates to your TTC/Verifier thoughts)." class="post-image" loading="lazy">
+<div class="image-alt">Thanks — here’s a clean, accurate description of the image without over-interpreting anything or attributing identities:
+
+⸻
+
+This illustration shows a closed-loop AI training and verification system, centered around a glowing cube labeled Unified Self-Verification Model. Multiple subsystems connect to it with curved arrows, creating a multi-stage pipeline.
+
+Top-left
+
+A small panel labeled “COLD START” shows silhouettes of human experts handing documents to a robot. A label reads “EXPERT DATA”. The robot is marked “INITIAL VERIFIER.”
+
+Left side
+
+A machine labeled “GENERATOR” emits data toward the central model via blue arrows. Nearby is a panel titled “AUTO-LABELING VIA SCALED COMPUTE” showing branching lines of generated labels flowing into the loop.
+
+Top-center
+
+A blocky structure marked “META-VERIFIER (STATIC)” sends a bright golden beam into the central model.
+
+Right side
+
+A cube-like “VERIFIER” module receives outputs from the central model and displays mixed “pass/fail” icons and red flags. It feeds its evaluations back into the central loop.
+
+Bottom
+
+A golden arrow flows into a container titled “GOLDEN DATASET,” which represents validated high-quality data feeding back into earlier steps of the pipeline.
+
+Overall
+
+Blue arrows represent generation and verification flows; golden arrows represent validated or high-confidence data circulating back into the system. Circuit-pattern artwork forms the background.
+
+⸻
+
+If you want, I can also explain what conceptual training architecture this resembles (e.g., iterative self-verification, multi-stage verifier stacks, or how it relates to your TTC/Verifier thoughts).</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>33</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the end result is a model that knows the **process** for finding correct results<br><br>they argue that this is how you solve unsolved problems — you refine the process itself<br><br>it seems likely that OpenAI’s IMO model is probably doing something along these lines. It’s a general self-verification process</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">a key innovation here is the inclusion of a meta-verifier<br><br>it’s an anchor, so its weights aren’t updated. And it doesn’t really have a hard problem. It doesn’t spot mistakes, it only spots bullshit like reward hacking</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>8</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">1 hour later</div>
+<div class="post-text"><a href="https://bsky.app/profile/dorialexander.bsky.social/post/3m6mpghiwck2p" target="_blank" rel="noopener">bsky.app/profile/dori...</a></div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+</div>
+</div>

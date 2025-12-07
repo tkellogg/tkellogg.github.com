@@ -1,0 +1,292 @@
+---
+layout: thread
+title: "Trying out antigravity"
+date: 2025-11-19 00:25:29 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m5wyj4decc2q
+likes: 41
+reposts: 0
+post_count: 6
+summary: "Trying out antigravity  1. It's an IDE, definitely an IDE. Sure it can probably do more, but it's an IDE  2. You can interrupt it without stopping it ..."
+similar:
+  - url: "/threads/2025-11-18-google-antigravity-an-agentic-first-software-ide/"
+    title: "Google Antigravity: an agentic-first software IDE"
+  - url: "/threads/2025-09-14-what-do-we-think-about-this-imo-this-is-good-pra/"
+    title: "what do we think about this?"
+  - url: "/threads/2025-08-04-hrm-analysis-by-dorialexanderbskysocial-the-a/"
+    title: "HRM analysis by @dorialexander.bsky.social "
+---
+<div class="thread-post">
+<div class="post-text">Trying out antigravity<br><br>1. It's an IDE, definitely an IDE. Sure it can probably do more, but it's an IDE<br><br>2. You can interrupt it without stopping it 🤯<br><br>3. There's a full page "implementation plan" with all details that it's currently working on. You can comment & change any of it</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>41</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Also, it likes to write code to explore. Not just one-liners, but actual short python scripts<br><br>I think this is what <a href="https://bsky.app/profile/did:plc:kft6lu4trxowqmter2b6vg6z" target="_blank" rel="noopener">@simonwillison.net</a> and <a href="https://bsky.app/profile/did:plc:flxq4uyjfotciovpw3x3fxnu" target="_blank" rel="noopener">@emollick.bsky.social</a> were getting at. While it's definitely for code, you can also use it as a launchpad that *uses* code to do anything. Single-purpose code</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>11</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">progress is communicated in several places. lots of UI<br><br>pic below is from the chat panel. It's got blocks for edits, tool use, shells, as well as tasks. Seems like it's organized by this overarching TODO/task list</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreify75xk2owl3tfyvj5ik2s2ynpxn7svak34pkn7bu2c7mbzinuqwe@jpeg" alt="It looks like your background run of **generate_movie.py** is repeatedly failing with:
+
+```
+'str' object has no attribute 'name'
+```
+
+…and you're seeing this specifically when calling **Veo-3.0-fast-generate-001** operations.
+
+Here’s what’s actually going on.
+
+---
+
+## ✅ **Why you’re getting `'str' object has no attribute 'name'`**
+
+Somewhere in your code, you are treating a **string** as if it were a structured response object returned by the Veo API. Most likely you expected something like:
+
+```python
+operation = client.operations.get(...)
+print(operation.name)
+```
+
+But instead, **`operation` is actually a string**—probably the operation ID itself, not an object.
+
+This happens when the Veo SDK returns:
+
+```python
+operation_id = response.id  # string
+```
+
+But your code assumes:
+
+```python
+operation.name
+```
+
+---
+
+## 🔥 **Where in your logs it appears**
+
+You can see it happening right after this line:
+
+```
+Operation started: models/veo-3.0-fast-generate-001/operations/ekc0xkjedpqw
+```
+
+You're then calling something like:
+
+```python
+operation = poll_operation(...)
+operation.name   # ‼️ error here
+```
+
+---
+
+## 🎯 **How to fix it**
+
+### **Veo Fast returns a *string operation ID*** — you must call the Operations API to fetch the object:
+
+```python
+operation_id = response.id  # string
+
+while True:
+    operation = client.operations.get(operation_id)
+
+    if operation.done:
+        break
+
+    time.sleep(3)
+```
+
+And only after retrieving the full operation do you get:
+
+```python
+operation.name
+operation.metadata
+operation.response  # final video result
+```
+
+---
+
+## ✔ Corrected version of your polling code
+
+```python
+def wait_for_operation(client, operation_id):
+    while True:
+        op = client.operations.get(operation_id)  # get full object
+
+    " class="post-image" loading="lazy">
+<div class="image-alt">It looks like your background run of **generate_movie.py** is repeatedly failing with:
+
+```
+'str' object has no attribute 'name'
+```
+
+…and you're seeing this specifically when calling **Veo-3.0-fast-generate-001** operations.
+
+Here’s what’s actually going on.
+
+---
+
+## ✅ **Why you’re getting `'str' object has no attribute 'name'`**
+
+Somewhere in your code, you are treating a **string** as if it were a structured response object returned by the Veo API. Most likely you expected something like:
+
+```python
+operation = client.operations.get(...)
+print(operation.name)
+```
+
+But instead, **`operation` is actually a string**—probably the operation ID itself, not an object.
+
+This happens when the Veo SDK returns:
+
+```python
+operation_id = response.id  # string
+```
+
+But your code assumes:
+
+```python
+operation.name
+```
+
+---
+
+## 🔥 **Where in your logs it appears**
+
+You can see it happening right after this line:
+
+```
+Operation started: models/veo-3.0-fast-generate-001/operations/ekc0xkjedpqw
+```
+
+You're then calling something like:
+
+```python
+operation = poll_operation(...)
+operation.name   # ‼️ error here
+```
+
+---
+
+## 🎯 **How to fix it**
+
+### **Veo Fast returns a *string operation ID*** — you must call the Operations API to fetch the object:
+
+```python
+operation_id = response.id  # string
+
+while True:
+    operation = client.operations.get(operation_id)
+
+    if operation.done:
+        break
+
+    time.sleep(3)
+```
+
+And only after retrieving the full operation do you get:
+
+```python
+operation.name
+operation.metadata
+operation.response  # final video result
+```
+
+---
+
+## ✔ Corrected version of your polling code
+
+```python
+def wait_for_operation(client, operation_id):
+    while True:
+        op = client.operations.get(operation_id)  # get full object
+
+    </div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">then there's this TODO frame, it opens where the code is so it occupies a lot of the screen<br><br>This seems to be used for both plans and TODO task list state <br><br>that blue button to the right — you can click and edit anything and it seems to control where the Agent is going<br><br>i like it in principle..</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreig4rzmmirnok7sif435blaok5tspwfbldcmcxjx7pnjvdarljjycq@jpeg" alt="A dark-mode editor pane titled **“Task”** shows a checklist labeled **Tasks**. Several items appear in a vertical list, most of them greyed out with checked boxes:
+
+* ☑ **Research Google Veo API availability and usage**
+* ☑ **Create a screenplay/script for the 3-minute movie**
+* ☑ **Generate a storyboard using image generation (fallback if video not possible)**
+* [−] **Write Python script to interact with Video API (if available)** (partially completed indicator)
+* ☑ **Investigate Veo generation failure details**
+* ☑ **Lookup specific Veo 3.1 Preview quota limits**
+* ☐ **Generate movie using Veo 3.0 Fast model with resource guards** (only remaining unchecked task)
+
+Along the top, file tabs are visible: **movie.py**, **Task** (active), **Walkthrough**, **debug_veo.py**, and **scene_1.png**. A small blue button with a plus icon sits at the bottom right of the task list.
+" class="post-image" loading="lazy">
+<div class="image-alt">A dark-mode editor pane titled **“Task”** shows a checklist labeled **Tasks**. Several items appear in a vertical list, most of them greyed out with checked boxes:
+
+* ☑ **Research Google Veo API availability and usage**
+* ☑ **Create a screenplay/script for the 3-minute movie**
+* ☑ **Generate a storyboard using image generation (fallback if video not possible)**
+* [−] **Write Python script to interact with Video API (if available)** (partially completed indicator)
+* ☑ **Investigate Veo generation failure details**
+* ☑ **Lookup specific Veo 3.1 Preview quota limits**
+* ☐ **Generate movie using Veo 3.0 Fast model with resource guards** (only remaining unchecked task)
+
+Along the top, file tabs are visible: **movie.py**, **Task** (active), **Walkthrough**, **debug_veo.py**, and **scene_1.png**. A small blue button with a plus icon sits at the bottom right of the task list.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Then there's the Walkthrough frame. Also big screen, but it's dedicated to the result<br><br>As far as I can tell, both the Task & Walkthrough stay open and are reused. I think the agent has a tool to overwrite each</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreihkm6i4pes33ofhrgrevuhczn6mgu5rpc4g4vrk73oxbgj54azx2u@jpeg" alt="Hell yes — it worked **beautifully**.
+And absolutely, we can move onwards. 🚀
+
+Just tell me what direction you want next:
+
+* Improve the storyboard?
+* Try Veo 3.1 Preview again with quota-safe guards?
+* Add transitions/music?
+* Generate a full narrated cut?
+* Or start refining scenes / pacing?
+
+Your call — I’m ready.
+" class="post-image" loading="lazy">
+<div class="image-alt">Hell yes — it worked **beautifully**.
+And absolutely, we can move onwards. 🚀
+
+Just tell me what direction you want next:
+
+* Improve the storyboard?
+* Try Veo 3.1 Preview again with quota-safe guards?
+* Add transitions/music?
+* Generate a full narrated cut?
+* Or start refining scenes / pacing?
+
+Your call — I’m ready.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">regression from gpt-5: it doesn't use uv. At least not without me telling it to. Didn't even use virtual envs</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5</span>
+</div>
+</div>

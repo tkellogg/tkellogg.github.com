@@ -1,0 +1,156 @@
+---
+layout: thread
+title: "AttentionInfluence: for pretraining data selection"
+date: 2025-05-14 03:02:23 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lp3z5nxpzk2t
+likes: 33
+reposts: 6
+post_count: 2
+summary: "AttentionInfluence: for pretraining data selection  Good data matters, but how do you find it?   This paper uses the attention heads from existing mod..."
+similar:
+  - url: "/threads/2025-07-06-new-3-token-attention-reduces-pre-training-data-re/"
+    title: "new 3-token attention reduces pre-training data requirements"
+  - url: "/threads/2025-07-21-kimi-k2-paper-is-out-lessons-1-they-explicitl/"
+    title: "Kimi K2 paper is out!"
+  - url: "/threads/2025-10-01-rlp-reinforcement-learning-in-pre-training-an-n/"
+    title: "RLP: Reinforcement Learning in Pre-Training "
+---
+<div class="thread-post">
+<div class="post-text">AttentionInfluence: for pretraining data selection<br><br>Good data matters, but how do you find it? <br><br>This paper uses the attention heads from existing models to calculate & rank how valuable the data will be during training<br><br>Mask out critical heads and calculate the loss<br><br><a href="https://arxiv.org/abs/2505.07293" target="_blank" rel="noopener">arxiv.org/abs/2505.07293</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreif34grnipwenqjn72bnhywzfbx6ppomv2ul5s53ddrh6gkbzu3clq@jpeg" alt="This diagram explains a method for **detecting important attention heads** in a large language model (LLM) and measuring their influence using an **AttentionInfluence Score**.
+
+---
+
+### **Left Section: Detecting Specific Important Heads**
+
+1. **Input Format**:
+
+   * A hashed question (e.g., `e3b0c4...27ae`) with a known **answer** (e.g., “Parents are usually ...”).
+   * A few-shot prompt of `<Q,A>` pairs is used to guide the model.
+
+2. **Base LLM**:
+
+   * Attention heads are selectively toggled **on** or **off**.
+   * Each configuration is evaluated based on how well the output matches the expected answer.
+
+3. **Scoring**:
+
+   * Each configuration returns a score (`Ret i`) indicating output accuracy.
+   * Higher score (e.g., `0.85`) means more accurate/relevant output, identifying that head as important.
+   * Lower scores (e.g., `0.11`, `0.22`) indicate less useful or irrelevant attention heads.
+
+---
+
+### **Top Center: Masking Heads**
+
+* Heads are disabled by **masking** parts of the attention matrix (turning sections into 0s).
+* This allows controlled experimentation on attention head impact.
+
+---
+
+### **Right Section: Calculating AttentionInfluence Score**
+
+1. **Reference vs Base LLM**:
+
+   * A **reference LLM** with all attention heads active produces output logits (`p₀`, `p₁`, `p₂`) for a sample text.
+   * A **base LLM** with selected heads masked does the same.
+
+2. **Loss Computation**:
+
+   * Compute losses: `L_Ref` (full model) and `L_Base` (partially masked).
+
+3. **Formula**:
+
+   ```
+   AttentionInfluence Score = (L_Ref - L_Base) / L_Ref
+   ```
+
+   * This measures the degradation in performance caused by masking, indicating how crucial a specific attention head is.
+
+---
+
+### **Summary**:
+
+The framework identifies key attention heads in LLMs by:
+
+* Testing head impact on output quality.
+* Quantifying it using an attention-influence score.
+  This helps understand interpretability and improve model pruning, adaptation, or debugging.
+" class="post-image" loading="lazy">
+<div class="image-alt">This diagram explains a method for **detecting important attention heads** in a large language model (LLM) and measuring their influence using an **AttentionInfluence Score**.
+
+---
+
+### **Left Section: Detecting Specific Important Heads**
+
+1. **Input Format**:
+
+   * A hashed question (e.g., `e3b0c4...27ae`) with a known **answer** (e.g., “Parents are usually ...”).
+   * A few-shot prompt of `<Q,A>` pairs is used to guide the model.
+
+2. **Base LLM**:
+
+   * Attention heads are selectively toggled **on** or **off**.
+   * Each configuration is evaluated based on how well the output matches the expected answer.
+
+3. **Scoring**:
+
+   * Each configuration returns a score (`Ret i`) indicating output accuracy.
+   * Higher score (e.g., `0.85`) means more accurate/relevant output, identifying that head as important.
+   * Lower scores (e.g., `0.11`, `0.22`) indicate less useful or irrelevant attention heads.
+
+---
+
+### **Top Center: Masking Heads**
+
+* Heads are disabled by **masking** parts of the attention matrix (turning sections into 0s).
+* This allows controlled experimentation on attention head impact.
+
+---
+
+### **Right Section: Calculating AttentionInfluence Score**
+
+1. **Reference vs Base LLM**:
+
+   * A **reference LLM** with all attention heads active produces output logits (`p₀`, `p₁`, `p₂`) for a sample text.
+   * A **base LLM** with selected heads masked does the same.
+
+2. **Loss Computation**:
+
+   * Compute losses: `L_Ref` (full model) and `L_Base` (partially masked).
+
+3. **Formula**:
+
+   ```
+   AttentionInfluence Score = (L_Ref - L_Base) / L_Ref
+   ```
+
+   * This measures the degradation in performance caused by masking, indicating how crucial a specific attention head is.
+
+---
+
+### **Summary**:
+
+The framework identifies key attention heads in LLMs by:
+
+* Testing head impact on output quality.
+* Quantifying it using an attention-influence score.
+  This helps understand interpretability and improve model pruning, adaptation, or debugging.
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>33</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">7 hours later</div>
+<div class="post-text">This directly cuts costs and energy use during pretraining, the most expensive part of LLM training <br><br>Here they cut down a dataset to less than 1/3 the size and gained 1-5% on benchmarks across the board</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>6</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>2</span>
+</div>
+</div>

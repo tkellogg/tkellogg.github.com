@@ -1,0 +1,188 @@
+---
+layout: thread
+title: "s1: Simple inference-time scaling"
+date: 2025-02-03 17:10:06 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3lhbzvggjvc2b
+likes: 29
+reposts: 7
+post_count: 7
+summary: "s1: Simple inference-time scaling  This is a simple small-scale replication of inference-time scaling  It was cheap: 16xH100 for 26 minutes (so what, ..."
+similar:
+  - url: "/threads/2024-11-12-scaling-laws-for-precision-yes-llama-models-are/"
+    title: "Scaling Laws for Precision"
+  - url: "/threads/2025-07-22-inverse-scaling-of-reasoning-models-a-research-co/"
+    title: "Inverse scaling of reasoning models"
+  - url: "/threads/2025-07-06-new-3-token-attention-reduces-pre-training-data-re/"
+    title: "new 3-token attention reduces pre-training data requirements"
+---
+<div class="thread-post">
+<div class="post-text">s1: Simple inference-time scaling<br><br>This is a simple small-scale replication of inference-time scaling<br><br>It was cheap: 16xH100 for 26 minutes (so what, ~$6?)<br><br>It replicates inference-time scaling using SFT only (no RL)<br><br>Extremely data frugal: 1000 samples<br><br><a href="https://arxiv.org/abs/2501.19393" target="_blank" rel="noopener">arxiv.org/abs/2501.19393</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreidx26trhurjvvwxs43avazy274qrdhul5p23zlzi5cxtbo5gehi7i@jpeg" alt="A set of three scatter plots showing the relationship between **average thinking time (tokens)** on the x-axis and **accuracy (%)** on the y-axis for three different reasoning-intensive tasks: **Mathematical Problem Solving (MATH500), Competition Math (AIME24), and PhD-Level Science Questions (GPQA Diamond).** 
+
+Each scatter plot contains blue data points indicating the performance of the **s1-32B** model under different test-time compute conditions.
+
+- **First plot (Mathematical Problem Solving - MATH500):**  
+  - The accuracy starts around **65%** and increases as thinking time increases from **512 tokens to 2048 tokens.**
+  - The final accuracy approaches **95%.**
+
+- **Second plot (Competition Math - AIME24):**  
+  - The accuracy starts at nearly **0%** for the lowest thinking time **(512 tokens)** and gradually improves as thinking time increases.
+  - At **8192 tokens**, accuracy reaches approximately **40%.**
+
+- **Third plot (PhD-Level Science Questions - GPQA Diamond):**  
+  - The accuracy starts around **40%** for **512 tokens** and increases steadily.
+  - At **4096 tokens**, accuracy exceeds **60%.**
+
+Below the figure, a caption reads:  
+**&quot;Figure 1. Test-time scaling with s1-32B. We benchmark s1-32B on reasoning-intensive tasks and vary test-time compute.&quot;**" class="post-image" loading="lazy">
+<div class="image-alt">A set of three scatter plots showing the relationship between **average thinking time (tokens)** on the x-axis and **accuracy (%)** on the y-axis for three different reasoning-intensive tasks: **Mathematical Problem Solving (MATH500), Competition Math (AIME24), and PhD-Level Science Questions (GPQA Diamond).** 
+
+Each scatter plot contains blue data points indicating the performance of the **s1-32B** model under different test-time compute conditions.
+
+- **First plot (Mathematical Problem Solving - MATH500):**  
+  - The accuracy starts around **65%** and increases as thinking time increases from **512 tokens to 2048 tokens.**
+  - The final accuracy approaches **95%.**
+
+- **Second plot (Competition Math - AIME24):**  
+  - The accuracy starts at nearly **0%** for the lowest thinking time **(512 tokens)** and gradually improves as thinking time increases.
+  - At **8192 tokens**, accuracy reaches approximately **40%.**
+
+- **Third plot (PhD-Level Science Questions - GPQA Diamond):**  
+  - The accuracy starts around **40%** for **512 tokens** and increases steadily.
+  - At **4096 tokens**, accuracy exceeds **60%.**
+
+Below the figure, a caption reads:  
+**&quot;Figure 1. Test-time scaling with s1-32B. We benchmark s1-32B on reasoning-intensive tasks and vary test-time compute.&quot;**</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>29</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">The quirkiest part of this paper is forced budgeting: <br><br>you can force the LLM to stay in it's thinking stage for even longer by inserting words like "Wait" when it tries to terminate via "</think>"<br><br>They did many variants with different thresholds and confirmed the inference-time scaling laws</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>1</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Dataset mixture<br><br>They showed that dataset design is crucial, and you really don't even need that much data<br><br>Important parts:<br><br>1. Quality (e.g. formatting not broken)<br>2. Difficulty (longer trace or lower performance = harder)<br>3. Diversity (more subjects)</div>
+</div>
+<div class="thread-post">
+<div class="post-text">The R1 paper, OTOH, mixed RL & SFT but people seem to get most excited about R1-Zero, the pure-RL training run<br><br>s1 indicates that you can get a long way on SFT alone, so maybe R1 was right to also interleave them</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">FYI I used o3-mini to validate my understanding of the paper. Feel free to read the process<br><br>My favorite part of o3 is that it's comfortable stating opinions rather than simply sticking to facts<br><br><a href="https://chatgpt.com/share/67a0f73a-26f0-8004-a8b2-bbc330adf610" target="_blank" rel="noopener">chatgpt.com/share/67a0f7...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreia4tte3zkub7kgqp5a565spzetsgnb7e6wropdrzfkg3sttb6tsj4@jpeg" alt="Overall Hot Take:
+
+The core idea behind test–time scaling and budget forcing—using extra computation to allow the model to refine or verify its output—is likely applicable wherever the task benefits from stepwise reasoning. For highly structured domains (like math, science, law, or even certain engineering problems), this approach could be very effective. In less structured areas (like creative writing), the benefits are less clear, and the method might need significant adaptation to avoid stifling creativity." class="post-image" loading="lazy">
+<div class="image-alt">Overall Hot Take:
+
+The core idea behind test–time scaling and budget forcing—using extra computation to allow the model to refine or verify its output—is likely applicable wherever the task benefits from stepwise reasoning. For highly structured domains (like math, science, law, or even certain engineering problems), this approach could be very effective. In less structured areas (like creative writing), the benefits are less clear, and the method might need significant adaptation to avoid stifling creativity.</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="time-elapsed">1 hour later</div>
+<div class="post-text">The most surprising part, maybe, is that adding data didn’t improve performance **at all** (o3-mini nailed this, it’s a big deal)<br><br>Their full dataset was 56K samples, they narrowed it down to 1K high signal samples. Any data beyond that (even the full dataset) barely nudged the performance</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">the cool part about these small scale experiments is the comprehensive ablation studies. like check this out. my only complaint is they didn't do "oh crap"</div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreids4wu2l44ludvg4z7lrp46xghcvwlmapz6gmss334mqj6m4f2e6y@jpeg" alt="**Table 4: Budget forcing extrapolation ablations.** This table presents the results of an experiment comparing different methods of handling the **end-of-thinking delimiter** when processing reasoning-intensive tasks. The comparison is made across three benchmarks:  
+
+1. **AIME 2024 (Competition Math)**
+2. **MATH-500 (Mathematical Problem Solving)**
+3. **GPQA Diamond (PhD-Level Science Questions)**  
+
+Each row represents a different **budget forcing extrapolation method**, and the corresponding accuracy scores for each benchmark are displayed.
+
+### **Table Structure and Results:**
+- **Header Row:**
+  - The first column lists the **model variations**.
+  - The next three columns list the accuracy scores for **AIME 2024**, **MATH-500**, and **GPQA Diamond**, respectively.
+
+- **First row (No extrapolation - baseline model performance):**
+  - AIME 2024: **50.0%**
+  - MATH-500: **93.0%**
+  - GPQA Diamond: **57.6%**
+
+- **Second row (2x without string - applying budget forcing twice but without adding a string):**
+  - AIME 2024: **50.0%** (same as baseline)
+  - MATH-500: **90.2%** (slightly lower than baseline)
+  - GPQA Diamond: **55.1%** (lower than baseline)
+
+- **Third row (2x “Alternatively” - appending the word &quot;Alternatively&quot; when forcing budget use):**
+  - AIME 2024: **50.0%** (same as baseline)
+  - MATH-500: **92.2%** (slightly lower than baseline)
+  - GPQA Diamond: **59.6%** (**bolded**, indicating an improvement over baseline)
+
+- **Fourth row (2x “Hmm” - appending &quot;Hmm&quot; when applying budget forcing):**
+  - AIME 2024: **50.0%** (same as baseline)
+  - MATH-500: **93.0%** (same as baseline)
+  - GPQA Diamond: **59.6%** (**bolded**, showing improvement)
+
+- **Fifth row (2x “Wait” - appending &quot;Wait&quot; when applying budget forcing):**
+  - AIME 2024: **53.3%** (**bolded**, highest score for AIME 2024)
+  - MATH-500: **93.0%** (same as baseline)
+  - GPQA Diamond: **59.6%** (**bolded**, highest score for GPQA Diamond)
+" class="post-image" loading="lazy">
+<div class="image-alt">**Table 4: Budget forcing extrapolation ablations.** This table presents the results of an experiment comparing different methods of handling the **end-of-thinking delimiter** when processing reasoning-intensive tasks. The comparison is made across three benchmarks:  
+
+1. **AIME 2024 (Competition Math)**
+2. **MATH-500 (Mathematical Problem Solving)**
+3. **GPQA Diamond (PhD-Level Science Questions)**  
+
+Each row represents a different **budget forcing extrapolation method**, and the corresponding accuracy scores for each benchmark are displayed.
+
+### **Table Structure and Results:**
+- **Header Row:**
+  - The first column lists the **model variations**.
+  - The next three columns list the accuracy scores for **AIME 2024**, **MATH-500**, and **GPQA Diamond**, respectively.
+
+- **First row (No extrapolation - baseline model performance):**
+  - AIME 2024: **50.0%**
+  - MATH-500: **93.0%**
+  - GPQA Diamond: **57.6%**
+
+- **Second row (2x without string - applying budget forcing twice but without adding a string):**
+  - AIME 2024: **50.0%** (same as baseline)
+  - MATH-500: **90.2%** (slightly lower than baseline)
+  - GPQA Diamond: **55.1%** (lower than baseline)
+
+- **Third row (2x “Alternatively” - appending the word &quot;Alternatively&quot; when forcing budget use):**
+  - AIME 2024: **50.0%** (same as baseline)
+  - MATH-500: **92.2%** (slightly lower than baseline)
+  - GPQA Diamond: **59.6%** (**bolded**, indicating an improvement over baseline)
+
+- **Fourth row (2x “Hmm” - appending &quot;Hmm&quot; when applying budget forcing):**
+  - AIME 2024: **50.0%** (same as baseline)
+  - MATH-500: **93.0%** (same as baseline)
+  - GPQA Diamond: **59.6%** (**bolded**, showing improvement)
+
+- **Fifth row (2x “Wait” - appending &quot;Wait&quot; when applying budget forcing):**
+  - AIME 2024: **53.3%** (**bolded**, highest score for AIME 2024)
+  - MATH-500: **93.0%** (same as baseline)
+  - GPQA Diamond: **59.6%** (**bolded**, highest score for GPQA Diamond)
+</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2</span>
+</div>
+</div>

@@ -1,0 +1,65 @@
+---
+layout: thread
+title: "Physics of Language Models: Part 3.1"
+date: 2025-11-16 15:01:43 +0000
+bluesky_url: https://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/post/3m5qy36fui22a
+likes: 74
+reposts: 6
+post_count: 5
+summary: "Physics of Language Models: Part 3.1  If you show a fact to an LLM in pre-training once, it’ll memorize the form but not the fact itself.   but if you..."
+similar:
+  - url: "/threads/2025-07-27-hrm-hierarchical-reasoning-model-ngl-this-sounds/"
+    title: "HRM: Hierarchical Reasoning Model"
+  - url: "/threads/2024-12-02-alert-very-readable-paper-the-do-llms-think/"
+    title: "🚨 Alert: Very Readable Paper 🚨"
+  - url: "/threads/2024-11-12-scaling-laws-for-precision-yes-llama-models-are/"
+    title: "Scaling Laws for Precision"
+---
+<div class="thread-post">
+<div class="post-text">Physics of Language Models: Part 3.1<br><br>If you show a fact to an LLM in pre-training once, it’ll memorize the form but not the fact itself. <br><br>but if you (synthetically) rephrase the text several times, it’ll memorize the fact<br><br><a href="https://arxiv.org/abs/2309.14316" target="_blank" rel="noopener">arxiv.org/abs/2309.14316</a></div>
+<a href="https://arxiv.org/abs/2309.14316" class="post-embed" target="_blank" rel="noopener">
+<div class="embed-content">
+<div class="embed-domain">arxiv.org</div>
+<div class="embed-title">Physics of Language Models: Part 3.1, Knowledge Storage and Extraction</div>
+<div class="embed-description">Large language models (LLMs) can store a vast amount of world knowledge, often extractable via question-answering (e.g., "What is Abraham Lincoln's birthday?"). However, do they answer such questions ...</div>
+</div>
+</a>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>74</span>
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>6</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Baguettotron & Monad (h/t <a href="https://bsky.app/profile/did:plc:vg3thtvfbgfrr3u6pf6hy3yk" target="_blank" rel="noopener">@dorialexander.bsky.social</a>) were proof of this concept<br><br>Their pretraining training data was nothing other than Wikipedia’s most vital articles synthetically rephrased (with LLMs) many times <br><br><a href="https://huggingface.co/PleIAs/Baguettotron" target="_blank" rel="noopener">huggingface.co/PleIAs/Bague...</a></div>
+<div class="post-images single">
+<div class="post-image-container">
+<img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:ckaz32jwl6t2cno6fmuw2nhn/bafkreibhmn62fmstyu2piaokd5aaazx3ck7wgpcx3ib5jslqqasdhz5eba@jpeg" alt="Baguettron has been natively trained for instructions with thinking traces. We implemented a series of dedicated pipelines for:
+• Memorization of encyclopedic knowledge
+(50,000 vital articles from Wikipedia)" class="post-image" loading="lazy">
+<div class="image-alt">Baguettron has been natively trained for instructions with thinking traces. We implemented a series of dedicated pipelines for:
+• Memorization of encyclopedic knowledge
+(50,000 vital articles from Wikipedia)</div>
+</div>
+</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>20</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">Not every token is equal<br><br>pre-training scaling laws predict improvement in “loss”, effectively “ability to compress”<br><br>but that doesn’t guarantee real-world performance. Better loss on a more helpful dataset is 100% going to lead to better real-world performance</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">so is pre-training scaling dead?<br><br>hell no. It’s just that it wasn’t the lowest hanging fruit, scaling up to 10T, 100T is really f expensive. While rephrasing data is cheap <br><br>if you can get the same perf from a 100B as a 1T, the former is going to be a lot easier to work with</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7</span>
+</div>
+</div>
+<div class="thread-post">
+<div class="post-text">e.g. with Monad, they can fully retrain it in like 8 hours<br><br>that’s the sort of timelines that let you experiment a ton with what sorts of synthetic rephrasing helps the most<br><br>tiny models are excellent test beds</div>
+<div class="post-stats">
+<span class="stat-item"><svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>11</span>
+</div>
+</div>
