@@ -507,9 +507,10 @@ blockquote {
 }
 
 .author-avatar--tiny {
-  width: 20px;
-  height: 20px;
+  width: 2.5ch;
+  height: 2.5ch;
   border-radius: 0;
+  vertical-align: text-bottom;
 }
 
 .author-byline {
