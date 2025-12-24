@@ -7,6 +7,17 @@ layout: default
 		<time pubdate="true">
 			{{ page.date | date: "%a %B %d, %Y" }}
 		</time>
+		{% if page.author %}
+			{% assign author = site.data.authors[page.author] %}
+			{% if author %}
+				<a class="author-badge" href="{{ author.url | default: '/authors/' | append: page.author }}">
+					<img class="author-avatar" src="{{ author.avatar }}" alt="{{ author.name }} avatar" loading="lazy" />
+					<span>By {{ author.name }}</span>
+				</a>
+			{% else %}
+				<span class="author-badge author-badge--plain">By {{ page.author }}</span>
+			{% endif %}
+		{% endif %}
 		{% if page.banner %}
 		    <h2 class="banner">{{ page.banner | markdownify }}</h2>
 		{% endif %}

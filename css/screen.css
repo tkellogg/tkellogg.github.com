@@ -459,6 +459,132 @@ blockquote {
   margin: 1.5rem auto; /* Increased from 1rem to 1.5rem */
 }
 
+.author-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background-color: #f3f4f6;
+  color: #222;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.author-badge:hover {
+  background-color: #e6e7eb;
+  text-decoration: none;
+}
+
+.author-badge--compact {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  margin-left: 0.6rem;
+}
+
+.author-badge--hero {
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+.author-badge--plain {
+  background-color: transparent;
+  padding: 0;
+  margin-left: 0.75rem;
+}
+
+.author-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-avatar--compact {
+  width: 22px;
+  height: 22px;
+}
+
+.author-avatar--tiny {
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+}
+
+.author-byline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.75rem;
+  color: #222;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.author-byline:hover {
+  text-decoration: underline;
+}
+
+.author-byline--compact {
+  font-size: 0.8rem;
+}
+
+.author-page {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.author-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.author-avatar--hero {
+  width: 96px;
+  height: 96px;
+}
+
+.author-tagline {
+  margin: 0.4rem 0 0;
+  color: #555;
+}
+
+.author-bio {
+  margin-bottom: 2rem;
+}
+
+.author-post-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.author-post-list li {
+  margin-bottom: 0.8rem;
+}
+
+.author-post-list .post-date {
+  margin-left: 0.5rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .author-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .author-badge {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
 #post img {
   max-width: 100%;
   height: auto;
@@ -711,4 +837,3 @@ h2 {
 td {
     padding: 0.5ch;
 }
-

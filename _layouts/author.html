@@ -1,0 +1,45 @@
+---
+layout: default
+---
+{% assign author = site.data.authors[page.author_id] %}
+
+<article class="author-page">
+	{% if author %}
+		<div class="author-hero">
+			<div class="author-hero-text">
+				<span class="author-badge author-badge--hero">
+					<img class="author-avatar author-avatar--compact" src="{{ author.avatar }}" alt="{{ author.name }} avatar" loading="lazy" />
+				</span>
+				<h1>{{ author.name }}</h1>
+				{% if author.tagline %}
+					<p class="author-tagline">{{ author.tagline }}</p>
+				{% endif %}
+			</div>
+		</div>
+
+		{% if author.bio %}
+			<div class="author-bio">
+				{{ author.bio | markdownify }}
+			</div>
+		{% endif %}
+
+		<section class="author-posts">
+			<h2>Posts by {{ author.name }}</h2>
+			{% assign author_posts = site.posts | where: "author", page.author_id %}
+			{% if author_posts.size > 0 %}
+				<ul class="author-post-list">
+					{% for post in author_posts %}
+						<li>
+							<a href="{{ post.url }}">{{ post.title }}</a>
+							<span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+						</li>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p>No posts yet.</p>
+			{% endif %}
+		</section>
+	{% else %}
+		<p>Author not found.</p>
+	{% endif %}
+</article>
