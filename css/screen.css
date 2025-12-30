@@ -925,6 +925,37 @@ h2 {
     margin-right: 0.5rem;
 }
 
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  margin: 1.2rem 0;
+}
+
+thead th {
+  background: #f3f4f6;
+  color: #111827;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+th,
 td {
-    padding: 0.5ch;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th + th,
+td + td {
+  border-left: 1px solid #eef0f2;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
 }
