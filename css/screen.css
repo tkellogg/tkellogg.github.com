@@ -198,6 +198,30 @@ code {
   color: #000000;
 }
 
+pre,
+.highlight {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  overflow: auto;
+}
+
+.highlight pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+pre code {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 blockquote {
   background: #f9f9f9;
   border-left: 1.5rem solid #ccc;
@@ -572,6 +596,72 @@ blockquote {
   margin-left: 0.5rem;
   color: #777;
   font-size: 0.9rem;
+}
+
+.tag-timeline {
+  margin: 2rem 0;
+  padding: 1.5rem 1.75rem;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.tag-timeline-title {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.tag-timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.tag-timeline-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.tag-timeline-date {
+  font-size: 0.78rem;
+  color: #8a919d;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tag-timeline-link {
+  color: #111827;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.tag-timeline-link:hover {
+  border-bottom-color: #111827;
+}
+
+@media (max-width: 700px) {
+  .tag-timeline {
+    padding: 1rem 1.1rem;
+  }
+
+  .tag-timeline-list li {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .tag-timeline-date {
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 700px) {

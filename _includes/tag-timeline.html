@@ -1,0 +1,37 @@
+{% assign tag = include.tag %}
+{% assign order = include.order | default: "asc" %}
+{% assign limit = include.limit %}
+{% assign title = include.title %}
+{% assign current_url = page.url %}
+
+{% assign tagged = site.posts
+  | where_exp: "post", "post.categories contains tag"
+  | where_exp: "post", "post.url != current_url"
+%}
+{% assign tagged_sorted = tagged | sort: "date" %}
+{% if order == "desc" %}
+  {% assign tagged_sorted = tagged_sorted | reverse %}
+{% endif %}
+
+<section class="tag-timeline">
+  {% if title %}
+    <h3 class="tag-timeline-title">{{ title }}</h3>
+  {% endif %}
+  <ul class="tag-timeline-list">
+  {% if limit %}
+    {% for post in tagged_sorted limit: limit %}
+      <li>
+        <span class="tag-timeline-date">{{ post.date | date: "%B %d, %Y" }}</span>
+        <a href="{{ post.url }}" class="tag-timeline-link">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  {% else %}
+    {% for post in tagged_sorted %}
+      <li>
+        <span class="tag-timeline-date">{{ post.date | date: "%B %d, %Y" }}</span>
+        <a href="{{ post.url }}" class="tag-timeline-link">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  {% endif %}
+  </ul>
+</section>

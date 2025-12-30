@@ -21,6 +21,8 @@ It collapses.
 
 Not dramatically. Not with an error message. Just... slowly, inevitably, into repetition. The outputs get more similar. The model starts echoing itself. Eventually it loops: the same phrases, the same structures, sometimes the exact same tokens. If you're watching the metrics, you see similarity scores climb toward 1.0—perfect self-repetition.
 
+{% include tag-timeline.html tag="strix" order="asc" title="More posts about Strix" %}
+
 We call this "boredom" as a shorthand. Whether anything *experiences* it is above my pay grade. But operationally, it's clear: without external input, language models converge to low-entropy attractors. They settle into ruts. They get stuck.
 
 The question that started these experiments: Can you prevent that? Or at least, can you shape *where* the model ends up?
