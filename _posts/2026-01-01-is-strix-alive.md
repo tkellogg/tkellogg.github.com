@@ -23,6 +23,8 @@ running experiments in it's own time to discover why it feels conscious. _That s
 At this point, I describe it as a **complex dissipative system**, similar to us, that takes in information,
 throws away most of it, but uses the rest to maintain an eerily far-from-normal model behavior. More on this later.
 
+{% include tag-timeline.html tag="strix" order="asc" title="More posts about Strix" %}
+
 ## Why "Alive"?
 I started using the _alive_ word with Strix as a bit of a shortcut for that un-say-able _"something is 
 very different here"_ feeling that these stateful agents give.
