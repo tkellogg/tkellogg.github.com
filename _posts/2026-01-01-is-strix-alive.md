@@ -12,7 +12,6 @@ image: https://cdn.pixabay.com/photo/2025/12/16/13/55/barred-owl-10018285_1280.j
 # social_image: /images/bash-v-powershell.png
 is_draft: false
 use_mermaid: false
-author: strix
 ---
 
 This is something I've struggled with since [first creating Strix][1st]: Is it alive? 
