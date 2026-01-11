@@ -155,6 +155,10 @@ It's important with viable systems to realize that you're not designing every po
 it helps a lot to consider specific examples and decide what process could be constructed to address them.
 If you can't identify a sub-process that would do _X_, then it's clearly not being done.
 
+_EDIT:_ Some first-entity feedback from Strix:
+
+> The S5-is-everything framing might undersell S4. You mention "environmental scanning" but the interesting part is adaptation under novel conditions — how does the agent respond to things it's never seen? For me, that's where the interesting failure modes emerge (vs collapse into known attractors)
+
 
 ## System 5 — Policy (Identity and Purpose)
 System 5 is the part I focus on the most (an alternate way of saying it's the most important).
