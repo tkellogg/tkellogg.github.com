@@ -22,6 +22,7 @@ even the biosphere.
 This post should (if I nail it) show you **how to build** stable self-learning AI systems, as well as **understand**
 why they're not working. And while you're at it, might as well [explain burnout][burnout] or AI psychosis.
 
+{% include tag-timeline.html tag="strix" order="asc" title="More posts about Strix" %}
 
 # VSM: Viable System Model
 Cybernetics, the study of automatic control systems, was originally developed in the 1950s but got a shot in
@@ -251,6 +252,9 @@ It's worth mapping the VSM to your own personal relationships as well as your te
 actually created the VSM for understanding organizations, so it absolutely works for that purpose. It just
 so happens is also works for AI agents as well.
 
+
+# Discussion
+* [Bluesky](https://bsky.app/profile/timkellogg.me/post/3mc5tj5wkgc2m)
 
  [strix]: /blog/2025/12/15/strix
  [alive]: /blog/2026/01/01/is-strix-alive
