@@ -72,6 +72,10 @@ To get to this point you need a fully functioning System 2 but also an establish
 that the agent uses to prioritize. You also need some level of monitoring (System 4) to understand what issues
 are burning and are highest priority.
 
+Today's agentic coding tools **don't do this**. They're designed to keep the user in control. Why? Because
+we largely haven't figured out S2. Also, when you jump beyond S2, you need to arrive at S3 & S4 at close to
+the same time. Most products can't easily offer this in a way that customers can easily integrate.
+
 ## System 4: World Scanning
 Reading the world around the agent to understand if it's fulfilling it's purpose (or signal where it's not).
 
@@ -86,6 +90,10 @@ you're not doing your job well.
 The obvious S4 tool is ops monitoring & observability. But also channels to customers & stakeholders. Being
 able to react to incidents without over-reacting involves well-functioning S3 & S5. Generally, attaching the
 agent to the company Slack/Teams seems like an easy win.
+
+To do S4 well, the agent needs to build a _"mental model"_ for how it fits into the larger VS above it, like the
+team or the company. Doing this well involves state, the agent needs a place to collect it's thoughts about how
+it fits into larger systems. Tools like [Letta][letta] give you agent state, hooks for building such a model.
 
 ## System 5: Policy
 The agent's purpose, values, operating rules and working agreements.
@@ -132,9 +140,11 @@ they end up using AI is a pure risk, some shops will appreciate and others will 
 Instead, break out the VSM. Which systems did the use? (Intentionally or not). Did define values &
 expectations in their initial prompt? Did they add tests? Did they give it a playwright MCP server so
 it could see it's own work? (especially if they can articulate why it's important). Did they think,
-mid-session, about how well the session is progressing? (algedonic signals)
+mid-session, about how well the session is progressing? (algedonic signals).
 
-The VSM gives us all a principled way of thinking about AI & teams. It's a good way to hire too.
+This focuses attention on skills that are likely to lead to long term success. They say you should
+test candidates in what they'll actually doing in their job. The job is changing fast, it's hard to 
+see what even the next year will be like. But you can bet VSM-aligned thinking will still be relevant. 
 
 
 # Conclusion
@@ -148,3 +158,4 @@ It's systems all the way down.
  [agents]: _posts/2026-01-09-viable-systems.md
  [fm]: https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html
  [bof]: https://ia902300.us.archive.org/25/items/brain-of-the-firm-reclaimed-v-1/Brain%20of%20the%20Firm%20-%20Stafford%20Beer.pdf
+ [letta]: https://www.letta.com/
