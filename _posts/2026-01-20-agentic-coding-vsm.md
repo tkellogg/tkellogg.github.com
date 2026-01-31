@@ -7,6 +7,7 @@ categories:
  - LLMs
  - engineering
  - agents
+ - vsm
 image: https://cdn.pixabay.com/photo/2024/05/03/17/17/jazz-bar-8737486_1280.jpg
 # social_image: /images/bash-v-powershell.png
 is_draft: false

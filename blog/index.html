@@ -29,7 +29,11 @@ regenerate: true
           {% endif %}
         </p>
         <div class="post-content">
-          {{ post.content | truncatewords: 150 | markdownify }}
+          {% if post.summary %}
+            <p>{{ post.summary | strip_html | truncatewords: 150 }}</p>
+          {% else %}
+            <p>{{ post.excerpt | strip_html | truncatewords: 150 }}</p>
+          {% endif %}
         </div>
         <a href="{{ post.url }}" class="read-more">Read More</a>
       </article>
