@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How Emotional is Trump?"
-date: 2024-06-26
+date: 2024-06-26 15:00:00 +0000
 categories:
  - ai
  - llms
@@ -217,4 +217,3 @@ something more interesting? Let me know, I'd love to hear about it.
  [clap]: https://github.com/LAION-AI/CLAP
  [fossil]: https://www.fossil-social.com/
  [brandon]: https://apnews.com/article/lets-go-brandon-what-does-it-mean-republicans-joe-biden-ab13db212067928455a3dba07756a160
-

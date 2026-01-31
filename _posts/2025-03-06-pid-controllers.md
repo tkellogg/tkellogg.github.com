@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Multi-Agents Are Out, PID Controllers Are In"
-date: 2025-03-06
+date: 2025-03-06 15:00:00 +0000
 categories:
  - ai
  - llms

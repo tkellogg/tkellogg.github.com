@@ -8,7 +8,7 @@ layout: nil
  <link href="https://timkellogg.me/blog/atom.xml" rel="self"/>
  <link href="https://timkellogg.me/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://timkellogg.me/</id>
+ <id>https://timkellogg.me/</id>
  <author>
    <name>Tim Kellogg</name>
    <email>timothy.kellogg@gmail.com</email>
@@ -19,15 +19,15 @@ layout: nil
  {% unless post.is_draft %}
  <entry>
    <title>{{ post.title | xml_escape }}</title>
-   <link href="http://timkellogg.me{{ post.url }}"/>
+   <link href="https://timkellogg.me{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://timkellogg.me{{ post.id }}</id>
+   <id>https://timkellogg.me{{ post.id }}</id>
    {% if post.summary %}
-   <summary>{{ post.summary | strip_html | xml_escape }}</summary>
+   <summary type="text">{{ post.summary | strip_html | xml_escape }}</summary>
    {% else %}
-   <summary>{{ post.excerpt | strip_html | xml_escape }}</summary>
+   <summary type="text">{{ post.excerpt | strip_html | xml_escape }}</summary>
    {% endif %}
-   <content type="html">{{ post.content | xml_escape }}</content>
+   <content type="text">{{ post.content | strip_html | xml_escape }}</content>
  </entry>
  {% endunless %}
  {% endfor %}

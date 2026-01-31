@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Unreasonable Data Efficiency of LLMs"
-date: 2024-01-17
+date: 2024-01-17 15:00:00 +0000
 categories:
  - ai
  - llms
