@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Pixabay Image URL",
+  "version": "1.0",
+  "description": "Copy Pixabay CDN image URL to clipboard",
+  "content_scripts": [
+    {
+      "matches": ["*://pixabay.com/photos/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["clipboardWrite"]
+}
