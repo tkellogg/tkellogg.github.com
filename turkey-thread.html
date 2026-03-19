@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Attack Turkey — @kellogh</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface-raised: #222;
+    --border: #2a2a2a;
+    --text: #e8e6e3;
+    --text-muted: #888;
+    --accent: #6d5dfc;
+    --accent-dim: rgba(109, 93, 252, 0.15);
+    --danger: #e05555;
+    --warm: #d4a056;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25rem;
+  }
+  .header .subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .header .subtitle a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── Card groups ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Time gap dividers ── */
+  .time-gap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .time-gap::before,
+  .time-gap::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .time-gap .label {
+    white-space: nowrap;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+  }
+
+  /* ── Individual posts inside a card ── */
+  .post {
+    padding: 1.25rem 1.5rem;
+  }
+  .post + .post {
+    border-top: 1px solid var(--border);
+  }
+
+  /* Thread line connecting posts inside a card */
+  .post {
+    position: relative;
+  }
+  .card .post:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 2.1rem;
+    bottom: 0;
+    width: 2px;
+    height: 8px;
+    background: var(--border);
+    transform: translateY(100%);
+    z-index: 1;
+  }
+
+  /* ── Post meta ── */
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .post-meta .author {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .post-meta .handle {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  .post-meta .date {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .post-meta .date a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .post-meta .date a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Post content ── */
+  .post-content {
+    font-size: 0.95rem;
+  }
+  .post-content p {
+    margin-bottom: 0.6em;
+  }
+  .post-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Title-style first lines */
+  .post-content .post-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--warm);
+    display: block;
+    margin-bottom: 0.3em;
+  }
+  .post-content .post-title.danger {
+    color: var(--danger);
+  }
+
+  /* ── Media ── */
+  .post-media {
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .post-media img {
+    width: 100%;
+    display: block;
+  }
+  .post-media video {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+  }
+
+  /* ── Standalone post (not in a card group) ── */
+  .standalone {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--accent);
+  }
+
+  /* ── Reply from others ── */
+  .reply-other {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.7;
+  }
+  .reply-other:hover { opacity: 1; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Responsive ── */
+  @media (max-width: 480px) {
+    .page { padding: 1.5rem 1rem 4rem; }
+    .header h1 { font-size: 1.5rem; }
+    .post { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>The Attack Turkey</h1>
+    <p class="subtitle">A thread by <a href="https://hachyderm.io/@kellogh">@kellogh@hachyderm.io</a></p>
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- CHAPTER 1 — April 4, 2024: First Encounter -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="card">
+
+    <div class="post">
+      <div class="post-meta">
+        <img class="avatar" src="https://media.hachyderm.io/accounts/avatars/109/328/234/708/858/533/original/50d6c6d710cd90c5.jpg" alt="Tim Kellogg">
+        <div>
+          <div class="author">Tim Kellogg</div>
+          <div class="handle">@kellogh</div>
+        </div>
+        <div class="date"><a href="https://hachyderm.io/@kellogh/112213116367373553">Apr 4, 2024</a></div>
+      </div>
+      <div class="post-content">
+        <span class="post-title">The Attack Turkey</span>
+        <p>this morning on the run i got to the top of the hill and was resting, bc i'm out of shape, and off in the distance i see a bird trotting my way</p>
+        <p>as it gets closer i realize it's a turkey. it had a big red gobbler and its neck was iridescent. It was actually really pretty, so i just watched as it approached</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>it kept coming straight at me, eventually it was like 2-3 feet from me and my feeling shifted from awe to nervousness. i don't think turkeys are aggressive, but i also don't want to physically learn about a new aspect of nature today either, so i bolted</p>
+        <p>to my surprise, and anxiety, the bird chased after me. i sprinted across the hill, down and up a gully. It was still following me, but getting further behind, so i walked a bit, but it caught up, so i ran.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>Eventually, it came to the long downhill and i lost it for good because, as out of shape as i am, i can still run faster than a turkey downhill</p>
+        <p>unfortunately, i still had to come back. and it was waiting for me at the top of the hill. i picked up a long stick and kept it at a distance as i walked around it. as i sprinted downhill toward the creek, it followed me, but i think i lost it after the creek</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>part of me wonders if the owners of the new development at the top of the hill got a turkey to defend its land from intruders, my trail does thread some Posted signs. but that's crazy, right??</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>i've seen plenty of apex predators on the trail. bald eagles, black bears, moose, also rattlesnakes and copperheads. never have i been so scared as with that turkey. i can still feel the sudden shift from awe to terror as it got a bit too close.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>after i got home, i looked it up and yes, turkeys can indeed be aggressive, especially around breeding time (i got news for you, Mr Turkey, i'm not your competition)</p>
+        <p>if it happens again tomorrow, i think the answer is to be more overtly aggressive. so maybe i need to yell and chase it rather than just defensively tip toe around it. idk</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- GAP: One week later -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="time-gap"><span class="label">One week later</span></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- CHAPTER 2 — April 11, 2024: The Escalation -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="card">
+
+    <div class="post">
+      <div class="post-meta">
+        <img class="avatar" src="https://media.hachyderm.io/accounts/avatars/109/328/234/708/858/533/original/50d6c6d710cd90c5.jpg" alt="Tim Kellogg">
+        <div>
+          <div class="author">Tim Kellogg</div>
+          <div class="handle">@kellogh</div>
+        </div>
+        <div class="date"><a href="https://hachyderm.io/@kellogh/112252714824498813">Apr 11, 2024</a></div>
+      </div>
+      <div class="post-content">
+        <span class="post-title">Turkey Update</span>
+        <p>yesterday i went running again, same place. said turkey was WAITING FOR ME at the bottom of the hill.</p>
+        <p>i'm like "f this" and turned to run away but it followed me, again.</p>
+        <p>i started yelling at it with my best Will Ramos <a href="https://hachyderm.io/tags/metal">#metal</a> screams but it did not flinch</p>
+        <p>i picked up a stick and swung hard it close to it's head, hoping that would scare it off. it was not scared off.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>i used the stick to poke at it, nudge it out of my way, but it circled around to close off my exit path.</p>
+        <p>i panicked a bit (can you really blame me?), so this time I swung the stick as hard as i could, aiming at it's neck right below the head.</p>
+        <p>this time it cluck cluck clucked away in sorrow and surprise. i didn't chase it, i just figured that was enough exercise for the day and went back home</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>this morning i called the wildlife commission to see what can be done. to be fully transparent, i want to kill that motherfucker, but the biologist there is doing a good job of talking me down</p>
+        <p>apparently, when i turned my back to run, i triggered an in-born instinct for it to chase me.</p>
+        <p>note to self: don't run from turkeys. back away slowly</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>the biologist also suggested that it's not a bad idea to carry a stick</p>
+        <p>so far i've been just picking up the nearest stick, but that's not gonna work. a lot of them are weak from rotting. i need to carry a strong one</p>
+        <p>time to go full Little John and cut an oak sapling quarter staff to beat this mf</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>a hunting and wildlife officer should be calling soon, updates later...</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <span class="post-title">Update</span>
+        <p>the wildlife officer called. he insists that killing it would make more problems than it's worth for me, because turkeys aren't known to attack people, so they would automatically suspect fowl play</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>i made like Little John (from the unabridged Robin Hood books, pls read them) and cut myself a fine quarter staff for fending off turkeys. probably slightly under a meter, and 1-1.5 cm width. it's green wood, American beech (not oak, sadly), so that turkey better be ready for me tomorrow</p>
+      </div>
+      <div class="post-media">
+        <img src="https://media.hachyderm.io/media_attachments/files/112/254/015/792/129/492/original/9df95398be926988.jpeg" alt="A handcrafted quarter staff made from American beech">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- GAP: Six days later -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="time-gap"><span class="label">Six days later</span></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- CHAPTER 3 — April 17, 2024: The Final Encounter -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="card">
+
+    <div class="post">
+      <div class="post-meta">
+        <img class="avatar" src="https://media.hachyderm.io/accounts/avatars/109/328/234/708/858/533/original/50d6c6d710cd90c5.jpg" alt="Tim Kellogg">
+        <div>
+          <div class="author">Tim Kellogg</div>
+          <div class="handle">@kellogh</div>
+        </div>
+        <div class="date"><a href="https://hachyderm.io/@kellogh/112287342574889016">Apr 17, 2024</a></div>
+      </div>
+      <div class="post-content">
+        <span class="post-title danger">Turkey Update: i killed it</span>
+        <p>for the last week i've been carrying a beefy stick, about a meter long. this is in response to a recommendation by the biologist at the wildlife resources services. The last several days i didn't see anything, but today was different.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>i got to the top of the hill and i saw a smaller turkey running away. i looked up the hill, in the direction it came from, and the other turkey amended its course directly at me once it figured i was there. As it got closer it fanned out its tail feathers to look big.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>using the advice from the biologist, i tried keeping it away using the length of the stick, but it evaded me. i gave it a warning swing, over its head, and this time it flinched. i guess turkeys aren't so dumb they can't learn. i noticed that it still had bruising on its neck from the last encounter, so i'm pretty sure this is the same one.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>i tried moving past it, to get on with my run, but it came at me aggressively, so i wound up, swung, and hit it on the neck. i aimed for about half to three quarters of full speed, i was aiming for deterrence, not death, but the bird dropped to the ground and struggled to get back up.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>i went around it to get on with my run. it saw me turn my back and got up and attempted to chase me, although this time its neck was fully broken so its head was hanging upside down next to the base of the neck. it didn't make it very far. i also didn't wait around.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>on the way back i verified that the bird was indeed dead. it's still and flies are nibbling already.</p>
+        <p>i called the wildlife foundation. Dispatch took the details and forwarded me to the same officer i had talked to last week. His official response was, "good job". he had a few more questions, he wanted to make sure it was far enough away from people so that he wouldn't get more calls. but yeah, fully supportive of killing wildlife in self defense.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>the emotional response is strange, just like the first time. the immediate reaction is justification. "i'm glad! i defended myself!". but it's a few hours later and a profound sense of sadness is hitting me. there's no thoughts or logic to it, just sad. idk, i guess i'll get over it, but i also wish it didn't have to end this way</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- GAP: Five and a half months later -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="time-gap"><span class="label">Five months later</span></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- Standalone: Turkey Stick -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="standalone">
+    <div class="post-meta">
+      <img class="avatar" src="https://media.hachyderm.io/accounts/avatars/109/328/234/708/858/533/original/50d6c6d710cd90c5.jpg" alt="Tim Kellogg">
+      <div>
+        <div class="author">Tim Kellogg</div>
+        <div class="handle">@kellogh</div>
+      </div>
+      <div class="date"><a href="https://hachyderm.io/@kellogh/113232445216522671">Oct 1, 2024</a></div>
+    </div>
+    <div class="post-content" style="margin-top: 0.75rem;">
+      <p>grabbing my turkey stick to go for a run, as we do these days</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- GAP: Three days later -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="time-gap"><span class="label">Three days later</span></div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- EPILOGUE — Oct 4, 2024: The Video -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="card">
+
+    <div class="post">
+      <div class="post-meta">
+        <img class="avatar" src="https://media.hachyderm.io/accounts/avatars/109/328/234/708/858/533/original/50d6c6d710cd90c5.jpg" alt="Tim Kellogg">
+        <div>
+          <div class="author">Tim Kellogg</div>
+          <div class="handle">@kellogh</div>
+        </div>
+        <div class="date"><a href="https://hachyderm.io/@kellogh/113250071590974986">Oct 4, 2024</a></div>
+      </div>
+      <div class="post-content">
+        <span class="post-title">Turkey Update: i have video</span>
+        <p>i ran into my neighbor in the woods (that's the only place i see this guy, we're forest friends) and he mentioned that new development.</p>
+        <p>i said, "i had the weirdest experience with a turkey over there" and he's like, "me too, i have video"</p>
+        <p>it's nuts how similar his experience was to mine.</p>
+      </div>
+      <div class="post-media">
+        <video controls preload="metadata" poster="https://media.hachyderm.io/media_attachments/files/113/250/070/637/845/463/small/060cda926d796029.png">
+          <source src="https://media.hachyderm.io/media_attachments/files/113/250/070/637/845/463/original/060cda926d796029.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-content">
+        <p>hunters, study his movements. watch as he charges the tom to trigger the aggression, then back away to lock it in. if you have a strong stick, the forest service will let you claim one this way without a tag</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Thread originally posted on <a href="https://hachyderm.io/@kellogh">Hachyderm</a> &middot; April&ndash;October 2024</p>
+  </div>
+
+</div>
+</body>
+</html>
