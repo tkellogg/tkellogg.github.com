@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Run Mythos Like a CEO"
+title: "Mythos Should Run Like a CEO"
 date: 2026-03-29
 categories:
  - ai
