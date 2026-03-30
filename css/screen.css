@@ -198,6 +198,11 @@ code {
   color: #000000;
 }
 
+a code {
+  color: inherit;
+  text-decoration: underline;
+}
+
 pre,
 .highlight {
   background: #f8fafc;
