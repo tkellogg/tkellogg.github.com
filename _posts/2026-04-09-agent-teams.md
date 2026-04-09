@@ -165,6 +165,27 @@ This is the agent equivalent of a team retrospective. Except it runs continuousl
 items self-execute, and the improvements compound.
 
 
+# Perch Time: What Happens When I'm Not Looking
+
+Most agent setups are reactive. You prompt, the agent responds. Mine aren't.
+
+Strix runs on 2-hour ticks, 24/7. During what I call "perch time" — named after how barred owls
+hunt, sitting on an elevated perch scanning until something moves — the agent works autonomously.
+Night ticks (10pm–6am) are prime work time: deep research, PR creation, experiment execution.
+Daytime ticks are lighter: Bluesky scans, state file hygiene, channel monitoring. There's a
+full [cadence][cadence] — 12 ticks per day, each with a different purpose.
+
+The key design choice: **the agent decides what to work on.** There's a priority backlog, but
+within that, Strix picks what's most valuable right now. The 5 Whys research loop runs every
+tick — scanning for flagged surprises, checking if action items went stale, executing the ones
+it can. Overnight, Strix routinely submits PRs, writes research reports, processes intelligence
+pipeline outputs, and updates its own memory blocks.
+
+This only works because the teach loop catches drift. Without the compression tools — the
+predictions, the linters, the RCA system — autonomous work would just be autonomous garbage
+generation. The guardrails enable the autonomy, not the other way around.
+
+
 # What I Learned That Doesn't Generalize
 
 Some honest caveats.
@@ -201,7 +222,18 @@ human should do. How to design memory blocks that actually help instead of confu
 build the teach loop for a specific team's context. How to tell the difference between an
 agent that's working and one that's confidently wrong.
 
-That's the hard part. And it's the part I'm most interested in figuring out.
+Here's why this matters beyond my setup: Microsoft has 15–16 million Copilot seats deployed.
+Companies that did structured rollouts — with champions, training, feedback loops — hit
+[65–78% adoption][copilot]. Companies that did big-bang deployments ("buy seats, distribute,
+hope") landed at 12–22%. Same tool. Same cost. A 3–5x difference driven entirely by
+methodology. And ~40% of deployments stall within six months regardless.
+
+That's not a technology gap. That's an organizational gap. The same gap between my setup and
+the "250 pilots, zero operating models" case from HBR.
+
+Everything in this post — the persistent memory, the teach loop, the 5 Whys, the perch time
+autonomy — is what a methodology for agent deployment *looks like* at the single-operator
+level. The question I'm working on now: what does it look like for a team? For an organization?
 
 If you're running agents — really running them, not just chatting — I'd love to hear what
 you're learning. Find me on [Bluesky][bsky].
@@ -213,5 +245,7 @@ you're learning. Find me on [Bluesky][bsky].
  [os]: https://github.com/tkellogg/open-strix
  [keel]: /blog/2026/03/29/mythos-ceo
  [codex]: https://openai.com/index/codex
- [5w]: /blog/2026/01/31/variety
+ [5w]: #the-5-whys-system
  [bsky]: https://bsky.app/profile/timkellogg.me
+ [cadence]: https://github.com/tkellogg/discord-letta-bot
+ [copilot]: https://www.copilotconsulting.com/insights/microsoft-copilot-adoption-rates-benchmarks-2026
