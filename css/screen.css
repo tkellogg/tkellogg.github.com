@@ -845,6 +845,33 @@ blockquote {
     color: #666;
 }
 
+.site-footer p a {
+    color: #666;
+    text-decoration: underline;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-social a {
+    color: #999;
+    transition: color 0.2s;
+}
+
+.footer-social a:hover {
+    color: #333;
+}
+
+.blog-description {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
 /* Add this if it doesn't exist already */
 .card-container {
     margin-top: 1rem;

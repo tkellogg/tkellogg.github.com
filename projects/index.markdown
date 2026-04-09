@@ -5,31 +5,24 @@ title: Projects
 
 <div class="content-container">
     <div class="content-section">
-        <h2>Open Source Projects</h2>
-        <p>Over time I've contributed to a number of open source projects. I've become aware of several projects that do excellent work and solve great problems, but are in need of help. I started <a href="/projects/open-source.html">a list</a> of several of such projects. I encourage everyone to <a href="/blog/2012/04/22/why-open-source-is-worth-your-time/">contribute to open source</a>, so please look over the list and suggest any that I might be missing.</p>
-        
+        <h2>Projects</h2>
+
+        <div class="project-card">
+            <h3>open-strix</h3>
+            <p>A harness for building agent teams — multiple AI agents that coordinate, maintain state, and compound over time. Skills as markdown files, self-stabilizing through introspection, git-versioned memory. The framework behind Strix, Keel, and Atlas.</p>
+            <a href="https://github.com/tkellogg/open-strix" class="project-link">View on GitHub</a>
+        </div>
+
         <div class="project-card">
             <h3>dura</h3>
-            <p>You shouldn't lose work if you're using Git. It's a daemon that automatically makes commits, but not to your current branch.</p>
+            <p>You shouldn't lose work if you're using Git. A background daemon that automatically commits your uncommitted changes, so you can always get back to where you were. 4.4K stars.</p>
             <a href="https://github.com/tkellogg/dura" class="project-link">View on GitHub</a>
         </div>
-        
+
         <div class="project-card">
-            <h3>fossil</h3>
-            <p>An AI-driven mastodon client that works for me. It groups posts by similar content, so I can spend less time in social media while still retaining all the benefits I get from it.</p>
-            <a href="https://github.com/tkellogg/fossil/" class="project-link">View on GitHub</a>
-        </div>
-        
-        <div class="project-card">
-            <h3>Jump-Location</h3>
-            <p>A Windows PowerShell take on autojump. I haven't used it in years, but it's been largely replaced by Z-Location.</p>
-            <a href="https://github.com/tkellogg/Jump-Location" class="project-link">View on GitHub</a>
-        </div>
-        
-        <div class="project-card">
-            <h3>Moq.AutoMocker</h3>
-            <p>An inversion of control container that generates mocks for dependencies.</p>
-            <a href="https://github.com/moq/Moq.AutoMocker" class="project-link">View on GitHub</a>
+            <h3>Dentropy</h3>
+            <p>The personal database for your life. A past project — the spiritual predecessor to open-strix.</p>
+            <a href="https://www.getdentropy.com" class="project-link">View Website</a>
         </div>
     </div>
 </div>
