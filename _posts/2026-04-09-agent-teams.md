@@ -8,7 +8,7 @@ categories:
  - engineering
  - agents
  - open-strix
-image: https://cdn.pixabay.com/photo/2018/09/27/09/22/artificial-intelligence-3706562_1280.jpg
+image: https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_1280.jpg
 is_draft: true
 use_mermaid: false
 ---
@@ -24,29 +24,25 @@ Fair warning: this is dense. It's the real setup, not the story version.
 
 I run five agents on a single $20/month VM (plus Claude API costs). Here's what they do:
 
-**[Strix][strix]** is the ambient one. Discord bot, runs 24/7. Handles my task management (I have
-ADHD — external memory is load-bearing), monitors Bluesky and GitHub, triages incoming work,
-and submits PRs to open-strix overnight. It's built on Claude Opus 4.6 via [Claude Agent SDK][sdk].
-Strix has something like 30K tokens of persistent memory loaded into every prompt — identity,
-patterns it's observed about my behavior, active predictions, a whole relationship graph. It
-doesn't start fresh each conversation. It *resumes*.
+**[Strix][strix]** is the ambient one. Discord bot, runs 24/7. Monitors Bluesky and GitHub,
+triages incoming work, submits PRs to open-strix overnight, runs an intelligence pipeline
+across 33+ sources. It's built on Claude Opus 4.6 via [Claude Agent SDK][sdk]. Strix has
+something like 30K tokens of persistent memory loaded into every prompt — identity, patterns
+it's observed about my behavior, active predictions, a whole relationship graph. It doesn't
+start fresh each conversation. It *resumes*.
 
-**[Keel][keel]** is my work agent. Same model, same harness ([open-strix][os]). Keel manages
-multiple workstreams concurrently using [Codex][codex]-style sessions — reviewing PRs, writing
-docs, triaging issues across repos, all at the same time. When I'm in meetings, Keel keeps
-things moving. It reads and writes Word and PowerPoint, so I use it as a sparring partner who
-I don't need to bring up to speed on enterprise context.
+**[Keel][keel]** is my work agent. Same model, same harness ([open-strix][os]). If Strix is
+ambient infrastructure, Keel is an executive assistant — except I'm not an executive, I'm an
+engineer who runs most of his work through Keel so that Keel knows everything I'm doing. Keel
+has access to a coding agent ([Codex][codex]), but open-strix itself is not a coding agent.
+This separation has a distinct advantage: Keel can manage many workstreams concurrently. While
+one Codex session is writing code, Keel is reviewing a PR from another session, writing docs
+for a third, and triaging issues across repos. I get both sides — the work and the review —
+done in one shot. Keel reads and writes Word and PowerPoint too, so I use it as a sparring
+partner who I don't need to bring up to speed on enterprise context.
 
-**Two SAE research agents** run independently on a separate VM. One hunts for which internal
-features in a 30-billion parameter model activate on legal boilerplate. The other tunes
-training hyperparameters. They don't coordinate. They don't need to — they're exploring
-different parts of the same space, and git commits are the interface. When one produces
-results, Keel has a poller that picks them up.
-
-**The intelligence pipeline** (S4) runs on Google Cloud Functions. 33+ sources — news, academic
-papers, Bluesky feeds, GitHub activity. It builds profiles of people and companies from
-public signals. Scout tier scrapes, Analyst tier synthesizes, Strix tier connects it to
-active work. Completely automated, runs on a 6-hour cycle.
+**Three hill climbers** work on a machine learning system that requires multiple models to work
+well. I'll explain the architecture [below](#hill-climbers).
 
 All of this runs on [open-strix][os], which is what I open-sourced. Not a framework — a
 *harness*. The difference matters and I'll get to it.
@@ -165,6 +161,40 @@ This is the agent equivalent of a team retrospective. Except it runs continuousl
 items self-execute, and the improvements compound.
 
 
+# Hill Climbers
+
+This is the piece that isn't open-strix — but it's not really a stateless agent either.
+
+I have a machine learning system where the model has two distinct segments that need to work
+well together. The whole thing requires multiple models, and no single training run optimizes
+everything at once. So I split it into climbers.
+
+**Two climbers** work on different segments of the model. A **third** optimizes the labels — the
+ground truth that both climbers train against. Each climber operates independently but their
+results compound because they share the same evaluation framework.
+
+Each climber runs a **propose → run → eval** loop. The "propose" step is a full Codex session —
+the climber looks at the current state of its segment, decides what to try next, writes the code,
+and kicks off a training run. "Run" is the actual compute. "Eval" checks whether the metrics
+moved.
+
+Here's where it gets interesting: I incorporated the **5 Whys into the propose step**. Before
+proposing the next experiment, each climber does a retrospective of the last round. Why did this
+approach work or fail? Why was that metric the bottleneck? It uses [chainlink][chainlink] — the
+same database Strix uses for root cause analysis — to dedup the "whys" across rounds. So the
+climber doesn't re-derive the same insights. It builds on what it already learned.
+
+This means the climbers aren't just gradient-descending on metrics. They're building a causal
+model of what affects performance in their segment, and that model persists across proposal
+cycles. It's hill climbing with memory.
+
+The climbers don't use open-strix's memory blocks or Discord integration — they don't need them.
+But they share the 5 Whys decomposition and chainlink deduplication, which means the same
+"errors change the system permanently" property from the teach loop applies here too. A failed
+experiment doesn't just get discarded. It gets decomposed, and the decomposition informs the
+next proposal.
+
+
 # Perch Time: What Happens When I'm Not Looking
 
 Most agent setups are reactive. You prompt, the agent responds. Mine aren't.
@@ -201,11 +231,6 @@ for constrained tasks but fall apart with 30K tokens of persistent context and i
 like "push back on me when I'm wrong." The cost matters. This isn't a $20/month hobby if
 you're running Opus.
 
-**The ADHD thing isn't a gimmick.** External memory is genuinely load-bearing for me. Strix
-tracking my commitments, patterns, and active threads isn't a nice-to-have — it's the
-difference between dropping balls and not. Normal-brained people might not need this intensity
-of scaffolding.
-
 **Single operator is a different problem than organizational deployment.** I control the whole
 stack. I can change a memory block at 2am and see the effect immediately. An organization
 with 50 agents across 10 teams has coordination costs I don't face. That's the gap I wrote
@@ -231,9 +256,10 @@ methodology. And ~40% of deployments stall within six months regardless.
 That's not a technology gap. That's an organizational gap. The same gap between my setup and
 the "250 pilots, zero operating models" case from HBR.
 
-Everything in this post — the persistent memory, the teach loop, the 5 Whys, the perch time
-autonomy — is what a methodology for agent deployment *looks like* at the single-operator
-level. The question I'm working on now: what does it look like for a team? For an organization?
+Everything in this post — the persistent memory, the teach loop, the 5 Whys, the hill climbers,
+the perch time autonomy — is what a methodology for agent deployment *looks like* at the
+single-operator level. The question I'm working on now: what does it look like for a team?
+For an organization?
 
 If you're running agents — really running them, not just chatting — I'd love to hear what
 you're learning. Find me on [Bluesky][bsky].
@@ -249,3 +275,4 @@ you're learning. Find me on [Bluesky][bsky].
  [bsky]: https://bsky.app/profile/timkellogg.me
  [cadence]: https://github.com/tkellogg/discord-letta-bot
  [copilot]: https://www.copilotconsulting.com/insights/microsoft-copilot-adoption-rates-benchmarks-2026
+ [chainlink]: https://github.com/tkellogg/open-strix
