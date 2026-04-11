@@ -1,0 +1,809 @@
+---
+layout: default
+title: "Strait of Hormuz: Satire or Just the News?"
+summary: "A viral tweet listed dozens of 'BREAKING' updates about the Strait of Hormuz crisis. We fact-checked each one."
+---
+
+<style>
+  /* Full-bleed overrides so the dark component fills the viewport */
+  body { background-color: #0a0a0a !important; }
+  .site-content { padding-left: 0 !important; padding-right: 0 !important; padding-bottom: 0 !important; max-width: none !important; }
+  .site-content main { padding-top: 0 !important; }
+  .site-footer { background: #111 !important; border-top: 1px solid #222; }
+  .site-footer p, .site-footer p a { color: #555 !important; }
+  .footer-social a { color: #444 !important; }
+</style>
+
+<div id="hormuz-root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+{% raw %}
+<script type="text/babel">
+const { useState } = React;
+
+const SECTIONS = [
+  {
+    items: [
+      {
+        text: 'Iran says the strait is closed.',
+        verdict: 'true',
+        note: 'Iran officially confirmed the strait closed on March 2, 2026, threatening to set fire to any ship that entered.',
+        sources: [
+          { label: 'Wikipedia \u2013 2026 Strait of Hormuz crisis', url: 'https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis' },
+        ],
+      },
+      {
+        text: 'Trump says the strait is open.',
+        verdict: 'true',
+        note: 'Trump falsely claimed on March 9 that Iran\'s military had been destroyed and the strait had reopened. He repeated this on April 8 after the ceasefire.',
+        sources: [
+          { label: 'Wikipedia \u2013 2026 Strait of Hormuz crisis', url: 'https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis' },
+          { label: 'CNBC \u2013 Trump wants Hormuz open', url: 'https://www.cnbc.com/2026/04/08/trump-iran-ceasefire-strait-of-hormuz-toll.html' },
+        ],
+      },
+      {
+        text: 'Hegseth says the strait is open.',
+        verdict: 'true',
+        note: 'Hegseth said this repeatedly \u2014 March 13, March 31, April 8 \u2014 insisting the strait is "open" and military leaders "don\'t need to worry about it." This became a running theme.',
+        sources: [
+          { label: 'HuffPost \u2013 Hegseth claims Hormuz is open', url: 'https://www.huffpost.com/entry/hegseth-strait-of-hormuz-open_n_69b41587e4b09d87d026e796' },
+          { label: 'CNBC \u2013 Hegseth downplays risk', url: 'https://www.cnbc.com/2026/03/13/iran-war-strait-of-hormuz-hegseth.html' },
+          { label: 'USNI News \u2013 Merchant traffic minimal', url: 'https://news.usni.org/2026/03/31/hegseth-downplays-risk-of-sailing-through-strait-of-hormuz-as-merchant-traffic-sees-small-increase' },
+        ],
+      },
+      {
+        text: 'Bloomberg says 3 ships crossed.',
+        verdict: 'mostly-true',
+        note: 'The exact number varies by day \u2014 Bloomberg and others reported single-digit transits. On April 9, only 5 ships crossed; on April 10, seven. The "3" is in the right ballpark.',
+        sources: [
+          { label: 'Al Jazeera \u2013 Shipping at a standstill', url: 'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire' },
+          { label: 'Bloomberg \u2013 Ships paying Iran tolls', url: 'https://www.bloomberg.com/news/articles/2026-04-01/strait-of-hormuz-ships-paying-iran-yuan-and-crypto-tolls-for-safe-passage' },
+        ],
+      },
+      {
+        text: 'Iran says those 3 ships are Iranian.',
+        verdict: 'mostly-true',
+        note: 'Lloyd\'s List data showed the majority of traffic passing through was Iranian-linked vessels. Non-Iranian transits were only about 18-21% of the total.',
+        sources: [
+          { label: 'USNI News \u2013 Majority Iranian-linked', url: 'https://news.usni.org/2026/03/31/hegseth-downplays-risk-of-sailing-through-strait-of-hormuz-as-merchant-traffic-sees-small-increase' },
+        ],
+      },
+      {
+        text: 'Maersk says it needs clarity.',
+        verdict: 'true',
+        note: 'Maersk issued a statement saying "information and details available remain very limited and we are working with urgency to obtain further clarity." Almost verbatim.',
+        sources: [
+          { label: 'ABC7 \u2013 Maersk statement', url: 'https://abc7.com/live-updates/iran-war-strait-hormuz-ceasefire-trump-stock-market/18847792/entry/18855808/' },
+        ],
+      },
+      {
+        text: 'The strait is a philosophical concept at this point.',
+        verdict: 'joke',
+        note: 'Satirical, but perfectly captures the situation where the US says it\'s open, Iran says it\'s closed, and the UAE oil CEO had to post "let\'s be clear: the Strait of Hormuz is not open."',
+        sources: [],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'A fourth ship attempts to cross.',
+        verdict: 'joke',
+        note: 'No specific "fourth ship" incident. But ships have genuinely been turning around and abandoning crossings.',
+        sources: [],
+      },
+      {
+        text: 'The fourth ship turns around.',
+        verdict: 'joke',
+        note: 'Comic embellishment, though ships turning back is well-documented throughout the crisis.',
+        sources: [],
+      },
+      {
+        text: 'The fourth ship\'s captain says he "needed to think."',
+        verdict: 'joke',
+        note: 'Pure comedy. Though honestly, understandable.',
+        sources: [],
+      },
+      {
+        text: 'Insurance for the fourth ship is now $47M.',
+        verdict: 'mostly-true',
+        note: 'The specific number is a joke, but war risk insurance was pulled entirely for the strait, and some companies reportedly paid up to $200M per vessel in tolls. The economic risk is very real.',
+        sources: [
+          { label: 'The Hill \u2013 Trump condemns tolls', url: 'https://thehill.com/policy/international/5825224-donald-trump-iran-strait-of-hormuz-tolls/' },
+        ],
+      },
+      {
+        text: 'The fourth ship is still thinking.',
+        verdict: 'joke',
+        note: 'A mood.',
+        sources: [],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'Trump posts on Truth Social that Hormuz is "TOTALLY OPEN, BEAUTIFUL, LIKE YOU\'VE NEVER SEEN."',
+        verdict: 'mostly-true',
+        note: 'Satirized but barely. He actually posted about "Big money will be made," called the toll idea "a beautiful thing," and said the US would be "hangin\' around" to make sure everything goes well.',
+        sources: [
+          { label: 'CNBC \u2013 Trump Truth Social posts', url: 'https://www.cnbc.com/2026/04/08/trump-iran-ceasefire-strait-of-hormuz-toll.html' },
+          { label: 'Axios \u2013 Trump demands Iran stop tolls', url: 'https://www.axios.com/2026/04/09/iran-us-strait-of-hormuz-khamenei' },
+        ],
+      },
+      {
+        text: '800 ships remain trapped in the Gulf.',
+        verdict: 'mostly-true',
+        note: 'The actual number is 600+ vessels (including 325 tankers) per Lloyd\'s List, or ~2,000 ships per the IMO\'s broader count. 800 is in the range.',
+        sources: [
+          { label: 'Al Jazeera \u2013 600+ vessels stranded', url: 'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire' },
+          { label: 'UN News \u2013 2,000 ships stranded', url: 'https://news.un.org/en/story/2026/04/1167270' },
+        ],
+      },
+      {
+        text: 'Trump posts again that this is Biden\'s fault.',
+        verdict: 'joke',
+        note: 'No specific "Biden\'s fault" post found about Hormuz, but this is consistent with the general pattern. Satirical extrapolation.',
+        sources: [],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'Iran announces tolls of $2M per ship.',
+        verdict: 'true',
+        note: 'Iran charges ~$1 per barrel of oil. The largest tankers carry ~2 million barrels, so the toll reaches approximately $2 million per ship.',
+        sources: [
+          { label: 'TRM Labs \u2013 Iranian crypto tolls', url: 'https://www.trmlabs.com/resources/blog/iranian-crypto-tolls-in-strait-of-hormuz' },
+          { label: 'The Hill \u2013 Iran crypto toll', url: 'https://thehill.com/policy/energy-environment/5821752-iran-ship-toll-cryptocurrency-strait-hormuz/' },
+        ],
+      },
+      {
+        text: 'Iran announces tolls must be paid in crypto.',
+        verdict: 'true',
+        note: 'Iran\'s Oil Exporters Union spokesperson confirmed tolls must be paid in cryptocurrency, specifically mentioning bitcoin. Ships email cargo details and receive payment instructions.',
+        sources: [
+          { label: 'The Hill \u2013 Iran crypto toll', url: 'https://thehill.com/policy/energy-environment/5821752-iran-ship-toll-cryptocurrency-strait-hormuz/' },
+          { label: 'CoinDesk \u2013 Iran crypto tolls', url: 'https://www.coindesk.com/policy/2026/04/09/crypto-payments-to-pass-strait-of-hormuz-is-the-next-logical-step-for-iran-s-sanctions-skirting-trade-network' },
+        ],
+      },
+      {
+        text: 'Iran has not specified which crypto.',
+        verdict: 'mostly-true',
+        note: 'Initially no specific crypto was named. Later reports cited bitcoin, USDT, and yuan as accepted. Iran\'s own legislation referenced "digital currencies" without specifying.',
+        sources: [
+          { label: 'Fortune \u2013 What we know about crypto tolls', url: 'https://fortune.com/2026/04/10/iran-strait-of-hormuz-crypto-tolls-stablecoins-bitcoin-oil-tankers/' },
+          { label: 'Chainalysis \u2013 Iran crypto toll', url: 'https://www.chainalysis.com/blog/iran-strait-of-hormuz-crypto-toll/' },
+        ],
+      },
+      {
+        text: 'Someone on CT says it\'s XRP.',
+        verdict: 'joke',
+        note: 'Classic Crypto Twitter behavior. No evidence XRP was ever involved, but this is extremely plausible as something that would happen.',
+        sources: [],
+      },
+      {
+        text: 'XRP is up 34%.',
+        verdict: 'joke',
+        note: 'Satirical, but crypto markets did surge on the Hormuz toll news. Bitcoin and Solana both jumped.',
+        sources: [
+          { label: 'Yahoo Finance \u2013 Bitcoin, Solana surge', url: 'https://finance.yahoo.com/news/bitcoin-solana-surge-as-iran-looks-to-charge-tolls-for-strait-of-hormuz-passage-to-be-paid-in-crypto-142009952.html' },
+        ],
+      },
+      {
+        text: 'It is not XRP.',
+        verdict: 'true',
+        note: 'Correct. It was bitcoin and/or USDT. It is never XRP.',
+        sources: [],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'Russia and China veto the UN resolution on Hormuz.',
+        verdict: 'true',
+        note: 'On April 7, Russia and China blocked a UN Security Council resolution to protect commercial shipping in the strait. 11 voted in favor, 2 vetoed, 2 abstained.',
+        sources: [
+          { label: 'Wikipedia \u2013 Strait of Hormuz', url: 'https://en.wikipedia.org/wiki/Strait_of_Hormuz' },
+        ],
+      },
+      {
+        text: 'Russia proposes an alternative resolution.',
+        verdict: 'joke',
+        note: 'No specific alternative resolution found, but this is standard UN Security Council behavior. Extremely plausible.',
+        sources: [],
+      },
+      {
+        text: 'The alternative resolution does not mention Hormuz.',
+        verdict: 'joke',
+        note: 'Classic satirical UN gag. Peak realism though.',
+        sources: [],
+      },
+      {
+        text: 'Nobody is surprised.',
+        verdict: 'true',
+        note: 'Honestly, factual.',
+        sources: [],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'Israel bombs Lebanon.',
+        verdict: 'true',
+        note: 'Israel launched major strikes on Lebanon on April 8, the same day the ceasefire took effect, including evacuation warnings in Tyre and Beirut\'s southern suburbs.',
+        sources: [
+          { label: 'ABC News \u2013 Israeli attack on Lebanon', url: 'https://abcnews.com/International/reopening-strait-hormuz-jeopardy-after-israeli-attack-lebanon/story?id=131846094' },
+        ],
+      },
+      {
+        text: 'Iran says this violates the ceasefire.',
+        verdict: 'true',
+        note: 'Iran\'s foreign minister accused the US of not honoring the deal, warning it must choose between ceasefire or "continued war" via its ally Israel.',
+        sources: [
+          { label: 'Al Jazeera \u2013 Shipping standstill', url: 'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire' },
+        ],
+      },
+      {
+        text: 'Trump says the ceasefire does not cover Lebanon.',
+        verdict: 'true',
+        note: 'Both Trump and Netanyahu stated the ceasefire did not include Lebanon, a claim disputed by Iran and mediator Pakistan.',
+        sources: [
+          { label: 'Euronews \u2013 Iran closes strait', url: 'https://www.euronews.com/2026/04/08/iran-closes-strait-of-hormuz-in-response-to-israeli-strikes-on-lebanon-state-media-say' },
+        ],
+      },
+      {
+        text: 'Netanyahu says the ceasefire does not cover anything Netanyahu is currently doing.',
+        verdict: 'mostly-true',
+        note: 'Satirized, but his actual position \u2014 that the ceasefire doesn\'t apply to Lebanon where Israel is actively bombing \u2014 is functionally identical to this joke.',
+        sources: [
+          { label: 'ABC News \u2013 Netanyahu on Lebanon', url: 'https://abcnews.com/International/reopening-strait-hormuz-jeopardy-after-israeli-attack-lebanon/story?id=131846094' },
+        ],
+      },
+      {
+        text: 'Ceasefire is now 11 hours old.',
+        verdict: 'mostly-true',
+        note: 'The ceasefire was announced Tuesday night; Iran re-closed the strait on Wednesday. The timeline is roughly correct.',
+        sources: [
+          { label: 'Scripps News \u2013 Iran closes strait', url: 'https://www.scrippsnews.com/us-news/iran-war/strait-of-hormuz-reopens-but-us-remains-ready-for-combat' },
+        ],
+      },
+      {
+        text: 'Iran closes Hormuz again.',
+        verdict: 'true',
+        note: 'Iran re-closed the strait less than 24 hours after the ceasefire, citing Israeli violations in Lebanon.',
+        sources: [
+          { label: 'Fortune \u2013 Iran closes strait', url: 'https://fortune.com/2026/04/09/iran-closes-strait-hormuz-ceasefire-fragile-israel-bombing-lebanon/' },
+        ],
+      },
+      {
+        text: 'Hegseth says the strait is open.',
+        verdict: 'true',
+        note: 'Yes. Again. On April 8, at a Pentagon briefing, even as Iran was re-closing it. This is not satire, this is a pattern.',
+        sources: [
+          { label: 'ABC News \u2013 Hegseth says strait is open', url: 'https://abcnews.com/International/reopening-strait-hormuz-jeopardy-after-israeli-attack-lebanon/story?id=131846094' },
+        ],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'Trump floats joint US-Iran toll venture to manage the strait.',
+        verdict: 'true',
+        note: 'Direct quote: "We\'re thinking of doing it as a joint venture. It\'s a way of securing it \u2014 also securing it from lots of other people. It\'s a beautiful thing."',
+        sources: [
+          { label: 'The Hill \u2013 Trump joint venture', url: 'https://thehill.com/policy/international/5821343-trump-us-iran-ceasefire-deal-joint-venture-strait-of-hormuz/' },
+        ],
+      },
+      {
+        text: 'The White House clarifies Trump was "just thinking out loud."',
+        verdict: 'mostly-true',
+        note: 'No exact "thinking out loud" quote, but the White House walked it back within 24 hours \u2014 Leavitt said the strait must open "without limitation, including tolls," and Trump himself reversed course the next day.',
+        sources: [
+          { label: 'WegotThisCovered \u2013 Trump reversal', url: 'https://wegotthiscovered.com/news/trump-called-the-strait-of-hormuz-toll-plan-a-beautiful-thing-and-floated-a-joint-venture-then-warned-iran-to-stop-charging-ships-24-hours-later/' },
+        ],
+      },
+      {
+        text: 'Iran says it will consider the proposal.',
+        verdict: 'joke',
+        note: 'No specific response to the joint venture idea found, though Iran has been open to toll negotiations generally.',
+        sources: [],
+      },
+      {
+        text: 'Trump says Iran\'s 10-point peace plan is "not good enough."',
+        verdict: 'true',
+        note: 'Trump called the Farsi version of Iran\'s plan "fraudulent" when it emerged that Iran would continue enriching uranium.',
+        sources: [
+          { label: 'Fortune \u2013 Iran closes strait', url: 'https://fortune.com/2026/04/09/iran-closes-strait-hormuz-ceasefire-fragile-israel-bombing-lebanon/' },
+        ],
+      },
+      {
+        text: 'Trump says it is "a workable basis."',
+        verdict: 'true',
+        note: 'Trump initially called Iran\'s proposal "workable" before reversing. Both characterizations are documented.',
+        sources: [
+          { label: 'Fortune \u2013 Iran closes strait', url: 'https://fortune.com/2026/04/09/iran-closes-strait-hormuz-ceasefire-fragile-israel-bombing-lebanon/' },
+        ],
+      },
+      {
+        text: 'Both statements were made within the same hour.',
+        verdict: 'mostly-true',
+        note: 'The exact timing is compressed for comedic effect, but both statements were made in extremely close proximity. This is the Trump pattern.',
+        sources: [],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: '20,000 seafarers are still trapped on ships inside the Gulf.',
+        verdict: 'true',
+        note: 'The IMO confirmed approximately 20,000 seafarers are stranded aboard vessels in the Persian Gulf.',
+        sources: [
+          { label: 'Axios \u2013 Strait remains closed', url: 'https://www.axios.com/2026/04/09/iran-us-strait-of-hormuz-khamenei' },
+          { label: 'UN News \u2013 Ceasefire and Hormuz', url: 'https://news.un.org/en/story/2026/04/1167270' },
+        ],
+      },
+      {
+        text: 'The IMO says the priority is evacuation.',
+        verdict: 'true',
+        note: 'IMO\'s Director of Maritime Safety said: "The priority now is to ensure the safety of navigation to guarantee an evacuation."',
+        sources: [
+          { label: 'UN News \u2013 IMO on evacuation', url: 'https://news.un.org/en/story/2026/04/1167270' },
+        ],
+      },
+      {
+        text: 'Iran says passage requires "coordination with armed forces."',
+        verdict: 'true',
+        note: 'Iran\'s ceasefire statement said "safe passage through the Strait of Hormuz will be possible via coordination with Iran\'s Armed Forces."',
+        sources: [
+          { label: 'ABC News \u2013 Iran ceasefire terms', url: 'https://abcnews.com/International/reopening-strait-hormuz-jeopardy-after-israeli-attack-lebanon/story?id=131846094' },
+        ],
+      },
+      {
+        text: 'Nobody has coordinated with the armed forces.',
+        verdict: 'true',
+        note: 'Ship traffic remains in single digits. Maritime analysts confirmed "uncertainty and anxiety" with virtually no coordination happening.',
+        sources: [
+          { label: 'Al Jazeera \u2013 Shipping standstill', url: 'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire' },
+        ],
+      },
+      {
+        text: 'Hegseth says the strait is open.',
+        verdict: 'true',
+        note: 'At this point, it would be news if Hegseth said the strait was closed.',
+        sources: [
+          { label: 'Times of Israel \u2013 Hegseth says Hormuz open', url: 'https://www.timesofisrael.com/liveblog_entry/hegseth-says-hormuz-is-open-senior-iranian-official-says-tehan-will-open-strait-in-limited-manner-tomorrow-or-friday/' },
+        ],
+      },
+    ],
+  },
+  {
+    items: [
+      {
+        text: 'The strait remains closed.',
+        verdict: 'true',
+        note: 'As of April 11, the strait remains effectively closed with only single-digit daily transits, down from 100-120 before the war.',
+        sources: [
+          { label: 'CNBC \u2013 Strait not open, UAE says', url: 'https://www.cnbc.com/2026/04/09/iran-war-oil-strait-hormuz-tanker-ship-uae.html' },
+        ],
+      },
+      {
+        text: 'This is day 41.',
+        verdict: 'true',
+        note: 'The war started February 28. The tweet appears to be from around April 9-10, which is indeed approximately day 41.',
+        sources: [],
+      },
+      {
+        text: 'We will keep you updated.',
+        verdict: 'joke',
+        note: 'The only purely editorial line. God help us all.',
+        sources: [],
+      },
+    ],
+  },
+];
+
+const VERDICT_CONFIG = {
+  true: { label: "TRUE", bg: "rgba(220, 38, 38, 0.12)", border: "#dc2626", color: "#dc2626", icon: "\u26a0" },
+  "mostly-true": { label: "MOSTLY TRUE", bg: "rgba(234, 88, 12, 0.12)", border: "#ea580c", color: "#ea580c", icon: "\u25d0" },
+  joke: { label: "JOKE", bg: "rgba(99, 102, 241, 0.12)", border: "#6366f1", color: "#6366f1", icon: "\u2726" },
+};
+
+function BreakingItem({ item, index, globalIndex }) {
+  const [open, setOpen] = useState(false);
+  const v = VERDICT_CONFIG[item.verdict];
+  const delay = globalIndex * 30;
+
+  return (
+    <div
+      onClick={() => setOpen(!open)}
+      style={{
+        animation: `fadeSlideIn 0.4s ease ${delay}ms both`,
+        cursor: "pointer",
+        borderLeft: `3px solid ${open ? v.border : "#333"}`,
+        padding: "12px 16px",
+        marginBottom: "2px",
+        background: open ? v.bg : "transparent",
+        transition: "all 0.25s ease",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", justifyContent: "space-between" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <span
+            style={{
+              fontFamily: "'Courier Prime', 'Courier New', monospace",
+              fontSize: "10px",
+              fontWeight: 700,
+              letterSpacing: "1.5px",
+              color: "#ef4444",
+              marginRight: "8px",
+            }}
+          >
+            BREAKING:
+          </span>
+          <span
+            style={{
+              fontFamily: "'Source Serif 4', 'Georgia', serif",
+              fontSize: "15px",
+              color: "#e5e5e5",
+              lineHeight: 1.5,
+            }}
+          >
+            {item.text}
+          </span>
+        </div>
+        <div
+          style={{
+            flexShrink: 0,
+            fontSize: "9px",
+            fontFamily: "'Courier Prime', monospace",
+            fontWeight: 700,
+            letterSpacing: "1px",
+            color: v.color,
+            border: `1px solid ${v.border}`,
+            borderRadius: "2px",
+            padding: "2px 6px",
+            marginTop: "3px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {v.icon} {v.label}
+        </div>
+      </div>
+
+      {open && (
+        <div
+          style={{
+            marginTop: "10px",
+            paddingTop: "10px",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            animation: "fadeIn 0.2s ease",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "'Source Serif 4', Georgia, serif",
+              fontSize: "13px",
+              color: "#a3a3a3",
+              lineHeight: 1.6,
+              margin: 0,
+            }}
+          >
+            {item.note}
+          </p>
+          {item.sources.length > 0 && (
+            <div style={{ marginTop: "8px", display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              {item.sources.map((s, i) => (
+                <a
+                  key={i}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    fontSize: "10px",
+                    fontFamily: "'Courier Prime', monospace",
+                    color: "#737373",
+                    textDecoration: "none",
+                    border: "1px solid #333",
+                    borderRadius: "2px",
+                    padding: "2px 6px",
+                    transition: "all 0.15s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "#d4d4d4";
+                    e.target.style.borderColor = "#555";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "#737373";
+                    e.target.style.borderColor = "#333";
+                  }}
+                >
+                  \u2197 {s.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function HormuzFactCheck() {
+  const [filter, setFilter] = useState("all");
+
+  const counts = { true: 0, "mostly-true": 0, joke: 0 };
+  SECTIONS.forEach((s) => s.items.forEach((item) => counts[item.verdict]++));
+  const total = counts.true + counts["mostly-true"] + counts.joke;
+
+  let globalIndex = 0;
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#0a0a0a",
+        color: "#e5e5e5",
+        fontFamily: "'Source Serif 4', Georgia, serif",
+      }}
+    >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap');
+
+        @keyframes fadeSlideIn {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes tickerScroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+
+        #hormuz-root, #hormuz-root * { box-sizing: border-box; }
+        #hormuz-root ::-webkit-scrollbar { width: 6px; }
+        #hormuz-root ::-webkit-scrollbar-track { background: #0a0a0a; }
+        #hormuz-root ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+      `}</style>
+
+      {/* Ticker bar */}
+      <div
+        style={{
+          background: "#dc2626",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          padding: "5px 0",
+          position: "sticky",
+          top: "60px",
+          zIndex: 999,
+        }}
+      >
+        <div
+          style={{
+            display: "inline-block",
+            animation: "tickerScroll 30s linear infinite",
+            fontFamily: "'Courier Prime', monospace",
+            fontSize: "11px",
+            fontWeight: 700,
+            letterSpacing: "1px",
+            color: "#fff",
+          }}
+        >
+          {Array(3)
+            .fill(
+              "  \u25c6 STRAIT OF HORMUZ CRISIS \u2014 DAY 43  \u25c6 HEGSETH: STRAIT IS OPEN  \u25c6 IRAN: STRAIT IS CLOSED  \u25c6 20,000 SEAFARERS STRANDED  \u25c6 TOLLS: $2M/SHIP IN CRYPTO  \u25c6 SHIPS TRANSITING: ~7/DAY (WAS 120)  \u25c6 OIL: $96/BBL  \u25c6 CEASEFIRE STATUS: UNCLEAR  "
+            )
+            .join("")}
+        </div>
+      </div>
+
+      {/* Header */}
+      <div style={{ maxWidth: "680px", margin: "0 auto", padding: "32px 20px 0" }}>
+        <div style={{ marginBottom: "8px", display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              width: "8px",
+              height: "8px",
+              borderRadius: "50%",
+              background: "#dc2626",
+              animation: "pulse 2s ease infinite",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "'Courier Prime', monospace",
+              fontSize: "10px",
+              letterSpacing: "2px",
+              color: "#737373",
+              textTransform: "uppercase",
+            }}
+          >
+            Fact Check / Satire Analysis
+          </span>
+        </div>
+
+        <h1
+          style={{
+            fontFamily: "'Source Serif 4', Georgia, serif",
+            fontSize: "28px",
+            fontWeight: 700,
+            lineHeight: 1.2,
+            color: "#fff",
+            marginBottom: "8px",
+          }}
+        >
+          The Strait of Hormuz Tweet:
+          <br />
+          <span style={{ color: "#737373", fontStyle: "italic", fontWeight: 300 }}>
+            Satire or Just the News?
+          </span>
+        </h1>
+
+        <p
+          style={{
+            fontFamily: "'Source Serif 4', Georgia, serif",
+            fontSize: "14px",
+            color: "#737373",
+            lineHeight: 1.6,
+            marginBottom: "24px",
+          }}
+        >
+          A <a href="https://x.com/arrogance_0024/status/2042643613885124650" target="_blank" rel="noopener noreferrer" style={{color: "#8b8b8b", textDecoration: "underline", textUnderlineOffset: "2px"}}>viral tweet</a> listed dozens of "BREAKING" updates about the Strait of Hormuz crisis.
+          We checked each one. Tap any item to see the verdict and sources.
+        </p>
+
+        {/* Stats bar */}
+        <div
+          style={{
+            display: "flex",
+            gap: "1px",
+            marginBottom: "6px",
+            borderRadius: "3px",
+            overflow: "hidden",
+            height: "6px",
+          }}
+        >
+          <div style={{ flex: counts.true, background: "#dc2626" }} />
+          <div style={{ flex: counts["mostly-true"], background: "#ea580c" }} />
+          <div style={{ flex: counts.joke, background: "#6366f1" }} />
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "16px",
+            marginBottom: "20px",
+            fontFamily: "'Courier Prime', monospace",
+            fontSize: "11px",
+          }}
+        >
+          {Object.entries(VERDICT_CONFIG).map(([key, v]) => (
+            <button
+              key={key}
+              onClick={() => setFilter(filter === key ? "all" : key)}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                color: filter === "all" || filter === key ? v.color : "#555",
+                fontFamily: "inherit",
+                fontSize: "inherit",
+                padding: 0,
+                transition: "color 0.15s",
+                opacity: filter === "all" || filter === key ? 1 : 0.5,
+              }}
+            >
+              {v.icon} {counts[key]} {v.label}
+            </button>
+          ))}
+          {filter !== "all" && (
+            <button
+              onClick={() => setFilter("all")}
+              style={{
+                background: "none",
+                border: "1px solid #333",
+                borderRadius: "2px",
+                cursor: "pointer",
+                color: "#737373",
+                fontFamily: "inherit",
+                fontSize: "10px",
+                padding: "0 6px",
+              }}
+            >
+              CLEAR
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Items */}
+      <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 20px 60px" }}>
+        {SECTIONS.map((section, si) => {
+          const filteredItems = section.items.filter(
+            (item) => filter === "all" || item.verdict === filter
+          );
+          if (filteredItems.length === 0) return null;
+
+          return (
+            <div key={si}>
+              {si > 0 && (
+                <div
+                  style={{
+                    borderTop: "1px solid #1a1a1a",
+                    margin: "16px 0",
+                    position: "relative",
+                  }}
+                >
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "-8px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      background: "#0a0a0a",
+                      padding: "0 12px",
+                      fontFamily: "'Courier Prime', monospace",
+                      fontSize: "9px",
+                      color: "#333",
+                      letterSpacing: "2px",
+                    }}
+                  >
+                    {"\u25c6 \u25c6 \u25c6"}
+                  </span>
+                </div>
+              )}
+              {filteredItems.map((item) => {
+                const idx = globalIndex++;
+                return <BreakingItem key={`${si}-${item.text}`} item={item} globalIndex={idx} />;
+              })}
+            </div>
+          );
+        })}
+
+        {/* Footer */}
+        <div
+          style={{
+            marginTop: "40px",
+            padding: "20px 0",
+            borderTop: "1px solid #1a1a1a",
+            fontFamily: "'Courier Prime', monospace",
+            fontSize: "10px",
+            color: "#404040",
+            textAlign: "center",
+            lineHeight: 1.8,
+          }}
+        >
+          <div>FINAL TALLY: {counts.true + counts["mostly-true"]} OF {total} ITEMS GROUNDED IN REALITY</div>
+          <div style={{ color: "#555", marginTop: "4px" }}>
+            Sources: Wikipedia, Axios, CNBC, The Hill, Al Jazeera, Fortune,
+            <br />
+            ABC News, UN News, CoinDesk, Chainalysis, TRM Labs, USNI News
+          </div>
+          <div style={{ color: "#333", marginTop: "12px" }}>
+            "The strait is a philosophical concept at this point."
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('hormuz-root')).render(<HormuzFactCheck />);
+</script>
+{% endraw %}
