@@ -16,7 +16,7 @@ summary: "The answer to 'how do you keep agents busy?' isn't better prompts. It'
 Someone at work asked me this week how I keep my agents busy for long periods of time.
 
 It's a good question. Everyone running agents hits this. You set one up, it does the thing you
-asked, and then it stops. Or worse — it keeps going but starts doing **dumb things** because it
+asked, and then it stops. Or worse — it keeps going but starts doing **useless things** because it
 ran out of meaningful work and didn't know how to find more.
 
 The standard answer is "give it better prompts" or "give it more tools." But I've been running
@@ -47,11 +47,11 @@ When I first built my [hill climbers][climbers] — agents that optimize a machi
 system through propose-run-eval loops — I kept them narrow. [Karpathy-style][karpathy]: small
 search space, constrained parameters, tight guardrails.
 
-They kept getting stuck in **dumbass local minima**.
+They kept getting stuck in **local minima**.
 
 The instinct was right. Start constrained, don't let the agent go wild. But here's what was
 actually happening: by removing the agent's ability to explore, I'd also removed its ability
-to *contribute*. Lily put it well this week — **use AI for things that need intelligence**. I
+to *contribute*. [Lily][lily] put it well this week — **use AI for things that need intelligence**. I
 was using AI for things that needed a for-loop.
 
 So I expanded what the climbers could change. Gave them a wiki to read — and modify. Let them
@@ -59,14 +59,13 @@ adjust not just hyperparameters but architecture decisions, data preprocessing, 
 criteria.
 
 What happened: I'd restart a climber with a different base configuration and it would find its
-productive zone *much faster*. Not because I'd tuned it better, but because the wiki gave it
-institutional memory. The climber wasn't starting from scratch — it was starting from everything
-the previous runs had already figured out.
+productive zone *much faster*. The wiki gave it institutional memory. The climber wasn't
+starting from scratch — it was starting from everything the previous runs had already figured
+out.
 
-That's not just "more capability." It's the agent building its own internal model of what works
-and what doesn't, and using that model to steer itself. The theory calls this **requisite
-variety** — internal complexity matching external complexity. I call it "stop hobbling the thing
-and let it think."
+The agent is building its own internal model of what works and what doesn't, and using that
+model to steer itself. The theory calls this **requisite variety** — internal complexity
+matching external complexity. I call it "stop hobbling the thing and let it think."
 
 
 # Errors that create work
@@ -118,7 +117,7 @@ An issue tracker fixes this not by making the boring work interesting, but by ma
 **visible and authoritative**. There's a list. The list has statuses. The agent checks the
 list. It can't selectively forget because the list doesn't care about excitement.
 
-Lily — my [venture partner][venture] who does AI enablement at an enterprise scale — landed
+Lily — my [venture partner][lily] who does AI enablement at an enterprise scale — landed
 on exactly the same pattern independently using Asana. Different tool, same insight: the issue
 tracker is a **commitment device** that prevents drift.
 
@@ -130,8 +129,8 @@ Fix: I had it write a markdown file with empty checkboxes before starting. Task 
 check boxes as you go. Same agent, same task. It ran for **five hours straight** and actually
 finished. The checklist held the intent that the context window couldn't.
 
-That's not a better prompt. It's an external commitment device. Same reason a sticky note on
-your monitor works when a mental reminder doesn't.
+An external commitment device. Same reason a sticky note on your monitor works when a mental
+reminder doesn't.
 
 
 # What these have in common
@@ -181,4 +180,4 @@ stay productive.** Agents that wait for yours don't.
  [5w]: /blog/2026/04/09/agent-teams#the-5-whys-system
  [chainlink]: https://github.com/tkellogg/open-strix
  [codex]: https://openai.com/index/codex
- [venture]: https://substack.com/@timkellogg1
+ [lily]: https://appliedaiformops.substack.com
