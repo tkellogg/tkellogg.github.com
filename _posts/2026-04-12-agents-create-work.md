@@ -15,36 +15,32 @@ summary: "The answer to 'how do you keep agents busy?' isn't better prompts. It'
 
 Someone at work asked me this week how I keep my agents busy for long periods of time.
 
-It's a good question. Everyone running agents hits this. You set one up, it does the thing you
-asked, and then it stops. Or worse — it keeps going but starts doing **useless things** because it
-ran out of meaningful work and didn't know how to find more.
+Everyone running agents hits this. You set one up, it does the thing you asked, and then it
+stops. Or worse — it keeps going but starts doing useless things because it ran out of
+meaningful work and didn't know how to find more.
 
-The standard answer is "give it better prompts" or "give it more tools." But I've been running
-five agents continuously since December, and the ones that actually stay productive have
-something else going on entirely.
+In a [previous post][substack], I made a claim I didn't fully back up:
 
+> My gains compound because the work is connected — each thread feeds the others, and when
+> it goes wrong, I find out fast enough to fix it.
 
-# The theory says you need this. It doesn't say how.
+This post is the technical backing for that claim. Two threads run through it:
 
-[Stafford Beer's Viable System Model][vsm] — a cybernetics framework from the '70s for
-understanding how autonomous systems stay viable — has this concept of internal coordination.
-The function that decides what to work on, resolves conflicts between competing priorities,
-and allocates resources. Beer called it System 3. Every viable system needs it: thermostats,
-companies, organisms, agents.
+1. **What it takes to keep agents running** — the operational reality of agents that stop,
+   drift, forget, and plateau
+2. **The structural patterns underneath** — why three specific tools solve this, and what
+   they have in common
 
-For a thermostat, this is trivial. The temperature is either above or below the setpoint. Done.
-
-For an **unconstrained, fully autonomous AI agent**, it's really hard. Getting an agent to do
-something productive without constantly banging it over the head — wow, just like people.
-
-Beer tells you the function needs to exist. He doesn't tell you what it looks like when the
-agent is an LLM with a Discord bot and a cron schedule. I think I just figured out the tools.
+These threads aren't separate. By the end, they'll be the same thing. But first, the
+three tools — just enough to follow the argument.
 
 
-# Hill climbers: the propose-act-eval loop
+# The three tools
 
-A hill climber is an agent that optimizes a system through a tight loop: **propose** a change,
-**act** on it, **evaluate** the result, keep or revert. Repeat forever.
+## Hill climbers spiral through metrics
+
+A hill climber optimizes a system through a tight loop: **propose** a change, **act** on
+it, **evaluate** the result. Keep or revert. Repeat.
 
 ```mermaid
 graph LR
@@ -56,137 +52,84 @@ graph LR
     R --> P
 ```
 
-When I first built mine — optimizing a machine learning system for contract classification —
-I kept them [Karpathy-style][karpathy]: small search space, constrained parameters, tight
-guardrails. The agent could edit one training script. That's it.
+Two constraints make this work. First, the **eval is frozen** — the agent can modify code,
+configs, and a wiki of its own notes, but it cannot touch the script that judges its work.
+This is [Goodhart's Law][goodhart] prevention: the moment an agent can edit both the code
+and the metric, "improvement" becomes circular.
 
-They kept getting stuck in **local minima**. F1 would plateau at 0.25 and just oscillate.
+Second, the agent **rebuilds its context every iteration** from external storage — a frozen
+program, a sliding window of recent results, and the current state of its mutable files.
+No conversational history accumulates. This is what lets it run indefinitely without
+degrading. It includes a **wiki** — files the climber can read and write — that serves as
+institutional memory across context rebuilds.
 
-The instinct was right — start constrained, don't let the agent go wild. But by removing its
+## 5 Whys spirals through causation
+
+When something surprises an agent — a tool fails in a new way, a prediction was wrong,
+success happens and nobody knows why — it flags it. During autonomous work time, the agent
+decomposes the flag: why did this happen? Why did *that* happen? Each level is a narrower
+question than the last.
+
+```mermaid
+graph TD
+    S[Surprise / error / unexpected success] --> W1["Why? (surface)"]
+    W1 --> W2["Why? (mechanism)"]
+    W2 --> W3["Why? (assumption)"]
+    W3 --> W4["Why? (root cause)"]
+    W4 --> AI[Action items]
+    AI --> G[Guideline updates]
+    AI --> C[New checks]
+    AI --> H[Hypotheses to test]
+```
+
+The critical property: **the output is work**. Each decomposition produces action items —
+a wrong assumption becomes a guideline update, a recurring failure becomes a new check, a
+surprising success becomes a hypothesis to test. The analysis generates the next unit of
+productive work.
+
+## Chainlink spirals through relationships
+
+[Chainlink][chainlink] is a SQLite CLI that stores issues with **typed relations** between
+them — `blocks`, `caused-by`, `related-to`, `parent-of`.
+
+```mermaid
+graph LR
+    I1["Issue #12: F1 plateau"] -->|caused-by| I2["Issue #8: attention layer assumption"]
+    I2 -->|related-to| I3["Issue #15: Mamba discovery"]
+    I1 -->|blocks| I4["Issue #20: production deployment"]
+```
+
+This makes it a graph, not a queue. When one issue resolves, the related issues surface.
+When a root cause is identified, the `caused-by` chain shows everything it affects. The
+relational structure means the tracker doesn't just hold tasks — it holds the connections
+between them.
+
+
+# Compounding
+
+The [substack][substack] claimed the gains compound. Here's what that looks like
+operationally, and then structurally.
+
+---
+
+When I first built the hill climbers, I kept them [Karpathy-style][karpathy]: small search
+space, constrained parameters, tight guardrails. The agent could edit one training script.
+That's it.
+
+They kept getting stuck at F1 0.25, oscillating around the same local minimum. The
+instinct was right — start constrained, don't let the agent go wild. But by removing its
 ability to explore, I'd removed its ability to *contribute*. [Lily][lily] put it well this
-week — **use AI for things that need intelligence**. I was using AI for things that needed a
-for-loop.
+week — **use AI for things that need intelligence**. I was using AI for things that needed
+a for-loop.
 
-
-## How the loop actually works
-
-The climber is a headless subagent — no personality, no memory blocks, no conversation
-history. Just a goal, a set of files it can edit, and an eval script it can't touch.
-
-Each iteration:
-
-1. **Read current state** — the climber loads its program (frozen), the last N experiment
-   results (sliding window), and the current codebase (mutable)
-2. **Propose** — based on what it reads, it hypothesizes what to change. This is where
-   the LLM actually contributes — it reads failing cases and generates *targeted*
-   hypotheses, not random mutations
-3. **Act** — apply the change. One change at a time so you know what helped
-4. **Evaluate** — run the frozen eval script. Compare against the previous best
-5. **Keep or revert** — better? Keep the change. Worse? Roll it back. Either way, log
-   the result
+When I expanded the search space and gave the climber a wiki, two things happened. F1
+jumped to 0.38+ in 48 hours. And the climber started **directing its own exploration** —
+writing "attention layers plateauing, try Mamba" in the wiki and following its own lead
+next cycle. The supervising agent went from director to monitor.
 
 ```mermaid
 graph TD
-    subgraph "Each Iteration (fixed context budget)"
-        R[Read program.md + last N logs + current files] --> H[Hypothesize: what should change?]
-        H --> M[Modify one thing]
-        M --> T[Run frozen eval]
-        T --> C{Score improved?}
-        C -->|Yes| K[Keep change, log result]
-        C -->|No| V[Revert change, log result]
-    end
-    K --> R
-    V --> R
-```
-
-The critical constraint: **every iteration starts with roughly the same-sized context**.
-The climber doesn't accumulate conversational history. It reads its program, reads a
-*window* of recent results, reads the current state of the files, and proposes the next
-step. This is what lets it run indefinitely without degrading.
-
-You could try implementing this as a single long-running [Codex][codex] session that
-calls act→eval as a tool in a loop. But the session fills up. The context window becomes
-a graveyard of old experiments. The agent starts losing the thread of what it's doing —
-same problem you hit with any long-running LLM conversation.
-
-The fix is the same architectural move we use everywhere: **rebuild the context every
-time**. Don't accumulate — reload. Each iteration, the climber rebuilds its working
-context from external storage rather than relying on what's already in the conversation.
-
-
-## The context problem and the wiki
-
-This creates a new problem: if you throw away context every iteration, where does
-institutional knowledge live?
-
-The answer is a **wiki** — a set of files the climber can both read and modify. Not
-conversation history, not a growing log, but a curated knowledge base that the climber
-maintains as a side effect of its work.
-
-```mermaid
-graph TD
-    subgraph "Climber Memory (Three Layers)"
-        L1["Layer 1: program.md (frozen)
-        Goal, constraints, scope boundaries
-        The climber CANNOT edit this"]
-        L2["Layer 2: Codebase + eval (frozen eval, mutable code)
-        Training scripts, configs, wiki
-        The climber CAN edit code and wiki"]
-        L3["Layer 3: Experiment log (append-only)
-        Last N results as sliding window
-        Old results age out"]
-    end
-    L1 -.->|"sets boundaries"| L2
-    L2 -.->|"produces"| L3
-    L3 -.->|"informs next"| L2
-```
-
-Layer 1 is identity — what the climber is trying to do and what it can't touch. Layer 2
-is the mutable surface — code, configs, the wiki. Layer 3 is operational memory — a
-sliding window of what's been tried and what happened.
-
-The wiki lives in Layer 2. When the climber discovers that Mamba layers outperform
-attention layers for classification (which mine actually did), it writes that finding into
-the wiki. Next iteration — or next *restart* — the climber reads the wiki and starts from
-that knowledge instead of rediscovering it from scratch.
-
-This is why expanding what the climbers could change made them dramatically better. It
-wasn't just "more freedom." It was giving them a place to **store and retrieve what
-they'd learned** across the context boundary. The wiki is institutional memory that
-survives the context rebuild.
-
-And here's the part I didn't expect: the wiki changed the *relationship* between the
-climber and its supervisor.
-
-
-## From micromanagement to monitoring
-
-One constraint that's easy to miss: **the climber cannot edit its own eval script**. The
-eval is frozen. The program.md is frozen. The climber can only modify things in its
-designated mutable surface.
-
-This isn't paranoia — it's [Goodhart's Law][goodhart] prevention. The moment an agent can
-edit both the code AND the metric that judges the code, "improvement" becomes circular. The
-agent optimizes for rubric-gaming, not actual quality.
-
-The [Karpathy][karpathy] approach freezes everything except one file. That's maximally
-safe but hobbles the search. My approach: freeze the eval and the program, but give the
-climber a wide mutable surface (code, configs, wiki, preprocessing). Wide freedom to
-explore, hard boundary around the judge.
-
-Originally, I had a supervising agent that tightly managed the climber — watching trend
-lines, deciding when to expand scope, injecting strategy through git commits. The climber
-was a pure executor. Strategy lived one level up.
-
-Then I added the wiki, and the balance shifted. Once the climber could write down what
-it learned and read it back on the next iteration, it started **directing its own
-exploration**. It would note "attention layers plateauing, try Mamba" in the wiki and
-follow its own lead next cycle. The supervisor went from director to monitor — checking
-in on trend lines rather than deciding what to try next.
-
-```mermaid
-graph TD
-    subgraph "Before: Supervisor directs"
+    subgraph "Before: supervisor directs"
         S1[Supervisor decides strategy] -->|git commits| C1[Climber executes]
         C1 -->|results| S1
     end
@@ -194,145 +137,151 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "After: Climber self-directs via wiki"
-        C2[Climber reads wiki + results] --> P[Proposes own next experiment]
+    subgraph "After: climber self-directs via wiki"
+        C2[Climber reads wiki + results] --> P[Proposes own experiment]
         P --> A[Acts + evaluates]
-        A -->|learned something| W[Writes finding to wiki]
+        A -->|finding| W[Writes to wiki]
         W --> C2
-        S2[Supervisor monitors trends] -.->|intervenes only on plateau/stuck| C2
+        S2[Supervisor monitors trends] -.->|intervenes on plateau| C2
     end
 ```
 
-It turns out that **even agents shouldn't micromanage other agents**. The same principle
-from management theory — give people objectives and context, then get out of the way —
-applies when both the manager and the worker are AI. The wiki was the architectural move
-that made this possible: it gave the climber its own institutional memory, which gave it
-enough context to make its own strategic choices.
+Even agents shouldn't micromanage other agents. Same principle from management theory —
+give people objectives and context, then get out of the way. The wiki was the architectural
+move that made it possible: institutional memory that survives the context rebuild.
 
-The supervisor still matters. It still detects plateaus, kills stuck climbs, and
-occasionally expands scope. But the information flow reversed. Instead of the supervisor
-telling the climber what to try, the climber tells *itself* what to try based on its
-accumulated findings. The supervisor watches the trend line and only intervenes when the
-self-directed exploration stalls.
+---
 
-The result: I went from F1 0.19 to 0.38+ in 48 hours of automated climbing. The climber
-independently discovered that Mamba layers outperform attention layers for contract
-classification — something the humans hadn't thought to test. That discovery came from
-the climber's own wiki notes, not from a supervisor injecting the idea. The loop didn't
-just optimize. It **found things**.
+Now the structure underneath. All three tools share this property: **each cycle's output
+becomes the next cycle's input**. The hill climber's results feed its next hypothesis. A 5
+Whys decomposition produces action items that, when executed, produce new observations that
+trigger new decompositions. The issue tracker holds commitments that generate their own
+follow-up when resolved.
+
+This is the compounding the substack described — "each thread feeds the others" — made
+concrete. The feedback loops don't just maintain productivity. They *accelerate* it,
+because each iteration starts from a higher baseline than the last.
 
 
-# Errors that create work
+# Catching errors before they compound
 
-The hill climber story is satisfying but narrow. It only works when you can define a metric
-upfront. What about agents doing open-ended work — triaging issues, monitoring feeds, writing
-research, managing projects?
+The [substack][substack] claimed: "when it goes wrong, I find out fast enough to fix it."
+Here's the structure first, then what it looks like in practice.
 
-That's where [5 Whys][5w] comes in. And this one I didn't expect.
+---
 
-The standard use of 5 Whys is incident response. Something breaks, you ask "why" five times,
-you find the root cause. Postmortem. File it. Move on.
+The 5 Whys spiral has a **focusing property**. Each "why" is a narrower question than the
+last. By the third level, you're past the surface explanation ("the tool timed out") and
+into the assumptions underneath ("we assumed the API would always respond within 30
+seconds because it always had"). The structure itself prevents the most common failure mode
+of error analysis: stopping too early.
 
-I made my agents do it **continuously**. When something surprises the agent — a tool fails in
-a new way, a prediction was wrong, success happens and nobody knows why — it flags it. Later,
-during autonomous work time, the agent picks up those flags and decomposes them. Why did this
-happen? Why did *that* happen? Keep going until you hit a root assumption.
+And because 5 Whys is triggered by **surprise** rather than a checklist, it has a natural
+prioritization. The things that surface are, by definition, the things the agent's model of
+the world got wrong. You don't get spurious busywork because the trigger is "this was
+unexpected," not "this was on a list." It spends resources on high-impact work by its very
+nature.
 
-Here's the thing: **the output of 5 Whys is work**. Each decomposition produces action items.
-A wrong assumption becomes a guideline update. A recurring failure becomes a new check. A
-surprising success becomes a hypothesis to test. The analysis doesn't just explain what
-happened — it generates the next unit of productive work.
+The hill climber contributes a different structural guarantee. The frozen eval means the
+climber can't game its own metrics — it can explore freely within a wide mutable surface,
+but the judge is untouchable. This isn't just Goodhart prevention. It means **every
+improvement the climber reports is real** relative to the eval. When something goes wrong,
+the eval catches it immediately. No drift between "the agent thinks it's improving" and
+"it's actually improving."
 
-This means the agent never runs out of things to do. Not because I'm feeding it tasks, but
-because its own mistakes and surprises are creating them. The errors ARE the backlog. The agent
-is **manufacturing its own priorities** from the raw material of things that went wrong.
+---
 
-5 Whys also has a natural focusing property. The things that surface through surprise and
-failure are, by definition, the things that matter most. You don't get spurious busywork
-because the trigger is "this was unexpected," not "this was on a list." It spends resources
-on genuinely high-impact work by its very nature.
+Now the operational story. My agent flagged something surprising — a prediction about model
+behavior was wrong. The 5 Whys decomposition traced it through three levels to a wrong
+assumption about how attention layers handle legal boilerplate. That assumption was baked
+into the hill climber's program.
 
+The 5 Whys output became an update to the climber's instructions. **One tool's error
+analysis improved another tool's operating parameters.** This is the "each thread feeds the
+others" claim, substantiated: the 5 Whys system found a flaw that the hill climber couldn't
+find on its own (because it was in the frozen program, outside the climber's mutable
+surface), and the fix made the climber's subsequent exploration more productive.
 
-# The commitment device
-
-There's a third piece, and honestly it's the most embarrassing one because it's so simple.
-
-My agent Keel uses an issue tracker — a SQLite CLI called [chainlink][chainlink] — as its
-primary coordination mechanism. Two tight loops communicating through issues: propose work,
-track work, close work.
-
-My other agent, Strix? Way worse at this. Keeps dropping tasks it's not excited about.
-
-And here's where it gets personal: **agents forget tasks they're not excited about**. Sound
-familiar? If you've ever managed people — or have ADHD — you know this pattern intimately.
-The interesting work gets done. The boring-but-important work evaporates.
-
-An issue tracker fixes this not by making the boring work interesting, but by making it
-**visible and authoritative**. There's a list. The list has statuses. The agent checks the
-list. It can't selectively forget because the list doesn't care about excitement.
-
-Lily — my [venture partner][lily] who does AI enablement at an enterprise scale — landed
-on exactly the same pattern independently using Asana. Different tool, same insight: the issue
-tracker is a **commitment device** that prevents drift.
-
-Here's a concrete example that nails it: I sent [Codex][codex] (OpenAI's agent) a task big
-enough that it would need to run for hours. It quit early — GPT compacted its context and
-*forgot what it was supposed to be doing*. The agent literally lost its own thread.
-
-Fix: I had it write a markdown file with empty checkboxes before starting. Task out the work,
-check boxes as you go. Same agent, same task. It ran for **five hours straight** and actually
-finished. The checklist held the intent that the context window couldn't.
-
-An external commitment device. Same reason a sticky note on your monitor works when a mental
-reminder doesn't.
+The substack called these "guardrails." That's underselling it. Guardrails are passive —
+they catch you when you fall. These tools are **active** — they find errors, trace them to
+root causes, generate fixes, and feed those fixes back into the system. The error-catching
+isn't separate from the work. It IS work.
 
 
-# What these have in common
+# Holding the thread
 
-Three tools:
+The [substack][substack] called it "connective tissue — the compounding, the feedback
+loops, the guardrails." Here's what that connective tissue actually looks like.
 
-- **Hill climbers** generate their own next experiment from the results of the last one
-- **5 Whys** generates its own action items from errors and surprises
-- **Issue trackers** hold commitments that would otherwise evaporate
+---
 
-They all do the same thing: **create feedback loops that produce their own next task**. The
-agent doesn't need me to tell it what's important. The hill climber's metrics do. The 5 Whys
-decomposition does. The issue list does.
+My agent Strix drops tasks it's not excited about. Sound familiar? If you've managed people
+— or have ADHD — you know this pattern. The interesting work gets done. The
+boring-but-important work evaporates.
 
-This is what Beer's internal coordination function looks like for AI agents. It's not a
-single system. It's a property that emerges when your tools have **self-generating feedback
-loops**. The agent creates work, does work, and the doing creates more work.
+[Codex][codex] showed the same pattern in miniature. I sent it a task big enough to run for
+hours. It quit early — GPT compacted its context and *forgot what it was supposed to be
+doing*. The agent literally lost its own thread.
 
-"How do you keep your agents busy?" Stop keeping them busy. Give them tools that keep
-themselves busy.
+Fix: I had it write a markdown file with empty checkboxes before starting. Task out the
+work, check boxes as you go. Same agent, same task. It ran for **five hours straight** and
+actually finished. The checklist held the intent that the context window couldn't.
+
+Lily — my [venture partner][lily] who does AI enablement at enterprise scale — landed on
+the same pattern independently using Asana. Different tool, same insight: the issue tracker
+is a **commitment device** that prevents drift.
+
+---
+
+The structure underneath: Chainlink's typed relations are what turn a commitment device into
+connective tissue. A flat list holds tasks. A relational graph holds the **connections**
+between tasks — what blocks what, what caused what, what's related to what.
+
+When a 5 Whys decomposition produces three action items, those become chainlink issues with
+`caused-by` relations back to the root cause. When a hill climber discovery opens a new
+research direction, that becomes an issue with `related-to` links to existing work. The
+graph accumulates the structure of the project itself — not just what needs to be done, but
+why, and how it connects to everything else.
+
+This is the connective tissue. The substack described it abstractly — "the compounding, the
+feedback loops, the guardrails." Now you know what it's made of. It's a relational database
+of issues with typed edges, fed continuously by error analysis and experimental results,
+holding the intent that individual agent sessions can't.
 
 
-# The real constraint
+# The convergence
 
-I don't want to oversell this. Making these tools work required months of iteration. The 5
-Whys system went through multiple failures before it caught real issues instead of flagging
-noise. The hill climbers needed their wiki to stop rediscovering the same dead ends. The issue
-tracker only works if the agent actually checks it — and getting reliable tool-checking
-behavior out of an LLM is its own adventure.
+Two threads wound through this post. They arrive at the same place.
 
-The theory told me this function needed to exist. The tools took months to get right. But once
-they work, they're **self-sustaining** in a way that prompt engineering never is. A better
-prompt helps once. A feedback loop helps forever.
+**From operations:** agents stop when they run out of work, drift when they lose context,
+and plateau when they can't learn from their own results. These aren't prompt problems.
+They're structural problems — missing feedback loops, missing memory, missing commitment
+devices. The operational failures all point to the same gap.
 
-The harder question — the one I'm working on now — is whether these patterns transfer. I'm
-one person running five agents on a single VM. An organization with fifty agents across ten
-teams has coordination problems I don't face. The feedback loops that work for me might need
-different shapes at scale.
+**From structure:** all three tools — hill climbers, 5 Whys, chainlink — share one
+property. They generate their own next task. The climber's results produce the next
+hypothesis. The error analysis produces the next action item. The issue tracker's relations
+surface the next priority. This is what [Stafford Beer's][vsm] internal coordination
+function looks like for AI agents — not a single mechanism, but a property that emerges
+when your tools have self-generating feedback loops.
 
-But the underlying principle, I'm fairly sure, survives: **agents that create their own work
-stay productive.** Agents that wait for yours don't.
+The substack made a claim it couldn't prove:
+
+> My gains compound because the work is connected — each thread feeds the others, and when
+> it goes wrong, I find out fast enough to fix it.
+
+Now you know what the connections are. They're three feedback loops: **propose-act-eval**
+spiraling through metrics, **why-why-why** spiraling through causation,
+**relate-track-close** spiraling through relationships. The compounding is their defining
+property. And the answer to "how do you keep your agents busy?" is the same answer three
+different ways: **build structure that generates its own work, and the work keeps the
+agents running.**
 
 
  [goodhart]: https://en.wikipedia.org/wiki/Goodhart%27s_law
  [vsm]: /blog/2026/01/09/viable-systems
- [climbers]: /blog/2026/04/09/agent-teams#hill-climbers
  [karpathy]: https://x.com/karpathy/status/1886192184808149383
- [5w]: /blog/2026/04/09/agent-teams#the-5-whys-system
- [chainlink]: https://github.com/tkellogg/open-strix
+ [chainlink]: https://github.com/dollspace-gay/chainlink
  [codex]: https://openai.com/index/codex
  [lily]: https://appliedaiformops.substack.com
+ [substack]: /blog/2026/04/09/the-productivity-is-real
