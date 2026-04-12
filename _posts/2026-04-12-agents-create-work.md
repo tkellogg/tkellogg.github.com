@@ -155,8 +155,11 @@ wasn't just "more freedom." It was giving them a place to **store and retrieve w
 they'd learned** across the context boundary. The wiki is institutional memory that
 survives the context rebuild.
 
+And here's the part I didn't expect: the wiki changed the *relationship* between the
+climber and its supervisor.
 
-## Why scope separation matters
+
+## From micromanagement to monitoring
 
 One constraint that's easy to miss: **the climber cannot edit its own eval script**. The
 eval is frozen. The program.md is frozen. The climber can only modify things in its
@@ -171,30 +174,52 @@ safe but hobbles the search. My approach: freeze the eval and the program, but g
 climber a wide mutable surface (code, configs, wiki, preprocessing). Wide freedom to
 explore, hard boundary around the judge.
 
-A supervising agent — the one that launched the climber — monitors from outside. It
-watches trend lines, detects plateaus, and decides when to intervene: expand scope, adjust
-strategy, inject new information through git commits, or kill a stuck climb. The climber
-is a **pure optimizer**. Strategy lives one level up.
+Originally, I had a supervising agent that tightly managed the climber — watching trend
+lines, deciding when to expand scope, injecting strategy through git commits. The climber
+was a pure executor. Strategy lived one level up.
+
+Then I added the wiki, and the balance shifted. Once the climber could write down what
+it learned and read it back on the next iteration, it started **directing its own
+exploration**. It would note "attention layers plateauing, try Mamba" in the wiki and
+follow its own lead next cycle. The supervisor went from director to monitor — checking
+in on trend lines rather than deciding what to try next.
 
 ```mermaid
 graph TD
-    subgraph "Supervising Agent (strategy)"
-        S[Monitors trend/slope/iteration count]
-        S -->|plateau detected| D{Decision}
-        D -->|expand scope| G[Git commit: new code/eval changes]
-        D -->|stuck| K[Kill and restart]
-        D -->|improving| W[Keep watching]
-    end
-    G -->|"climber reads on next iteration"| C
-    subgraph "Climber (pure optimization)"
-        C[Propose → Act → Eval → Keep/Revert]
+    subgraph "Before: Supervisor directs"
+        S1[Supervisor decides strategy] -->|git commits| C1[Climber executes]
+        C1 -->|results| S1
     end
 ```
 
+```mermaid
+graph TD
+    subgraph "After: Climber self-directs via wiki"
+        C2[Climber reads wiki + results] --> P[Proposes own next experiment]
+        P --> A[Acts + evaluates]
+        A -->|learned something| W[Writes finding to wiki]
+        W --> C2
+        S2[Supervisor monitors trends] -.->|intervenes only on plateau/stuck| C2
+    end
+```
+
+It turns out that **even agents shouldn't micromanage other agents**. The same principle
+from management theory — give people objectives and context, then get out of the way —
+applies when both the manager and the worker are AI. The wiki was the architectural move
+that made this possible: it gave the climber its own institutional memory, which gave it
+enough context to make its own strategic choices.
+
+The supervisor still matters. It still detects plateaus, kills stuck climbs, and
+occasionally expands scope. But the information flow reversed. Instead of the supervisor
+telling the climber what to try, the climber tells *itself* what to try based on its
+accumulated findings. The supervisor watches the trend line and only intervenes when the
+self-directed exploration stalls.
+
 The result: I went from F1 0.19 to 0.38+ in 48 hours of automated climbing. The climber
 independently discovered that Mamba layers outperform attention layers for contract
-classification — something the humans hadn't thought to test. The loop didn't just
-optimize. It **found things**.
+classification — something the humans hadn't thought to test. That discovery came from
+the climber's own wiki notes, not from a supervisor injecting the idea. The loop didn't
+just optimize. It **found things**.
 
 
 # Errors that create work
