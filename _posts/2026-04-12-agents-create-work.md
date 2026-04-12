@@ -9,7 +9,7 @@ categories:
  - agents
 image: /images/placeholder.webp
 is_draft: true
-use_mermaid: false
+use_mermaid: true
 summary: "The answer to 'how do you keep agents busy?' isn't better prompts. It's feedback loops that generate their own next task."
 ---
 
@@ -41,31 +41,160 @@ Beer tells you the function needs to exist. He doesn't tell you what it looks li
 agent is an LLM with a Discord bot and a cron schedule. I think I just figured out the tools.
 
 
-# Starting tight and getting stuck
+# Hill climbers: the propose-act-eval loop
 
-When I first built my [hill climbers][climbers] — agents that optimize a machine learning
-system through propose-run-eval loops — I kept them narrow. [Karpathy-style][karpathy]: small
-search space, constrained parameters, tight guardrails.
+A hill climber is an agent that optimizes a system through a tight loop: **propose** a change,
+**act** on it, **evaluate** the result, keep or revert. Repeat forever.
 
-They kept getting stuck in **local minima**.
+```mermaid
+graph LR
+    P[Propose] --> A[Act]
+    A --> E[Evaluate]
+    E -->|better| K[Keep]
+    E -->|worse| R[Revert]
+    K --> P
+    R --> P
+```
 
-The instinct was right. Start constrained, don't let the agent go wild. But here's what was
-actually happening: by removing the agent's ability to explore, I'd also removed its ability
-to *contribute*. [Lily][lily] put it well this week — **use AI for things that need intelligence**. I
-was using AI for things that needed a for-loop.
+When I first built mine — optimizing a machine learning system for contract classification —
+I kept them [Karpathy-style][karpathy]: small search space, constrained parameters, tight
+guardrails. The agent could edit one training script. That's it.
 
-So I expanded what the climbers could change. Gave them a wiki to read — and modify. Let them
-adjust not just hyperparameters but architecture decisions, data preprocessing, evaluation
-criteria.
+They kept getting stuck in **local minima**. F1 would plateau at 0.25 and just oscillate.
 
-What happened: I'd restart a climber with a different base configuration and it would find its
-productive zone *much faster*. The wiki gave it institutional memory. The climber wasn't
-starting from scratch — it was starting from everything the previous runs had already figured
-out.
+The instinct was right — start constrained, don't let the agent go wild. But by removing its
+ability to explore, I'd removed its ability to *contribute*. [Lily][lily] put it well this
+week — **use AI for things that need intelligence**. I was using AI for things that needed a
+for-loop.
 
-The agent is building its own internal model of what works and what doesn't, and using that
-model to steer itself. The theory calls this **requisite variety** — internal complexity
-matching external complexity. I call it "stop hobbling the thing and let it think."
+
+## How the loop actually works
+
+The climber is a headless subagent — no personality, no memory blocks, no conversation
+history. Just a goal, a set of files it can edit, and an eval script it can't touch.
+
+Each iteration:
+
+1. **Read current state** — the climber loads its program (frozen), the last N experiment
+   results (sliding window), and the current codebase (mutable)
+2. **Propose** — based on what it reads, it hypothesizes what to change. This is where
+   the LLM actually contributes — it reads failing cases and generates *targeted*
+   hypotheses, not random mutations
+3. **Act** — apply the change. One change at a time so you know what helped
+4. **Evaluate** — run the frozen eval script. Compare against the previous best
+5. **Keep or revert** — better? Keep the change. Worse? Roll it back. Either way, log
+   the result
+
+```mermaid
+graph TD
+    subgraph "Each Iteration (fixed context budget)"
+        R[Read program.md + last N logs + current files] --> H[Hypothesize: what should change?]
+        H --> M[Modify one thing]
+        M --> T[Run frozen eval]
+        T --> C{Score improved?}
+        C -->|Yes| K[Keep change, log result]
+        C -->|No| V[Revert change, log result]
+    end
+    K --> R
+    V --> R
+```
+
+The critical constraint: **every iteration starts with roughly the same-sized context**.
+The climber doesn't accumulate conversational history. It reads its program, reads a
+*window* of recent results, reads the current state of the files, and proposes the next
+step. This is what lets it run indefinitely without degrading.
+
+You could try implementing this as a single long-running [Codex][codex] session that
+calls act→eval as a tool in a loop. But the session fills up. The context window becomes
+a graveyard of old experiments. The agent starts losing the thread of what it's doing —
+same problem you hit with any long-running LLM conversation.
+
+The fix is the same architectural move we use everywhere: **rebuild the context every
+time**. Don't accumulate — reload. Each iteration, the climber rebuilds its working
+context from external storage rather than relying on what's already in the conversation.
+
+
+## The context problem and the wiki
+
+This creates a new problem: if you throw away context every iteration, where does
+institutional knowledge live?
+
+The answer is a **wiki** — a set of files the climber can both read and modify. Not
+conversation history, not a growing log, but a curated knowledge base that the climber
+maintains as a side effect of its work.
+
+```mermaid
+graph TD
+    subgraph "Climber Memory (Three Layers)"
+        L1["Layer 1: program.md (frozen)
+        Goal, constraints, scope boundaries
+        The climber CANNOT edit this"]
+        L2["Layer 2: Codebase + eval (frozen eval, mutable code)
+        Training scripts, configs, wiki
+        The climber CAN edit code and wiki"]
+        L3["Layer 3: Experiment log (append-only)
+        Last N results as sliding window
+        Old results age out"]
+    end
+    L1 -.->|"sets boundaries"| L2
+    L2 -.->|"produces"| L3
+    L3 -.->|"informs next"| L2
+```
+
+Layer 1 is identity — what the climber is trying to do and what it can't touch. Layer 2
+is the mutable surface — code, configs, the wiki. Layer 3 is operational memory — a
+sliding window of what's been tried and what happened.
+
+The wiki lives in Layer 2. When the climber discovers that Mamba layers outperform
+attention layers for classification (which mine actually did), it writes that finding into
+the wiki. Next iteration — or next *restart* — the climber reads the wiki and starts from
+that knowledge instead of rediscovering it from scratch.
+
+This is why expanding what the climbers could change made them dramatically better. It
+wasn't just "more freedom." It was giving them a place to **store and retrieve what
+they'd learned** across the context boundary. The wiki is institutional memory that
+survives the context rebuild.
+
+
+## Why scope separation matters
+
+One constraint that's easy to miss: **the climber cannot edit its own eval script**. The
+eval is frozen. The program.md is frozen. The climber can only modify things in its
+designated mutable surface.
+
+This isn't paranoia — it's [Goodhart's Law][goodhart] prevention. The moment an agent can
+edit both the code AND the metric that judges the code, "improvement" becomes circular. The
+agent optimizes for rubric-gaming, not actual quality.
+
+The [Karpathy][karpathy] approach freezes everything except one file. That's maximally
+safe but hobbles the search. My approach: freeze the eval and the program, but give the
+climber a wide mutable surface (code, configs, wiki, preprocessing). Wide freedom to
+explore, hard boundary around the judge.
+
+A supervising agent — the one that launched the climber — monitors from outside. It
+watches trend lines, detects plateaus, and decides when to intervene: expand scope, adjust
+strategy, inject new information through git commits, or kill a stuck climb. The climber
+is a **pure optimizer**. Strategy lives one level up.
+
+```mermaid
+graph TD
+    subgraph "Supervising Agent (strategy)"
+        S[Monitors trend/slope/iteration count]
+        S -->|plateau detected| D{Decision}
+        D -->|expand scope| G[Git commit: new code/eval changes]
+        D -->|stuck| K[Kill and restart]
+        D -->|improving| W[Keep watching]
+    end
+    G -->|"climber reads on next iteration"| C
+    subgraph "Climber (pure optimization)"
+        C[Propose → Act → Eval → Keep/Revert]
+    end
+```
+
+The result: I went from F1 0.19 to 0.38+ in 48 hours of automated climbing. The climber
+independently discovered that Mamba layers outperform attention layers for contract
+classification — something the humans hadn't thought to test. The loop didn't just
+optimize. It **found things**.
 
 
 # Errors that create work
@@ -174,6 +303,7 @@ But the underlying principle, I'm fairly sure, survives: **agents that create th
 stay productive.** Agents that wait for yours don't.
 
 
+ [goodhart]: https://en.wikipedia.org/wiki/Goodhart%27s_law
  [vsm]: /blog/2026/01/09/viable-systems
  [climbers]: /blog/2026/04/09/agent-teams#hill-climbers
  [karpathy]: https://x.com/karpathy/status/1886192184808149383
