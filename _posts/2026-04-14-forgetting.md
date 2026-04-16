@@ -10,6 +10,7 @@ categories:
 image: /images/placeholder.webp
 is_draft: false
 use_mermaid: true
+summary: "Most agent frameworks optimize for recall. Open-strix optimizes for forgetting — and that turns out to be the whole trick."
 ---
 
 Today, [Lily][lily] asked me, _"what's the difference between [open-strix][os] and openclaw?"_ Great question. 
