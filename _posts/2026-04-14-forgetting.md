@@ -7,7 +7,7 @@ categories:
  - LLMs
  - engineering
  - agents
-image: /images/placeholder.webp
+image: /images/owl-perch-forest.webp
 is_draft: false
 use_mermaid: true
 ---
