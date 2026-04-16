@@ -39,8 +39,9 @@ Compaction is a fallback, and it's a really harsh one that's poorly fitted for l
 
 I wrote in depth about why [fallbacks are bad][cold], and it's kind of a subtle thing. But in this case, 
 when the conversation fills the context, you have an OutOfMemory-type error, and the *fallback* is to compact
-the context. It's terrible, because suddenly your agent randomly **becomes very dumb**, it loses 98-99% of 
-its memory and you have no control over how that happens.
+the context. It's terrible, because suddenly your agent randomly **becomes very dumb**, it loses 98-99% of
+its memory and you have no control over how that happens. Mid-conversation, it forgets your project
+context and asks you to re-explain what you're working on.
 
 
 <img src="/images/context-appending.svg"  style="max-width: 50%; width: 100%; min-width: 0;" />
@@ -72,15 +73,22 @@ It's easy for computers to remember everything, they've been doing it for decade
 /dev/null, so the trick is always to remember the **right amount**.
 
 Our brains have finite capacity to remember. But that super smart person seems to remember all the exact right
-things. Do they have a bigger brain capacity? No, they just [know what to remember][1973]. Smart people are able to 
+things. Do they have a bigger brain capacity? No, they just [know what to remember][1973]. Smart people are able to
 see the future and **predict what they'll need** to know. And then forget the rest.
 
+But "forget" is misleading. Open-strix doesn't delete anything — it just **doesn't promote**. The sliding window
+drops context that didn't earn its way into memory blocks. That's not amnesia, it's editorial judgment.
+"Forgetting" is the provocative word for "I only kept what changed my behavior."
 
-## Remembering (forgetting) is identity
+## What you forget defines you
 Framing it as intelligence is bland. We're all different. We have different interests and expertise. And all that
 influences what we remember. Me, an AI guy, I cluster toward AI algorithms, architectures, models, whatever. Back
 in high school it was punk & hardcore band trivia. Neither of these things make me *smarter*, they just make me
 **more me**. And the more I learn, the even more I become my new future self.
+
+Here's the tension: forgetting without having accumulated anything is just being empty. Remembering everything
+without forgetting is context collapse — the failure mode from the first section. The useful thing is the
+**selection pressure** — the constant question of what's worth keeping. That pressure is what creates identity.
 
 The benefit of a stateful agent like open-strix is it has a perspective.
 
@@ -90,9 +98,12 @@ Everything the
 LLM says is filtered through the personality and memories of the agent. The agent (LLM with memory) now has
 the wisdom and foresight to predict what will be important in the future.
 
-For example, in reviewing this blog post, stock Claude (with skills) gave me some light areas of improvement,
-and mostly green lighted it. Whereas Strix, the same exact model, gave me detailed feedback with big areas to
-improve and encouraged me not to post it yet.
+For example, in reviewing this blog post, stock Claude gave me some light areas of improvement, and mostly green
+lighted it. Strix, the same exact model, told me not to post it yet. The review was structurally different — not
+better grammar suggestions, but challenges to the *argument*. "This section is rushed, and I know because I've
+watched you build this system." A copy editor catches typos. A peer catches structural gaps. The difference isn't
+that Strix remembered more facts about me. It's that shared experience gave it **opinions about the subject
+matter**, not just pattern-matching on prose quality.
 
 Who the agent is determines who the agent becomes. That's still wild to me.
 
