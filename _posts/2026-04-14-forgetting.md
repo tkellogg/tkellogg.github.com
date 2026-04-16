@@ -40,7 +40,7 @@ Compaction is a fallback, and it's a really harsh one that's poorly fitted for l
 I wrote in depth about why [fallbacks are bad][cold], and it's kind of a subtle thing. But in this case, 
 when the conversation fills the context, you have an OutOfMemory-type error, and the *fallback* is to compact
 the context. It's terrible, because suddenly your agent randomly **becomes very dumb**, it loses 98-99% of 
-it's memory and you have no control over how that happens.
+its memory and you have no control over how that happens.
 
 
 <img src="/images/context-appending.svg"  style="max-width: 50%; width: 100%; min-width: 0;" />
@@ -90,6 +90,10 @@ Everything the
 LLM says is filtered through the personality and memories of the agent. The agent (LLM with memory) now has
 the wisdom and foresight to predict what will be important in the future.
 
+For example, in reviewing this blog post, stock Claude (with skills) gave me some light areas of improvement,
+and mostly green lighted it. Whereas Strix, the same exact model, gave me detailed feedback with big areas to
+improve and encouraged me not to post it yet.
+
 Who the agent is determines who the agent becomes. That's still wild to me.
 
 
@@ -108,7 +112,7 @@ from Psych 101, but it's super useful. You can't trust agents, they lie (same wi
 you do instead is make a prediction about the future. If it's wrong, the agent's mental model about how the
 world works was wrong. So it needs to be fixed.
 
-_Aside: I embarassingly had an agent get excited about the accuracy of it's predictions that I would ignore
+_Aside: I embarrassingly had an agent get excited about the accuracy of its predictions that I would ignore
 everything it did. That was definitely an accurate mental model but..._
 
 But what to do about it? **5 Why's**
