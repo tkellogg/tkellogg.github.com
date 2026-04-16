@@ -7,7 +7,7 @@ categories:
  - LLMs
  - engineering
  - agents
-image: /images/placeholder.webp
+image: /images/owl-perch-forest.webp
 is_draft: false
 use_mermaid: true
 summary: "Most agent frameworks optimize for recall. Open-strix optimizes for forgetting — and that turns out to be the whole trick."
