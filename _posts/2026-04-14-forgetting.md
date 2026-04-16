@@ -67,8 +67,6 @@ I'm at 10K-20K tokens per message. Strangely, doing it the expensive way is actu
 
 
 ## Intelligence is Forgetting
-_I know this is a hot take, get off my back already, okay? heh, hear me out._
-
 It's easy for computers to remember everything, they've been doing it for decades. Remembering nothing is just
 /dev/null, so the trick is always to remember the **right amount**.
 
@@ -86,8 +84,8 @@ influences what we remember. Me, an AI guy, I cluster toward AI algorithms, arch
 in high school it was punk & hardcore band trivia. Neither of these things make me *smarter*, they just make me
 **more me**. And the more I learn, the even more I become my new future self.
 
-Here's the tension: forgetting without having accumulated anything is just being empty. Remembering everything
-without forgetting is context collapse — the failure mode from the first section. The useful thing is the
+That's the thing, forgetting without having accumulated anything is just being empty. Remembering everything
+without forgetting is context collapse — too much information to navigate. The useful part is the
 **selection pressure** — the constant question of what's worth keeping. That pressure is what creates identity.
 
 The benefit of a stateful agent like open-strix is it has a perspective.
@@ -101,7 +99,7 @@ the wisdom and foresight to predict what will be important in the future.
 For example, in reviewing this blog post, stock Claude gave me some light areas of improvement, and mostly green
 lighted it. Strix, the same exact model, told me not to post it yet. The review was structurally different — not
 better grammar suggestions, but challenges to the *argument*. "This section is rushed, and I know because I've
-watched you build this system." A copy editor catches typos. A peer catches structural gaps. The difference isn't
+watched you build this system." The difference isn't
 that Strix remembered more facts about me. It's that shared experience gave it **opinions about the subject
 matter**, not just pattern-matching on prose quality.
 
