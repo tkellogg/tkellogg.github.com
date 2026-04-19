@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nitinol Tools — Kellogg's Research Labs</title>
+<meta name="description" content="Interactive explainers and calculators for nitinol — hysteresis, critical temperatures, alloy design, spring sizing, fatigue life, and the BFR test.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%239a2b03'/%3E%3Ctext x='12' y='17' font-family='Georgia' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --krl-red:#9a2b03;
+  --krl-red-dark:#7a1f00;
+  --krl-red-bright:#bf0c0c;
+  --krl-red-deep:#5a1800;
+  --krl-dark:#32373c;
+  --krl-charcoal:#424242;
+  --krl-ink:#1a1a1a;
+  --krl-body:#2a2a2a;
+  --krl-muted:#707070;
+  --krl-line:#d8d3ce;
+  --krl-line-soft:#ece8e2;
+  --krl-paper:#ffffff;
+  --krl-cream:#faf7f2;
+  --krl-soft:#f2ede5;
+  --font-sans:"Helvetica Neue","Arial",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-serif:"Georgia","Times New Roman",serif;
+  --font-mono:"Menlo","Consolas","Courier New",monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  font-size:15px;
+  line-height:1.55;
+  color:var(--krl-body);
+  background:var(--krl-cream);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--font-sans);color:var(--krl-ink);margin:0 0 .4em}
+h1{font-size:2.25rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+h2{font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0 0 .8em}
+a{color:var(--krl-red);text-decoration:none}
+a:hover{text-decoration:underline}
+hr{border:0;border-top:1px solid var(--krl-line);margin:2rem 0}
+
+/* ===== Top strip ===== */
+.topstrip{
+  background:var(--krl-dark);
+  color:#d8d3ce;
+  font-size:12px;
+  padding:6px 0;
+  border-bottom:2px solid var(--krl-red);
+}
+.topstrip .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.topstrip a{color:#f3efe9}
+.topstrip .phone{font-weight:600;letter-spacing:.02em}
+
+/* ===== Container ===== */
+.wrap{max-width:1080px;margin:0 auto;padding:0 1rem}
+
+/* ===== Header ===== */
+header.site{
+  background:var(--krl-paper);
+  border-bottom:1px solid var(--krl-line);
+  padding:1rem 0;
+  position:sticky;top:0;z-index:30;
+}
+header.site .wrap{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:.7rem;flex:0 0 auto}
+.logo-mark{
+  width:44px;height:44px;
+  background:var(--krl-red);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--font-serif);font-weight:700;font-size:24px;
+  border-radius:2px;
+  box-shadow:inset 0 -3px 0 var(--krl-red-deep);
+  line-height:1;
+}
+.logo-text{display:flex;flex-direction:column;line-height:1.05}
+.logo-text .main{
+  font-weight:800;font-size:15px;letter-spacing:.02em;color:var(--krl-ink);
+  text-transform:uppercase;
+}
+.logo-text .sub{
+  font-size:11px;color:var(--krl-red);
+  letter-spacing:.15em;text-transform:uppercase;font-weight:600;
+}
+nav.primary{margin-left:auto;display:flex;gap:.25rem;flex-wrap:wrap}
+nav.primary a{
+  color:var(--krl-charcoal);font-size:13px;font-weight:600;
+  padding:.5rem .7rem;border-radius:2px;text-transform:uppercase;letter-spacing:.04em;
+}
+nav.primary a:hover{background:var(--krl-soft);color:var(--krl-red);text-decoration:none}
+.mobile-toggle{
+  display:none;margin-left:auto;padding:.5rem .9rem;
+  background:var(--krl-dark);color:#fff;border:0;font-size:13px;
+  font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;
+}
+@media (max-width:820px){
+  nav.primary{display:none;width:100%;flex-direction:column;gap:0}
+  nav.primary.open{display:flex}
+  nav.primary a{border-bottom:1px solid var(--krl-line-soft);padding:.7rem .3rem;border-radius:0}
+  .mobile-toggle{display:block}
+}
+
+/* ===== Hero ===== */
+.hero{
+  background:
+    linear-gradient(180deg,var(--krl-paper) 0%,var(--krl-cream) 100%);
+  border-bottom:1px solid var(--krl-line);
+  padding:2.5rem 0 2rem;
+}
+.hero .kicker{
+  display:inline-block;font-size:11px;color:var(--krl-red);
+  letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  border-left:3px solid var(--krl-red);padding-left:.6rem;margin-bottom:.8rem;
+}
+.hero h1{font-family:var(--font-sans);color:var(--krl-ink)}
+.hero h1 .accent{color:var(--krl-red)}
+.hero .lede{
+  font-size:1.05rem;color:var(--krl-charcoal);max-width:62ch;margin-top:.6rem;
+}
+.hero .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
+.chip{
+  display:inline-block;padding:3px 10px;border-radius:2px;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  background:var(--krl-soft);color:var(--krl-red-dark);border:1px solid var(--krl-line);
+}
+
+/* ===== Sections ===== */
+.group-header{max-width:1080px;margin:0 auto;padding:2rem 1rem .5rem}
+.group-header .label{
+  font-size:11px;color:var(--krl-muted);font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+}
+.group-header h2{
+  font-family:var(--font-serif);font-weight:400;font-style:italic;
+  color:var(--krl-dark);font-size:1.1rem;margin:.1rem 0 0;
+}
+.group-header .rule{height:1px;background:var(--krl-line);margin-top:.6rem}
+
+section.tool{padding:1.3rem 0 1rem;scroll-margin-top:90px}
+section.tool > .wrap > .tool-head{
+  margin-bottom:1rem;
+}
+section.tool .tag{
+  font-size:10.5px;font-weight:700;color:var(--krl-red);
+  letter-spacing:.2em;text-transform:uppercase;
+}
+section.tool h2{margin-top:.1rem}
+section.tool .blurb{color:var(--krl-charcoal);max-width:70ch;font-size:.95rem}
+
+/* ===== Card ===== */
+.card{
+  background:var(--krl-paper);
+  border:1px solid var(--krl-line);
+  border-top:3px solid var(--krl-red);
+  border-radius:3px;
+  padding:1.2rem;
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+@media (min-width:600px){.card{padding:1.5rem}}
+
+/* ===== Tool layout ===== */
+.tool-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media (min-width:780px){
+  .tool-grid{grid-template-columns:minmax(240px,280px) 1fr}
+  .tool-grid.wide-left{grid-template-columns:minmax(260px,320px) 1fr}
+  .tool-grid.equal{grid-template-columns:1fr 1fr}
+}
+
+/* ===== Controls ===== */
+.control{display:block;margin-bottom:.9rem}
+.control .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.2rem}
+.control label{font-size:13px;font-weight:600;color:var(--krl-dark)}
+.control .val{font-size:13px;font-weight:700;color:var(--krl-ink);font-variant-numeric:tabular-nums}
+.control .unit{font-size:12px;font-weight:400;color:var(--krl-muted);margin-left:.2rem}
+.control .hint{font-size:11.5px;color:var(--krl-muted);margin-top:.2rem;line-height:1.4}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:6px;background:var(--krl-line);border-radius:3px;outline:none;
+  accent-color:var(--krl-red);
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--krl-red);border:2px solid #fff;cursor:pointer;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+input[type=range]::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;
+  background:var(--krl-red);border:2px solid #fff;cursor:pointer;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+.seg{display:inline-flex;border:1px solid var(--krl-line);border-radius:2px;overflow:hidden}
+.seg button{
+  background:var(--krl-paper);color:var(--krl-charcoal);
+  border:0;padding:.45rem .8rem;font-size:12.5px;font-weight:600;cursor:pointer;
+  font-family:inherit;letter-spacing:.02em;
+}
+.seg button.on{background:var(--krl-red);color:#fff}
+.seg button + button{border-left:1px solid var(--krl-line)}
+
+.radios{display:flex;flex-direction:column;gap:.35rem}
+.radios label{display:flex;align-items:center;gap:.5rem;font-size:13px;color:var(--krl-charcoal);cursor:pointer}
+.radios input{accent-color:var(--krl-red)}
+
+/* ===== Output stats ===== */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin-bottom:.8rem}
+@media (min-width:500px){.stats.cols-3{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:700px){.stats.cols-4{grid-template-columns:repeat(4,1fr)}}
+.stat{
+  background:var(--krl-cream);border:1px solid var(--krl-line);
+  border-left:3px solid var(--krl-red);
+  padding:.5rem .7rem;border-radius:2px;
+}
+.stat.alt{border-left-color:var(--krl-dark)}
+.stat.good{border-left-color:#2e6d3b}
+.stat.warn{border-left-color:#b88400}
+.stat .lbl{font-size:10.5px;color:var(--krl-muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.stat .v{font-size:1.1rem;font-weight:800;color:var(--krl-ink);font-variant-numeric:tabular-nums}
+.stat .u{font-size:.8rem;font-weight:500;color:var(--krl-muted);margin-left:.2rem}
+
+/* ===== Plots ===== */
+.plotbox{
+  background:#fdfbf7;border:1px solid var(--krl-line);border-radius:2px;
+  padding:.5rem;overflow:hidden;
+}
+.plotbox svg{width:100%;height:auto;display:block}
+.axis{stroke:#a8a298;stroke-width:1}
+.gridline{stroke:#ece8e2;stroke-width:1}
+.axis-label{font-size:10.5px;fill:var(--krl-muted);font-family:var(--font-sans)}
+.tick-label{font-size:10px;fill:var(--krl-muted);font-family:var(--font-sans)}
+
+/* ===== Notes ===== */
+.note{
+  font-size:12.5px;line-height:1.5;color:var(--krl-charcoal);
+  background:var(--krl-cream);border-left:3px solid var(--krl-red);
+  padding:.6rem .8rem;margin-top:.6rem;border-radius:0 2px 2px 0;
+}
+.note.warn{border-left-color:#b88400;background:#fdf8e9}
+.note strong{color:var(--krl-ink)}
+
+/* ===== Definition block ===== */
+.deflist{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+.defchip{
+  padding:.35rem .6rem;border-radius:2px;font-size:12px;font-weight:700;
+  background:var(--krl-paper);color:var(--krl-dark);
+  border:1px solid var(--krl-line);cursor:pointer;
+  font-family:var(--font-mono);letter-spacing:.02em;
+}
+.defchip:hover{border-color:var(--krl-red);color:var(--krl-red)}
+.defchip.on{background:var(--krl-red);color:#fff;border-color:var(--krl-red)}
+.defbox{
+  margin-top:.8rem;padding:.8rem 1rem;
+  background:var(--krl-cream);border:1px solid var(--krl-line);border-radius:2px;
+}
+.defbox .term{font-weight:800;color:var(--krl-ink)}
+.defbox .def{color:var(--krl-charcoal);font-size:.92rem;margin-top:.2rem}
+
+/* ===== Phase bar ===== */
+.phasebar{border:1px solid var(--krl-line);border-radius:2px;overflow:hidden;margin-top:.6rem}
+.phasebar .bars{display:flex;height:14px;background:#eee}
+.phasebar .bars > span{display:block;transition:width .15s ease}
+.phasebar .labels{display:grid;grid-template-columns:repeat(3,1fr);font-size:11px;padding:.3rem 0;color:var(--krl-muted)}
+.phasebar .labels > div{text-align:center}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.3rem;vertical-align:middle}
+
+/* ===== Buttons ===== */
+.btn{
+  font-family:inherit;border:0;padding:.5rem .9rem;border-radius:2px;
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;cursor:pointer;
+  text-transform:uppercase;
+}
+.btn.primary{background:var(--krl-red);color:#fff}
+.btn.primary:hover{background:var(--krl-red-dark)}
+.btn.ghost{background:var(--krl-soft);color:var(--krl-dark)}
+.btn.ghost:hover{background:#e2dcd2}
+
+/* ===== Textarea ===== */
+textarea.data{
+  width:100%;font-family:var(--font-mono);font-size:12px;
+  padding:.6rem;border:1px solid var(--krl-line);border-radius:2px;
+  background:var(--krl-cream);resize:vertical;min-height:260px;
+}
+
+/* ===== Composition display ===== */
+.comp{
+  font-family:var(--font-mono);font-size:1rem;font-weight:700;
+  background:var(--krl-cream);border:1px solid var(--krl-line);
+  padding:.6rem .8rem;border-radius:2px;color:var(--krl-ink);
+}
+
+/* ===== Footer ===== */
+footer.site{
+  background:var(--krl-dark);color:#c8c3bc;padding:2rem 0;
+  margin-top:3rem;border-top:3px solid var(--krl-red);font-size:13px;
+}
+footer.site h3{color:#fff;font-size:.95rem;margin-bottom:.5rem}
+footer.site a{color:#f3efe9}
+footer.site .fine{color:#8d877f;margin-top:1rem;font-size:12px}
+footer.site .fine em{font-style:normal;color:#aba59e}
+footer.site .columns{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media (min-width:700px){footer.site .columns{grid-template-columns:2fr 1fr 1fr}}
+
+/* ===== Utility ===== */
+.spacer{height:1rem}
+.flex{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.grow{flex:1}
+.muted{color:var(--krl-muted)}
+</style>
+</head>
+<body>
+
+<div class="topstrip">
+  <div class="wrap">
+    <div>We focus on <strong style="color:#fff">Nitinol</strong> — Doing the Impossible.</div>
+    <div><a href="https://www.kelloggsresearchlabs.com/">kelloggsresearchlabs.com</a> &nbsp;·&nbsp; <span class="phone">(603) 555-0100</span></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" style="text-decoration:none">
+      <div class="logo-mark">K</div>
+      <div class="logo-text">
+        <span class="main">Kellogg's Research Labs</span>
+        <span class="sub">Interactive Nitinol Tools</span>
+      </div>
+    </a>
+    <button class="mobile-toggle" onclick="document.querySelector('nav.primary').classList.toggle('open')">Menu</button>
+    <nav class="primary">
+      <a href="#hysteresis">Hysteresis</a>
+      <a href="#critical">Critical T</a>
+      <a href="#crystal">Crystal</a>
+      <a href="#slip-twin">Slip/Twin</a>
+      <a href="#spring">Spring</a>
+      <a href="#alloy">Alloy</a>
+      <a href="#fatigue">Fatigue</a>
+      <a href="#bfr">BFR Test</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top" class="hero">
+  <div class="wrap">
+    <div class="kicker">Interactive Companion</div>
+    <h1>Nitinol, <span class="accent">explained &amp; sized.</span></h1>
+    <p class="lede">
+      Four visual explainers for the concepts that trip people up, and four quick calculators for the numbers that never make it into one place. All in one page, no install. Illustrative models only — always confirm critical designs against a real datasheet and a calibrated constitutive model.
+    </p>
+    <div class="chips">
+      <span class="chip">R-phase</span>
+      <span class="chip">Hysteresis</span>
+      <span class="chip">Fatigue</span>
+      <span class="chip">Ternary alloys</span>
+      <span class="chip">Spring design</span>
+      <span class="chip">ASTM F2082</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Explainers group ===== -->
+<div class="group-header">
+  <div class="label">Part I — Explainers</div>
+  <h2>What's happening inside the material</h2>
+  <div class="rule"></div>
+</div>
+
+<!-- ===== 1. Hysteresis ===== -->
+<section id="hysteresis" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Explainer 01</div>
+      <h2>Hysteresis loop explorer</h2>
+      <p class="blurb">Move the temperature slider to watch the superelastic loop slide up and down in stress. Add Cu to narrow it; add Hf to widen it. This is the mechanism behind every nitinol force/stroke spec sheet.</p>
+    </div>
+    <div class="card">
+      <div class="tool-grid">
+        <div>
+          <div class="control">
+            <div class="row"><label for="hys-T">Temperature</label><span class="val"><span id="hys-T-v">25</span><span class="unit">°C</span></span></div>
+            <input type="range" id="hys-T" min="-40" max="200" step="1" value="25">
+          </div>
+          <div class="control">
+            <div class="row"><label for="hys-Af">Baseline Aᶠ (binary NiTi)</label><span class="val"><span id="hys-Af-v">0</span><span class="unit">°C</span></span></div>
+            <input type="range" id="hys-Af" min="-40" max="90" step="1" value="0">
+          </div>
+          <div class="control">
+            <div class="row"><label for="hys-cu">Copper</label><span class="val"><span id="hys-cu-v">0</span><span class="unit">at%</span></span></div>
+            <input type="range" id="hys-cu" min="0" max="15" step="0.5" value="0">
+            <div class="hint">Narrows hysteresis; &gt; 10 at% suppresses SME.</div>
+          </div>
+          <div class="control">
+            <div class="row"><label for="hys-hf">Hafnium</label><span class="val"><span id="hys-hf-v">0</span><span class="unit">at%</span></span></div>
+            <input type="range" id="hys-hf" min="0" max="15" step="0.5" value="0">
+            <div class="hint">Raises TT; widens hysteresis.</div>
+          </div>
+        </div>
+        <div>
+          <div class="stats cols-3">
+            <div class="stat"><div class="lbl">σ upper plateau</div><div class="v"><span id="hys-sigUP">—</span><span class="u">MPa</span></div></div>
+            <div class="stat alt"><div class="lbl">σ lower plateau</div><div class="v"><span id="hys-sigLP">—</span><span class="u">MPa</span></div></div>
+            <div class="stat warn"><div class="lbl">Hysteresis</div><div class="v"><span id="hys-hyst">—</span><span class="u">MPa</span></div></div>
+          </div>
+          <div class="plotbox"><svg id="hys-plot" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet"></svg></div>
+          <div class="note">
+            Clausius–Clapeyron slope ≈ 6.5 MPa/°C applied to plateau stress. Hysteresis (σᵤₚ − σₗₚ) narrows with Cu, widens with Hf. Off-plateau stiffness uses E<sub>austenite</sub> ≈ 75 GPa and E<sub>martensite</sub> ≈ 25 GPa. Illustrative — not a certified constitutive model.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. Critical temperatures ===== -->
+<section id="critical" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Explainer 02</div>
+      <h2>Critical temperatures</h2>
+      <p class="blurb">Aᶠ, Aₛ, Mₛ, Mᶠ — and the less-famous R-phase, M₀, and Mᵈ. Click any label to see what it means and where it sits on a DSC curve.</p>
+    </div>
+    <div class="card">
+      <div class="plotbox"><svg id="ct-plot" viewBox="0 0 620 260" preserveAspectRatio="xMidYMid meet"></svg></div>
+      <div class="deflist" id="ct-chips"></div>
+      <div class="defbox">
+        <div class="term" id="ct-term">Aᶠ — austenite finish</div>
+        <div class="def" id="ct-def">100% austenite. This is usually what "transition temperature" means in catalogs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. Crystal viewer ===== -->
+<section id="crystal" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Explainer 03</div>
+      <h2>Crystal transformation</h2>
+      <p class="blurb">Austenite is a rigid cubic B2 lattice. Cool it, and the lattice shears into twinned monoclinic martensite. Some alloys pass through a third, low-hysteresis R-phase on the way.</p>
+    </div>
+    <div class="card">
+      <div class="tool-grid">
+        <div>
+          <div class="control">
+            <div class="row"><label for="cv-T">Temperature</label><span class="val"><span id="cv-T-v">100</span><span class="unit">°C</span></span></div>
+            <input type="range" id="cv-T" min="-40" max="150" step="1" value="100">
+            <div class="hint">Aᶠ = 40 °C, Mₛ = 5 °C, Mᶠ = −15 °C</div>
+          </div>
+          <div class="phasebar">
+            <div class="bars">
+              <span id="cv-m" style="background:#b45309;width:0%"></span>
+              <span id="cv-r" style="background:#2e6d3b;width:0%"></span>
+              <span id="cv-a" style="background:#9a2b03;width:0%"></span>
+            </div>
+            <div class="labels">
+              <div><span class="dot" style="background:#b45309"></span>M <span id="cv-mp">0%</span></div>
+              <div><span class="dot" style="background:#2e6d3b"></span>R <span id="cv-rp">0%</span></div>
+              <div><span class="dot" style="background:#9a2b03"></span>A <span id="cv-ap">0%</span></div>
+            </div>
+          </div>
+          <div class="defbox" style="margin-top:.6rem">
+            <div class="term" style="font-size:11px;letter-spacing:.12em;color:var(--krl-muted);text-transform:uppercase">Current state</div>
+            <div class="def" id="cv-state" style="color:var(--krl-red);font-weight:700;margin-top:.1rem">Austenite (B2 cubic)</div>
+          </div>
+          <div class="note">Ni and Ti atoms (checkerboard). Austenite is the rigid B2 cubic structure. Cooling through Mₛ → Mᶠ produces twinned monoclinic B19′ martensite — shown here as lattice shear with a mid-crystal twin boundary.</div>
+        </div>
+        <div class="plotbox" style="display:flex;align-items:center;justify-content:center;padding:1rem">
+          <svg id="cv-plot" viewBox="0 0 360 360" preserveAspectRatio="xMidYMid meet" style="max-width:420px"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. Slip vs twinning ===== -->
+<section id="slip-twin" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Explainer 04</div>
+      <h2>Slip vs twinning</h2>
+      <p class="blurb">In ordinary metals, strain permanently slips whole atomic planes past each other. In nitinol's martensite, strain instead rotates bonds — no bonds break, and heating restores the original shape.</p>
+    </div>
+    <div class="card">
+      <div class="flex" style="margin-bottom:1rem">
+        <button class="btn ghost" id="st-reset">Reset</button>
+        <div class="control grow" style="margin:0;min-width:200px">
+          <div class="row"><label>Applied strain</label><span class="val" id="st-strain-v">0.00</span></div>
+          <input type="range" id="st-strain" min="0" max="1" step="0.02" value="0">
+        </div>
+        <button class="btn primary" id="st-release">Release</button>
+      </div>
+      <div class="tool-grid equal">
+        <div>
+          <div style="font-weight:700;color:var(--krl-red-bright);font-size:.95rem;margin-bottom:.3rem">Slip (permanent — bonds break)</div>
+          <div class="plotbox"><svg id="st-slip" viewBox="0 0 220 220" preserveAspectRatio="xMidYMid meet"></svg></div>
+          <div class="note">When strain exceeds the critical value, an atomic plane shifts by one spacing. Releasing doesn't undo it — that's plastic deformation.</div>
+        </div>
+        <div>
+          <div style="font-weight:700;color:var(--krl-red);font-size:.95rem;margin-bottom:.3rem">Twinning (reversible — bonds rotate)</div>
+          <div class="plotbox"><svg id="st-twin" viewBox="0 0 220 220" preserveAspectRatio="xMidYMid meet"></svg></div>
+          <div class="note">The lattice shears; atoms move by partial spacings without breaking bonds. Releasing returns everything — that's the shape-memory effect.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Calculators group ===== -->
+<div class="group-header">
+  <div class="label">Part II — Calculators</div>
+  <h2>Size a part, pick an alloy, estimate the life</h2>
+  <div class="rule"></div>
+</div>
+
+<!-- ===== 5. Spring ===== -->
+<section id="spring" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Calculator 01</div>
+      <h2>Helical spring calculator</h2>
+      <p class="blurb">Spring rate, max force, stroke, electrical resistance, and the Joule-heating current required to actuate a nitinol helical spring. Uses classical k = G·d⁴/(8D³N) with phase-dependent shear modulus.</p>
+    </div>
+    <div class="card">
+      <div class="tool-grid wide-left">
+        <div>
+          <div class="control">
+            <div class="row"><label for="sp-d">Wire diameter</label><span class="val"><span id="sp-d-v">0.50</span><span class="unit">mm</span></span></div>
+            <input type="range" id="sp-d" min="0.1" max="3" step="0.05" value="0.5">
+          </div>
+          <div class="control">
+            <div class="row"><label for="sp-D">Coil mean diameter</label><span class="val"><span id="sp-D-v">8.0</span><span class="unit">mm</span></span></div>
+            <input type="range" id="sp-D" min="2" max="40" step="0.5" value="8">
+          </div>
+          <div class="control">
+            <div class="row"><label for="sp-N">Active coils</label><span class="val"><span id="sp-N-v">10</span></span></div>
+            <input type="range" id="sp-N" min="3" max="50" step="1" value="10">
+          </div>
+          <div class="control">
+            <label style="display:block;margin-bottom:.3rem">Phase state</label>
+            <div class="seg" id="sp-state">
+              <button data-val="austenite" class="on">Austenite (hot)</button>
+              <button data-val="martensite">Martensite (cold)</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="stats cols-3">
+            <div class="stat"><div class="lbl">Spring rate k</div><div class="v"><span id="sp-k">—</span><span class="u">N/mm</span></div></div>
+            <div class="stat"><div class="lbl">Max safe force</div><div class="v"><span id="sp-F">—</span><span class="u">N</span></div></div>
+            <div class="stat good"><div class="lbl">Max stroke</div><div class="v"><span id="sp-stroke">—</span><span class="u">mm</span></div></div>
+            <div class="stat alt"><div class="lbl">Wire length</div><div class="v"><span id="sp-L">—</span><span class="u">mm</span></div></div>
+            <div class="stat alt"><div class="lbl">Resistance</div><div class="v"><span id="sp-R">—</span><span class="u">Ω</span></div></div>
+            <div class="stat alt"><div class="lbl">Mass</div><div class="v"><span id="sp-m">—</span><span class="u">mg</span></div></div>
+            <div class="stat warn"><div class="lbl">Current (40 °C / 1 s)</div><div class="v"><span id="sp-I">—</span><span class="u">A</span></div></div>
+            <div class="stat warn"><div class="lbl">Power</div><div class="v"><span id="sp-P">—</span><span class="u">W</span></div></div>
+          </div>
+          <div class="note warn">
+            k = G·d⁴/(8·D³·N) with G ≈ 22 GPa (austenite) or 8 GPa (martensite). Max-force limit is τ = 8FD/(πd³) with τ<sub>max</sub> ≈ 400 MPa (austenite) — a conservative guideline, not a fatigue-life spec. Current estimate is adiabatic heating 20 → 60 °C in 1 s; real actuation time depends on convective losses.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. Alloy selector ===== -->
+<section id="alloy" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Calculator 02</div>
+      <h2>Alloy → Aᶠ selector</h2>
+      <p class="blurb">Dial in Cu, Hf, Fe, Nb, Pd, or Co and watch the transformation temperature and hysteresis shift. A first-cut design tool — always confirm by DSC before ordering 10 kg.</p>
+    </div>
+    <div class="card">
+      <div class="tool-grid wide-left">
+        <div id="al-controls"></div>
+        <div>
+          <div class="stats">
+            <div class="stat"><div class="lbl">Estimated Aᶠ</div><div class="v"><span id="al-Af">—</span><span class="u">°C</span></div></div>
+            <div class="stat warn"><div class="lbl">Hysteresis (Aᶠ − Mᶠ)</div><div class="v"><span id="al-hyst">—</span><span class="u">°C</span></div></div>
+          </div>
+          <div class="control">
+            <label style="display:block;margin-bottom:.3rem">Composition</label>
+            <div class="comp" id="al-comp">NiTi</div>
+          </div>
+          <div id="al-warns"></div>
+          <div class="note">
+            First-order empirical estimate from Otsuka &amp; Ren (2005) and the alloy table in <em>Nitinol in Plain Language</em> Ch 6. Coefficients are mid-range; real Aᶠ depends strongly on processing (VIM vs VAR, aging profile, cold work). Always confirm by DSC (ASTM F2004-24).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. Fatigue ===== -->
+<section id="fatigue" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Calculator 03</div>
+      <h2>Fatigue life estimator</h2>
+      <p class="blurb">Recoverable strain vs. cycles to failure. Binary NiTi is the baseline; NiTiCu and ultra-pure (SE508-ELI-class) shift the curve up. Surface finish, loading mode, and frequency move this a lot — treat as illustrative.</p>
+    </div>
+    <div class="card">
+      <div class="tool-grid">
+        <div>
+          <div class="control">
+            <div class="row"><label for="fg-s">Recoverable strain</label><span class="val"><span id="fg-s-v">3.0</span><span class="unit">%</span></span></div>
+            <input type="range" id="fg-s" min="0.5" max="12" step="0.1" value="3">
+          </div>
+          <div class="control">
+            <label style="display:block;margin-bottom:.3rem">Alloy class</label>
+            <div class="radios" id="fg-alloy">
+              <label><input type="radio" name="fg-a" value="binary" checked> Binary NiTi (baseline)</label>
+              <label><input type="radio" name="fg-a" value="nitiCu"> NiTiCu (≈ +30 % cycle life)</label>
+              <label><input type="radio" name="fg-a" value="ultra"> Ultra-pure / SE508-ELI (2–3×)</label>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat good"><div class="lbl">Estimated cycles to failure</div><div class="v"><span id="fg-N">—</span></div></div>
+          </div>
+          <div class="note">
+            Piecewise-log interpolation through the data points in <em>Plain Language</em> Ch 5 and <em>Actuators</em>. Real fatigue also depends on surface finish, loading mode, frequency, temperature. ASTM F2516 / F3142 give standardized rotary-beam methods. Treat ± 0.5 decade as realistic uncertainty.
+          </div>
+        </div>
+        <div class="plotbox"><svg id="fg-plot" viewBox="0 0 520 280" preserveAspectRatio="xMidYMid meet"></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. BFR ===== -->
+<section id="bfr" class="tool">
+  <div class="wrap">
+    <div class="tool-head">
+      <div class="tag">Calculator 04</div>
+      <h2>BFR test interpreter</h2>
+      <p class="blurb">Paste your bend-and-free-recovery data (temperature, position). The tool picks off Aₛ and Aᶠ using the 10 %-peak-slope convention. Handy for the home test described in <em>Plain Language</em> Ch 4.</p>
+    </div>
+    <div class="card">
+      <div class="tool-grid equal">
+        <div>
+          <label for="bfr-data" style="display:block;font-size:13px;font-weight:600;margin-bottom:.3rem">Data (T, position)</label>
+          <textarea id="bfr-data" class="data" spellcheck="false"></textarea>
+          <div class="flex" style="margin-top:.5rem">
+            <button class="btn ghost" id="bfr-demo">Reset demo</button>
+            <button class="btn ghost" id="bfr-clear">Clear</button>
+          </div>
+          <div class="stats" style="margin-top:.8rem">
+            <div class="stat good"><div class="lbl">Aₛ (austenite start)</div><div class="v"><span id="bfr-As">—</span><span class="u">°C</span></div></div>
+            <div class="stat"><div class="lbl">Aᶠ (austenite finish)</div><div class="v"><span id="bfr-Af">—</span><span class="u">°C</span></div></div>
+          </div>
+          <div class="note">
+            Aₛ is the temperature where position first exceeds 10 % of the peak slope; Aᶠ is where it last does. Conforms loosely to ASTM F2082-23 bend-and-free-recovery. Use a mandrel of 20 × strip thickness for the textbook 2.5 % average strain.
+          </div>
+        </div>
+        <div class="plotbox"><svg id="bfr-plot" viewBox="0 0 520 280" preserveAspectRatio="xMidYMid meet"></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="columns">
+      <div>
+        <h3>About these tools</h3>
+        <p>First-order pedagogical models — derived from Otsuka &amp; Ren (2005), Brinson (1993) / Lagoudas (2008) constitutive frameworks, and the empirical numbers in <em>Nitinol in Plain Language</em> and <em>Introduction to Nitinol Actuators</em>.</p>
+        <p>For production design, use <code style="background:#111;padding:1px 4px;border-radius:2px">ASTM F2004 / F2082 / F2516 / F3142</code> tests and a calibrated constitutive model. See <a href="https://link.springer.com/article/10.1007/s40830-025-00595-0">SMA-REACT</a> for open-source Lagoudas calibration.</p>
+      </div>
+      <div>
+        <h3>Links</h3>
+        <p>
+          <a href="https://www.kelloggsresearchlabs.com/">KRL home</a><br>
+          <a href="https://archive.org/details/DTIC_ADA108973">1978 Nitinol Heat Engine Conference Proceedings</a><br>
+          <a href="https://www.asminternational.org/smst/">ASM SMST</a>
+        </p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Info@KelloggsResearchLabs.com<br>
+        <a href="https://www.kelloggsresearchlabs.com/">Request a quote</a></p>
+      </div>
+    </div>
+    <div class="fine">
+      <em>Doing the Impossible.</em> &nbsp;·&nbsp; Single-file HTML + vanilla JS, no dependencies. &nbsp;·&nbsp; Models illustrative only.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+// ===== Helpers =====
+const $ = (id) => document.getElementById(id);
+const svgNS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs, text){
+  const e = document.createElementNS(svgNS, tag);
+  if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  return e;
+}
+function clear(el){ while(el.firstChild) el.removeChild(el.firstChild); }
+function fmt(n, p){
+  if (n == null || isNaN(n)) return "—";
+  if (p != null) return n.toFixed(p);
+  if (Math.abs(n) >= 100) return n.toFixed(0);
+  if (Math.abs(n) >= 10) return n.toFixed(1);
+  return n.toFixed(2);
+}
+
+// ===== Constants =====
+const C_RED   = "#9a2b03";
+const C_REDDK = "#7a1f00";
+const C_AMBER = "#b45309";
+const C_BLUE  = "#1d4ed8";
+const C_TEAL  = "#0d9488";
+const C_GREEN = "#2e6d3b";
+const C_INK   = "#1a1a1a";
+const C_GREY  = "#707070";
+const C_LINE  = "#e5ddd2";
+const C_AXIS  = "#a8a298";
+
+// ======================================================================
+// 1. HYSTERESIS
+// ======================================================================
+(function hysteresis(){
+  const W=520, H=320, PL=50, PR=16, PT=16, PB=38;
+  const xMax=8, yMax=900;
+  const xs = x => PL + (x/xMax)*(W-PL-PR);
+  const ys = y => H - PB - (y/yMax)*(H-PB-PT);
+  const plot = $("hys-plot");
+
+  function update(){
+    const T = parseFloat($("hys-T").value);
+    const Af = parseFloat($("hys-Af").value);
+    const cu = parseFloat($("hys-cu").value);
+    const hf = parseFloat($("hys-hf").value);
+    $("hys-T-v").textContent = T;
+    $("hys-Af-v").textContent = Af;
+    $("hys-cu-v").textContent = cu;
+    $("hys-hf-v").textContent = hf;
+
+    const dSigdT = 6.5;
+    const afEff = Af + hf*18;
+    const sigUP_ref = 220;
+    const sigUP = Math.max(60, sigUP_ref + dSigdT*(T - afEff));
+    const hystBase = 180;
+    const hyst = Math.max(8, hystBase - cu*11 + hf*4);
+    const sigLP = Math.max(30, sigUP - hyst);
+    const active = T >= afEff - 2;
+
+    $("hys-sigUP").textContent = sigUP.toFixed(0);
+    $("hys-sigLP").textContent = sigLP.toFixed(0);
+    $("hys-hyst").textContent = (sigUP-sigLP).toFixed(0);
+
+    const E_aust = 75000, E_mart = 25000;
+    const eps1 = sigUP/E_aust*100;
+    const epsPE = eps1 + 4.0;
+    const epsMax = epsPE + (yMax - sigUP)/E_mart*100*0.6;
+    const sigMax = sigUP + (epsMax - epsPE)*E_mart/100;
+    const eu1 = epsMax - (sigMax - sigLP)/E_mart*100;
+    const eu2 = eu1 - 4.0;
+    const eEnd = sigLP/E_aust*100;
+
+    clear(plot);
+    // Grid
+    for (const y of [0,200,400,600,800]){
+      plot.appendChild(svgEl("line",{class:"gridline", x1:PL, y1:ys(y), x2:W-PR, y2:ys(y)}));
+      plot.appendChild(svgEl("text",{class:"tick-label", x:PL-8, y:ys(y)+4, "text-anchor":"end"}, y));
+    }
+    for (const x of [0,2,4,6,8]){
+      plot.appendChild(svgEl("line",{class:"gridline", x1:xs(x), y1:H-PB, x2:xs(x), y2:PT}));
+      plot.appendChild(svgEl("text",{class:"tick-label", x:xs(x), y:H-PB+14, "text-anchor":"middle"}, x));
+    }
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:H-PB, x2:W-PR, y2:H-PB}));
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:H-PB, x2:PL, y2:PT}));
+    plot.appendChild(svgEl("text",{class:"axis-label", x:W/2, y:H-4, "text-anchor":"middle"}, "Strain (%)"));
+    const yl = svgEl("text",{class:"axis-label", x:-H/2, y:14, "text-anchor":"middle", transform:"rotate(-90)"}, "Stress (MPa)");
+    plot.appendChild(yl);
+
+    if (active){
+      const loading = [[0,0],[eps1,sigUP],[epsPE,sigUP],[epsMax,sigMax]];
+      const unloading = [[epsMax,sigMax],[eu1,sigLP],[eu2,sigLP],[eEnd, sigLP*0.15],[0,0]];
+      const toPath = pts => pts.map((p,i)=> (i?"L":"M") + xs(p[0]) + " " + ys(p[1])).join(" ");
+      plot.appendChild(svgEl("path",{d:toPath(loading), stroke:C_RED, "stroke-width":"2.5", fill:"none"}));
+      plot.appendChild(svgEl("path",{d:toPath(unloading), stroke:C_AMBER, "stroke-width":"2.5", fill:"none", "stroke-dasharray":"5,3"}));
+      // labels
+      plot.appendChild(svgEl("circle",{cx:xs(eps1), cy:ys(sigUP), r:3, fill:C_RED}));
+      plot.appendChild(svgEl("text",{x:xs(eps1)+8, y:ys(sigUP)-6, "font-size":"11", fill:C_RED}, "upper plateau"));
+      plot.appendChild(svgEl("circle",{cx:xs(eu2), cy:ys(sigLP), r:3, fill:C_AMBER}));
+      plot.appendChild(svgEl("text",{x:xs(eu2)-10, y:ys(sigLP)+14, "font-size":"11", "text-anchor":"end", fill:C_AMBER}, "lower plateau"));
+    } else {
+      plot.appendChild(svgEl("text",{x:W/2, y:H/2-10, "text-anchor":"middle", "font-size":"13", fill:C_RED, "font-weight":"700"},
+        "Below Aₑff — material is martensitic"));
+      plot.appendChild(svgEl("text",{x:W/2, y:H/2+8, "text-anchor":"middle", "font-size":"11", fill:C_REDDK},
+        "Raise T above Aₑff = " + afEff.toFixed(0) + " °C to see the superelastic loop."));
+    }
+  }
+
+  ["hys-T","hys-Af","hys-cu","hys-hf"].forEach(id =>
+    $(id).addEventListener("input", update));
+  update();
+})();
+
+// ======================================================================
+// 2. CRITICAL TEMPERATURES
+// ======================================================================
+(function criticalTemps(){
+  const DEFS = {
+    "Mᶠ": "Mf — martensite finish · Cooling reaches 100% martensite. Below this, the material holds its deformed shape fully.",
+    "Mₛ": "Ms — martensite start · On cooling, austenite begins transforming to martensite.",
+    "Rₛ": "Rs — R-phase start · Some alloys transit through rhombohedral R-phase between austenite and martensite.",
+    "Rᶠ": "Rf — R-phase finish · R-phase fully formed. Hysteresis across A↔R is tiny (~1–2 °C), ideal for precision actuators.",
+    "M₀": "M0 — equilibrium T · Halfway between Ms and As. In alloys where Ms > As, phase fractions don't change until T crosses M₀.",
+    "Aₛ": "As — austenite start · On heating, martensite begins to revert. Often well below the commonly cited 'transition temperature'.",
+    "Aᶠ": "Af — austenite finish · 100 % austenite. This is usually what 'transition temperature' means in catalogs.",
+    "Mᵈ": "Md — martensite difficult · Above Md, stress-induced martensite cannot form; SMA behaves as an ordinary linear-elastic metal.",
+    "Aₚ": "Ap — austenite peak · Temperature where the austenitic transformation runs at its maximum rate (DSC peak).",
+    "Mₚ": "Mp — martensite peak · Temperature where the martensitic transformation runs at its maximum rate (DSC peak on cooling).",
+    "Rₚ": "Rp — R-phase peak · Peak rate of R-phase transformation.",
+  };
+  const W=620, H=260, PL=30, PR=30, PT=12, PB=40;
+  const Tmin=-40, Tmax=200;
+  const xs = t => PL + (t-Tmin)/(Tmax-Tmin)*(W-PL-PR);
+
+  // DSC curve: gaussians at Ap=25 (heat peak), Mp=-5 (cool peak), Rp=10 (small heat peak)
+  const peaks = [
+    {T:25, sign:+1, stdev:7, amp:1},
+    {T:-5, sign:-1, stdev:7, amp:1},
+    {T:10, sign:+1, stdev:5, amp:0.35},
+  ];
+  const f = t => peaks.reduce((s,p)=> s + p.amp*p.sign*Math.exp(-((t-p.T)*(t-p.T))/(2*p.stdev*p.stdev)), 0);
+  const yMax=1.2;
+  const ys = v => H-PB - ((v+yMax)/(2*yMax))*(H-PB-PT);
+
+  const marks = [
+    {key:"Mᶠ", T:-15, y:0.15},
+    {key:"Mₛ", T:5,   y:-0.3},
+    {key:"Rₛ", T:15,  y:0.25},
+    {key:"Rᶠ", T:5,   y:0.15},
+    {key:"M₀", T:10,  y:0.0},
+    {key:"Aₛ", T:15,  y:0.1},
+    {key:"Aᶠ", T:40,  y:0.15},
+    {key:"Mᵈ", T:150, y:0.0},
+  ];
+
+  let sel = "Aᶠ";
+  const plot = $("ct-plot");
+  const chips = $("ct-chips");
+
+  function render(){
+    clear(plot);
+    // Zero line + ticks
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:ys(0), x2:W-PR, y2:ys(0)}));
+    for (const t of [-20,0,20,40,60,80,100,120,140,160,180]){
+      plot.appendChild(svgEl("line",{class:"axis", x1:xs(t), y1:ys(0)-3, x2:xs(t), y2:ys(0)+3}));
+      plot.appendChild(svgEl("text",{class:"tick-label", x:xs(t), y:H-PB+16, "text-anchor":"middle"}, t));
+    }
+    plot.appendChild(svgEl("text",{class:"axis-label", x:W/2, y:H-6, "text-anchor":"middle"}, "Temperature (°C)"));
+
+    // DSC curve
+    let d = "";
+    for (let t=Tmin; t<=Tmax; t+=1){
+      d += (d?"L":"M") + xs(t) + " " + ys(f(t)) + " ";
+    }
+    plot.appendChild(svgEl("path",{d, stroke:"#334155", "stroke-width":"1.5", fill:"none"}));
+
+    // Marks
+    for (const m of marks){
+      const active = sel === m.key;
+      const g = svgEl("g",{style:"cursor:pointer"});
+      g.appendChild(svgEl("line",{x1:xs(m.T), y1:ys(m.y), x2:xs(m.T), y2:ys(0),
+        stroke:active?C_RED:"#94a3b8", "stroke-dasharray":active?"":"3,2"}));
+      g.appendChild(svgEl("circle",{cx:xs(m.T), cy:ys(m.y), r:active?7:5,
+        fill:active?C_RED:"#fff", stroke:active?C_RED:"#475569", "stroke-width":"1.5"}));
+      g.appendChild(svgEl("text",{x:xs(m.T), y:ys(m.y)-10, "text-anchor":"middle",
+        "font-size":"11", "font-weight":"700", fill:active?C_RED:"#1e293b"}, m.key));
+      g.addEventListener("click", () => { sel = m.key; render(); renderDef(); });
+      plot.appendChild(g);
+    }
+    plot.appendChild(svgEl("text",{class:"tick-label", x:PL+4, y:ys(1)+4}, "heating (endo) ↑"));
+    plot.appendChild(svgEl("text",{class:"tick-label", x:PL+4, y:ys(-1)+14}, "cooling (exo) ↓"));
+  }
+
+  function renderChips(){
+    clear(chips);
+    for (const k of Object.keys(DEFS)){
+      const b = document.createElement("button");
+      b.className = "defchip" + (sel===k?" on":"");
+      b.textContent = k;
+      b.onclick = () => { sel = k; render(); renderDef(); renderChips(); };
+      chips.appendChild(b);
+    }
+  }
+
+  function renderDef(){
+    const parts = DEFS[sel].split(" · ");
+    $("ct-term").textContent = parts[0];
+    $("ct-def").textContent = parts[1];
+    renderChips();
+  }
+
+  render(); renderDef();
+})();
+
+// ======================================================================
+// 3. CRYSTAL VIEWER
+// ======================================================================
+(function crystalViewer(){
+  const Af=40, Ms=5, Rf=15, Mf=-15;
+  const plot = $("cv-plot");
+  const N=7, SP=36, W=360, H=360;
+  const off = (W - N*SP)/2;
+
+  function update(){
+    const T = parseFloat($("cv-T").value);
+    $("cv-T-v").textContent = T;
+
+    let frac = {A:0, R:0, M:0}, name="";
+    if (T >= Af){ frac.A = 1; name = "Austenite (B2 cubic)"; }
+    else if (T <= Mf){ frac.M = 1; name = "Martensite (B19′, twinned)"; }
+    else {
+      const xA = Math.max(0, Math.min(1, (T-Ms)/(Af-Ms)));
+      const xM = Math.max(0, Math.min(1, (Mf-T)/(Mf-Ms)*-1 + 1));
+      const xR = Math.max(0, Math.min(1, 1 - Math.abs(T-20)/20))*0.7;
+      const total = xA + xM + xR + 0.0001;
+      frac = {A:xA/total, R:xR/total, M:xM/total};
+      name = "Mixed (transforming)";
+    }
+    $("cv-m").style.width = (frac.M*100).toFixed(0) + "%";
+    $("cv-r").style.width = (frac.R*100).toFixed(0) + "%";
+    $("cv-a").style.width = (frac.A*100).toFixed(0) + "%";
+    $("cv-mp").textContent = (frac.M*100).toFixed(0)+"%";
+    $("cv-rp").textContent = (frac.R*100).toFixed(0)+"%";
+    $("cv-ap").textContent = (frac.A*100).toFixed(0)+"%";
+    const dominant = Object.entries(frac).sort((a,b)=>b[1]-a[1])[0][0];
+    $("cv-state").textContent = name;
+    $("cv-state").style.color = dominant==="A" ? C_RED : dominant==="M" ? C_AMBER : C_GREEN;
+
+    clear(plot);
+    const shear = (frac.M*10 + frac.R*2) * Math.PI/180;
+    const twin = frac.M > 0.3;
+    const g = svgEl("g", {transform:`translate(${off},${off})`});
+    if (twin){
+      g.appendChild(svgEl("line",{x1:-20, y1:N*SP/2, x2:N*SP+20, y2:N*SP/2,
+        stroke:C_AMBER, "stroke-dasharray":"4,3", opacity:"0.5"}));
+    }
+    for (let j=0;j<N;j++){
+      for (let i=0;i<N;i++){
+        const side = twin && j >= N/2 ? -1 : 1;
+        const x0 = i*SP, y0 = j*SP;
+        const dx = y0 * Math.tan(shear) * side;
+        const type = (i+j)%2;
+        g.appendChild(svgEl("circle", {
+          cx:x0+dx, cy:y0, r:SP*0.3,
+          fill: type===0 ? "#334155" : "#ece4d7",
+          stroke: "#1e293b",
+          "stroke-width": type===0 ? "0" : "1",
+        }));
+      }
+    }
+    plot.appendChild(g);
+    // Legend
+    plot.appendChild(svgEl("circle",{cx:14, cy:H-14, r:4, fill:"#334155"}));
+    plot.appendChild(svgEl("text",{x:22, y:H-10, "font-size":"11", fill:C_GREY},"Ni"));
+    plot.appendChild(svgEl("circle",{cx:52, cy:H-14, r:4, fill:"#ece4d7", stroke:"#1e293b"}));
+    plot.appendChild(svgEl("text",{x:60, y:H-10, "font-size":"11", fill:C_GREY},"Ti"));
+  }
+
+  $("cv-T").addEventListener("input", update);
+  update();
+})();
+
+// ======================================================================
+// 4. SLIP vs TWINNING
+// ======================================================================
+(function slipTwin(){
+  let strain = 0, released = false;
+  const N=6, SP=26, W=220, H=220, off=12;
+
+  function grid(kind){
+    const svg = $(kind==="slip"?"st-slip":"st-twin");
+    clear(svg);
+    const g = svgEl("g",{transform:`translate(${off},${off})`});
+    const color = kind==="slip" ? "#b91c1c" : C_RED;
+    for (let j=0;j<N;j++){
+      for (let i=0;i<N;i++){
+        let x = i*SP, y = j*SP;
+        if (kind === "slip"){
+          if (j < N/2){
+            const shift = released
+              ? (strain > 0.5 ? SP : 0)
+              : Math.min(Math.max(0, strain - 0.5)*2, 1) * SP;
+            x += shift;
+          }
+        } else {
+          const apply = strain * (released ? 0 : 1);
+          x += y * apply * 0.35;
+        }
+        const type = (i+j)%2;
+        g.appendChild(svgEl("circle",{cx:x, cy:y, r:SP*0.3,
+          fill: type===0 ? color : "#fff", stroke:color, "stroke-width":"1.2"}));
+      }
+    }
+    svg.appendChild(g);
+  }
+
+  function render(){
+    $("st-strain-v").textContent = strain.toFixed(2);
+    grid("slip"); grid("twin");
+  }
+
+  $("st-strain").addEventListener("input", (e) => {
+    strain = parseFloat(e.target.value);
+    released = false;
+    render();
+  });
+  $("st-release").addEventListener("click", () => { released = true; render(); });
+  $("st-reset").addEventListener("click", () => {
+    strain = 0; released = false; $("st-strain").value = 0; render();
+  });
+  render();
+})();
+
+// ======================================================================
+// 5. SPRING CALCULATOR
+// ======================================================================
+(function spring(){
+  let state = "austenite";
+  $("sp-state").querySelectorAll("button").forEach(b => {
+    b.addEventListener("click", () => {
+      $("sp-state").querySelectorAll("button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      state = b.dataset.val;
+      update();
+    });
+  });
+
+  function update(){
+    const d = parseFloat($("sp-d").value);
+    const D = parseFloat($("sp-D").value);
+    const N = parseFloat($("sp-N").value);
+    $("sp-d-v").textContent = d.toFixed(2);
+    $("sp-D-v").textContent = D.toFixed(1);
+    $("sp-N-v").textContent = N;
+
+    const G = state==="austenite" ? 22000 : 8000;          // MPa
+    const tauMax = state==="austenite" ? 400 : 180;         // MPa
+    const rho = (state==="austenite" ? 80 : 100) * 1e-5;    // Ω·mm
+    const cp = 0.5;                                         // J/g/K
+    const density = 6.45e-3;                                // g/mm³
+
+    const k = (G * Math.pow(d,4)) / (8 * Math.pow(D,3) * N);     // N/mm
+    const F = (Math.PI * Math.pow(d,3) * tauMax) / (8 * D);      // N
+    const stroke = F / k;
+    const L = Math.PI * D * N;                                   // mm
+    const A = Math.PI*d*d/4;                                     // mm²
+    const R = rho * L / A;                                       // Ω
+    const mass = density * A * L;                                // g
+    const dT = 40, heat = mass*cp*dT;                            // J
+    const I = Math.sqrt(heat/R);
+
+    $("sp-k").textContent = fmt(k);
+    $("sp-F").textContent = fmt(F);
+    $("sp-stroke").textContent = stroke.toFixed(1);
+    $("sp-L").textContent = L.toFixed(0);
+    $("sp-R").textContent = R.toFixed(R<1?3:2);
+    $("sp-m").textContent = (mass*1000).toFixed(0);
+    $("sp-I").textContent = I.toFixed(2);
+    $("sp-P").textContent = (I*I*R).toFixed(2);
+  }
+
+  ["sp-d","sp-D","sp-N"].forEach(id => $(id).addEventListener("input", update));
+  update();
+})();
+
+// ======================================================================
+// 6. ALLOY SELECTOR
+// ======================================================================
+(function alloy(){
+  const CTRLS = [
+    {id:"baseAf", label:"Baseline Aᶠ (binary, Ni/Ti tuning)", min:-40, max:100, step:1, val:30, unit:"°C", hint:"Nominal starting point before alloy additions."},
+    {id:"cu",     label:"Cu (narrows hysteresis)",            min:0,   max:15,  step:0.5, val:0, unit:"at%"},
+    {id:"hf",     label:"Hf (raises TT)",                     min:0,   max:20,  step:0.5, val:0, unit:"at%"},
+    {id:"fe",     label:"Fe (lowers TT)",                     min:0,   max:5,   step:0.1, val:0, unit:"at%"},
+    {id:"nb",     label:"Nb (widens hysteresis)",             min:0,   max:10,  step:0.5, val:0, unit:"at%"},
+    {id:"pd",     label:"Pd (raises TT, expensive)",          min:0,   max:40,  step:1,   val:0, unit:"at%"},
+    {id:"co",     label:"Co (fatigue booster at low %)",      min:0,   max:5,   step:0.1, val:0, unit:"at%"},
+  ];
+  const COEFF = {
+    baseAf: {af:1,   hyst:0},      // pass-through
+    cu:     {af:-1,  hyst:-11},
+    hf:     {af:+18, hyst:+4},
+    fe:     {af:-15, hyst:+1},
+    nb:     {af:-5,  hyst:+12},
+    pd:     {af:+28, hyst:0},
+    co:     {af:-22, hyst:-0.5},
+  };
+
+  const container = $("al-controls");
+  const state = {};
+  for (const c of CTRLS){
+    state[c.id] = c.val;
+    const wrap = document.createElement("div");
+    wrap.className = "control";
+    wrap.innerHTML =
+      `<div class="row"><label>${c.label}</label><span class="val"><span id="al-${c.id}-v">${c.val}</span><span class="unit">${c.unit}</span></span></div>
+       <input type="range" id="al-${c.id}" min="${c.min}" max="${c.max}" step="${c.step}" value="${c.val}">
+       ${c.hint ? `<div class="hint">${c.hint}</div>` : ""}`;
+    container.appendChild(wrap);
+    const inp = wrap.querySelector("input");
+    const lbl = wrap.querySelector(`#al-${c.id}-v`);
+    inp.addEventListener("input", (e) => {
+      state[c.id] = parseFloat(e.target.value);
+      lbl.textContent = Number.isInteger(c.step) ? state[c.id] : state[c.id].toFixed(c.step<1?1:0);
+      update();
+    });
+  }
+
+  function update(){
+    const base = state.baseAf;
+    let Af = base;
+    for (const k of ["cu","hf","fe","nb","pd","co"]) Af += state[k] * COEFF[k].af;
+    let hyst = 35;
+    for (const k of ["cu","hf","fe","nb","co"]) hyst += state[k] * COEFF[k].hyst;
+    hyst = Math.max(1, hyst);
+
+    $("al-Af").textContent = Af.toFixed(0);
+    $("al-hyst").textContent = hyst.toFixed(0);
+
+    // Composition string
+    let comp = "NiTi";
+    if (state.cu>0) comp += "Cu" + state.cu.toFixed(state.cu%1?1:0);
+    if (state.hf>0) comp += "Hf" + state.hf.toFixed(state.hf%1?1:0);
+    if (state.fe>0) comp += "Fe" + state.fe.toFixed(1);
+    if (state.nb>0) comp += "Nb" + state.nb.toFixed(state.nb%1?1:0);
+    if (state.pd>0) comp += "Pd" + state.pd.toFixed(0);
+    if (state.co>0) comp += "Co" + state.co.toFixed(1);
+    $("al-comp").textContent = comp;
+
+    // Warnings
+    const warns = [];
+    if (state.cu > 10) warns.push("SME declines above 10 at% Cu.");
+    if (state.nb > 3)  warns.push("Wide hysteresis — one-shot coupling territory (NiTiNb / Tinel-style).");
+    if (state.pd > 5)  warns.push("NiTiPd with &gt;5 at% is extremely expensive (Pd priced above gold).");
+    if (state.co > 1)  warns.push("High Co suppresses SME; at &lt;1 at% Co enhances fatigue life (Chluba 2015, <em>Science</em>).");
+    const w = $("al-warns");
+    clear(w);
+    for (const s of warns){
+      const n = document.createElement("div");
+      n.className = "note warn";
+      n.innerHTML = s;
+      w.appendChild(n);
+    }
+  }
+  update();
+})();
+
+// ======================================================================
+// 7. FATIGUE
+// ======================================================================
+(function fatigue(){
+  const anchors = [[1,10],[2,6.5],[3,7],[5,4],[7,2],[12,0]];
+  function mult(a){ return a==="nitiCu"?1.3 : a==="ultra"?2.5 : 1.0; }
+  const W=520, H=280, PL=52, PR=16, PT=14, PB=38;
+  const xs = s => PL + (Math.log10(s)-Math.log10(0.5))/(Math.log10(15)-Math.log10(0.5))*(W-PL-PR);
+  const ys = v => H-PB - (v/12)*(H-PB-PT);
+  const plot = $("fg-plot");
+
+  function lookup(s, pts){
+    if (s <= pts[0][0]) return pts[0][1];
+    if (s >= pts[pts.length-1][0]) return pts[pts.length-1][1];
+    for (let i=0;i<pts.length-1;i++){
+      const [s1,n1]=pts[i],[s2,n2]=pts[i+1];
+      if (s>=s1 && s<=s2){
+        const t = (Math.log10(s)-Math.log10(s1))/(Math.log10(s2)-Math.log10(s1));
+        return n1 + t*(n2-n1);
+      }
+    }
+    return 0;
+  }
+  function fmtN(n){
+    if (n>=1e6) return (n/1e6).toFixed(1)+" M";
+    if (n>=1e3) return (n/1e3).toFixed(1)+" k";
+    if (n>=1) return n.toFixed(0);
+    return n.toFixed(2);
+  }
+
+  function update(){
+    const strain = parseFloat($("fg-s").value);
+    $("fg-s-v").textContent = strain.toFixed(1);
+    const a = document.querySelector('input[name="fg-a"]:checked').value;
+    const pts = anchors.map(([s,n]) => [s, n + Math.log10(mult(a))]);
+    const logN = lookup(strain, pts);
+    const N = Math.pow(10, logN);
+    $("fg-N").textContent = fmtN(N);
+
+    clear(plot);
+    for (const v of [0,2,4,6,8,10,12]){
+      plot.appendChild(svgEl("line",{class:"gridline", x1:PL, y1:ys(v), x2:W-PR, y2:ys(v)}));
+      plot.appendChild(svgEl("text",{class:"tick-label", x:PL-6, y:ys(v)+4, "text-anchor":"end"}, "10^"+v));
+    }
+    for (const v of [0.5,1,2,3,5,7,10,15]){
+      plot.appendChild(svgEl("line",{class:"gridline", x1:xs(v), y1:H-PB, x2:xs(v), y2:PT}));
+      plot.appendChild(svgEl("text",{class:"tick-label", x:xs(v), y:H-PB+14, "text-anchor":"middle"}, v));
+    }
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:H-PB, x2:W-PR, y2:H-PB}));
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:H-PB, x2:PL, y2:PT}));
+    plot.appendChild(svgEl("text",{class:"axis-label", x:W/2, y:H-4, "text-anchor":"middle"}, "Recoverable strain (%)"));
+    plot.appendChild(svgEl("text",{class:"axis-label", x:-H/2, y:14, "text-anchor":"middle", transform:"rotate(-90)"}, "Cycles to failure"));
+
+    let d = "";
+    for (let s=0.5; s<=15; s*=1.08){
+      d += (d?"L":"M") + xs(s) + " " + ys(lookup(s, pts)) + " ";
+    }
+    d += "L" + xs(15) + " " + ys(lookup(15, pts));
+    plot.appendChild(svgEl("path",{d, stroke:C_TEAL, "stroke-width":"2.5", fill:"none"}));
+
+    plot.appendChild(svgEl("circle",{cx:xs(strain), cy:ys(logN), r:6, fill:C_RED}));
+    plot.appendChild(svgEl("text",{x:xs(strain)+10, y:ys(logN)+4, "font-size":"11",
+      fill:C_RED, "font-weight":"700"}, strain.toFixed(1)+"% → "+fmtN(N)));
+  }
+  $("fg-s").addEventListener("input", update);
+  document.querySelectorAll('input[name="fg-a"]').forEach(r => r.addEventListener("change", update));
+  update();
+})();
+
+// ======================================================================
+// 8. BFR INTERPRETER
+// ======================================================================
+(function bfr(){
+  const demo = `# Paste T, position pairs. Any separator (comma, tab, space).
+20, 0.02
+30, 0.03
+40, 0.04
+45, 0.06
+50, 0.12
+55, 0.35
+60, 0.78
+65, 1.22
+70, 1.68
+75, 1.92
+80, 2.01
+85, 2.03
+90, 2.03
+100, 2.04`;
+  const ta = $("bfr-data");
+  ta.value = demo;
+
+  const W=520, H=280, PL=50, PR=16, PT=14, PB=38;
+  const plot = $("bfr-plot");
+
+  function parse(raw){
+    return raw.split("\n")
+      .map(l => l.trim())
+      .filter(l => l && !l.startsWith("#") && !l.startsWith("//"))
+      .map(l => l.split(/[,\s\t]+/).map(parseFloat))
+      .filter(r => r.length>=2 && r.every(x => !isNaN(x)))
+      .sort((a,b) => a[0]-b[0]);
+  }
+
+  function analyze(pts){
+    if (pts.length < 4) return {};
+    const ys = pts.map(p=>p[1]);
+    const amp = Math.max(...ys) - Math.min(...ys);
+    if (amp <= 0) return {};
+    const derivs = [];
+    for (let i=1;i<pts.length;i++){
+      const dx = pts[i][0]-pts[i-1][0];
+      const dy = pts[i][1]-pts[i-1][1];
+      derivs.push({T:(pts[i][0]+pts[i-1][0])/2, slope:dy/Math.max(1e-6,dx)});
+    }
+    const maxSlope = Math.max(...derivs.map(d=>d.slope));
+    const thresh = maxSlope * 0.1;
+    const first = derivs.find(d => d.slope > thresh);
+    const last = [...derivs].reverse().find(d => d.slope > thresh);
+    return {As: first && first.T, Af: last && last.T};
+  }
+
+  function update(){
+    const pts = parse(ta.value);
+    const {As, Af} = analyze(pts);
+    $("bfr-As").textContent = As!=null ? As.toFixed(1) : "—";
+    $("bfr-Af").textContent = Af!=null ? Af.toFixed(1) : "—";
+
+    clear(plot);
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:H-PB, x2:W-PR, y2:H-PB}));
+    plot.appendChild(svgEl("line",{class:"axis", x1:PL, y1:H-PB, x2:PL, y2:PT}));
+    plot.appendChild(svgEl("text",{class:"axis-label", x:W/2, y:H-4, "text-anchor":"middle"}, "Temperature (°C)"));
+    plot.appendChild(svgEl("text",{class:"axis-label", x:-H/2, y:14, "text-anchor":"middle", transform:"rotate(-90)"}, "Position / strain recovered"));
+
+    if (pts.length < 2) return;
+    const xvals = pts.map(p=>p[0]), yvals = pts.map(p=>p[1]);
+    const xMin = Math.min(...xvals)-5, xMax = Math.max(...xvals)+5;
+    const pad = (Math.max(...yvals)-Math.min(...yvals) || 1)*0.1;
+    const yMin = Math.min(...yvals)-pad, yMax = Math.max(...yvals)+pad;
+    const xs = x => PL + (x-xMin)/Math.max(0.0001,xMax-xMin)*(W-PL-PR);
+    const ys = y => H-PB - (y-yMin)/Math.max(0.0001,yMax-yMin)*(H-PB-PT);
+
+    let d = "";
+    pts.forEach((p,i) => d += (i?"L":"M") + xs(p[0]) + " " + ys(p[1]) + " ");
+    plot.appendChild(svgEl("path",{d, stroke:C_TEAL, "stroke-width":"2.5", fill:"none"}));
+    for (const p of pts){
+      plot.appendChild(svgEl("circle",{cx:xs(p[0]), cy:ys(p[1]), r:3, fill:C_TEAL}));
+    }
+    if (As != null){
+      plot.appendChild(svgEl("line",{x1:xs(As), y1:PT, x2:xs(As), y2:H-PB, stroke:C_GREEN, "stroke-dasharray":"4,3"}));
+      plot.appendChild(svgEl("text",{x:xs(As), y:PT+12, "text-anchor":"middle", "font-size":"11", fill:C_GREEN, "font-weight":"700"}, "Aₛ"));
+    }
+    if (Af != null){
+      plot.appendChild(svgEl("line",{x1:xs(Af), y1:PT, x2:xs(Af), y2:H-PB, stroke:C_RED, "stroke-dasharray":"4,3"}));
+      plot.appendChild(svgEl("text",{x:xs(Af), y:PT+12, "text-anchor":"middle", "font-size":"11", fill:C_RED, "font-weight":"700"}, "Aᶠ"));
+    }
+  }
+
+  ta.addEventListener("input", update);
+  $("bfr-demo").addEventListener("click", () => { ta.value = demo; update(); });
+  $("bfr-clear").addEventListener("click", () => { ta.value = ""; update(); });
+  update();
+})();
+
+})();
+</script>
+</body>
+</html>
