@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" width="880" height="470" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #fafafc; }
+      .panel-divider { stroke: #dcdce0; stroke-width: 1; }
+      .title { font-size: 18px; font-weight: 600; fill: #23232d; }
+      .subtitle { font-size: 12px; fill: #87878d; }
+      .integration-label { font-size: 11px; fill: #ffffff; font-weight: 500; }
+      .layer-label { font-size: 9px; fill: #ffffff; font-weight: 600; letter-spacing: 0.5px; }
+      .stack-label { font-size: 11px; fill: #23232d; font-weight: 500; }
+      .owner-label { font-size: 9px; fill: #87878d; }
+      .hot-label { font-size: 10px; fill: #e1463c; font-weight: 600; }
+      .queue-label { font-size: 10px; fill: #87878d; }
+      .footnote { font-size: 11px; fill: #87878d; font-style: italic; }
+      .arrow { stroke: #9b9ba5; stroke-width: 1.2; fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <polygon points="0 0, 6 3, 0 6" fill="#9b9ba5" />
+    </marker>
+  </defs>
+
+  <rect class="bg" width="880" height="470" />
+  <line x1="440" y1="30" x2="440" y2="430" class="panel-divider" />
+
+  <!-- ============ BEFORE ============ -->
+  <text x="220" y="42" class="title" text-anchor="middle">Before: shared framework</text>
+  <text x="220" y="64" class="subtitle" text-anchor="middle">every integration touches one abstraction — owner is the bottleneck</text>
+
+  <!-- Source integrations -->
+  <g>
+    <g transform="translate(30, 110)"><rect width="100" height="32" rx="6" fill="#4a7fb8"/><text x="50" y="21" class="integration-label" text-anchor="middle">Salesforce</text></g>
+    <g transform="translate(30, 154)"><rect width="100" height="32" rx="6" fill="#4a7fb8"/><text x="50" y="21" class="integration-label" text-anchor="middle">HubSpot</text></g>
+    <g transform="translate(30, 198)"><rect width="100" height="32" rx="6" fill="#4a7fb8"/><text x="50" y="21" class="integration-label" text-anchor="middle">Zendesk</text></g>
+    <g transform="translate(30, 242)"><rect width="100" height="32" rx="6" fill="#4a7fb8"/><text x="50" y="21" class="integration-label" text-anchor="middle">NetSuite</text></g>
+    <g transform="translate(30, 286)"><rect width="100" height="32" rx="6" fill="#4a7fb8"/><text x="50" y="21" class="integration-label" text-anchor="middle">Slack</text></g>
+  </g>
+
+  <!-- Arrows converging to framework -->
+  <path stroke="#9b9ba5" stroke-width="1.2" fill="none" d="M 130 126 C 200 126, 200 185, 248 185" marker-end="url(#arrowhead)" />
+  <path stroke="#9b9ba5" stroke-width="1.2" fill="none" d="M 130 170 C 200 170, 200 200, 248 200" marker-end="url(#arrowhead)" />
+  <path stroke="#9b9ba5" stroke-width="1.2" fill="none" d="M 130 214 C 200 214, 200 215, 248 215" marker-end="url(#arrowhead)" />
+  <path stroke="#9b9ba5" stroke-width="1.2" fill="none" d="M 130 258 C 200 258, 200 230, 248 230" marker-end="url(#arrowhead)" />
+  <path stroke="#9b9ba5" stroke-width="1.2" fill="none" d="M 130 302 C 200 302, 200 245, 248 245" marker-end="url(#arrowhead)" />
+
+  <!-- Framework hot spot with glow -->
+  <g transform="translate(250, 175)">
+    <rect x="-6" y="-6" width="112" height="92" rx="14" fill="none" stroke="#e1463c" stroke-width="2" opacity="0.4" />
+    <rect width="100" height="80" rx="8" fill="#e1463c" />
+    <text x="50" y="36" class="integration-label" text-anchor="middle" font-weight="600">Integrations</text>
+    <text x="50" y="52" class="integration-label" text-anchor="middle" font-weight="600">Framework</text>
+  </g>
+  <text x="300" y="285" class="hot-label" text-anchor="middle">★ hot spot</text>
+
+  <!-- PR queue to the right of framework -->
+  <g transform="translate(372, 180)">
+    <text x="22" y="-4" class="queue-label" text-anchor="middle">PR queue</text>
+    <rect x="0" y="2" width="44" height="6" rx="2" fill="#6b6b75" />
+    <rect x="0" y="12" width="44" height="6" rx="2" fill="#6b6b75" />
+    <rect x="0" y="22" width="44" height="6" rx="2" fill="#6b6b75" />
+    <rect x="0" y="32" width="44" height="6" rx="2" fill="#6b6b75" />
+    <rect x="0" y="42" width="44" height="6" rx="2" fill="#6b6b75" />
+    <rect x="0" y="52" width="44" height="6" rx="2" fill="#6b6b75" opacity="0.6" />
+    <rect x="0" y="62" width="44" height="6" rx="2" fill="#6b6b75" opacity="0.4" />
+  </g>
+
+  <text x="220" y="370" class="owner-label" text-anchor="middle">framework team owns the abstraction · everyone else waits</text>
+
+  <!-- ============ AFTER ============ -->
+  <text x="660" y="42" class="title" text-anchor="middle">After: partitioned</text>
+  <text x="660" y="64" class="subtitle" text-anchor="middle">each integration is its own vertical slice — owned end-to-end</text>
+
+  <!-- 5 vertical stacks: 60w, 14 gap, total 356, centered at 660, start x = 482 -->
+  <!-- Salesforce -->
+  <g transform="translate(482, 110)">
+    <text x="30" y="14" class="stack-label" text-anchor="middle">Salesforce</text>
+    <rect x="0" y="24" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="39" class="layer-label" text-anchor="middle">UI</text>
+    <rect x="0" y="50" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="65" class="layer-label" text-anchor="middle">API</text>
+    <rect x="0" y="76" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="91" class="layer-label" text-anchor="middle">AUTH</text>
+    <rect x="0" y="102" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="117" class="layer-label" text-anchor="middle">TESTS</text>
+    <text x="30" y="142" class="owner-label" text-anchor="middle">human + agent</text>
+  </g>
+  <g transform="translate(556, 110)">
+    <text x="30" y="14" class="stack-label" text-anchor="middle">HubSpot</text>
+    <rect x="0" y="24" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="39" class="layer-label" text-anchor="middle">UI</text>
+    <rect x="0" y="50" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="65" class="layer-label" text-anchor="middle">API</text>
+    <rect x="0" y="76" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="91" class="layer-label" text-anchor="middle">AUTH</text>
+    <rect x="0" y="102" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="117" class="layer-label" text-anchor="middle">TESTS</text>
+    <text x="30" y="142" class="owner-label" text-anchor="middle">human + agent</text>
+  </g>
+  <g transform="translate(630, 110)">
+    <text x="30" y="14" class="stack-label" text-anchor="middle">Zendesk</text>
+    <rect x="0" y="24" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="39" class="layer-label" text-anchor="middle">UI</text>
+    <rect x="0" y="50" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="65" class="layer-label" text-anchor="middle">API</text>
+    <rect x="0" y="76" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="91" class="layer-label" text-anchor="middle">AUTH</text>
+    <rect x="0" y="102" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="117" class="layer-label" text-anchor="middle">TESTS</text>
+    <text x="30" y="142" class="owner-label" text-anchor="middle">human + agent</text>
+  </g>
+  <g transform="translate(704, 110)">
+    <text x="30" y="14" class="stack-label" text-anchor="middle">NetSuite</text>
+    <rect x="0" y="24" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="39" class="layer-label" text-anchor="middle">UI</text>
+    <rect x="0" y="50" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="65" class="layer-label" text-anchor="middle">API</text>
+    <rect x="0" y="76" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="91" class="layer-label" text-anchor="middle">AUTH</text>
+    <rect x="0" y="102" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="117" class="layer-label" text-anchor="middle">TESTS</text>
+    <text x="30" y="142" class="owner-label" text-anchor="middle">human + agent</text>
+  </g>
+  <g transform="translate(778, 110)">
+    <text x="30" y="14" class="stack-label" text-anchor="middle">Slack</text>
+    <rect x="0" y="24" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="39" class="layer-label" text-anchor="middle">UI</text>
+    <rect x="0" y="50" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="65" class="layer-label" text-anchor="middle">API</text>
+    <rect x="0" y="76" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="91" class="layer-label" text-anchor="middle">AUTH</text>
+    <rect x="0" y="102" width="60" height="22" rx="4" fill="#4a7fb8" />
+    <text x="30" y="117" class="layer-label" text-anchor="middle">TESTS</text>
+    <text x="30" y="142" class="owner-label" text-anchor="middle">human + agent</text>
+  </g>
+
+  <text x="660" y="370" class="owner-label" text-anchor="middle">N units, working in parallel · no shared code = no merge conflict</text>
+
+  <!-- Footer -->
+  <text x="440" y="450" class="footnote" text-anchor="middle">duplication is fine — agents make boilerplate cheap, and the shared abstraction was the hot spot</text>
+</svg>

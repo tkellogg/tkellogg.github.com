@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 140" width="880" height="140" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#9b9ba5" />
+    </marker>
+  </defs>
+
+  <rect width="880" height="140" fill="#fafafc" />
+
+  <!-- Boxes: 4 wide, evenly spaced -->
+  <!-- Box w=150, h=56, gap=50; total 4*150 + 3*50 = 750; centered: start_x = 65 -->
+  <g transform="translate(65, 42)">
+    <rect width="150" height="56" rx="8" fill="#4a7fb8" />
+    <text x="75" y="34" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="500">Product</text>
+  </g>
+  <g transform="translate(265, 42)">
+    <rect width="150" height="56" rx="8" fill="#4a7fb8" />
+    <text x="75" y="34" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="500">Engineering</text>
+  </g>
+  <g transform="translate(465, 42)">
+    <rect width="150" height="56" rx="8" fill="#4a7fb8" />
+    <text x="75" y="34" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="500">QA</text>
+  </g>
+  <g transform="translate(665, 42)">
+    <rect width="150" height="56" rx="8" fill="#4a7fb8" />
+    <text x="75" y="34" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="500">Operations</text>
+  </g>
+
+  <!-- Arrows between boxes -->
+  <line x1="218" y1="70" x2="262" y2="70" stroke="#9b9ba5" stroke-width="1.5" marker-end="url(#arr)" />
+  <line x1="418" y1="70" x2="462" y2="70" stroke="#9b9ba5" stroke-width="1.5" marker-end="url(#arr)" />
+  <line x1="618" y1="70" x2="662" y2="70" stroke="#9b9ba5" stroke-width="1.5" marker-end="url(#arr)" />
+
+  <!-- Hand-off cost annotations -->
+  <text x="240" y="62" text-anchor="middle" font-size="10" fill="#87878d" font-style="italic">hand-off</text>
+  <text x="440" y="62" text-anchor="middle" font-size="10" fill="#87878d" font-style="italic">hand-off</text>
+  <text x="640" y="62" text-anchor="middle" font-size="10" fill="#87878d" font-style="italic">hand-off</text>
+</svg>
