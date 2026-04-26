@@ -27,7 +27,7 @@ layout: nil
    {% else %}
    <summary type="text">{{ post.excerpt | strip_html | xml_escape }}</summary>
    {% endif %}
-   <content type="text">{{ post.content | strip_html | xml_escape }}</content>
+   <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endunless %}
  {% endfor %}
