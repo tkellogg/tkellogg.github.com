@@ -6,7 +6,7 @@ version: 1.0.0
 
 # Image Generation & Visualization
 
-This skill handles all visual content creation for the blog. Three tools available:
+This skill handles all visual content creation for the blog. Four tools available:
 
 ## 1. Mermaid Diagrams
 
@@ -37,7 +37,64 @@ Guidelines:
 - Prefer clean, minimal styling — no chartjunk
 - Reference in posts as `/images/chart-name.png`
 
-## 3. Gemini Image Generation
+## 3. Pixabay Cover Images (durable CDN link)
+
+For blog cover photos, Tim shares a Pixabay page URL like:
+
+```
+https://pixabay.com/photos/ant-aphid-lice-macro-insect-3716248/
+```
+
+The post's `image:` front-matter needs the **durable CDN URL** instead:
+
+```
+https://cdn.pixabay.com/photo/YYYY/MM/DD/HH/MM/{slug}-{id}_1280.jpg
+```
+
+The date/time path is the photo's upload timestamp and **cannot be guessed** — it must be read from the Pixabay page's `og:image` meta tag.
+
+### The problem: Cloudflare blocks plain curl
+
+Pixabay sits behind Cloudflare which TLS-fingerprints the client (JA3/JA4). Plain `curl` — even with a Firefox `User-Agent` — gets a 5KB "Just a moment..." challenge page, never the real HTML. Don't waste time on header permutations.
+
+### Use `curl-cffi` via `uv run`
+
+`curl-cffi` is a Python wrapper that ships real browser TLS fingerprints. No homebrew install needed, just `uv` (already required for everything else):
+
+```bash
+PAGE_URL="https://pixabay.com/photos/ant-aphid-lice-macro-insect-3716248/"
+
+uv run --with curl-cffi python3 -c "
+from curl_cffi import requests
+import re, sys
+url = sys.argv[1]
+r = requests.get(url, impersonate='firefox133')
+m = re.search(r'<meta property=\"og:image\" content=\"([^\"]+)\"', r.text)
+print(m.group(1) if m else 'NOT FOUND', file=sys.stderr)
+" "$PAGE_URL"
+```
+
+The `og:image` will be the `_640.jpg` variant. **Swap `_640` → `_1280`** to match Tim's existing covers (sharper at retina resolutions):
+
+```
+og:image:  https://cdn.pixabay.com/photo/2018/10/01/13/31/ant-3716248_640.jpg
+use this:  https://cdn.pixabay.com/photo/2018/10/01/13/31/ant-3716248_1280.jpg
+```
+
+Verify the 1280 variant exists before using:
+
+```bash
+curl -sI "https://cdn.pixabay.com/photo/.../slug-ID_1280.jpg" | head -1
+# Want HTTP/2 200
+```
+
+### Fallback
+
+If `curl-cffi` ever stops bypassing Cloudflare (impersonation arms race), ask Tim to right-click the photo in his browser → "Copy image address" → paste. That gives the exact CDN URL.
+
+---
+
+## 4. Gemini Image Generation
 
 For AI-generated images when stock photos won't work. Uses `gemini-3-pro-image-preview`.
 

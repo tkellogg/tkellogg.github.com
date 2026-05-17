@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+    <marker id="arr3-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arr3-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+
+  <!-- Time axis label -->
+  <text x="380" y="25" font-size="12" fill="#6b7280" text-anchor="middle">time →</text>
+
+  <!-- Top track: Main agent -->
+  <text x="20" y="80" font-size="13" fill="#1f2937" font-weight="600">Main agent</text>
+  <line x1="20" y1="120" x2="730" y2="120" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- tool call 1 -->
+  <rect x="60" y="100" width="120" height="40" rx="5" fill="#3b82f6" opacity="0.85"/>
+  <text x="120" y="125" font-size="12" fill="#fff" text-anchor="middle">tool call</text>
+  <!-- boundary 1 -->
+  <line x1="190" y1="80" x2="190" y2="280" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="190" y="75" font-size="10" fill="#065f46" text-anchor="middle">boundary</text>
+
+  <!-- next tool call -->
+  <rect x="210" y="100" width="120" height="40" rx="5" fill="#3b82f6" opacity="0.85"/>
+  <text x="270" y="125" font-size="12" fill="#fff" text-anchor="middle">tool call</text>
+  <!-- boundary 2 -->
+  <line x1="340" y1="80" x2="340" y2="280" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="340" y="75" font-size="10" fill="#92400e" text-anchor="middle">boundary</text>
+
+  <!-- slipped tool call -->
+  <rect x="450" y="100" width="120" height="40" rx="5" fill="#3b82f6" opacity="0.85"/>
+  <text x="510" y="125" font-size="12" fill="#fff" text-anchor="middle">tool call</text>
+  <!-- boundary 3 -->
+  <line x1="580" y1="80" x2="580" y2="280" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Bottom track: Background retriever -->
+  <text x="20" y="225" font-size="13" fill="#1f2937" font-weight="600">Background retriever</text>
+  <line x1="20" y1="265" x2="730" y2="265" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- fast retrieval (wins race) -->
+  <rect x="60" y="245" width="110" height="40" rx="5" fill="#10b981" opacity="0.85"/>
+  <text x="115" y="270" font-size="11" fill="#fff" text-anchor="middle">vector + rerank</text>
+
+  <!-- arrow up to boundary 1 -->
+  <line x1="185" y1="245" x2="190" y2="143" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr3-green)"/>
+  <text x="225" y="195" font-size="10" fill="#065f46">inject ✓</text>
+
+  <!-- slow retrieval (loses race, slips) -->
+  <rect x="220" y="245" width="200" height="40" rx="5" fill="#f59e0b" opacity="0.85"/>
+  <text x="320" y="270" font-size="11" fill="#fff" text-anchor="middle">vector + rerank (slow)</text>
+
+  <!-- crosses boundary 2 — slip to boundary 3 -->
+  <line x1="425" y1="245" x2="580" y2="143" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr3-amber)"/>
+  <text x="505" y="195" font-size="10" fill="#92400e">missed boundary → slip to next</text>
+
+  <!-- Caption -->
+  <text x="380" y="335" font-size="12" fill="#6b7280" text-anchor="middle" font-style="italic">
+    Retriever races the agent. Wins → inject. Loses → slip to next tool-call boundary. Sometimes nothing comes back.
+  </text>
+</svg>
