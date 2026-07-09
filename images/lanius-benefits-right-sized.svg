@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" width="880" height="520" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="title">Lanius routes work to right-sized agents</title>
+  <desc id="desc">A concept diagram showing Lanius routing incoming work to scripts, tiny local models, coding agents, and frontier models based on complexity, while messages, locks, and packages support the workflow.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbfd; }
+      .title { fill: #22232a; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #6f717b; font-size: 13px; }
+      .inbox { fill: #ffffff; stroke: #d8dce4; stroke-width: 1.2; }
+      .router { fill: #263c55; }
+      .lane { fill: #ffffff; stroke: #d8dce4; stroke-width: 1.2; }
+      .laneHead { fill: #22232a; font-size: 13px; font-weight: 750; }
+      .laneSub { fill: #6f717b; font-size: 10px; }
+      .cost { fill: #ffffff; stroke: #cad3dd; stroke-width: 1.1; }
+      .costText { fill: #3b4654; font-size: 10px; font-weight: 700; }
+      .arrow { fill: none; stroke: #9aa3af; stroke-width: 1.5; }
+      .chip { fill: #eef5fa; stroke: #bfd3e4; stroke-width: 1; }
+      .chipText { fill: #355b78; font-size: 10px; font-weight: 700; }
+      .caption { fill: #4c515b; font-size: 13px; font-weight: 650; }
+      .hint { fill: #757986; font-size: 10px; }
+    </style>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#9aa3af" />
+    </marker>
+  </defs>
+
+  <rect class="bg" width="880" height="520" />
+
+  <text x="440" y="48" class="title" text-anchor="middle">Route the work to the cheapest thing that can handle it</text>
+  <text x="440" y="72" class="subtitle" text-anchor="middle">Lanius makes scaled-down agents practical by giving them shared plumbing</text>
+
+  <g transform="translate(52,135)">
+    <rect class="inbox" width="152" height="250" rx="12" />
+    <text x="76" y="34" fill="#22232a" font-size="15" font-weight="750" text-anchor="middle">incoming work</text>
+    <g transform="translate(22,65)">
+      <rect width="108" height="24" rx="5" fill="#f0f3f7" />
+      <text x="54" y="16" fill="#59616c" font-size="10" font-weight="650" text-anchor="middle">check inbox</text>
+    </g>
+    <g transform="translate(22,103)">
+      <rect width="108" height="24" rx="5" fill="#f0f3f7" />
+      <text x="54" y="16" fill="#59616c" font-size="10" font-weight="650" text-anchor="middle">triage issue</text>
+    </g>
+    <g transform="translate(22,141)">
+      <rect width="108" height="24" rx="5" fill="#f0f3f7" />
+      <text x="54" y="16" fill="#59616c" font-size="10" font-weight="650" text-anchor="middle">edit feature</text>
+    </g>
+    <g transform="translate(22,179)">
+      <rect width="108" height="24" rx="5" fill="#f0f3f7" />
+      <text x="54" y="16" fill="#59616c" font-size="10" font-weight="650" text-anchor="middle">verify plan</text>
+    </g>
+  </g>
+
+  <path class="arrow" marker-end="url(#arr)" d="M 204 260 L 275 260" />
+
+  <g transform="translate(276,175)">
+    <rect class="router" width="154" height="170" rx="14" />
+    <text x="77" y="48" fill="#ffffff" font-size="18" font-weight="800" text-anchor="middle">Lanius</text>
+    <text x="77" y="68" fill="#c5d3e1" font-size="11" font-weight="650" text-anchor="middle">routes + coordinates</text>
+    <g transform="translate(24,95)">
+      <rect class="chip" width="106" height="24" rx="12" />
+      <text x="53" y="16" class="chipText" text-anchor="middle">messages</text>
+    </g>
+    <g transform="translate(24,127)">
+      <rect class="chip" width="106" height="24" rx="12" />
+      <text x="53" y="16" class="chipText" text-anchor="middle">locks + watchers</text>
+    </g>
+  </g>
+
+  <path class="arrow" marker-end="url(#arr)" d="M 430 260 C 458 260, 460 145, 494 145" />
+  <path class="arrow" marker-end="url(#arr)" d="M 430 260 C 458 260, 460 222, 494 222" />
+  <path class="arrow" marker-end="url(#arr)" d="M 430 260 C 458 260, 460 299, 494 299" />
+  <path class="arrow" marker-end="url(#arr)" d="M 430 260 C 458 260, 460 376, 494 376" />
+
+  <g transform="translate(494,109)">
+    <rect class="lane" width="315" height="60" rx="10" />
+    <text x="20" y="25" class="laneHead">script</text>
+    <text x="20" y="43" class="laneSub">deterministic checks, polling, file transforms</text>
+    <g transform="translate(243,18)">
+      <rect class="cost" width="52" height="24" rx="12" />
+      <text x="26" y="16" class="costText" text-anchor="middle">$0</text>
+    </g>
+  </g>
+
+  <g transform="translate(494,186)">
+    <rect class="lane" width="315" height="60" rx="10" />
+    <text x="20" y="25" class="laneHead">tiny local model</text>
+    <text x="20" y="43" class="laneSub">classify, summarize, decide whether to escalate</text>
+    <g transform="translate(243,18)">
+      <rect class="cost" width="52" height="24" rx="12" />
+      <text x="26" y="16" class="costText" text-anchor="middle">$</text>
+    </g>
+  </g>
+
+  <g transform="translate(494,263)">
+    <rect class="lane" width="315" height="60" rx="10" />
+    <text x="20" y="25" class="laneHead">coding agent</text>
+    <text x="20" y="43" class="laneSub">make changes, coordinate with other agents</text>
+    <g transform="translate(243,18)">
+      <rect class="cost" width="52" height="24" rx="12" />
+      <text x="26" y="16" class="costText" text-anchor="middle">$$</text>
+    </g>
+  </g>
+
+  <g transform="translate(494,340)">
+    <rect class="lane" width="315" height="60" rx="10" />
+    <text x="20" y="25" class="laneHead">frontier model</text>
+    <text x="20" y="43" class="laneSub">hard planning, review, judgment, final calls</text>
+    <g transform="translate(243,18)">
+      <rect class="cost" width="52" height="24" rx="12" />
+      <text x="26" y="16" class="costText" text-anchor="middle">$$$</text>
+    </g>
+  </g>
+
+  <g transform="translate(296,381)">
+    <rect class="chip" width="114" height="28" rx="14" />
+    <text x="57" y="18" class="chipText" text-anchor="middle">package installs policy</text>
+  </g>
+
+  <path class="arrow" marker-end="url(#arr)" d="M 353 381 C 353 363, 353 363, 353 345" />
+
+  <text x="440" y="458" class="caption" text-anchor="middle">Benefit: scale impact without sending every tiny decision to the largest model.</text>
+  <text x="440" y="481" class="hint" text-anchor="middle">The expensive agent stays available for the few moments where judgment actually matters.</text>
+</svg>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" width="880" height="520" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="title">Lanius as an agent operating system kernel</title>
+  <desc id="desc">A concept diagram showing Lanius at the center, with messaging, coordination, and packages forming the core benefits for surrounding agents, scripts, humans, and tools.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbfd; }
+      .title { fill: #22232a; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #6f717b; font-size: 13px; }
+      .label { fill: #22232a; font-size: 13px; font-weight: 650; }
+      .small { fill: #6f717b; font-size: 11px; }
+      .core { fill: #2f5f8f; }
+      .core2 { fill: #3e77a8; }
+      .core3 { fill: #68a0c4; }
+      .node { fill: #ffffff; stroke: #d9dce3; stroke-width: 1.3; }
+      .nodeText { fill: #22232a; font-size: 13px; font-weight: 600; }
+      .nodeSub { fill: #777986; font-size: 10px; }
+      .ring { fill: none; stroke: #d8dce5; stroke-width: 1.2; stroke-dasharray: 6 8; }
+      .flow { fill: none; stroke: #96a0ad; stroke-width: 1.5; }
+      .callout { fill: #ffffff; stroke: #d9dce3; stroke-width: 1.2; }
+      .calloutHead { fill: #22232a; font-size: 13px; font-weight: 700; }
+      .calloutBody { fill: #6f717b; font-size: 11px; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#96a0ad" />
+    </marker>
+  </defs>
+
+  <rect class="bg" width="880" height="520" />
+
+  <text x="440" y="48" class="title" text-anchor="middle">Lanius is the agent OS layer</text>
+  <text x="440" y="72" class="subtitle" text-anchor="middle">not a smarter model - the machinery that lets smaller agents coordinate</text>
+
+  <circle cx="440" cy="278" r="178" class="ring" />
+  <circle cx="440" cy="278" r="127" class="ring" />
+
+  <path class="flow" marker-end="url(#arrow)" d="M 290 180 C 340 130, 540 130, 592 180" />
+  <path class="flow" marker-end="url(#arrow)" d="M 610 230 C 666 280, 626 365, 555 392" />
+  <path class="flow" marker-end="url(#arrow)" d="M 490 430 C 395 462, 282 405, 267 312" />
+  <path class="flow" marker-end="url(#arrow)" d="M 238 260 C 218 200, 245 165, 290 180" />
+
+  <g transform="translate(333,171)">
+    <circle cx="107" cy="107" r="104" fill="#eef5fa" stroke="#c9d9e6" stroke-width="1.2" />
+    <circle cx="107" cy="107" r="78" class="core3" opacity="0.35" />
+    <circle cx="107" cy="107" r="55" class="core2" opacity="0.88" />
+    <circle cx="107" cy="107" r="31" class="core" />
+    <text x="107" y="101" fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle">lanius</text>
+    <text x="107" y="119" fill="#dcecf8" font-size="10" font-weight="600" text-anchor="middle">control plane</text>
+
+    <text x="107" y="39" class="label" text-anchor="middle">packages</text>
+    <text x="107" y="181" class="label" text-anchor="middle">message bus</text>
+    <text x="45" y="112" class="label" text-anchor="middle">locks</text>
+    <text x="169" y="112" class="label" text-anchor="middle">watchers</text>
+  </g>
+
+  <g transform="translate(78,139)">
+    <rect class="node" width="146" height="64" rx="8" />
+    <text x="73" y="29" class="nodeText" text-anchor="middle">Claude Code</text>
+    <text x="73" y="47" class="nodeSub" text-anchor="middle">big planning agent</text>
+  </g>
+
+  <g transform="translate(654,139)">
+    <rect class="node" width="146" height="64" rx="8" />
+    <text x="73" y="29" class="nodeText" text-anchor="middle">Codex</text>
+    <text x="73" y="47" class="nodeSub" text-anchor="middle">implementation agent</text>
+  </g>
+
+  <g transform="translate(674,331)">
+    <rect class="node" width="146" height="64" rx="8" />
+    <text x="73" y="29" class="nodeText" text-anchor="middle">Scripts</text>
+    <text x="73" y="47" class="nodeSub" text-anchor="middle">pollers, hooks, daemons</text>
+  </g>
+
+  <g transform="translate(78,331)">
+    <rect class="node" width="146" height="64" rx="8" />
+    <text x="73" y="29" class="nodeText" text-anchor="middle">Humans</text>
+    <text x="73" y="47" class="nodeSub" text-anchor="middle">reply anywhere</text>
+  </g>
+
+  <g transform="translate(97,436)">
+    <rect class="callout" width="206" height="56" rx="8" />
+    <text x="14" y="23" class="calloutHead">Messaging</text>
+    <text x="14" y="41" class="calloutBody">agents, scripts, and humans all speak topics</text>
+  </g>
+
+  <g transform="translate(337,436)">
+    <rect class="callout" width="206" height="56" rx="8" />
+    <text x="14" y="23" class="calloutHead">Coordination</text>
+    <text x="14" y="41" class="calloutBody">locks and watchers keep parallel work sane</text>
+  </g>
+
+  <g transform="translate(577,436)">
+    <rect class="callout" width="206" height="56" rx="8" />
+    <text x="14" y="23" class="calloutHead">Packages</text>
+    <text x="14" y="41" class="calloutBody">skills, memory, and daemons install together</text>
+  </g>
+</svg>

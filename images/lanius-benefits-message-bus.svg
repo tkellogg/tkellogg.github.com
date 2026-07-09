@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" width="880" height="520" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="title">Lanius as a message bus for agents</title>
+  <desc id="desc">A concept diagram showing Lanius as a central topic tree. Humans, agents, scripts, packages, telemetry, and file locks communicate through the same message bus.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbfd; }
+      .title { fill: #22232a; font-size: 24px; font-weight: 700; }
+      .subtitle { fill: #6f717b; font-size: 13px; }
+      .bus { fill: #263c55; }
+      .topic { fill: #ffffff; stroke: #cfd6df; stroke-width: 1.2; }
+      .topicText { fill: #273241; font-size: 12px; font-weight: 650; }
+      .hint { fill: #757986; font-size: 10px; }
+      .node { fill: #ffffff; stroke: #d9dce3; stroke-width: 1.2; }
+      .nodeText { fill: #22232a; font-size: 13px; font-weight: 700; }
+      .nodeSub { fill: #737782; font-size: 10px; }
+      .line { fill: none; stroke: #9aa3af; stroke-width: 1.4; }
+      .send { fill: #3e77a8; }
+      .recv { fill: #6aa17a; }
+      .chipText { fill: #ffffff; font-size: 9px; font-weight: 700; }
+      .caption { fill: #4c515b; font-size: 13px; font-weight: 650; }
+    </style>
+    <marker id="arrBlue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#3e77a8" />
+    </marker>
+    <marker id="arrGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#6aa17a" />
+    </marker>
+  </defs>
+
+  <rect class="bg" width="880" height="520" />
+
+  <text x="440" y="48" class="title" text-anchor="middle">Everything is a message</text>
+  <text x="440" y="72" class="subtitle" text-anchor="middle">agents do not need to know who is listening - they publish, subscribe, and coordinate</text>
+
+  <rect x="252" y="128" width="376" height="264" rx="18" class="bus" />
+  <text x="440" y="157" fill="#ffffff" font-size="18" font-weight="800" text-anchor="middle">Lanius topic space</text>
+  <text x="440" y="177" fill="#b9c8d8" font-size="11" font-weight="600" text-anchor="middle">MQTT-shaped, filesystem-ish, agent-readable</text>
+
+  <g transform="translate(292,207)">
+    <rect class="topic" width="132" height="34" rx="6" />
+    <text x="66" y="22" class="topicText" text-anchor="middle">/agents/codex</text>
+  </g>
+  <g transform="translate(456,207)">
+    <rect class="topic" width="132" height="34" rx="6" />
+    <text x="66" y="22" class="topicText" text-anchor="middle">/agents/claude</text>
+  </g>
+  <g transform="translate(292,263)">
+    <rect class="topic" width="132" height="34" rx="6" />
+    <text x="66" y="22" class="topicText" text-anchor="middle">/files/locks</text>
+  </g>
+  <g transform="translate(456,263)">
+    <rect class="topic" width="132" height="34" rx="6" />
+    <text x="66" y="22" class="topicText" text-anchor="middle">/hooks/events</text>
+  </g>
+  <g transform="translate(292,319)">
+    <rect class="topic" width="132" height="34" rx="6" />
+    <text x="66" y="22" class="topicText" text-anchor="middle">/human/replies</text>
+  </g>
+  <g transform="translate(456,319)">
+    <rect class="topic" width="132" height="34" rx="6" />
+    <text x="66" y="22" class="topicText" text-anchor="middle">/packages/kb</text>
+  </g>
+
+  <line x1="440" y1="186" x2="440" y2="368" stroke="#60748a" stroke-width="1.2" />
+  <line x1="358" y1="241" x2="358" y2="263" stroke="#60748a" stroke-width="1.2" />
+  <line x1="522" y1="241" x2="522" y2="263" stroke="#60748a" stroke-width="1.2" />
+  <line x1="358" y1="297" x2="358" y2="319" stroke="#60748a" stroke-width="1.2" />
+  <line x1="522" y1="297" x2="522" y2="319" stroke="#60748a" stroke-width="1.2" />
+
+  <g transform="translate(64,128)">
+    <rect class="node" width="142" height="58" rx="8" />
+    <text x="71" y="26" class="nodeText" text-anchor="middle">Human</text>
+    <text x="71" y="43" class="nodeSub" text-anchor="middle">Slack, web UI, terminal</text>
+  </g>
+  <g transform="translate(64,333)">
+    <rect class="node" width="142" height="58" rx="8" />
+    <text x="71" y="26" class="nodeText" text-anchor="middle">Daemon</text>
+    <text x="71" y="43" class="nodeSub" text-anchor="middle">poll email, RSS, Jira</text>
+  </g>
+  <g transform="translate(674,128)">
+    <rect class="node" width="142" height="58" rx="8" />
+    <text x="71" y="26" class="nodeText" text-anchor="middle">Agent</text>
+    <text x="71" y="43" class="nodeSub" text-anchor="middle">Claude, Codex, local LLM</text>
+  </g>
+  <g transform="translate(674,333)">
+    <rect class="node" width="142" height="58" rx="8" />
+    <text x="71" y="26" class="nodeText" text-anchor="middle">Package</text>
+    <text x="71" y="43" class="nodeSub" text-anchor="middle">skills + memory + scripts</text>
+  </g>
+
+  <path class="line" stroke="#3e77a8" marker-end="url(#arrBlue)" d="M 206 157 C 231 157, 234 224, 252 224" />
+  <path class="line" stroke="#6aa17a" marker-end="url(#arrGreen)" d="M 252 334 C 224 334, 229 362, 207 362" />
+  <path class="line" stroke="#3e77a8" marker-end="url(#arrBlue)" d="M 674 157 C 645 157, 648 224, 628 224" />
+  <path class="line" stroke="#6aa17a" marker-end="url(#arrGreen)" d="M 628 334 C 648 334, 645 362, 674 362" />
+
+  <g transform="translate(226,123)">
+    <rect class="send" width="39" height="18" rx="9" />
+    <text x="19.5" y="12.5" class="chipText" text-anchor="middle">send</text>
+  </g>
+  <g transform="translate(215,371)">
+    <rect class="recv" width="52" height="18" rx="9" />
+    <text x="26" y="12.5" class="chipText" text-anchor="middle">receive</text>
+  </g>
+  <g transform="translate(616,123)">
+    <rect class="send" width="39" height="18" rx="9" />
+    <text x="19.5" y="12.5" class="chipText" text-anchor="middle">send</text>
+  </g>
+  <g transform="translate(614,371)">
+    <rect class="recv" width="52" height="18" rx="9" />
+    <text x="26" y="12.5" class="chipText" text-anchor="middle">receive</text>
+  </g>
+
+  <text x="440" y="440" class="caption" text-anchor="middle">Benefit: new integrations do not need a bespoke agent API.</text>
+  <text x="440" y="463" class="hint" text-anchor="middle">If it can publish a message, it can participate. If it can subscribe, it can react.</text>
+</svg>
