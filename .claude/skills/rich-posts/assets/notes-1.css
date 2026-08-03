@@ -1,0 +1,486 @@
+/* notes-1.css — tap-note triggers, note cards, prompt cards, folds.
+
+   Syntax cheat sheet (the whole vocabulary — see the rich-posts skill):
+
+     tap-note trigger   [the phrase](#key){: .popup}
+     tap-note body      ### Title
+                        {: #key .wide}                <- IAL on the NEXT line
+                        under a  ## Notes {#notes}  heading. Keys unique per post.
+
+     prompt card        > blockquote text
+                        {: .prompt}                   <- line IMMEDIATELY after
+
+     fold               <details markdown="1">
+                        <summary>Label</summary>
+                        (blank line) markdown (blank line)
+                        </details>
+
+   Two of these fail SILENTLY if you get them wrong: a blank line before a
+   `{: ...}` line drops the class with no warning and no visible artifact, and
+   a typo'd note key is a link that jumps nowhere. Run bin/lint-post.
+
+   ---------------------------------------------------------------------------
+   v1.1 visual pass. Same class vocabulary, same JS contract, same behaviors
+   (44px close target, sub-640px bottom sheet, box-sizing: border-box on every
+   element that mixes a percentage/vw width with padding, touch-action:
+   manipulation on every tap target, no CSS anchor positioning). This revision
+   only changes how those classes look, plus a small number of purely additive
+   rules (marked below) that degrade to nothing if unused. Nothing here reads
+   dark-mode media — the site has none, and this file doesn't invent one.    */
+
+:root {
+  /* Two tones of the same hue, not two colors. The lighter one paints
+     backgrounds/underlines/borders — decorative use, needs only the W3C
+     3:1 "non-text contrast" minimum, which #c08a00 clears against white
+     (~3.1:1). The darker one is for anything that is actually TEXT (the
+     footnote numerals, the kicker label) — those need the 4.5:1 body-text
+     minimum, which the lighter tone misses. Same family, so the trigger,
+     its numeral, and the card it opens all read as one system, but nothing
+     rendered as text is under-contrast. */
+  --note-accent: #c08a00;
+  --note-accent-text: #8a6300;
+  --note-accent-wash: rgba(192, 138, 0, .13);
+}
+
+/* ---------------------------------------------------------------- tap-note */
+
+/* Design problem: this class gets applied to ~13 spans inside ONE blockquote
+   on the printer post. Genius.com is the cautionary tale — full-opacity
+   highlight fill on every annotated word turns the paragraph into a ransom
+   note and the reader stops reading prose and starts reading a heat map.
+   The fix is restraint at rest and payoff on interaction: no fill by
+   default, just a dotted underline (the same convention browsers already
+   use for <abbr title>, so "dotted underline = more info on demand" is a
+   pattern readers already half-know) plus a small numeral. The fill only
+   appears on hover/focus, i.e. exactly when the reader has already decided
+   to look at this phrase. */
+.note-link {
+  all: unset;
+  font: inherit;
+  cursor: pointer;
+  /* Removes the double-tap-zoom delay on touch without disabling text
+     selection — the prompt must stay copyable, so we accept that a long slow
+     press can raise iOS's Copy/Look Up menu instead of the note. */
+  touch-action: manipulation;
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--note-accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  border-radius: 3px;
+  /* No horizontal padding: 13 of these sit inline in running prose, and
+     padding on an inline span makes adjacent triggers visually collide with
+     ordinary punctuation. A little vertical padding keeps the hit target
+     honest without widening the word. */
+  padding: .05em 0;
+}
+.note-link:hover,
+.note-link:focus-visible {
+  background: var(--note-accent-wash);
+  text-decoration-style: solid;
+}
+.note-link:focus-visible {
+  outline: 2px solid var(--note-accent);
+  outline-offset: 2px;
+}
+
+/* ADDITIVE, opt-in by structure only (:has, Baseline since ~2024): every
+   .note-link *inside a .prompt card* also gets a small raised numeral, the
+   footnote convention. This is the second half of the "13 without a ransom
+   note" answer — instead of 13 different colors or weights fighting for
+   attention, every trigger looks the same and only the numeral varies, so
+   the passage stays legible as prose first and an index second. It also
+   quietly answers "how does the reader know these are tappable at all,"
+   independent of any lead-in sentence the author remembers (or forgets) to
+   write. If :has() is unsupported the underline above still communicates
+   "more here"; nothing breaks, the numerals just don't render. */
+blockquote.prompt {
+  counter-reset: note;
+}
+blockquote.prompt .note-link::after {
+  counter-increment: note;
+  content: counter(note);
+  display: inline-block;
+  margin-left: .15em;
+  font-size: .62em;
+  font-weight: 700;
+  line-height: 0;
+  vertical-align: super;
+  color: var(--note-accent-text);
+}
+
+/* Default (wide screens): a centered card. No anchor positioning in v1 — the
+   tethered variant overlapped the text it annotated when tested. */
+.note-pop {
+  box-sizing: border-box;       /* width includes padding — without this the
+                                   full-width phone sheet overflows the screen */
+  margin: auto;
+  /* Deliberately a first-class modal, not a tooltip. These notes are short
+     essays, not one-line glosses, and the card now also carries a quote of the
+     passage you clicked — at 26rem that stacked up cramped. */
+  width: min(94vw, 36rem);
+  max-height: min(80vh, 42rem);
+  overflow-y: auto;
+  overscroll-behavior: contain; /* scrolling to the end of a long note must not
+                                   start scrolling the page behind it */
+  padding: 1.15rem 1.4rem 1.3rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: .75rem;
+  /* Same shadow language as the site's existing pre/table cards
+     (box-shadow: 0 8px 18px rgba(15,23,42,.08) in screen.css) so this reads
+     as "another card on this site," not a new UI system, just lifted a
+     little further off the page since it floats over content. */
+  box-shadow: 0 16px 40px rgba(15, 23, 42, .16), 0 2px 8px rgba(15, 23, 42, .06);
+  font-size: .95rem;
+  line-height: 1.55;
+  /* A thin top accent in the same hue as the trigger's underline — a visual
+     thread from "the word you tapped" to "the card that opened," without
+     recoloring the whole card. */
+  border-top: 3px solid var(--note-accent);
+}
+.note-pop.wide { width: min(94vw, 48rem); }   /* {: #key .wide} */
+/* notes-1.js focuses the card on open so keyboard and screen-reader users land
+   inside it. That focus is for navigation, not decoration — a browser-default
+   ring around an already-obvious modal just fights the accent border. The
+   controls inside it keep their own visible focus styles. */
+.note-pop:focus { outline: none; }
+/* Darker than a hint: this is a modal, and the dimmed page is what tells the
+   reader that tapping anywhere out there will close it. */
+.note-pop::backdrop { background: rgba(15, 23, 42, .38); }
+
+/* The passage the reader clicked, echoed at the top of the card. Reads as a
+   quotation of THEIR action, so it is quieter than the note body — smaller,
+   italic, on the accent rail rather than in a box of its own. */
+.note-pop-quote {
+  margin: 0 0 .9rem;
+  padding: .1rem 0 .1rem .85rem;
+  border: 0;
+  border-left: 3px solid var(--note-accent);
+  font-size: .92em;
+  font-style: italic;
+  line-height: 1.5;
+  color: #5a5a5a;
+  background: none;
+}
+
+.note-pop-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .15rem;
+}
+.note-pop-title {
+  font-weight: 700;
+  font-size: 1.05em;
+  line-height: 1.3;
+  margin: 0 0 .35rem;
+  color: #1a1a1a;
+}
+.note-pop-close {
+  all: unset;
+  cursor: pointer;
+  flex: 0 0 auto;
+  width: 2.75rem;               /* a real 44px touch target */
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  line-height: 1;
+  border-radius: 999px;
+  margin: -.55rem -.55rem 0 0;
+  color: #555;
+}
+.note-pop-close:hover,
+.note-pop-close:focus-visible { background: rgba(0, 0, 0, .08); color: #222; }
+.note-pop-close:focus-visible { outline: 2px solid var(--note-accent); outline-offset: -2px; }
+
+/* ADDITIVE: the site's global `p { font-size: 1rem; margin-bottom: 1.5rem }`
+   (screen.css) sets font-size directly on every <p>, which wins over
+   .note-pop's inherited .95rem — without this override, note bodies render
+   at full body size with full body spacing inside a 26rem card, which reads
+   as loose and slightly oversized next to the card's own chrome. This scopes
+   the fix to inside the card only; nothing about global <p> styling changes. */
+.note-pop p,
+.note-pop li,
+.note-pop ul,
+.note-pop ol {
+  font-size: 1em;
+  line-height: inherit;
+  margin: 0 0 .7rem;
+}
+.note-pop code {
+  font-size: .92em;
+}
+
+.note-pop > :last-child { margin-bottom: 0; }
+
+/* notes-1.js hides each endnote it successfully turned into a card, so a
+   reader with JavaScript never sees a duplicate appendix. Bootstrap's base
+   stylesheet sets display on several of these element types, so the [hidden]
+   attribute needs the !important to actually win. */
+[hidden] { display: none !important; }
+
+/* Phones: slide up from the bottom edge — the Wikipedia-mobile pattern. */
+@media (max-width: 640px) {
+  .note-pop, .note-pop.wide {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 14px 14px 0 0;
+    border-bottom: none;
+    padding: 1rem 1.1rem max(1rem, env(safe-area-inset-bottom));
+    /* border-top already carries the accent thread; on the sheet it also
+       reads as a "drag handle" affordance, which is a happy accident worth
+       keeping rather than overriding away. */
+  }
+}
+
+/* ------------------------------------------------------------ prompt card */
+/* CSS-only. Works with zero JavaScript, forever.
+
+   Font decision: NOT monospace. The baseline v1 set this in a code font,
+   which is the right instinct for a log or a terminal transcript but wrong
+   here — this is one long, run-on, stream-of-consciousness message, closer
+   to a text thread than a code block. Monospace tells the eye "scan for
+   tokens, don't read for meaning," which is exactly backwards for a passage
+   the reader is meant to read start to finish across ~13 annotations.
+   Monospace at this length and at 390px also forces smaller point sizes or
+   more wrapping to avoid a horizontal scrollbar, which fights readability
+   further. The card still needs to feel like a *quoted artifact* rather
+   than the post's own prose, so that distinction is carried by the
+   background, the border, and the accent rail — not by the typeface. The
+   one place monospace survives is the kicker label below, on purpose: a
+   small monospaced tag is enough to say "raw input," without taxing 13
+   annotations' worth of body text with it. */
+blockquote.prompt {
+  box-sizing: border-box;
+  font-family: inherit;         /* the site's own sans stack, not monospace */
+  font-size: .97rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+  background: #fbfaf7;
+  border: 1px solid #e5e0d3;
+  border-left: 4px solid var(--note-accent);
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, .06);
+  padding: 1.1rem 1.25rem;
+  margin: 1.6rem auto;
+  /* A measured column, not the full width of #post. This is deliberate:
+     screen.css already reserves width: 67ch as its convention for "a
+     comfortable reading line" (see the tag list in post.html). The card is
+     one continuous quoted passage annotated 13 times over, so it is the one
+     place in the post that most benefits from a tight, book-width line —
+     letting it run the full width of .main-content (~700–750px at desktop)
+     would push lines past a comfortable measure right where 13 numerals are
+     asking the eye to also track vertically. Below ~68ch (mobile, most
+     tablet widths) this has no effect; the card is simply as wide as the
+     column, same as before. */
+  max-width: 68ch;
+  overflow-wrap: break-word;
+  word-break: break-word;      /* a stray long path/URL in the prompt should
+                                   wrap, not force the card into x-scroll */
+}
+blockquote.prompt > :last-child { margin-bottom: 0; }
+blockquote.prompt > * + * { margin-top: .9em; }
+
+/* ADDITIVE, :has()-gated affordance: tells the reader up front that the
+   highlighted passages are tappable, without depending on the author
+   remembering to write a lead-in sentence in the post body — that kind of
+   thing gets cut in an edit pass and then silently stops being true. Only
+   renders when the card actually contains a .note-link, so a plain verbatim
+   blockquote (a log, a model response with nothing annotated) is untouched.
+   Uses the site's existing eyebrow-label convention (uppercase, tracked-out,
+   muted — see .tag-timeline-title / .tag-timeline-date in screen.css) rather
+   than inventing a new one. */
+blockquote.prompt:has(.note-link)::before {
+  content: "Annotated Prompt — click for explanations";
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--note-accent-text);
+  margin-bottom: .7rem;
+}
+
+@media (max-width: 480px) {
+  blockquote.prompt {
+    padding: .95rem 1rem;
+    margin: 1.3rem 0;             /* no auto-centering gutter to fight for
+                                      on a narrow phone; just fill the column */
+  }
+}
+
+/* ------------------------------------------------------------- embed-app */
+/* <a class="embed-app" href="/some-app/">Open Report</a>
+   Looks like a button, behaves like a link (so Cmd-click opens a new tab and
+   no-JS readers just navigate to the app). */
+
+a.embed-app {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .85rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  /* A lit edge along the top and a deeper base, so the pill reads as a raised
+     physical object rather than a flat rectangle of brand color. */
+  background: linear-gradient(180deg, #d29a0c 0%, #c08a00 55%, #a87700 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-decoration: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  /* Gold-tinted rather than neutral-grey: a shadow the same hue as the object
+     casting it looks lit; a grey one looks pasted on. */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .35) inset,
+              0 6px 16px rgba(192, 138, 0, .38),
+              0 1px 2px rgba(15, 23, 42, .18);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+/* Expand-to-fullscreen corners, drawn in CSS so there is no asset to load and
+   it inherits the text color. Says "this opens big" — which ↗ (leaves the site)
+   would say wrongly, since the default action keeps you on the page. */
+a.embed-app::before {
+  content: "";
+  width: .85em;
+  height: .85em;
+  flex: 0 0 auto;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  /* corners only: knock out the middle of each edge */
+  -webkit-mask: linear-gradient(#000 0 0) top left    / 40% 40% no-repeat,
+                linear-gradient(#000 0 0) top right   / 40% 40% no-repeat,
+                linear-gradient(#000 0 0) bottom left / 40% 40% no-repeat,
+                linear-gradient(#000 0 0) bottom right/ 40% 40% no-repeat;
+          mask: linear-gradient(#000 0 0) top left    / 40% 40% no-repeat,
+                linear-gradient(#000 0 0) top right   / 40% 40% no-repeat,
+                linear-gradient(#000 0 0) bottom left / 40% 40% no-repeat,
+                linear-gradient(#000 0 0) bottom right/ 40% 40% no-repeat;
+  opacity: .9;
+}
+a.embed-app:hover {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  filter: saturate(1.08);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .45) inset,
+              0 12px 26px rgba(192, 138, 0, .45),
+              0 2px 4px rgba(15, 23, 42, .2);
+}
+a.embed-app:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset,
+              0 3px 8px rgba(192, 138, 0, .35);
+}
+a.embed-app:focus-visible {
+  outline: 3px solid var(--note-accent-text);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  a.embed-app { transition: none; }
+  a.embed-app:hover, a.embed-app:active { transform: none; }
+}
+
+dialog.embed-modal {
+  box-sizing: border-box;
+  width: 90vw;
+  height: 90vh;
+  max-width: 90vw;      /* UA default is calc(100% - 6px - 2em); override both */
+  max-height: 90vh;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;     /* keeps the iframe's square corners inside the radius */
+  box-shadow: 0 24px 70px rgba(15, 23, 42, .3);
+  display: flex;        /* :not([open]) stays display:none — see below */
+  flex-direction: column;
+}
+dialog.embed-modal:not([open]) { display: none; }
+dialog.embed-modal::backdrop { background: rgba(15, 23, 42, .55); }
+
+.embed-modal-head {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  flex: 0 0 auto;
+  padding: .5rem .5rem .5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fbfaf7;
+}
+.embed-modal-title {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: .9rem;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.embed-modal-newtab {
+  flex: 0 0 auto;
+  font-size: .85rem;
+  color: var(--note-accent-text);
+  white-space: nowrap;
+}
+.embed-modal-close {
+  all: unset;
+  cursor: pointer;
+  flex: 0 0 auto;
+  width: 2.75rem;       /* a real 44px touch target */
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  border-radius: 999px;
+  color: #555;
+}
+.embed-modal-close:hover,
+.embed-modal-close:focus-visible { background: rgba(0, 0, 0, .08); color: #222; }
+.embed-modal-frame {
+  flex: 1 1 auto;
+  width: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Phones: a 90% box wastes the little space there is, and the app inside needs
+   every pixel. Go full-bleed. */
+@media (max-width: 640px) {
+  dialog.embed-modal {
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+  .embed-modal-newtab { font-size: .8rem; }
+}
+
+/* ------------------------------------------------------------------ folds */
+/* CSS-only. This is the device that most directly shortens a post. */
+
+details {
+  margin: 1.2rem 0;
+  border-left: 3px solid #ddd;
+  padding-left: 1rem;
+}
+details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: .35rem 0;            /* keeps the tap target near 44px tall */
+  touch-action: manipulation;
+}
+details > summary:focus-visible { outline: 2px solid var(--note-accent); outline-offset: 2px; }
+details[open] > summary { margin-bottom: .6rem; }
+details > :last-child { margin-bottom: 0; }
