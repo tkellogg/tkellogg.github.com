@@ -4,6 +4,11 @@ include: [".well-known/"]
 highlighter: rouge
 exclude:
   - vendor/
+  # .codex/skills is a symlink to ../.claude/skills, so the file watcher walks
+  # the same tree twice and dies with "directory is already being watched".
+  # Neither belongs in the build anyway.
+  - .claude/
+  - .codex/
 repository: https://github.com/tkellogg/tkellogg.github.com
 
 # Bluesky threads collection
